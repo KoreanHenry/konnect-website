@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konnect — The REAL Language Exchange in Seoul</title>
+<meta name="description" content="Seoul's most genuine language exchange community. Meet real people, have real conversations, make real friends.">
+
+<!-- ── Open Graph (카톡/인스타 미리보기) ── -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Konnect — The REAL Language Exchange in Seoul">
+<meta property="og:description" content="Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.">
+<meta property="og:image" content="https://konnect.kozykorean.com/images/og-image.png">
+<meta property="og:url" content="https://konnect.kozykorean.com">
+<meta property="og:site_name" content="Konnect">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Konnect — The REAL Language Exchange in Seoul">
+<meta name="twitter:description" content="Not another awkward meetup. Real conversations, real friendships, real Korean.">
+<meta name="twitter:image" content="https://konnect.kozykorean.com/images/og-image.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='30%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%239B7AF0'/%3E%3Cstop offset='60%25' stop-color='%236B35E8'/%3E%3Cstop offset='100%25' stop-color='%232E0B73'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='16' cy='16' rx='15' ry='4.5' fill='none' stroke='%236B35E8' stroke-width='2.5' transform='rotate(-20 16 16)'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='url(%23g)'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --purple:#6B35E8;--purple-deep:#2E0B73;--purple-light:#9B7AF0;--purple-pale:#C4B0F8;
+  --cream:#FFF8D1;--pink:#FF3DA8;--black:#0A0118;--white:#FFFFFF;
+  --gray:rgba(255,255,255,0.06);--border:rgba(255,255,255,0.09);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body.loading{overflow:hidden;}
+
+/* ── PRELOADER ── */
+.preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s ease,visibility .6s;}
+.preloader.hidden{opacity:0;visibility:hidden;}
+.pl-planet{position:relative;width:120px;height:120px;animation:plFloat 2s ease-in-out infinite;}
+@keyframes plFloat{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-12px) rotate(4deg);}}
+.pl-ball{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#9B7AF0,#6B35E8 45%,#2E0B73);box-shadow:0 0 60px rgba(107,53,232,.6);}
+.pl-ring{position:absolute;top:50%;left:50%;width:130px;height:32px;border:5px solid var(--purple);border-radius:50%;transform:translate(-50%,-50%) rotateX(76deg) rotate(-18deg);box-shadow:0 0 20px rgba(107,53,232,.5);}
+.pl-text{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;letter-spacing:.02em;background:linear-gradient(135deg,var(--purple-light),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:plPulse 1.5s ease-in-out infinite;}
+@keyframes plPulse{0%,100%{opacity:.5;}50%{opacity:1;}}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;z-index:200;backdrop-filter:blur(24px);background:rgba(10,1,24,0.7);border-bottom:1px solid var(--border);transition:padding .3s;}
+.nav.scrolled{padding:14px 48px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none;color:var(--white);}
+.nav-links{display:flex;gap:36px;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.lang-toggle{display:flex;background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:100px;padding:3px;gap:2px;}
+.lang-btn{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all .2s;}
+.lang-btn.active{background:var(--white);color:var(--black);}
+.nav-cta{background:var(--white);color:var(--black);padding:10px 20px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+.nav-cta:hover{transform:scale(1.04);box-shadow:0 0 30px rgba(107,53,232,.5);}
+
+/* ── MOBILE MENU ── */
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;justify-content:center;align-items:center;gap:5px;}
+.menu-toggle span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;}
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.menu-toggle.open span:nth-child(2){opacity:0;}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;background:rgba(10,1,24,0.98);backdrop-filter:blur(24px);border-left:1px solid var(--border);z-index:190;padding:100px 32px 32px;transition:right .35s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;gap:24px;}
+.mobile-menu.open{right:0;}
+.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:18px;font-weight:500;padding:8px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a.cta{background:var(--white);color:var(--black);text-align:center;padding:14px;border-radius:100px;font-weight:600;border:none;margin-top:12px;}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:180;opacity:0;visibility:hidden;transition:all .35s;}
+.menu-overlay.open{opacity:1;visibility:visible;}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 48px 220px;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);z-index:0;pointer-events:none;}
+.orb1{width:700px;height:700px;background:var(--purple);top:-200px;right:-200px;opacity:.32;animation:drift 22s ease-in-out infinite;}
+.orb2{width:450px;height:450px;background:var(--pink);bottom:-100px;left:-130px;opacity:.2;animation:drift 28s ease-in-out infinite reverse;}
+.orb3{width:350px;height:350px;background:var(--purple-deep);top:40%;left:55%;opacity:.33;animation:drift 35s ease-in-out infinite;}
+@keyframes drift{0%,100%{transform:translate(0,0);}33%{transform:translate(40px,-40px);}66%{transform:translate(-30px,30px);}}
+.star{position:absolute;fill:white;animation:twinkle 3s ease-in-out infinite;pointer-events:none;}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.9);}50%{opacity:.9;transform:scale(1.15);}}
+.s1{top:12%;left:8%;width:18px;animation-delay:0s;}
+.s2{top:22%;left:88%;width:13px;animation-delay:.6s;}
+.s3{top:68%;left:12%;width:22px;animation-delay:1.2s;}
+.s4{top:78%;left:80%;width:15px;animation-delay:1.8s;}
+.s5{top:42%;left:4%;width:11px;animation-delay:2.4s;}
+.s6{top:8%;left:52%;width:16px;animation-delay:.3s;}
+.s7{top:88%;left:40%;width:12px;animation-delay:1s;}
+.s8{top:30%;left:72%;width:10px;animation-delay:2s;}
+
+.hero-inner{position:relative;z-index:10;max-width:1200px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-text{animation:fadeUp .9s cubic-bezier(.16,1,.3,1) both;}
+.hero-vis{animation:fadeUp .9s cubic-bezier(.16,1,.3,1) .15s both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);padding:7px 16px;border-radius:100px;font-size:12.5px;color:rgba(255,255,255,0.7);margin-bottom:28px;backdrop-filter:blur(10px);}
+.dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+.hero-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5.5vw,82px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:22px;}
+.accent{background:linear-gradient(130deg,var(--purple-light) 0%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:400;}
+.hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.62);margin-bottom:36px;max-width:440px;}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 0 40px rgba(107,53,232,0.45);}
+.btn-primary:hover{transform:scale(1.03);box-shadow:0 0 60px rgba(107,53,232,.7);color:var(--black);}
+.btn-ghost{color:rgba(255,255,255,0.65);text-decoration:none;font-size:15px;font-weight:500;padding:15px 4px;transition:color .2s;}
+.btn-ghost:hover{color:var(--white);}
+
+.hero-vis{position:relative;height:480px;display:flex;align-items:center;justify-content:center;}
+.planet-wrap{position:relative;width:360px;height:360px;animation:floatP 7s ease-in-out infinite;}
+@keyframes floatP{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-18px) rotate(4deg);}}
+.planet{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#9B7AF0 0%,#6B35E8 45%,#2E0B73 100%);box-shadow:inset -22px -22px 60px rgba(0,0,0,.45),0 0 90px rgba(107,53,232,.55),0 0 180px rgba(107,53,232,.22);}
+.ring{position:absolute;top:50%;left:50%;width:420px;height:100px;border:14px solid var(--purple);border-radius:50%;transform:translate(-50%,-50%) rotateX(76deg) rotate(-18deg);box-shadow:0 0 40px rgba(107,53,232,.6),inset 0 0 20px rgba(155,122,240,.3);}
+.sp{position:absolute;fill:white;filter:drop-shadow(0 0 8px rgba(255,255,255,.9));animation:sparkA 2.5s ease-in-out infinite;}
+@keyframes sparkA{0%,100%{opacity:.3;transform:scale(.8) rotate(0deg);}50%{opacity:1;transform:scale(1.3) rotate(180deg);}}
+.sp1{top:8%;right:12%;width:34px;animation-delay:0s;}
+.sp2{bottom:18%;left:6%;width:26px;animation-delay:.8s;}
+.sp3{top:58%;right:4%;width:20px;animation-delay:1.6s;}
+
+/* ── COUNTDOWN ── */
+.countdown-section{position:relative;z-index:10;max-width:1200px;width:100%;margin-top:48px;text-align:center;}
+.countdown-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.countdown{display:inline-flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cd-unit{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:14px 20px;min-width:78px;}
+.cd-num{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:800;background:linear-gradient(135deg,var(--purple-light),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.cd-lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px;font-weight:500;}
+
+/* ── PHOTOS ── */
+.photos-wrap{position:relative;z-index:10;width:100%;max-width:1200px;margin-top:56px;}
+.photos-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px;text-align:center;}
+.photos-strip{overflow:hidden;position:relative;}
+.photos-strip::before,.photos-strip::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+.photos-strip::before{left:0;background:linear-gradient(to right,var(--black),transparent);}
+.photos-strip::after{right:0;background:linear-gradient(to left,var(--black),transparent);}
+.photos-track{display:flex;gap:16px;animation:slideL 35s linear infinite;width:max-content;}
+.photos-track:hover{animation-play-state:paused;}
+@keyframes slideL{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.photo-card{flex-shrink:0;width:220px;height:155px;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:rgba(107,53,232,.12);}
+.photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.photo-card:hover img{transform:scale(1.05);}
+.photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(107,53,232,.2) 0%,rgba(255,61,168,.12) 100%);}
+.photo-ph span{font-size:28px;}
+.photo-ph p{font-size:11px;color:rgba(255,255,255,.35);}
+
+.stats-bar{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);display:flex;background:rgba(255,255,255,.04);backdrop-filter:blur(24px);border:1px solid var(--border);padding:18px 0;border-radius:100px;z-index:10;white-space:nowrap;}
+.stat{display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 36px;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;background:linear-gradient(135deg,var(--purple-light),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.stat-lbl{font-size:10.5px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;}
+
+/* ── SECTIONS ── */
+.section{padding:120px 48px;position:relative;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-tag{display:inline-block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-pale);margin-bottom:20px;font-weight:500;}
+.section-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,4vw,58px);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px;}
+.section-sub{font-size:17px;line-height:1.7;color:rgba(255,255,255,.6);max-width:580px;}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.acard{background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s,transform .3s;}
+.acard:hover{border-color:rgba(107,53,232,.5);transform:translateY(-4px);}
+.acard-icon{font-size:28px;margin-bottom:16px;}
+.acard-title{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;}
+.acard-desc{font-size:14px;line-height:1.6;color:rgba(255,255,255,.55);}
+
+.how-section{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(107,53,232,.06) 50%,transparent 100%);}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px;position:relative;}
+.steps::before{content:'';position:absolute;top:48px;left:calc(16.66% + 24px);right:calc(16.66% + 24px);height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border),transparent);}
+.step{text-align:center;padding:40px 24px;}
+.step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple-deep));display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;margin:0 auto 24px;box-shadow:0 0 30px rgba(107,53,232,.5);}
+.step-title{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;margin-bottom:12px;}
+.step-desc{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);}
+
+.programs{padding:120px 48px;}
+.programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px;}
+.prog-card{background:var(--gray);border:1px solid var(--border);border-radius:24px;padding:36px 32px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
+.prog-card:hover{border-color:rgba(107,53,232,.5);transform:translateY(-4px);}
+.prog-card.active{border-color:rgba(107,53,232,.4);background:linear-gradient(135deg,rgba(107,53,232,.12) 0%,rgba(255,61,168,.06) 100%);}
+.prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
+.badge-live{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
+.badge-soon{background:rgba(107,53,232,.2);color:var(--purple-pale);border:1px solid rgba(107,53,232,.3);}
+.prog-emoji{font-size:36px;margin-bottom:16px;}
+.prog-title{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-bottom:10px;}
+.prog-desc{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:24px;}
+.prog-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.prog-tag{font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px;}
+.prog-tag svg{width:14px;height:14px;opacity:.6;}
+.prog-cta{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:transform .2s;}
+.prog-cta:hover{transform:scale(1.03);color:var(--black);}
+
+.testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.testi-card{background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
+.testi-card:hover{border-color:rgba(255,61,168,.3);}
+.testi-stars{display:flex;gap:4px;margin-bottom:16px;}
+.testi-stars span{color:#fbbf24;font-size:15px;}
+.testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+.testi-name{font-weight:600;font-size:14px;}
+.testi-from{font-size:12px;color:rgba(255,255,255,.4);}
+
+/* ── NEXT EVENT ── */
+.next-event{padding:80px 48px;}
+.event-card{max-width:900px;margin:0 auto;background:linear-gradient(135deg,rgba(107,53,232,.18) 0%,rgba(255,61,168,.1) 100%);border:1px solid rgba(107,53,232,.35);border-radius:28px;padding:48px;position:relative;overflow:hidden;}
+.event-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(107,53,232,.25) 0%,transparent 70%);pointer-events:none;}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;position:relative;z-index:1;}
+.event-info-block{display:flex;flex-direction:column;justify-content:center;}
+.event-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-pale);margin-bottom:12px;font-weight:500;}
+.event-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;margin-bottom:12px;letter-spacing:-.03em;}
+.event-date{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:24px;}
+.event-spots{display:inline-flex;align-items:center;gap:8px;background:rgba(255,61,168,.15);border:1px solid rgba(255,61,168,.3);padding:8px 18px;border-radius:100px;font-size:14px;color:#ff9fd4;margin-bottom:28px;width:fit-content;}
+.spots-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);}
+.event-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-pink{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);padding:15px 28px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 40px rgba(255,61,168,.3);}
+.btn-pink:hover{transform:scale(1.03);box-shadow:0 0 60px rgba(255,61,168,.5);color:var(--white);}
+
+/* Map embed */
+.event-map{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);min-height:240px;background:rgba(0,0,0,.3);}
+.event-map iframe{width:100%;height:100%;min-height:240px;border:0;filter:invert(0.9) hue-rotate(180deg);}
+
+/* ── FAQ ── */
+.faq-section{padding:120px 48px;}
+.faq-container{max-width:800px;margin:48px auto 0;}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0;cursor:pointer;}
+.faq-item:first-child{border-top:1px solid var(--border);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.faq-q-text{font-size:17px;font-weight:600;line-height:1.4;flex:1;}
+.faq-icon{width:32px;height:32px;border-radius:50%;background:var(--gray);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:300;color:var(--purple-light);transition:transform .3s,background .3s;flex-shrink:0;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(107,53,232,.2);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
+.faq-item.open .faq-a{max-height:300px;padding-top:14px;}
+.faq-a p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.6);}
+
+/* ── FINAL CTA ── */
+.final-cta{padding:120px 48px;text-align:center;}
+.final-cta .section-title{margin-bottom:16px;}
+.final-cta .section-sub{margin:0 auto 40px;}
+.final-cta .btn-primary{font-size:16px;padding:18px 32px;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba(255,255,255,.01);}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);margin-top:12px;max-width:240px;}
+.footer-col h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px;font-weight:600;}
+.footer-col a{display:block;font-size:14px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.footer-col a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+.biz-info{font-size:12px;line-height:1.8;color:rgba(255,255,255,.3);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ── KAKAO BUTTON ── */
+.kakao-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(254,229,0,.5);cursor:pointer;z-index:150;text-decoration:none;transition:transform .25s;animation:kakaoPulse 2.5s ease-in-out infinite;}
+.kakao-float:hover{transform:scale(1.1);}
+@keyframes kakaoPulse{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(254,229,0,.5);}50%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 12px rgba(254,229,0,0);}}
+.kakao-float svg{width:30px;height:30px;}
+
+/* ── BACK TO TOP ── */
+.back-top{position:fixed;bottom:24px;left:24px;width:48px;height:48px;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:150;opacity:0;visibility:hidden;transition:all .3s;color:var(--white);}
+.back-top.show{opacity:1;visibility:visible;}
+.back-top:hover{background:rgba(107,53,232,.3);transform:translateY(-3px);}
+.back-top svg{width:18px;height:18px;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav{padding:18px 24px;}
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .nav-cta{display:none;}
+  .lang-toggle{margin-right:8px;}
+  .hero{padding:80px 24px 200px;}
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:40px;}
+  .hero-vis{order:-1;height:280px;}
+  .planet-wrap{width:230px;height:230px;}
+  .planet{width:170px;height:170px;}
+  .ring{width:270px;height:65px;border-width:10px;}
+  .hero-actions{justify-content:center;}
+  .hero-sub{margin-left:auto;margin-right:auto;}
+  .section,.how-section,.programs,.testimonials,.next-event,.final-cta,.faq-section{padding:80px 24px;}
+  .about-grid{grid-template-columns:1fr;gap:40px;}
+  .steps{grid-template-columns:1fr;gap:24px;}
+  .steps::before{display:none;}
+  .programs-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .event-grid{grid-template-columns:1fr;gap:24px;}
+  .event-card{padding:32px 24px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+  .stats-bar{gap:0;padding:14px 0;bottom:24px;}
+  .stat{padding:0 20px;}
+  .photo-card{width:175px;height:125px;}
+  .countdown{gap:8px;}
+  .cd-unit{padding:10px 14px;min-width:62px;}
+  .cd-num{font-size:24px;}
+}
+</style>
+</head>
+<body class="loading">
+
+<!-- ── PRELOADER ── -->
+<div class="preloader" id="preloader">
+  <div class="pl-planet">
+    <div class="pl-ring"></div>
+    <div class="pl-ball"></div>
+  </div>
+  <div class="pl-text">Konnect</div>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="navbar">
+  <a class="nav-logo" href="#">
+    <svg width="28" height="28" viewBox="0 0 32 32"><defs><radialGradient id="pg" cx="30%" cy="30%"><stop offset="0%" stop-color="#9B7AF0"/><stop offset="60%" stop-color="#6B35E8"/><stop offset="100%" stop-color="#2E0B73"/></radialGradient></defs><ellipse cx="16" cy="16" rx="15" ry="4.5" fill="none" stroke="#6B35E8" stroke-width="2.5" transform="rotate(-20 16 16)"/><circle cx="16" cy="16" r="9.5" fill="url(#pg)"/></svg>
+    Konnect
+  </a>
+  <div class="nav-links">
+    <a href="#meetups" data-i18n="navM">Meetups</a>
+    <a href="#about" data-i18n="navA">About</a>
+    <a href="#faq" data-i18n="navF">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-ko" onclick="setLang('ko')">한</button>
+    </div>
+    <a href="join.html" class="nav-cta" data-i18n="navJ">Join Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+  <a href="#meetups" class="mm-link" data-i18n="navM">Meetups</a>
+  <a href="#about" class="mm-link" data-i18n="navA">About</a>
+  <a href="#how" class="mm-link" data-i18n="navH">How it works</a>
+  <a href="#faq" class="mm-link" data-i18n="navF">FAQ</a>
+  <a href="https://instagram.com/konnect_exchange" class="mm-link" target="_blank">Instagram</a>
+  <a href="join.html" class="cta" data-i18n="navJ">Join Now</a>
+</aside>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <svg class="star s1" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s2" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s3" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s4" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s5" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s6" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s7" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+  <svg class="star s8" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="badge">
+        <span class="dot"></span>
+        <span data-i18n="badge">Next meetup · 2nd &amp; 4th Saturday</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-i18n="t1">The</span> <span class="accent" data-i18n="t2">real</span><br>
+        <span data-i18n="t3">language exchange</span><br>
+        <span data-i18n="t4">in Seoul</span>
+      </h1>
+      <p class="hero-sub" data-i18n="sub">Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.</p>
+      <div class="hero-actions">
+        <a href="join.html" class="btn-primary" data-i18n="ctaMain">Reserve your spot →</a>
+        <a href="#how" class="btn-ghost" data-i18n="ctaGhost">How it works</a>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="planet-wrap">
+        <div class="ring"></div><div class="planet"></div>
+        <svg class="sp sp1" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+        <svg class="sp sp2" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+        <svg class="sp sp3" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section reveal">
+    <p class="countdown-label" data-i18n="cdLabel">Next meetup in</p>
+    <div class="countdown" id="countdown">
+      <div class="cd-unit"><div class="cd-num" id="cd-days">00</div><div class="cd-lbl" data-i18n="cdDays">Days</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-hrs">00</div><div class="cd-lbl" data-i18n="cdHrs">Hours</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-mins">00</div><div class="cd-lbl" data-i18n="cdMins">Minutes</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-secs">00</div><div class="cd-lbl" data-i18n="cdSecs">Seconds</div></div>
+    </div>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="photos-wrap reveal">
+    <p class="photos-label" data-i18n="photosLabel">Real moments from our meetups</p>
+    <div class="photos-strip">
+      <div class="photos-track">
+        <div class="photo-card"><div class="photo-ph"><span>📸</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🌏</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>💬</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🎉</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🤝</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🌸</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>✨</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🗺️</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>📸</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🌏</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>💬</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🎉</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🤝</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🌸</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>✨</span><p data-i18n="phTxt">Add your photo</p></div></div>
+        <div class="photo-card"><div class="photo-ph"><span>🗺️</span><p data-i18n="phTxt">Add your photo</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">500+</span><span class="stat-lbl" data-i18n="s1">Members</span></div>
+    <div class="stat"><span class="stat-num">30+</span><span class="stat-lbl" data-i18n="s2">Meetups</span></div>
+    <div class="stat"><span class="stat-num">10+</span><span class="stat-lbl" data-i18n="s3">Countries</span></div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-tag" data-i18n="aboutTag">About Konnect</span>
+        <h2 class="section-title" data-i18n="aboutTitle">Most language exchanges feel like job interviews.</h2>
+        <p class="section-sub" data-i18n-html="aboutSub">Forced introductions. Awkward silences. Everyone trying too hard.<br><br>Konnect is different. We curate small groups, design real conversations, and create the kind of energy where friendships actually form — in both Korean and English.</p>
+      </div>
+      <div class="about-cards reveal">
+        <div class="acard"><div class="acard-icon">🎯</div><div class="acard-title" data-i18n="ac1t">Curated Groups</div><div class="acard-desc" data-i18n="ac1d">Small groups, balanced Korean/English speakers.</div></div>
+        <div class="acard"><div class="acard-icon">💬</div><div class="acard-title" data-i18n="ac2t">Real Conversations</div><div class="acard-desc" data-i18n="ac2d">Designed activities that make talking natural.</div></div>
+        <div class="acard"><div class="acard-icon">🌍</div><div class="acard-title" data-i18n="ac3t">Global Community</div><div class="acard-desc" data-i18n="ac3d">Members from 10+ countries.</div></div>
+        <div class="acard"><div class="acard-icon">📍</div><div class="acard-title" data-i18n="ac4t">Seoul Based</div><div class="acard-desc" data-i18n="ac4d">Cozy lounge near City Hall Station.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-section" id="how">
+  <div class="section-inner">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-i18n="howTag">How it works</span>
+      <h2 class="section-title" data-i18n="howTitle">Three steps to your new Seoul crew</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><h3 class="step-title" data-i18n="st1">Sign Up</h3><p class="step-desc" data-i18n="sd1">Pick an upcoming date. Fill out a quick form. Done in 2 minutes.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3 class="step-title" data-i18n="st2">Show Up</h3><p class="step-desc" data-i18n="sd2">Come to our cozy lounge near City Hall Station.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3 class="step-title" data-i18n="st3">Konnect</h3><p class="step-desc" data-i18n="sd3">Real talk, real laughs, real connections. Leave with new friends.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAMS ── -->
+<section class="programs" id="meetups">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag" data-i18n="progTag">Programs</span>
+      <h2 class="section-title" data-i18n="progTitle">More than just language exchange</h2>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card active reveal">
+        <span class="prog-badge badge-live">● <span data-i18n="pb1">Now Running</span></span>
+        <div class="prog-emoji">🛸</div>
+        <h3 class="prog-title" data-i18n="pr1t">Language Exchange</h3>
+        <p class="prog-desc" data-i18n="pr1d">Our signature meetup. Korean & English speakers in small groups.</p>
+        <div class="prog-meta">
+          <span class="prog-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-i18n="pr1m1">2nd & 4th Saturday</span></span>
+          <span class="prog-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2hrs</span>
+          <span class="prog-tag">💰 ₩20,000 / $16</span>
+        </div>
+        <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-badge badge-soon">✦ <span data-i18n="pb2">Coming Soon</span></span>
+        <div class="prog-emoji">🎢</div>
+        <h3 class="prog-title" data-i18n="pr2t">Escape Room Night</h3>
+        <p class="prog-desc" data-i18n="pr2d">Solve puzzles, crack codes, communicate across languages.</p>
+        <div class="prog-meta"><span class="prog-tag" data-i18n="pr2m">Seoul · TBD</span></div>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-badge badge-soon">✦ <span data-i18n="pb3">Coming Soon</span></span>
+        <div class="prog-emoji">🌸</div>
+        <h3 class="prog-title" data-i18n="pr3t">Seoul Picnic</h3>
+        <p class="prog-desc" data-i18n="pr3d">Hangang riverside vibes, multilingual conversations.</p>
+        <div class="prog-meta"><span class="prog-tag" data-i18n="pr3m">Hangang Park · Spring</span></div>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-badge badge-soon">✦ <span data-i18n="pb4">Coming Soon</span></span>
+        <div class="prog-emoji">✈️</div>
+        <h3 class="prog-title" data-i18n="pr4t">Konnect Trips</h3>
+        <p class="prog-desc" data-i18n="pr4d">Weekend getaways with your new international crew.</p>
+        <div class="prog-meta"><span class="prog-tag" data-i18n="pr4m">Korea · 1-2 Nights</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-i18n="testiTag">What members say</span>
+      <h2 class="section-title" data-i18n="testiTitle">Real people, real stories</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text" data-i18n="tt1">"I came alone and left with three new friends."</p>
+        <div class="testi-author"><div class="testi-avatar">JM</div><div><div class="testi-name">Jake M.</div><div class="testi-from">🇺🇸 United States</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text" data-i18n="tt2">"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘요."</p>
+        <div class="testi-author"><div class="testi-avatar">지은</div><div><div class="testi-name">김지은</div><div class="testi-from">🇰🇷 Seoul</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text" data-i18n="tt3">"Best thing I found in Seoul. My Korean has actually improved."</p>
+        <div class="testi-author"><div class="testi-avatar">EL</div><div><div class="testi-name">Emma L.</div><div class="testi-from">🇬🇧 UK</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEXT EVENT + MAP ── -->
+<section class="next-event">
+  <div class="event-card reveal">
+    <div class="event-grid">
+      <div class="event-info-block">
+        <p class="event-eyebrow" data-i18n="evEye">Next Meetup</p>
+        <h2 class="event-title" data-i18n="evTitle">Language Exchange — June 2025</h2>
+        <p class="event-date" data-i18n="evDate">📍 City Hall Station · Saturday, June 14 · 2:30 PM</p>
+        <div class="event-spots">
+          <span class="spots-dot"></span>
+          <span data-i18n="evSpots">3 spots remaining</span>
+        </div>
+        <div class="event-actions">
+          <a href="join.html" class="btn-pink" data-i18n="evCta1">Reserve Korean Spot →</a>
+          <a href="join.html" class="btn-ghost" data-i18n="evCta2">International →</a>
+        </div>
+      </div>
+      <div class="event-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.3097987476826!2d126.97394!3d37.5651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2f1a0db1cd5%3A0x3737e9eb22ec45f6!2sCity%20Hall%20Station!5e0!3m2!1sen!2skr!4v1700000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-i18n="faqTag">FAQ</span>
+      <h2 class="section-title" data-i18n="faqTitle">Got questions?</h2>
+    </div>
+    <div class="faq-container reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq1">Do I need to be fluent in Korean or English?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa1">Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq2">What happens at a typical meetup?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa2">You'll arrive at our cozy lounge, get matched with small groups, and rotate through fun activities — icebreakers, themed conversations, and language games. It's structured but feels totally natural.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq3">What if I come alone?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa3">80% of our members come solo! The whole format is designed to help solo attendees feel comfortable and make friends quickly. You won't be sitting awkwardly alone — promise.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq4">Can I get a refund if I can't attend?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa4">Yes. Full refund up to 7 days before, 50% refund 3-6 days before, no refund within 48 hours. See our <a href="refund.html" style="color:var(--purple-light);text-decoration:underline;">refund policy</a> for details.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq5">Where exactly is the venue?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa5">Our regular venue is a private lounge near City Hall Station (시청역), about 5 minutes walk from Exit 6. Exact address will be sent to confirmed attendees the day before.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq6">Is there food or drinks?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa6">Light snacks and drinks (water, tea) are provided. Many groups grab dinner together after the meetup at nearby restaurants — totally optional but a great way to keep the vibe going.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq7">How old are most members?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa7">Most of our community is in their 20s to early 30s, though we welcome anyone 18+. The vibe is young, friendly, and open-minded.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq8">How can I contact you?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa8">Easiest way is Instagram DM at <a href="https://instagram.com/konnect_exchange" style="color:var(--purple-light);text-decoration:underline;">@konnect_exchange</a> or email hello@konnect.com. We usually respond within a few hours.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <div class="reveal">
+    <span class="section-tag" data-i18n="fctTag">Ready?</span>
+    <h2 class="section-title" data-i18n="fctTitle">Find your Seoul tribe.</h2>
+    <p class="section-sub" data-i18n="fctSub">Spots fill up fast. Don't miss the next one.</p>
+    <a href="join.html" class="btn-primary" data-i18n="fctBtn">Join the next meetup →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#">
+          <svg width="24" height="24" viewBox="0 0 32 32"><defs><radialGradient id="pg2" cx="30%" cy="30%"><stop offset="0%" stop-color="#9B7AF0"/><stop offset="60%" stop-color="#6B35E8"/><stop offset="100%" stop-color="#2E0B73"/></radialGradient></defs><ellipse cx="16" cy="16" rx="15" ry="4.5" fill="none" stroke="#6B35E8" stroke-width="2.5" transform="rotate(-20 16 16)"/><circle cx="16" cy="16" r="9.5" fill="url(#pg2)"/></svg>
+          Konnect
+        </a>
+        <p data-i18n="footerDesc">The REAL language exchange community in Seoul.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="fc1h">Programs</h4>
+        <a href="#meetups" data-i18n="fc1a1">Language Exchange</a>
+        <a href="#meetups" data-i18n="fc1a2">Escape Room</a>
+        <a href="#meetups" data-i18n="fc1a3">Seoul Picnic</a>
+        <a href="#meetups" data-i18n="fc1a4">Konnect Trips</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="fc2h">Info</h4>
+        <a href="#about" data-i18n="fc2a1">About</a>
+        <a href="#how" data-i18n="fc2a2">How it works</a>
+        <a href="#faq" data-i18n="fc2a3">FAQ</a>
+        <a href="https://instagram.com/konnect_exchange" target="_blank">Instagram</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="fc3h">Legal</h4>
+        <a href="terms.html" data-i18n="fc3a1">Terms of Service</a>
+        <a href="refund.html" data-i18n="fc3a2">Refund Policy</a>
+        <a href="privacy.html" data-i18n="fc3a3">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="biz-info">
+        상호: Konnect · 대표자: [대표자명] · 사업자등록번호: [번호] · 주소: [사업장 주소] · 전화: [070-XXXX-XXXX] · 통신판매업: 신고예정<br>
+        이메일: hello@konnect.com
+      </div>
+      <div class="footer-copy">© 2025 Konnect. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── FLOATING BUTTONS ── -->
+<a href="https://open.kakao.com/o/YOUR_OPENCHAT" target="_blank" class="kakao-float" aria-label="KakaoTalk">
+  <svg viewBox="0 0 24 24" fill="#000"><path d="M12 3C6.5 3 2 6.5 2 10.8c0 2.8 1.9 5.2 4.7 6.6l-1 3.6c-.1.3.2.6.5.4l4.3-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.5 10-7.9S17.5 3 12 3z"/></svg>
+</a>
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// ── PRELOADER ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('hidden');
+    document.body.classList.remove('loading');
+  }, 800);
+});
+
+// ── i18n ──
+const T = {
+  en: {
+    badge:"Next meetup · 2nd & 4th Saturday",t1:"The",t2:"real",t3:"language exchange",t4:"in Seoul",
+    sub:"Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.",
+    ctaMain:"Reserve your spot →",ctaGhost:"How it works",
+    cdLabel:"Next meetup in",cdDays:"Days",cdHrs:"Hours",cdMins:"Minutes",cdSecs:"Seconds",
+    photosLabel:"Real moments from our meetups",phTxt:"Add your photo",
+    s1:"Members",s2:"Meetups",s3:"Countries",
+    aboutTag:"About Konnect",aboutTitle:"Most language exchanges feel like job interviews.",
+    aboutSub:"Forced introductions. Awkward silences. Everyone trying too hard.<br><br>Konnect is different. We curate small groups, design real conversations, and create the kind of energy where friendships actually form — in both Korean and English.",
+    ac1t:"Curated Groups",ac1d:"Small groups, balanced Korean/English speakers. No overwhelming crowds.",
+    ac2t:"Real Conversations",ac2d:"Designed activities that make talking natural, not awkward.",
+    ac3t:"Global Community",ac3d:"Members from 10+ countries. Locals, expats, travelers.",
+    ac4t:"Seoul Based",ac4d:"Cozy lounge near City Hall Station. Easy access from anywhere.",
+    howTag:"How it works",howTitle:"Three steps to your new Seoul crew",
+    st1:"Sign Up",sd1:"Pick an upcoming date. Fill out a quick form. Done in 2 minutes.",
+    st2:"Show Up",sd2:"Come to our cozy lounge near City Hall Station. We'll handle the rest.",
+    st3:"Konnect",sd3:"Real talk, real laughs, real connections. Leave with new friends.",
+    progTag:"Programs",progTitle:"More than just language exchange",
+    pb1:"Now Running",pb2:"Coming Soon",pb3:"Coming Soon",pb4:"Coming Soon",
+    pr1t:"Language Exchange",pr1d:"Our signature meetup. Korean & English speakers in small groups, structured activities, big conversations.",
+    pr1m1:"2nd & 4th Saturday",pr1cta:"Reserve a spot →",
+    pr2t:"Escape Room Night",pr2d:"Solve puzzles, crack codes, and communicate across languages under pressure.",pr2m:"Seoul · TBD",
+    pr3t:"Seoul Picnic",pr3d:"Hangang riverside vibes, multilingual conversations, and good food.",pr3m:"Hangang Park · Spring",
+    pr4t:"Konnect Trips",pr4d:"Weekend getaways with your new international crew. Explore Korea together.",pr4m:"Korea · 1-2 Nights",
+    testiTag:"What members say",testiTitle:"Real people, real stories",
+    tt1:'"I came alone and left with three new friends. The vibe is completely different — it actually feels natural."',
+    tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
+    tt3:'"Best thing I found in Seoul. Been coming for 3 months and my Korean has actually improved."',
+    evEye:"Next Meetup",evTitle:"Language Exchange — June 2025",
+    evDate:"📍 City Hall Station · Saturday, June 14 · 2:30 PM",
+    evSpots:"3 spots remaining",evCta1:"Reserve Korean (₩20,000) →",evCta2:"International ($16)",
+    faqTag:"FAQ",faqTitle:"Got questions?",
+    fq1:"Do I need to be fluent in Korean or English?",
+    fa1:"Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.",
+    fq2:"What happens at a typical meetup?",
+    fa2:"You'll arrive at our cozy lounge, get matched with small groups, and rotate through fun activities — icebreakers, themed conversations, and language games. It's structured but feels totally natural.",
+    fq3:"What if I come alone?",
+    fa3:"80% of our members come solo! The whole format is designed to help solo attendees feel comfortable and make friends quickly.",
+    fq4:"Can I get a refund if I can't attend?",
+    fa4:'Yes. Full refund up to 7 days before, 50% refund 3-6 days before, no refund within 48 hours. See our <a href="refund.html" style="color:var(--purple-light);text-decoration:underline;">refund policy</a> for details.',
+    fq5:"Where exactly is the venue?",
+    fa5:"Our regular venue is a private lounge near City Hall Station (시청역), about 5 minutes walk from Exit 6. Exact address will be sent to confirmed attendees the day before.",
+    fq6:"Is there food or drinks?",
+    fa6:"Light snacks and drinks (water, tea) are provided. Many groups grab dinner together after the meetup at nearby restaurants — totally optional but a great way to keep the vibe going.",
+    fq7:"How old are most members?",
+    fa7:"Most of our community is in their 20s to early 30s, though we welcome anyone 18+. The vibe is young, friendly, and open-minded.",
+    fq8:"How can I contact you?",
+    fa8:'Easiest way is Instagram DM at <a href="https://instagram.com/konnect_exchange" style="color:var(--purple-light);text-decoration:underline;">@konnect_exchange</a> or email hello@konnect.com. We usually respond within a few hours.',
+    fctTag:"Ready?",fctTitle:"Find your Seoul tribe.",
+    fctSub:"Spots fill up fast. The next meetup is just around the corner — don't miss it.",
+    fctBtn:"Join the next meetup →",
+    footerDesc:"The REAL language exchange community in Seoul. Korean & English, every 2nd and 4th Saturday.",
+    fc1h:"Programs",fc1a1:"Language Exchange",fc1a2:"Escape Room",fc1a3:"Seoul Picnic",fc1a4:"Konnect Trips",
+    fc2h:"Info",fc2a1:"About",fc2a2:"How it works",fc2a3:"FAQ",
+    fc3h:"Legal",fc3a1:"Terms of Service",fc3a2:"Refund Policy",fc3a3:"Privacy Policy",
+    navM:"Meetups",navA:"About",navH:"How it works",navF:"FAQ",navJ:"Join Now"
+  },
+  ko: {
+    badge:"다음 모임 · 매달 둘째·넷째 토요일",t1:"서울의",t2:"진짜",t3:"언어교환",t4:"커뮤니티",
+    sub:"어색한 모임은 이제 그만. 진짜 대화, 진짜 친구, 그리고 실제로 늘어나는 언어 실력.",
+    ctaMain:"자리 예약하기 →",ctaGhost:"어떻게 진행되나요?",
+    cdLabel:"다음 모임까지",cdDays:"일",cdHrs:"시간",cdMins:"분",cdSecs:"초",
+    photosLabel:"실제 모임에서의 순간들",phTxt:"사진 추가하기",
+    s1:"멤버",s2:"모임 횟수",s3:"참가 국가",
+    aboutTag:"Konnect 소개",aboutTitle:"대부분의 언어교환은 면접처럼 느껴지죠.",
+    aboutSub:"어색한 자기소개. 불편한 침묵. 모두가 너무 애쓰는 분위기.<br><br>Konnect는 달라요. 소규모 그룹을 큐레이팅하고, 자연스러운 대화를 설계해서 진짜 우정이 생기는 에너지를 만들어요.",
+    ac1t:"소규모 그룹",ac1d:"한국어/영어 균형 있는 소규모 그룹. 부담스러운 대규모 행사 없음.",
+    ac2t:"진짜 대화",ac2d:"자연스럽게 대화가 이어지도록 설계된 활동들.",
+    ac3t:"글로벌 커뮤니티",ac3d:"10개국 이상 멤버. 한국인, 외국인, 여행자 모두.",
+    ac4t:"서울 기반",ac4d:"시청역 근처 아늑한 라운지. 어디서든 접근 쉬움.",
+    howTag:"진행 방식",howTitle:"세 단계로 만나는 나의 서울 크루",
+    st1:"신청하기",sd1:"원하는 날짜 선택. 간단한 폼 작성. 2분이면 끝.",
+    st2:"나타나기",sd2:"시청역 근처 아늑한 라운지로 오세요. 나머지는 저희가 준비해요.",
+    st3:"연결되기",sd3:"진짜 대화, 진짜 웃음, 진짜 연결. 새 친구와 함께 돌아가세요.",
+    progTag:"프로그램",progTitle:"언어교환 그 이상",
+    pb1:"진행 중",pb2:"곧 오픈",pb3:"곧 오픈",pb4:"곧 오픈",
+    pr1t:"언어교환 모임",pr1d:"시그니처 모임. 소규모 그룹에서 한국어·영어 스피커가 함께하는 구조화된 대화 활동.",
+    pr1m1:"둘째·넷째 토요일",pr1cta:"자리 예약하기 →",
+    pr2t:"방탈출 나이트",pr2d:"퍼즐을 풀고, 코드를 해독하고, 두 언어로 소통하며 협력하는 팀 빌딩.",pr2m:"서울 · 미정",
+    pr3t:"서울 피크닉",pr3d:"한강 뷰, 다국어 대화, 맛있는 음식. 야외에서 즐기는 언어교환.",pr3m:"한강공원 · 봄",
+    pr4t:"Konnect 여행",pr4d:"새로운 국제 친구들과 함께하는 주말 여행.",pr4m:"한국 내 · 1-2박",
+    testiTag:"멤버 후기",testiTitle:"진짜 사람들, 진짜 이야기",
+    tt1:'"혼자 왔다가 친구 세 명을 사귀고 갔어요. 다른 언어교환이랑 분위기가 완전히 달라요 — 진짜 자연스러워요."',
+    tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
+    tt3:'"서울에서 발견한 가장 좋은 것. 3개월째 오고 있는데 한국어가 실제로 늘었어요."',
+    evEye:"다음 모임",evTitle:"언어교환 — 2025년 6월",
+    evDate:"📍 시청역 근처 · 6월 14일 토요일 · 오후 2:30",
+    evSpots:"잔여 3자리",evCta1:"한국인 자리 (₩20,000) →",evCta2:"외국인 ($16)",
+    faqTag:"자주 묻는 질문",faqTitle:"궁금한 점이 있나요?",
+    fq1:"한국어나 영어를 유창하게 해야 하나요?",
+    fa1:"전혀요! 둘 중 한 언어로 기본적인 대화만 가능하면 충분히 즐기실 수 있어요. 모든 활동은 다양한 레벨을 포용할 수 있게 설계되어 있어요.",
+    fq2:"모임에서는 보통 어떤 게 진행되나요?",
+    fa2:"아늑한 라운지에 도착하면 소그룹으로 매칭되고, 아이스브레이커, 주제별 대화, 언어 게임 등 다양한 활동을 로테이션해요. 구조화되어 있지만 자연스럽게 흘러가요.",
+    fq3:"혼자 가도 괜찮을까요?",
+    fa3:"멤버의 80%가 혼자 오세요! 솔로 참가자가 편하게 빠르게 친구를 만들 수 있도록 모든 포맷이 설계되어 있어요.",
+    fq4:"참석 못하면 환불받을 수 있나요?",
+    fa4:'네. 모임 7일 전까지는 전액 환불, 3-6일 전은 50% 환불, 48시간 이내는 환불 불가입니다. 자세한 내용은 <a href="refund.html" style="color:var(--purple-light);text-decoration:underline;">환불정책</a>을 참고해주세요.',
+    fq5:"정확한 장소가 어디인가요?",
+    fa5:"시청역(City Hall Station) 6번 출구에서 도보 5분 거리의 프라이빗 라운지에서 진행돼요. 정확한 주소는 모임 전날 확정 참가자에게 발송됩니다.",
+    fq6:"음식이나 음료가 제공되나요?",
+    fa6:"가벼운 다과와 음료(물, 차)가 제공돼요. 모임 후 근처 식당에서 함께 저녁을 먹는 그룹도 많아요 — 선택사항이지만 분위기를 이어가기 좋은 시간이에요.",
+    fq7:"멤버들의 연령대는 어떻게 되나요?",
+    fa7:"대부분 20대 초반에서 30대 초반이지만, 18세 이상이면 누구나 환영해요. 분위기는 젊고, 친근하고, 열려 있어요.",
+    fq8:"어떻게 연락하면 되나요?",
+    fa8:'가장 빠른 방법은 인스타그램 DM (<a href="https://instagram.com/konnect_exchange" style="color:var(--purple-light);text-decoration:underline;">@konnect_exchange</a>)이나 hello@konnect.com 으로 이메일이에요. 보통 몇 시간 안에 답변드려요.',
+    fctTag:"준비됐나요?",fctTitle:"나의 서울 크루를 만나세요.",
+    fctSub:"자리가 빠르게 차요. 다음 모임이 곧 열립니다 — 놓치지 마세요.",
+    fctBtn:"다음 모임 참가하기 →",
+    footerDesc:"서울의 진짜 언어교환 커뮤니티. 매달 둘째·넷째 토요일, 한국어 & 영어.",
+    fc1h:"프로그램",fc1a1:"언어교환 모임",fc1a2:"방탈출",fc1a3:"서울 피크닉",fc1a4:"Konnect 여행",
+    fc2h:"정보",fc2a1:"소개",fc2a2:"진행 방식",fc2a3:"FAQ",
+    fc3h:"법적 고지",fc3a1:"이용약관",fc3a2:"환불정책",fc3a3:"개인정보처리방침",
+    navM:"모임",navA:"소개",navH:"진행 방식",navF:"FAQ",navJ:"신청하기"
+  }
+};
+
+function setLang(lang){
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if(t[k] !== undefined){
+      if(t[k].includes('<') || t[k].includes('&')) el.innerHTML = t[k];
+      else el.textContent = t[k];
+    }
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if(t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
+  document.documentElement.lang = lang;
+  localStorage.setItem('konnect-lang', lang);
+}
+
+// Auto-detect or saved
+const saved = localStorage.getItem('konnect-lang');
+const bl = (navigator.language||'en').toLowerCase();
+setLang(saved || (bl.startsWith('ko') ? 'ko' : 'en'));
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const sc = window.scrollY;
+  document.getElementById('navbar').classList.toggle('scrolled', sc > 40);
+  document.getElementById('backTop').classList.toggle('show', sc > 600);
+});
+
+// Back to top
+document.getElementById('backTop').addEventListener('click', () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+function toggleMenu(){
+  menuToggle.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  menuOverlay.classList.toggle('open');
+}
+menuToggle.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+document.querySelectorAll('.mm-link').forEach(a => a.addEventListener('click', () => {
+  if(mobileMenu.classList.contains('open')) toggleMenu();
+}));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => item.classList.toggle('open'));
+});
+
+// Countdown — 다음 모임 날짜 여기서 수정
+const NEXT_MEETUP = new Date('2025-06-14T14:30:00+09:00');
+function updateCountdown(){
+  const now = new Date();
+  const diff = NEXT_MEETUP - now;
+  if(diff <= 0){
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hrs').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
+    return;
+  }
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hrs').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
