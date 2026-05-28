@@ -41,8 +41,8 @@ const CONFIG = {
   ESCAPE_TIME_EN: '2:30 PM - 8:00 PM',
   ESCAPE_LOCATION_KO: '홍대',
   ESCAPE_LOCATION_EN: 'Hongdae',
-  ESCAPE_PRICE_KO: '₩30,000',
-  ESCAPE_PRICE_EN: '$22 USD',
+  ESCAPE_PRICE_KO: '₩60,000',
+  ESCAPE_PRICE_EN: '$42 USD',
   ESCAPE_LINK: 'join.html?event=escape',
 
 };
