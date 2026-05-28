@@ -112,7 +112,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     </div>
     <div class="event-detail">
       <span class="event-detail-label" id="el3">Time</span>
-      <span class="event-detail-value">1:30 PM</span>
+      <span class="event-detail-value" id="ev3">1:30 PM</span>
     </div>
     <div class="event-detail">
       <span class="event-detail-label" id="el4">Location</span>
@@ -236,6 +236,37 @@ function setLang(lang){
 }
 const bl=(navigator.language||'en').toLowerCase();
 setLang(bl.startsWith('ko')?'ko':'en');
+// 이벤트별 내용 데이터
+const EVENTS = {
+  regular: {
+    en: { tag:'Join Konnect', title:'Reserve your spot', sub:'Fill out the form and complete payment to secure your place.', ev1:'Language Exchange', ev2:'Saturday, May 30', ev3:'2:30 PM', ev4:'City Hall Station', ctaKr:'Pay ₩20,000 →', ctaIntl:'Pay $16 USD →' },
+    ko: { tag:'Konnect 신청', title:'자리 예약하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'언어교환 모임', ev2:'5월 30일 토요일', ev3:'오후 2:30', ev4:'시청역 근처', ctaKr:'₩20,000 결제하기 →', ctaIntl:'외국인 ($16)' }
+  },
+  escape: {
+    en: { tag:'Escape Room Night', title:'Sign up — Escape Room', sub:'Fill out the form and complete payment to join the escape room night!', ev1:'Escape Room Night', ev2:'June 20 (Fri)', ev3:'2:30 PM – 8:00 PM', ev4:'Hongdae', ctaKr:'Pay ₩30,000 →', ctaIntl:'Pay $22 USD →' },
+    ko: { tag:'방탈출 나이트', title:'방탈출 신청하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'방탈출 나이트', ev2:'6월 20일 (금)', ev3:'오후 2:30 – 8:00', ev4:'홍대', ctaKr:'₩30,000 결제하기 →', ctaIntl:'외국인 ($22)' }
+  }
+};
+
+function applyEvent() {
+  const eventId = new URLSearchParams(window.location.search).get('event') || 'regular';
+  const lang = localStorage.getItem('konnect-lang') || (navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en');
+  const ev = (EVENTS[eventId] || EVENTS.regular)[lang] || EVENTS.regular.en;
+
+  const ids = { 'page-tag':ev.tag, 'page-title':ev.title, 'page-sub':ev.sub,
+                'ev1':ev.ev1, 'ev2':ev.ev2, 'ev3':ev.ev3, 'ev4':ev.ev4 };
+  Object.entries(ids).forEach(([id, val]) => { const el = document.getElementById(id); if(el) el.textContent = val; });
+
+  const btnKr = document.getElementById('pay-kr-btn');
+  const btnIntl = document.getElementById('pay-intl-btn');
+  if(btnKr) btnKr.textContent = ev.ctaKr;
+  if(btnIntl) btnIntl.textContent = ev.ctaIntl;
+}
+
+const _origSetLang = setLang;
+setLang = function(lang){ _origSetLang(lang); applyEvent(); };
+document.addEventListener('DOMContentLoaded', applyEvent);
+
 </script>
 </body>
 </html>
