@@ -129,7 +129,7 @@ function applyConfig() {
   const v = M[lang];
 
   // ① 카운트다운
-  if (typeof NEXT_MEETUP !== 'undefined') NEXT_MEETUP = new Date(CONFIG.NEXT_MEETUP_DATE);
+  try { if (typeof NEXT_MEETUP !== 'undefined') NEXT_MEETUP = new Date(CONFIG.NEXT_MEETUP_DATE); } catch(e) {}
 
   // ② index.html 이벤트 카드 직접 업데이트
   _set('[data-i18n="evTitle"]',  v.title);
