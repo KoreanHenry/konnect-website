@@ -104,7 +104,7 @@ body.loading{overflow:hidden;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
 
 .hero-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5.5vw,82px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:22px;}
-.accent{background:linear-gradient(130deg,var(--purple-light) 0%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:400;}
+.accent{background:linear-gradient(130deg,var(--purple-light) 0%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:400;padding-right:0.15em;display:inline-block;}
 .hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.62);margin-bottom:36px;max-width:440px;}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 0 40px rgba(107,53,232,0.45);}
@@ -485,12 +485,17 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         </div>
         <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
       </div>
-      <div class="prog-card reveal">
-        <span class="prog-badge badge-soon">✦ <span data-i18n="pb2">Coming Soon</span></span>
-        <div class="prog-emoji">🎢</div>
+      <div class="prog-card active reveal">
+        <span class="prog-badge badge-live">● <span data-i18n="pb2">Open Now</span></span>
+        <div class="prog-emoji">🎮</div>
         <h3 class="prog-title" data-i18n="pr2t">Escape Room Night</h3>
-        <p class="prog-desc" data-i18n="pr2d">Solve puzzles, crack codes, communicate across languages.</p>
-        <div class="prog-meta"><span class="prog-tag" data-i18n="pr2m">Seoul · TBD</span></div>
+        <p class="prog-desc" data-i18n="pr2d">Solve puzzles, crack codes, and communicate under pressure — in two languages. Theme matched to your vibe.</p>
+        <div class="prog-meta">
+          <span class="prog-tag">📅 <span data-escape-date>June 20 (Fri)</span></span>
+          <span class="prog-tag">📍 <span data-i18n="pr2m2">Hongdae</span></span>
+          <span class="prog-tag">💰 <span data-i18n="pr2m3">$22 USD</span></span>
+        </div>
+        <a href="join.html?event=escape" class="prog-cta" data-i18n="pr2cta">Sign up →</a>
       </div>
       <div class="prog-card reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb3">Coming Soon</span></span>
@@ -697,7 +702,7 @@ const T = {
     pb1:"Now Running",pb2:"Coming Soon",pb3:"Coming Soon",pb4:"Coming Soon",
     pr1t:"Language Exchange",pr1d:"Our signature meetup. Korean & English speakers in small groups, structured activities, big conversations.",
     pr1m1:"2nd & 4th Saturday",pr1cta:"Reserve a spot →",
-    pr2t:"Escape Room Night",pr2d:"Solve puzzles, crack codes, and communicate across languages under pressure.",pr2m:"Seoul · TBD",
+    pb2:"Open Now",pr2t:"Escape Room Night",pr2d:"Solve puzzles, crack codes, and communicate under pressure — in two languages.",pr2m2:"Hongdae",pr2m3:"$22 USD",pr2cta:"Sign up →",
     pr3t:"Seoul Picnic",pr3d:"Hangang riverside vibes, multilingual conversations, and good food.",pr3m:"Hangang Park · Spring",
     pr4t:"Konnect Trips",pr4d:"Weekend getaways with your new international crew. Explore Korea together.",pr4m:"Korea · 1-2 Nights",
     testiTag:"What members say",testiTitle:"Real people, real stories",
@@ -754,7 +759,7 @@ const T = {
     pb1:"진행 중",pb2:"곧 오픈",pb3:"곧 오픈",pb4:"곧 오픈",
     pr1t:"언어교환 모임",pr1d:"시그니처 모임. 소규모 그룹에서 한국어·영어 스피커가 함께하는 구조화된 대화 활동.",
     pr1m1:"둘째·넷째 토요일",pr1cta:"자리 예약하기 →",
-    pr2t:"방탈출 나이트",pr2d:"퍼즐을 풀고, 코드를 해독하고, 두 언어로 소통하며 협력하는 팀 빌딩.",pr2m:"서울 · 미정",
+    pb2:"신청 오픈",pr2t:"방탈출 나이트",pr2d:"퍼즐을 풀고, 코드를 해독하고, 두 언어로 소통하며 협력하는 팀 빌딩. 취향에 따라 테마 배정.",pr2m2:"홍대",pr2m3:"₩30,000",pr2cta:"신청하기 →",
     pr3t:"서울 피크닉",pr3d:"한강 뷰, 다국어 대화, 맛있는 음식. 야외에서 즐기는 언어교환.",pr3m:"한강공원 · 봄",
     pr4t:"Konnect 여행",pr4d:"새로운 국제 친구들과 함께하는 주말 여행.",pr4m:"한국 내 · 1-2박",
     testiTag:"멤버 후기",testiTitle:"진짜 사람들, 진짜 이야기",
@@ -880,5 +885,6 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.12});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="config.js"></script>
 </body>
 </html>
