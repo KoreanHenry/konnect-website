@@ -706,7 +706,7 @@ const T = {
     tt3:'"Best thing I found in Seoul. Been coming for 3 months and my Korean has actually improved."',
     evEye:"Next Meetup",evTitle:"Language Exchange — June 2025",
     evDate:"📍 City Hall Station · Saturday, May 30 · 2:30 PM",
-    evSpots:"spots remaining",evCta1:"Reserve Korean (₩20,000) →",evCta2:"International ($16)",
+    evSpots:"spots remaining",evCta1:"International ($16) →",evCta2:"Reserve Korean (₩20,000)",
     faqTag:"FAQ",faqTitle:"Got questions?",
     fq1:"Do I need to be fluent in Korean or English?",
     fa1:"Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.",
@@ -809,6 +809,8 @@ function setLang(lang){
   document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
   document.documentElement.lang = lang;
   localStorage.setItem('konnect-lang', lang);
+
+  
 }
 
 // Auto-detect or saved
