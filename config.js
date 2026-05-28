@@ -8,13 +8,13 @@ const CONFIG = {
   // ══════════════════════════════════════════
   //   정기 언어교환 모임
   // ══════════════════════════════════════════
-  NEXT_MEETUP_DATE:    '2026-05-30T14:30:00+09:00',
+  NEXT_MEETUP_DATE:    '2026-05-30T13:30:00+09:00',
   SPOTS_LEFT:          '',   // 숫자 ('8') 또는 '' = 표시 안 함
 
   MEETUP: {
     ko: {
       date:     '5월 30일 토요일',
-      time:     '오후 2:30',
+      time:     '오후 1:30',
       location: '시청역 근처',
       price:    '₩20,000',
       ctaKr:    '₩20,000 결제하기 →',
@@ -22,7 +22,7 @@ const CONFIG = {
     },
     en: {
       date:     'Saturday, May 30',
-      time:     '2:30 PM',
+      time:     '1:30 PM',
       location: 'City Hall Station',
       price:    '$16',
       ctaKr:    'Reserve Korean (₩20,000) →',
@@ -46,11 +46,11 @@ const CONFIG = {
       price:         '₩30,000',
       scheduleTitle: '타임라인',
       schedule: [
-        '14:30 — 카페에서 만남 + 아이스브레이킹 (1~1.5시간)',
-        '16:00 — 방탈출 카페로 이동',
-        '17:30 – 18:00 — 방탈출 진행',
-        '— 식당으로 이동 후 저녁 식사',
-        '— 자율 2차 뒤풀이',
+        '오후 2:30 — 4:00 카페에서 만남 + 아이스브레이킹',
+        '오후 4:00 — 4:30 방탈출 카페로 이동',
+        '오후 4:30 – 6:00 — 방탈출 진행',
+        '오후 6:00 - 8:00 식당으로 이동 후 저녁 식사',
+        '오후 8:00 - 자율 2차 뒤풀이',
       ],
       note: '취향에 따라 방탈출 테마를 배정해드려요',
       cta:  '신청하기 →',
@@ -70,11 +70,11 @@ const CONFIG = {
       price:         '$22 USD',
       scheduleTitle: 'Schedule',
       schedule: [
-        '2:30 PM — Meet at cafe + icebreaking (1~1.5 hrs)',
-        '4:00 PM — Move to escape room cafe',
-        '5:30 – 6:00 PM — Escape room',
-        '— Dinner together',
-        '— Optional afterparty',
+        '2:30 — 2:00 PM Meet at cafe + icebreaking',
+        '4:00 — 4:30 PM Move to escape room cafe',
+        '4:30 – 6:00 PM — Escape room',
+        '6:00 — 8:00 PM Dinner together',
+        '8:00 PM — Optional afterparty',
       ],
       note: 'Themes matched to your preference',
       cta:  'Sign up →',
