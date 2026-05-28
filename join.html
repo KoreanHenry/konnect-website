@@ -201,7 +201,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     <p class="note">After payment, you'll receive a confirmation via email or Instagram DM.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
   </div>
 </div>
-
+<script src="config.js"></script>
 <script>
 function switchTab(tab){
   document.getElementById('content-kr').classList.toggle('active', tab==='kr');
@@ -215,9 +215,10 @@ function selectPay(el){
   const btn=document.getElementById('pay-intl-btn');
   if(btn&&el.dataset.url) btn.href=el.dataset.url;
 }
+const _M = (typeof _derive==='function'&&typeof CONFIG!=='undefined') ? _derive(CONFIG.NEXT_MEETUP_DATE) : null;
 const T={
-  en:{pageTag:"Join Konnect",pageTitle:"Reserve your spot",pageSub:"Fill out the form and complete payment to secure your place at the next meetup.",navBack:"← Back",el1:"Next Meetup",ev1:"Language Exchange",el2:"Date",ev2:"Saturday, June 14",el3:"Time",el4:"Location",ev4:"City Hall Station",spotsTxt:"3 spots left",tabKr:"Korean",tabIntl:"International",formKrTitle:"Registration Form (Korean)",formKrSub:"Please fill out the form before completing payment.",payKrTitle:"Choose payment",kpDesc:"Pay with Kakao Pay",cardName:"Credit / Debit Card",cardDesc:"All cards accepted",payKrBtn:"Pay ₩20,000 →",payKrNote:'After payment, we\'ll send you a confirmation via KakaoTalk.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',formIntlTitle:"Registration Form",formIntlSub:"Please fill out the form before completing payment.",payIntlTitle:"Choose payment"},
-  ko:{pageTag:"Konnect 신청",pageTitle:"자리 예약하기",pageSub:"폼을 작성하고 결제를 완료하면 자리가 확정됩니다.",navBack:"← 돌아가기",el1:"다음 모임",ev1:"언어교환 모임",el2:"날짜",ev2:"5월 30일 토요일",el3:"시간",el4:"장소",ev4:"시청역 근처",spotsTxt:"잔여 자리",tabKr:"한국인",tabIntl:"외국인",formKrTitle:"신청 정보 입력",formKrSub:"결제 전 아래 폼을 먼저 작성해주세요.",payKrTitle:"결제 수단 선택",kpDesc:"카카오페이로 간편 결제",cardName:"신용/체크카드",cardDesc:"모든 카드 사용 가능",payKrBtn:"₩20,000 결제하기 →",payKrNote:'결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',formIntlTitle:"Registration Form",formIntlSub:"Please fill out the form before completing payment.",payIntlTitle:"결제 수단 선택"}
+  en:{pageTag:"Join Konnect",pageTitle:"Reserve your spot",pageSub:"Fill out the form and complete payment to secure your place at the next meetup.",navBack:"← Back",el1:"Next Meetup",ev1:"Language Exchange",el2:"Date",ev2:(_M?_M.en.date:"Saturday, May 30"),el3:"Time",el4:"Location",ev4:"City Hall Station",spotsTxt:"3 spots left",tabKr:"Korean",tabIntl:"International",formKrTitle:"Registration Form (Korean)",formKrSub:"Please fill out the form before completing payment.",payKrTitle:"Choose payment",kpDesc:"Pay with Kakao Pay",cardName:"Credit / Debit Card",cardDesc:"All cards accepted",payKrBtn:"Pay ₩20,000 →",payKrNote:'After payment, we\'ll send you a confirmation via KakaoTalk.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',formIntlTitle:"Registration Form",formIntlSub:"Please fill out the form before completing payment.",payIntlTitle:"Choose payment"},
+  ko:{pageTag:"Konnect 신청",pageTitle:"자리 예약하기",pageSub:"폼을 작성하고 결제를 완료하면 자리가 확정됩니다.",navBack:"← 돌아가기",el1:"다음 모임",ev1:"언어교환 모임",el2:"날짜",ev2:(_M?_M.ko.date:"5월 30일 토요일"),el3:"시간",el4:"장소",ev4:"시청역 근처",spotsTxt:"잔여 자리",tabKr:"한국인",tabIntl:"외국인",formKrTitle:"신청 정보 입력",formKrSub:"결제 전 아래 폼을 먼저 작성해주세요.",payKrTitle:"결제 수단 선택",kpDesc:"카카오페이로 간편 결제",cardName:"신용/체크카드",cardDesc:"모든 카드 사용 가능",payKrBtn:"₩20,000 결제하기 →",payKrNote:'결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',formIntlTitle:"Registration Form",formIntlSub:"Please fill out the form before completing payment.",payIntlTitle:"결제 수단 선택"}
 };
 function setLang(lang){
   const t=T[lang];
@@ -239,8 +240,8 @@ setLang(bl.startsWith('ko')?'ko':'en');
 // 이벤트별 내용 데이터
 const EVENTS = {
   regular: {
-    en: { tag:'Join Konnect', title:'Reserve your spot', sub:'Fill out the form and complete payment to secure your place.', ev1:'Language Exchange', ev2:'Saturday, May 30', ev3:'2:30 PM', ev4:'City Hall Station', ctaKr:'Pay ₩20,000 →', ctaIntl:'Pay $16 USD →' },
-    ko: { tag:'Konnect 신청', title:'자리 예약하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'언어교환 모임', ev2:'5월 30일 토요일', ev3:'오후 2:30', ev4:'시청역 근처', ctaKr:'₩20,000 결제하기 →', ctaIntl:'외국인 ($16)' }
+    en: { tag:'Join Konnect', title:'Reserve your spot', sub:'Fill out the form and complete payment to secure your place.', ev1:'Language Exchange', ev2:(_M?_M.en.date:'Saturday, May 30'), ev3:(_M?_M.en.time:'1:30 PM'), ev4:(_M?_M.en.location:'City Hall Station'), ctaKr:(_M?_M.en.ctaKr:'Pay ₩20,000 →'), ctaIntl:(_M?_M.en.ctaIntl:'Pay $16 USD →') },
+    ko: { tag:'Konnect 신청', title:'자리 예약하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'언어교환 모임', ev2:(_M?_M.ko.date:'5월 30일 토요일'), ev3:(_M?_M.ko.time:'오후 2:30'), ev4:(_M?_M.ko.location:'시청역 근처'), ctaKr:(_M?_M.ko.ctaKr:'₩20,000 결제하기 →'), ctaIntl:(_M?_M.ko.ctaIntl:'외국인 ($16)') }
   },
   escape: {
     en: { tag:'Escape Room Night', title:'Sign up — Escape Room', sub:'Fill out the form and complete payment to join the escape room night!', ev1:'Escape Room Night', ev2:'June 20 (Fri)', ev3:'2:30 PM – 8:00 PM', ev4:'Hongdae', ctaKr:'Pay ₩30,000 →', ctaIntl:'Pay $22 USD →' },
