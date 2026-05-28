@@ -750,6 +750,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<script src="config.js"></script>
 <script>
 // ── PRELOADER ──
 window.addEventListener('load', () => {
@@ -758,7 +759,7 @@ window.addEventListener('load', () => {
     document.body.classList.remove('loading');
   }, 800);
 });
-
+const _M = _derive(CONFIG.NEXT_MEETUP_DATE);
 // ── i18n ──
 const T = {
   en: {
@@ -790,8 +791,8 @@ const T = {
     tt1:'"I came alone and left with three new friends. The vibe is completely different — it actually feels natural."',
     tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
     tt3:'"Best thing I found in Seoul. Been coming for 3 months and my Korean has actually improved."',
-    evEye:"Next Meetup",evTitle:"Language Exchange — June 2025",
-    evDate:"📍 City Hall Station · Saturday, May 30 · 2:30 PM",
+    evEye:"Next Meetup",evTitle:_M.en.title,
+    evDate:_M.en.evDate,
     evSpots:"spots remaining",evCta1:"International ($16) →",evCta2:"Reserve Korean (₩20,000)",
     faqTag:"FAQ",faqTitle:"Got questions?",
     fq1:"Do I need to be fluent in Korean or English?",
@@ -849,8 +850,8 @@ const T = {
     tt1:'"혼자 왔다가 친구 세 명을 사귀고 갔어요. 다른 언어교환이랑 분위기가 완전히 달라요 — 진짜 자연스러워요."',
     tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
     tt3:'"서울에서 발견한 가장 좋은 것. 3개월째 오고 있는데 한국어가 실제로 늘었어요."',
-    evEye:"다음 모임",evTitle:"언어교환 — 2025년 6월",
-    evDate:"📍 시청역 근처 · 5월 30일 토요일 · 오후 2:30",
+    evEye:"다음 모임",evTitle:_M.ko.title,
+    evDate:_M.ko.evDate,
     evSpots:"잔여 자리",evCta1:"한국인 자리 (₩20,000) →",evCta2:"외국인 ($16)",
     faqTag:"자주 묻는 질문",faqTitle:"궁금한 점이 있나요?",
     fq1:"한국어나 영어를 유창하게 해야 하나요?",
@@ -939,7 +940,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 // Countdown — 다음 모임 날짜 여기서 수정
-let NEXT_MEETUP = new Date('2026-05-30T14:30:00+09:00');
+const NEXT_MEETUP = new Date(CONFIG.NEXT_MEETUP_DATE);
 function updateCountdown(){
   const now = new Date();
   const diff = NEXT_MEETUP - now;
@@ -990,7 +991,6 @@ function closeEscapeModal(){
 }
 document.getElementById('escape-modal')?.addEventListener('click',function(e){if(e.target===this)closeEscapeModal();});
 </script>
-<script src="config.js"></script>
 <div id="escape-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);padding:24px;overflow-y:auto;align-items:flex-start;justify-content:center;">
   <div style="background:#1a0f2e;border:1px solid rgba(107,53,232,.4);border-radius:28px;max-width:560px;width:100%;margin:60px auto;padding:40px;position:relative;">
     <button onclick="closeEscapeModal()" style="position:absolute;top:20px;right:20px;background:none;border:none;color:rgba(255,255,255,.4);font-size:28px;cursor:pointer;line-height:1;">×</button>
