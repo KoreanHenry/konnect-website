@@ -939,7 +939,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 // Countdown — 다음 모임 날짜 여기서 수정
-const NEXT_MEETUP = new Date('2026-05-30T14:30:00+09:00');
+let NEXT_MEETUP = new Date('2026-05-30T14:30:00+09:00');
 function updateCountdown(){
   const now = new Date();
   const diff = NEXT_MEETUP - now;
