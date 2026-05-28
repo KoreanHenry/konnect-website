@@ -250,7 +250,7 @@ const EVENTS = {
 
 function applyEvent() {
   const eventId = new URLSearchParams(window.location.search).get('event') || 'regular';
-  const lang = localStorage.getItem('konnect-lang') || (navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en');
+  if(typeof lang === 'undefined' || !lang) lang = localStorage.getItem('konnect-lang') || (navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en');
   const ev = (EVENTS[eventId] || EVENTS.regular)[lang] || EVENTS.regular.en;
 
   const ids = { 'page-tag':ev.tag, 'page-title':ev.title, 'page-sub':ev.sub,
@@ -264,8 +264,11 @@ function applyEvent() {
 }
 
 const _origSetLang = setLang;
-setLang = function(lang){ _origSetLang(lang); applyEvent(); };
-document.addEventListener('DOMContentLoaded', applyEvent);
+setLang = function(lang){ _origSetLang(lang); setTimeout(()=>applyEvent(lang), 0); };
+document.addEventListener('DOMContentLoaded', function(){
+  const l=localStorage.getItem('konnect-lang')||(navigator.language.startsWith('ko')?'ko':'en');
+  applyEvent(l);
+});
 
 </script>
 </body>
