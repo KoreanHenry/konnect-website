@@ -15,7 +15,7 @@ const CONFIG = {
   NEXT_MEETUP_DATE: '2026-05-30T13:30:00+09:00',
 
   // ✏️ 잔여 자리: 숫자 ('8') 또는 '' = 표시 안 함
-  SPOTS_LEFT: '',
+  SPOTS_LEFT: '3',
 
   // ✏️ 장소
   LOCATION_KO: '시청역 근처',
@@ -31,7 +31,7 @@ const CONFIG = {
     link: 'join.html?event=escape',
     ko: {
       badge:'신청 오픈', title:'방탈출 나이트',
-      date:'6월 20일 (금)', time:'오후 2:30 – 8:00',
+      date:'6월 20일 (금)', time:'오후 1:30 – 8:00',
       location:'홍대', price:'₩30,000',
       scheduleTitle:'타임라인',
       schedule:[
@@ -48,11 +48,11 @@ const CONFIG = {
     },
     en: {
       badge:'Open Now', title:'Escape Room Night',
-      date:'June 20 (Fri)', time:'2:30 PM – 8:00 PM',
+      date:'June 20 (Fri)', time:'1:30 PM – 8:00 PM',
       location:'Hongdae', price:'$22 USD',
       scheduleTitle:'Schedule',
       schedule:[
-        '2:30 PM — Meet at cafe + icebreaking (1~1.5 hrs)',
+        '1:30 PM — Meet at cafe + icebreaking (1~1.5 hrs)',
         '4:00 PM — Move to escape room cafe',
         '5:30 – 6:00 PM — Escape room',
         '— Dinner together',
