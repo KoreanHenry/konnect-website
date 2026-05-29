@@ -96,17 +96,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
-<div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
-  <p id="earlybird-title" style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
-    ⚡ Early Bird Discount for Escape Night
-  </p>
-  <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
-    <span id="earlybird-prefix">Ends in</span> <span id="earlybird-countdown">--:--:--</span>
-  </p>
-  <p id="earlybird-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
-    Discount links are applied automatically before the timer ends.
-  </p>
-</div>
+  <div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
+    <p id="earlybird-title" style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
+      ⚡ Early Bird Discount for Escape Room Night
+    </p>
+    <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
+      <span id="earlybird-prefix">Ends in</span> <span id="earlybird-countdown">--:--:--</span>
+    </p>
+    <p id="earlybird-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
+      Discount links are applied automatically before the timer ends.
+    </p>
+  </div>
+
   <p class="page-tag" id="page-tag">Join Konnect</p>
   <h1 class="page-title" id="page-title">Reserve your spot</h1>
   <p class="page-sub" id="page-sub">Fill out the form and complete payment to secure your place at the next meetup.</p>
@@ -176,7 +177,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     </div>
 
 <a href="https://qr.kakaopay.com/Ej8tO05RY271006015" class="pay-btn pay-btn-kr" id="pay-kr-btn" target="_blank">
-  결제하기 (₩20,000) →
+  📱 카카오페이로 결제 (모바일) →
 </a>
 
 <div style="margin:16px 0;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
@@ -229,7 +230,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 
     <!-- ✅ Stripe 결제 링크로 교체 -->
     <a href="https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e" class="pay-btn pay-btn-intl" id="pay-intl-btn" target="_blank">
-      Pay $16 →
+      Pay $16 USD →
     </a>
     <div style="margin:16px 0;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
   <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
@@ -247,10 +248,10 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
     Bank Transfer
   </p>
-  <p id="intl-bank-account" style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">
+  <p style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">
     KakaoBank 3333-33-7607681
   </p>
-  <p id="intl-bank-holder" style="font-size:14px;color:rgba(255,255,255,0.6);">
+  <p style="font-size:14px;color:rgba(255,255,255,0.6);">
     Account holder: Ahn Hyeonguk (Kozy)
   </p>
   <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">
@@ -262,249 +263,433 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </div>
 <script src="config.js"></script>
 <script>
-function getPreferredLang(){
-  return localStorage.getItem('konnect-lang') || ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
-}
+/* =========================================================
+   KONNECT JOIN PAGE SCRIPT
+   - Supports regular / escape event
+   - Keeps language through URL + localStorage
+   - Applies Early Bird automatically
+   - Applies coupons by event type only
+   - Updates payment button labels + links together
+========================================================= */
 
-function getEventId(){
+function getEventId() {
   return new URLSearchParams(window.location.search).get('event') || 'regular';
 }
 
-function switchTab(tab){
-  document.getElementById('content-kr').classList.toggle('active', tab==='kr');
-  document.getElementById('content-intl').classList.toggle('active', tab==='intl');
-  document.getElementById('tab-kr').classList.toggle('active', tab==='kr');
-  document.getElementById('tab-intl').classList.toggle('active', tab==='intl');
+function getPreferredLang() {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+
+  if (urlLang === 'ko' || urlLang === 'en') {
+    localStorage.setItem('konnect-lang', urlLang);
+    return urlLang;
+  }
+
+  return localStorage.getItem('konnect-lang') ||
+    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
 }
 
-function selectPay(el){
-  el.closest('.payment-grid').querySelectorAll('.pay-card').forEach(c=>c.classList.remove('selected'));
+function withLang(url) {
+  const lang = getPreferredLang();
+  if (!url || url === '#') return url;
+
+  try {
+    const u = new URL(url, window.location.href);
+    if (u.origin === window.location.origin) {
+      u.searchParams.set('lang', lang);
+      return u.pathname.replace(/^\//, '') + u.search + u.hash;
+    }
+    return url;
+  } catch(e) {
+    return url;
+  }
+}
+
+function switchTab(tab) {
+  document.getElementById('content-kr').classList.toggle('active', tab === 'kr');
+  document.getElementById('content-intl').classList.toggle('active', tab === 'intl');
+  document.getElementById('tab-kr').classList.toggle('active', tab === 'kr');
+  document.getElementById('tab-intl').classList.toggle('active', tab === 'intl');
+}
+
+function selectPay(el) {
+  el.closest('.payment-grid').querySelectorAll('.pay-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
-  const btn=document.getElementById('pay-intl-btn');
-  if(btn&&el.dataset.url) btn.href=el.dataset.url;
+
+  const btn = document.getElementById('pay-intl-btn');
+  if (btn && el.dataset.url) btn.href = el.dataset.url;
 }
 
-const _M = (typeof _derive==='function'&&typeof CONFIG!=='undefined') ? _derive(CONFIG.NEXT_MEETUP_DATE) : null;
+const _M = (typeof _derive === 'function' && typeof CONFIG !== 'undefined')
+  ? _derive(CONFIG.NEXT_MEETUP_DATE)
+  : null;
 
-const T={
-  en:{
-    navBack:'← Back', el1:'Event', el2:'Date', el3:'Time', el4:'Location',
-    tabKr:'Korean', tabIntl:'International',
-    formKrTitle:'Registration Form (Korean)', formKrSub:'Please fill out the form before completing payment.',
-    payKrTitle:'Choose payment', kpDesc:'Pay with KakaoPay',
-    payKrNote:'After payment, we\'ll send you a confirmation via KakaoTalk.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
-    formIntlTitle:'Registration Form', formIntlSub:'Please fill out the form before completing payment.',
-    payIntlTitle:'Choose payment'
+const T = {
+  en: {
+    pageTag: "Join Konnect",
+    pageTitle: "Reserve your spot",
+    pageSub: "Fill out the form and complete payment to secure your place.",
+    navBack: "← Back",
+    el1: "Event",
+    el2: "Date",
+    el3: "Time",
+    el4: "Location",
+    tabKr: "Korean",
+    tabIntl: "International",
+    formKrTitle: "Registration Form (Korean)",
+    formKrSub: "Please fill out the form before completing payment.",
+    payKrTitle: "Choose payment",
+    kpDesc: "Pay with KakaoPay",
+    payKrNote: 'After payment, we\\'ll send you a confirmation via KakaoTalk.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
+    formIntlTitle: "Registration Form",
+    formIntlSub: "Please fill out the form before completing payment.",
+    payIntlTitle: "Choose payment"
   },
-  ko:{
-    navBack:'← 돌아가기', el1:'이벤트', el2:'날짜', el3:'시간', el4:'장소',
-    tabKr:'한국인', tabIntl:'외국인',
-    formKrTitle:'신청 정보 입력', formKrSub:'결제 전 아래 폼을 먼저 작성해주세요.',
-    payKrTitle:'결제 수단 선택', kpDesc:'카카오페이로 간편 결제',
-    payKrNote:'결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
-    formIntlTitle:'Registration Form', formIntlSub:'Please fill out the form before completing payment.',
-    payIntlTitle:'결제 수단 선택'
+  ko: {
+    pageTag: "Konnect 신청",
+    pageTitle: "자리 예약하기",
+    pageSub: "폼을 작성하고 결제를 완료하면 자리가 확정됩니다.",
+    navBack: "← 돌아가기",
+    el1: "모임",
+    el2: "날짜",
+    el3: "시간",
+    el4: "장소",
+    tabKr: "한국인",
+    tabIntl: "외국인",
+    formKrTitle: "신청 정보 입력",
+    formKrSub: "결제 전 아래 폼을 먼저 작성해주세요.",
+    payKrTitle: "결제 수단 선택",
+    kpDesc: "카카오페이로 간편 결제",
+    payKrNote: '결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
+    formIntlTitle: "Registration Form",
+    formIntlSub: "Please fill out the form before completing payment.",
+    payIntlTitle: "결제 수단 선택"
   }
 };
 
-function setLang(lang){
-  localStorage.setItem('konnect-lang', lang);
-  const t=T[lang] || T.en;
-  const s=(id,v)=>{const e=document.getElementById(id);if(e&&v!==undefined)e.textContent=v;};
-  const h=(id,v)=>{const e=document.getElementById(id);if(e&&v!==undefined)e.innerHTML=v;};
+let activeCouponCode = '';
+let activeCouponGroup = null;
 
-  s('nav-back',t.navBack); s('el1',t.el1); s('el2',t.el2); s('el3',t.el3); s('el4',t.el4);
-  s('tab-kr-txt',t.tabKr); s('tab-intl-txt',t.tabIntl);
-  s('form-kr-title',t.formKrTitle); s('form-kr-sub',t.formKrSub); s('pay-kr-title',t.payKrTitle);
-  s('kp-desc',t.kpDesc); h('pay-kr-note',t.payKrNote);
-  s('form-intl-title',t.formIntlTitle); s('form-intl-sub',t.formIntlSub); s('pay-intl-title',t.payIntlTitle);
-
-  document.getElementById('btn-en').classList.toggle('active',lang==='en');
-  document.getElementById('btn-ko').classList.toggle('active',lang==='ko');
-  document.documentElement.lang = lang;
-
-  applyEvent(lang);
-  applyDefaultPaymentLinks();
-  updateEarlyBirdBar();
-  applyBankInfo();
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el && value !== undefined && value !== null) el.textContent = value;
 }
 
-function applyEvent(forceLang){
-  const eventId=getEventId();
-  const lang=forceLang || getPreferredLang();
-  const s=(id,v)=>{const e=document.getElementById(id);if(e&&v!==undefined)e.textContent=v;};
-  let ev;
+function setHtml(id, value) {
+  const el = document.getElementById(id);
+  if (el && value !== undefined && value !== null) el.innerHTML = value;
+}
 
-  if(eventId==='escape'){
-    const e=CONFIG.ESCAPE[lang] || CONFIG.ESCAPE.en;
-    ev={
-      tag:e.pageTag || e.badge,
-      title:e.pageTitle || e.title,
-      sub:e.pageSub,
-      ev1:e.shortTitle || e.title,
-      ev2:e.date,
-      ev3:e.time,
-      ev4:e.location,
-      ctaKr:e.ctaKr,
-      ctaIntl:e.ctaIntl
-    };
-  }else{
-    const M=(typeof _derive==='function') ? _derive(CONFIG.NEXT_MEETUP_DATE) : null;
-    const r=CONFIG.REGULAR[lang] || CONFIG.REGULAR.en;
-    ev={
-      tag:r.pageTag,
-      title:r.pageTitle,
-      sub:r.pageSub,
-      ev1:r.title,
-      ev2:M ? M[lang].date : '',
-      ev3:M ? M[lang].time : '',
-      ev4:M ? M[lang].location : '',
-      ctaKr:r.ctaKr,
-      ctaIntl:r.ctaIntl
-    };
+function setLang(lang) {
+  localStorage.setItem('konnect-lang', lang);
+
+  const t = T[lang] || T.en;
+
+  setText('page-tag', t.pageTag);
+  setText('page-title', t.pageTitle);
+  setText('page-sub', t.pageSub);
+  setText('nav-back', t.navBack);
+
+  setText('el1', t.el1);
+  setText('el2', t.el2);
+  setText('el3', t.el3);
+  setText('el4', t.el4);
+
+  setText('tab-kr-txt', t.tabKr);
+  setText('tab-intl-txt', t.tabIntl);
+
+  setText('form-kr-title', t.formKrTitle);
+  setText('form-kr-sub', t.formKrSub);
+  setText('pay-kr-title', t.payKrTitle);
+  setText('kp-desc', t.kpDesc);
+  setHtml('pay-kr-note', t.payKrNote);
+
+  setText('form-intl-title', t.formIntlTitle);
+  setText('form-intl-sub', t.formIntlSub);
+  setText('pay-intl-title', t.payIntlTitle);
+
+  document.getElementById('btn-en')?.classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ko')?.classList.toggle('active', lang === 'ko');
+
+  const back = document.getElementById('nav-back');
+  if (back) back.href = withLang('index.html');
+
+  applyEvent(lang);
+  updateEarlyBirdBar();
+
+  if (activeCouponGroup) {
+    setPaymentLinks(activeCouponGroup, activeCouponCode);
+  } else {
+    applyDefaultPaymentLinks();
   }
+}
 
-  s('page-tag',ev.tag); s('page-title',ev.title); s('page-sub',ev.sub);
-  s('ev1',ev.ev1); s('ev2',ev.ev2); s('ev3',ev.ev3); s('ev4',ev.ev4);
-  s('pay-kr-btn',ev.ctaKr); s('pay-intl-btn',ev.ctaIntl);
+function getRegularEventData(lang) {
+  const M = (typeof _derive === 'function' && typeof CONFIG !== 'undefined')
+    ? _derive(CONFIG.NEXT_MEETUP_DATE)
+    : null;
+
+  return {
+    tag: lang === 'ko' ? 'Konnect 신청' : 'Join Konnect',
+    title: lang === 'ko' ? '자리 예약하기' : 'Reserve your spot',
+    sub: lang === 'ko'
+      ? '폼을 작성하고 결제를 완료하면 자리가 확정됩니다.'
+      : 'Fill out the form and complete payment to secure your place.',
+    ev1: lang === 'ko' ? '언어교환 모임' : 'Language Exchange',
+    ev2: M ? M[lang].date : '',
+    ev3: M ? M[lang].time : '',
+    ev4: M ? M[lang].location : ''
+  };
+}
+
+function getEscapeEventData(lang) {
+  const e = CONFIG.ESCAPE?.[lang] || CONFIG.ESCAPE?.en || {};
+
+  return {
+    tag: e.pageTag || e.badge || (lang === 'ko' ? '방탈출 나이트' : 'Escape Room Night'),
+    title: e.pageTitle || e.title || (lang === 'ko' ? '방탈출 신청하기' : 'Sign up — Escape Room'),
+    sub: e.pageSub || (lang === 'ko'
+      ? '폼을 작성하고 결제를 완료하면 자리가 확정됩니다.'
+      : 'Fill out the form and complete payment to join.'),
+    ev1: e.title || (lang === 'ko' ? '방탈출 나이트' : 'Escape Room Night'),
+    ev2: e.date || '',
+    ev3: e.time || '',
+    ev4: e.location || ''
+  };
+}
+
+function applyEvent(forceLang) {
+  const eventId = getEventId();
+  const lang = forceLang || getPreferredLang();
+
+  const ev = eventId === 'escape'
+    ? getEscapeEventData(lang)
+    : getRegularEventData(lang);
+
+  setText('page-tag', ev.tag);
+  setText('page-title', ev.title);
+  setText('page-sub', ev.sub);
+  setText('ev1', ev.ev1);
+  setText('ev2', ev.ev2);
+  setText('ev3', ev.ev3);
+  setText('ev4', ev.ev4);
+
   updateSpots(eventId, lang);
 }
 
-function updateSpots(eventId, lang){
-  const spotsWrap=document.querySelector('[data-spots]');
-  const spotsTxt=document.getElementById('spots-txt');
-  if(!spotsWrap || !spotsTxt) return;
-  const spots = eventId==='escape' ? (CONFIG.ESCAPE?.spotsLeft || '') : (CONFIG.SPOTS_LEFT || '');
-  if(!spots){ spotsWrap.style.display='none'; return; }
-  spotsWrap.style.display='inline-flex';
-  spotsTxt.textContent = lang==='ko' ? `${spots}자리 남음` : `${spots} spots left`;
+function updateSpots(eventId, lang) {
+  const spotsWrap = document.querySelector('[data-spots]');
+  const spotsTxt = document.getElementById('spots-txt');
+
+  if (!spotsWrap || !spotsTxt || typeof CONFIG === 'undefined') return;
+
+  const spots = eventId === 'escape'
+    ? (CONFIG.ESCAPE?.spotsLeft || '')
+    : (CONFIG.SPOTS_LEFT || '');
+
+  if (!spots) {
+    spotsWrap.style.display = 'none';
+    return;
+  }
+
+  spotsWrap.style.display = 'inline-flex';
+  spotsTxt.textContent = lang === 'ko' ? `${spots}자리 남음` : `${spots} spots left`;
 }
 
-function isEarlyBirdActive(){
-  if(getEventId() !== 'escape') return false;
-  if(!CONFIG.EARLY_BIRD?.escape?.enabled) return false;
+function isEarlyBirdActive() {
+  if (getEventId() !== 'escape') return false;
+  if (!CONFIG.EARLY_BIRD?.escape?.enabled) return false;
+
   return new Date() < new Date(CONFIG.EARLY_BIRD.escape.end);
 }
 
-function getPaymentGroup(){
-  const eventId=getEventId();
-  if(eventId==='escape'){
-    return isEarlyBirdActive() ? CONFIG.PAYMENT_LINKS.escape.earlybird : CONFIG.PAYMENT_LINKS.escape.regular;
+function getPaymentGroup() {
+  const eventId = getEventId();
+
+  if (eventId === 'escape') {
+    return isEarlyBirdActive()
+      ? CONFIG.PAYMENT_LINKS?.escape?.earlybird
+      : CONFIG.PAYMENT_LINKS?.escape?.regular;
   }
-  return CONFIG.PAYMENT_LINKS.regular;
+
+  return CONFIG.PAYMENT_LINKS?.regular;
 }
 
-function getLabel(obj, lang){
-  if(!obj) return '';
-  return lang==='ko' ? (obj.labelKo || obj.labelEn || '') : (obj.labelEn || obj.labelKo || '');
+function getLabel(obj, lang, code) {
+  if (!obj) return '';
+
+  const direct = lang === 'ko'
+    ? (obj.labelKo || obj.labelEn)
+    : (obj.labelEn || obj.labelKo);
+
+  if (direct) return direct;
+
+  const eventId = getEventId();
+
+  if (eventId === 'escape') {
+    if (code === 'FRIEND') {
+      return lang === 'ko' ? '친구 할인 결제하기 (₩59,000) →' : 'Pay Friend Price ($42) →';
+    }
+    if (code === 'RETURN') {
+      return lang === 'ko' ? '기존 참가자 할인 결제하기 (₩64,000) →' : 'Pay Returning Member Price ($45) →';
+    }
+    if (isEarlyBirdActive()) {
+      return lang === 'ko' ? '얼리버드 결제하기 (₩59,000) →' : 'Pay Early Bird Price ($42) →';
+    }
+    return lang === 'ko' ? '결제하기 (₩69,000) →' : 'Pay $49 →';
+  }
+
+  if (code === 'FRIEND') {
+    return lang === 'ko' ? '쿠폰가로 결제하기 (₩15,000) →' : 'Pay Discounted Price ($12) →';
+  }
+
+  return lang === 'ko' ? '결제하기 (₩20,000) →' : 'Pay ₩20,000 →';
 }
 
-function setPaymentLinks(group){
-  const lang=getPreferredLang();
-  const krBtn=document.getElementById('pay-kr-btn');
-  const intlBtn=document.getElementById('pay-intl-btn');
-  const intlKakaoBtn=document.getElementById('pay-intl-kakao-btn');
+function setPaymentLinks(group, couponCode = '') {
+  if (!group) return;
 
-  if(krBtn && group.kr?.kakao){
-    krBtn.href=group.kr.kakao;
-    const label=getLabel(group.kr, lang);
-    if(label) krBtn.textContent=label;
-  }
-  if(intlBtn && group.intl?.stripe){
-    intlBtn.href=group.intl.stripe;
-    const label=getLabel(group.intl, lang);
-    if(label) intlBtn.textContent=label;
-  }
-  if(intlKakaoBtn && group.intl?.kakao){
-    intlKakaoBtn.href=group.intl.kakao;
+  const lang = getPreferredLang();
+
+  const krBtn = document.getElementById('pay-kr-btn');
+  const intlBtn = document.getElementById('pay-intl-btn');
+  const intlKakaoBtn = document.getElementById('pay-intl-kakao-btn');
+
+  if (krBtn && group.kr) {
+    krBtn.href = group.kr.kakao || '#';
+    krBtn.textContent = getLabel(group.kr, lang, couponCode);
   }
 
-  document.querySelectorAll('#content-intl .pay-card').forEach(card=>{
-    const name=card.querySelector('.pay-name')?.textContent?.trim().toLowerCase();
-    if(name==='stripe' && group.intl?.stripe) card.dataset.url=group.intl.stripe;
-    if(name==='paypal' && group.intl?.paypal) card.dataset.url=group.intl.paypal;
+  if (intlBtn && group.intl) {
+    intlBtn.href = group.intl.stripe || '#';
+    intlBtn.textContent = getLabel(group.intl, lang, couponCode);
+  }
+
+  if (intlKakaoBtn && group.intl) {
+    intlKakaoBtn.href = group.intl.kakao || '#';
+  }
+
+  document.querySelectorAll('#content-intl .pay-card').forEach(card => {
+    const name = card.querySelector('.pay-name')?.textContent?.trim().toLowerCase();
+
+    if (name === 'stripe' && group.intl?.stripe) {
+      card.dataset.url = group.intl.stripe;
+    }
+
+    if (name === 'paypal' && group.intl?.paypal) {
+      card.dataset.url = group.intl.paypal;
+    }
   });
 }
 
-function applyDefaultPaymentLinks(){
+function applyDefaultPaymentLinks() {
+  activeCouponCode = '';
+  activeCouponGroup = null;
   setPaymentLinks(getPaymentGroup());
 }
 
-function applyCoupon(type){
-  const input=document.getElementById(type==='kr'?'coupon-input-kr':'coupon-input-intl');
-  const msg=document.getElementById(type==='kr'?'coupon-msg-kr':'coupon-msg-intl');
-  const code=(input?.value || '').trim().toUpperCase();
-  const lang=getPreferredLang();
-  const isKr=type==='kr';
-  const eventId=getEventId();
+function applyCoupon(type) {
+  const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
+  const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');
+  const code = (input?.value || '').trim().toUpperCase();
+  const lang = getPreferredLang();
+  const eventId = getEventId();
 
-  if(!code){
-    if(msg) msg.textContent=isKr ? '쿠폰 코드를 입력해주세요.' : 'Please enter a coupon code.';
+  if (!code) {
+    if (msg) {
+      msg.textContent = lang === 'ko'
+        ? '쿠폰 코드를 입력해주세요.'
+        : 'Please enter a coupon code.';
+    }
     return;
   }
 
-  const coupon=CONFIG.PAYMENT_LINKS.coupons?.[eventId]?.[code];
-  if(!coupon){
-    if(msg) msg.textContent=isKr ? '이 쿠폰은 현재 모임에 사용할 수 없습니다.' : 'This coupon cannot be used for this event.';
-    applyDefaultPaymentLinks();
+  const coupon = CONFIG.PAYMENT_LINKS?.coupons?.[eventId]?.[code];
+
+  if (!coupon) {
+    activeCouponCode = '';
+    activeCouponGroup = null;
+
+    if (msg) {
+      msg.textContent = lang === 'ko'
+        ? '이 쿠폰은 현재 모임에 사용할 수 없습니다.'
+        : 'This coupon cannot be used for this event.';
+    }
+
+    setPaymentLinks(getPaymentGroup());
     return;
   }
 
-  setPaymentLinks(coupon);
-  if(msg) msg.textContent = lang==='ko' ? (coupon.messageKo || '쿠폰이 적용되었습니다.') : (coupon.messageEn || 'Coupon applied.');
+  activeCouponCode = code;
+  activeCouponGroup = coupon;
+
+  setPaymentLinks(coupon, code);
+
+  if (msg) {
+    msg.textContent = lang === 'ko'
+      ? (coupon.messageKo || '쿠폰이 적용되었습니다.')
+      : (coupon.messageEn || 'Coupon applied.');
+  }
 }
 
-function updateEarlyBirdBar(){
-  const bar=document.getElementById('earlybird-bar');
-  const cd=document.getElementById('earlybird-countdown');
-  const title=document.getElementById('earlybird-title');
-  const prefix=document.getElementById('earlybird-prefix');
-  const sub=document.getElementById('earlybird-sub');
-  if(!bar || !cd) return;
+function updateEarlyBirdBar() {
+  const bar = document.getElementById('earlybird-bar');
+  const cd = document.getElementById('earlybird-countdown');
+  const title = document.getElementById('earlybird-title');
+  const prefix = document.getElementById('earlybird-prefix');
+  const sub = document.getElementById('earlybird-sub');
 
-  if(getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled){
-    bar.style.display='none';
+  if (!bar || !cd) return;
+
+  if (getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled) {
+    bar.style.display = 'none';
     return;
   }
 
-  const diff = new Date(CONFIG.EARLY_BIRD.escape.end) - new Date();
-  if(diff <= 0){
-    bar.style.display='none';
-    applyDefaultPaymentLinks();
+  const end = new Date(CONFIG.EARLY_BIRD.escape.end);
+  const diff = end - new Date();
+
+  if (diff <= 0) {
+    bar.style.display = 'none';
+    if (!activeCouponGroup) setPaymentLinks(getPaymentGroup());
     return;
   }
 
-  const lang=getPreferredLang();
-  if(lang==='ko'){
-    if(title) title.textContent='⚡ 방탈출 나이트 얼리버드 할인';
-    if(prefix) prefix.textContent='마감까지';
-    if(sub) sub.textContent='타이머가 끝나기 전까지 할인 결제 링크가 자동 적용됩니다.';
-  }else{
-    if(title) title.textContent='⚡ Early Bird Discount for Escape Night';
-    if(prefix) prefix.textContent='Ends in';
-    if(sub) sub.textContent='Discount links are applied automatically before the timer ends.';
+  const lang = getPreferredLang();
+
+  if (lang === 'ko') {
+    if (title) title.textContent = '⚡ 방탈출 나이트 얼리버드 할인';
+    if (prefix) prefix.textContent = '마감까지';
+    if (sub) sub.textContent = '타이머가 끝나기 전까지 할인 결제 링크가 자동 적용됩니다.';
+  } else {
+    if (title) title.textContent = '⚡ Early Bird Discount for Escape Room Night';
+    if (prefix) prefix.textContent = 'Ends in';
+    if (sub) sub.textContent = 'Discount links are applied automatically before the timer ends.';
   }
 
-  bar.style.display='block';
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  const m=Math.floor((diff/(1000*60))%60);
-  const s=Math.floor((diff/1000)%60);
-  cd.textContent=`${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+  bar.style.display = 'block';
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  cd.textContent =
+    `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
+
+  if (!activeCouponGroup) {
+    setPaymentLinks(getPaymentGroup());
+  }
 }
 
-function applyBankInfo(){
-  const intlBank=document.getElementById('intl-bank-account');
-  const intlHolder=document.getElementById('intl-bank-holder');
-  if(intlBank) intlBank.textContent=`${CONFIG.BANK_EN || 'KakaoBank'} ${CONFIG.ACCOUNT}`;
-  if(intlHolder) intlHolder.textContent=`Account holder: ${CONFIG.ACCOUNT_HOLDER_EN || CONFIG.ACCOUNT_HOLDER}`;
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const lang = getPreferredLang();
 
-document.addEventListener('DOMContentLoaded', function(){
-  setLang(getPreferredLang());
+  setLang(lang);
+  applyEvent(lang);
   applyDefaultPaymentLinks();
-  applyBankInfo();
   updateEarlyBirdBar();
+
   setInterval(updateEarlyBirdBar, 1000);
 });
 </script>
