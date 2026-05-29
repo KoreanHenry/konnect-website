@@ -299,16 +299,6 @@ function setLang(lang){
 const bl=(navigator.language||'en').toLowerCase();
 setLang(bl.startsWith('ko')?'ko':'en');
 // 이벤트별 내용 데이터
-const EVENTS = {
-  regular: {
-    en: { tag:'Join Konnect', title:'Reserve your spot', sub:'Fill out the form and complete payment to secure your place.', ev1:'Language Exchange', ev2:(_M?_M.en.date:'Saturday, May 30'), ev3:(_M?_M.en.time:'1:30 PM'), ev4:(_M?_M.en.location:'City Hall Station'), ctaKr:(_M?_M.en.ctaKr:'Pay ₩20,000 →'), ctaIntl:(_M?_M.en.ctaIntl:'Pay $16 USD →') },
-    ko: { tag:'Konnect 신청', title:'자리 예약하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'언어교환 모임', ev2:(_M?_M.ko.date:'5월 30일 토요일'), ev3:(_M?_M.ko.time:'오후 1:30'), ev4:(_M?_M.ko.location:'시청역 근처'), ctaKr:(_M?_M.ko.ctaKr:'₩20,000 결제하기 →'), ctaIntl:(_M?_M.ko.ctaIntl:'외국인 ($16)') }
-  },
-  escape: {
-    en: { tag:'Escape Room Night', title:'Sign up — Escape Room', sub:'Fill out the form and complete payment to join the escape room night!', ev1:'Escape Room Night', ev2:'June 20 (Fri)', ev3:'1:30 PM – 8:00 PM', ev4:'Hongdae', ctaKr:'Pay ₩30,000 →', ctaIntl:'Pay $22 USD →' },
-    ko: { tag:'방탈출 나이트', title:'방탈출 신청하기', sub:'폼을 작성하고 결제를 완료하면 자리가 확정됩니다.', ev1:'방탈출 나이트', ev2:'6월 20일 (금)', ev3:'오후 1:30 – 8:00', ev4:'홍대', ctaKr:'₩30,000 결제하기 →', ctaIntl:'외국인 ($22)' }
-  }
-};
 
 function applyEvent(forceLang) {
   const eventId = new URLSearchParams(window.location.search).get('event') || 'regular';
@@ -400,86 +390,15 @@ setLang = function(lang){
   const l=localStorage.getItem('konnect-lang')||(navigator.language.startsWith('ko')?'ko':'en');
   applyEvent(l);
 });
-// ── Early Bird + Coupon Payment Logic ──
-const PAYMENT_LINKS = {
-  regular: {
-    kr: {
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
-    },
-    intl: {
-      stripe: 'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
-      paypal: 'https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ',
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
-    }
-  },
-
-  escape: {
-    kr: {
-      kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
-    },
-    intl: {
-      stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_LINK',
-      paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_LINK',
-      kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
-    }
-  },
-
-  escapeEarlyBird: {
-    kr: {
-      kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
-    },
-    intl: {
-      stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_LINK',
-      paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_LINK',
-      kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
-    }
-  },
-
-  coupons: {
-    FRIEND: {
-      kr: {
-        kakao: 'DEMO_FRIEND_KAKAO_LINK'
-      },
-      intl: {
-        stripe: 'DEMO_FRIEND_STRIPE_LINK',
-        paypal: 'DEMO_FRIEND_PAYPAL_LINK',
-        kakao: 'DEMO_FRIEND_KAKAO_LINK'
-      },
-      message: 'Friend coupon applied.'
-    },
-    RETURN: {
-      kr: {
-        kakao: 'DEMO_RETURN_KAKAO_LINK'
-      },
-      intl: {
-        stripe: 'DEMO_RETURN_STRIPE_LINK',
-        paypal: 'DEMO_RETURN_PAYPAL_LINK',
-        kakao: 'DEMO_RETURN_KAKAO_LINK'
-      },
-      message: 'Returning member coupon applied.'
-    },
-    WELCOME: {
-      kr: {
-        kakao: 'DEMO_WELCOME_KAKAO_LINK'
-      },
-      intl: {
-        stripe: 'DEMO_WELCOME_STRIPE_LINK',
-        paypal: 'DEMO_WELCOME_PAYPAL_LINK',
-        kakao: 'DEMO_WELCOME_KAKAO_LINK'
-      },
-      message: 'Welcome coupon applied.'
-    }
-  }
-};
-
-const EARLY_BIRD_END = new Date('2026-06-06T00:00:00+09:00');
 
 function getEventId() {
   return new URLSearchParams(window.location.search).get('event') || 'regular';
 }
 
 function isEarlyBirdActive() {
-  return getEventId() === 'escape' && new Date() < EARLY_BIRD_END;
+  if (getEventId() !== 'escape') return false;
+  if (!CONFIG.EARLY_BIRD?.escape?.enabled) return false;
+  return new Date() < new Date(CONFIG.EARLY_BIRD.escape.end);
 }
 
 function setPaymentLinks(group) {
@@ -502,14 +421,13 @@ function applyDefaultPaymentLinks() {
   const eventId = getEventId();
 
   if (eventId === 'escape' && isEarlyBirdActive()) {
-    setPaymentLinks(PAYMENT_LINKS.escapeEarlyBird);
+    setPaymentLinks(CONFIG.PAYMENT_LINKS.escape.earlybird);
   } else if (eventId === 'escape') {
-    setPaymentLinks(PAYMENT_LINKS.escape);
+    setPaymentLinks(CONFIG.PAYMENT_LINKS.escape.regular);
   } else {
-    setPaymentLinks(PAYMENT_LINKS.regular);
+    setPaymentLinks(CONFIG.PAYMENT_LINKS.regular);
   }
 }
-
 function applyCoupon(type) {
   const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
   const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');

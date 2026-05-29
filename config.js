@@ -263,9 +263,6 @@ function applyConfig(forceLang) {
   document.querySelectorAll('[data-pay="paypal"]').forEach(el=>el.href=CONFIG.PAYPAL);
 
   // ⑥ join.html spots-pill 숨김/표시
-  document.querySelectorAll('[data-spots]').forEach(el => {
-    el.style.display = CONFIG.SPOTS_LEFT ? '' : 'none';
-  });
 
   // ⑦ 계좌이체
   document.querySelectorAll('[data-account]').forEach(el=>el.textContent=CONFIG.BANK+' '+CONFIG.ACCOUNT);
