@@ -15,7 +15,7 @@ const CONFIG = {
   NEXT_MEETUP_DATE: '2026-05-30T13:30:00+09:00',
 
   // ✏️ 잔여 자리: 숫자 ('8') 또는 '' = 표시 안 함
-  SPOTS_LEFT: '3',
+  SPOTS_LEFT: '5',
 
   // ✏️ 장소
   LOCATION_KO: '시청역 근처',

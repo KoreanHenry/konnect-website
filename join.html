@@ -96,25 +96,16 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
-  <div id="earlybird-bar" style="display:none;position:sticky;top:82px;z-index:90;margin-bottom:28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
-  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
+<div id="earlybird-spacer" style="display:none;height:96px;"></div>
+
+<div id="earlybird-bar" style="display:none;position:fixed;top:82px;left:50%;transform:translateX(-50%);z-index:150;width:calc(100% - 48px);max-width:900px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.92),rgba(255,61,168,.72));border:1px solid rgba(255,61,168,.45);box-shadow:0 12px 40px rgba(0,0,0,.35);backdrop-filter:blur(18px);">
+  <p style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:4px;">
     ⚡ Early Bird Discount for Escape Room Night
   </p>
   <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
     Ends in <span id="earlybird-countdown">--:--:--</span>
   </p>
-  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
-    Discount links are applied automatically before the timer ends.
-  </p>
-</div>
-  <div id="earlybird-bar" style="display:none;position:sticky;top:82px;z-index:90;margin-bottom:28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
-  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
-    ⚡ Early Bird Discount for Escape Room Night
-  </p>
-  <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
-    Ends in <span id="earlybird-countdown">--:--:--</span>
-  </p>
-  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
+  <p style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;">
     Discount links are applied automatically before the timer ends.
   </p>
 </div>
@@ -165,25 +156,13 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
       </div>
     </div>
 <div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
+  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">쿠폰이 있으신가요?</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    <input id="coupon-input-kr" type="text" placeholder="Enter coupon code"
+    <input id="coupon-input-kr" type="text" placeholder="쿠폰 코드를 입력해주세요"
       style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
     <button type="button" onclick="applyCoupon('kr')"
       style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
-      Apply
-    </button>
-  </div>
-  <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
-</div>
-<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    <input id="coupon-input-kr" type="text" placeholder="Enter coupon code"
-      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
-    <button type="button" onclick="applyCoupon('kr')"
-      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
-      Apply
+      적용
     </button>
   </div>
   <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
@@ -224,18 +203,6 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
-<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    <input id="coupon-input-intl" type="text" placeholder="Enter coupon code"
-      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
-    <button type="button" onclick="applyCoupon('intl')"
-      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
-      Apply
-    </button>
-  </div>
-  <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
-</div>
 <div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
   <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -480,44 +447,52 @@ function applyCoupon(type) {
   const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
   const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');
   const code = (input?.value || '').trim().toUpperCase();
+  const isKr = type === 'kr';
 
   if (!code) {
-    if (msg) msg.textContent = 'Please enter a coupon code.';
+    if (msg) msg.textContent = isKr ? '쿠폰 코드를 입력해주세요.' : 'Please enter a coupon code.';
     return;
   }
 
-  const coupon = PAYMENT_LINKS.coupons[code];
+  const coupon = CONFIG.PAYMENT_LINKS.coupons[code];
 
   if (!coupon) {
-    if (msg) msg.textContent = 'Invalid coupon code.';
+    if (msg) msg.textContent = isKr ? '유효하지 않은 쿠폰 코드입니다.' : 'Invalid coupon code.';
     applyDefaultPaymentLinks();
     return;
   }
 
   setPaymentLinks(coupon);
-  if (msg) msg.textContent = coupon.message || 'Coupon applied.';
-}
 
+  if (msg) {
+    msg.textContent = isKr ? '쿠폰이 적용되었습니다.' : (coupon.message || 'Coupon applied.');
+  }
+}
 function updateEarlyBirdBar() {
   const bar = document.getElementById('earlybird-bar');
+  const spacer = document.getElementById('earlybird-spacer');
   const cd = document.getElementById('earlybird-countdown');
 
   if (!bar || !cd) return;
 
-  if (getEventId() !== 'escape') {
+  if (getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled) {
     bar.style.display = 'none';
+    if (spacer) spacer.style.display = 'none';
     return;
   }
 
-  const diff = EARLY_BIRD_END - new Date();
+  const end = new Date(CONFIG.EARLY_BIRD.escape.end);
+  const diff = end - new Date();
 
   if (diff <= 0) {
     bar.style.display = 'none';
+    if (spacer) spacer.style.display = 'none';
     applyDefaultPaymentLinks();
     return;
   }
 
   bar.style.display = 'block';
+  if (spacer) spacer.style.display = 'block';
 
   const d = Math.floor(diff / (1000 * 60 * 60 * 24));
   const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -527,7 +502,6 @@ function updateEarlyBirdBar() {
   cd.textContent =
     `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 }
-
 document.addEventListener('DOMContentLoaded', function() {
   applyDefaultPaymentLinks();
   updateEarlyBirdBar();
