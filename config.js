@@ -122,8 +122,8 @@ function _set(selector, text) {
   });
 }
 
-function applyConfig() {
-  const lang = localStorage.getItem('konnect-lang') ||
+function applyConfig(forceLang) {
+  const lang = forceLang || localStorage.getItem('konnect-lang') ||
     (navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en');
   const M = _derive(CONFIG.NEXT_MEETUP_DATE);
   const v = M[lang];

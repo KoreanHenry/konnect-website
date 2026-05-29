@@ -221,6 +221,8 @@ const T={
   ko:{pageTag:"Konnect 신청",pageTitle:"자리 예약하기",pageSub:"폼을 작성하고 결제를 완료하면 자리가 확정됩니다.",navBack:"← 돌아가기",el1:"다음 모임",ev1:"언어교환 모임",el2:"날짜",ev2:(_M?_M.ko.date:"5월 30일 토요일"),el3:"시간",ev3:(_M?_M.ko.time:"오후 1:30"),el4:"장소",ev4:(_M?_M.ko.location:"시청역 근처"),spotsTxt:"",tabKr:"한국인",tabIntl:"외국인",formKrTitle:"신청 정보 입력",formKrSub:"결제 전 아래 폼을 먼저 작성해주세요.",payKrTitle:"결제 수단 선택",kpDesc:"카카오페이로 간편 결제",cardName:"신용/체크카드",cardDesc:"모든 카드 사용 가능",payKrBtn:"₩20,000 결제하기 →",payKrNote:'결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',formIntlTitle:"Registration Form",formIntlSub:"Please fill out the form before completing payment.",payIntlTitle:"결제 수단 선택"}
 };
 function setLang(lang){
+  localStorage.setItem('konnect-lang', lang);
+
   const t=T[lang];
   const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   const h=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
