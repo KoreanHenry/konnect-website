@@ -340,7 +340,7 @@ const T = {
     formKrSub: "Please fill out the form before completing payment.",
     payKrTitle: "Choose payment",
     kpDesc: "Pay with KakaoPay",
-    payKrNote: 'After payment, we\\'ll send you a confirmation via KakaoTalk.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
+    payKrNote: "After payment, we'll send you a confirmation via KakaoTalk.<br>Questions: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>",
     formIntlTitle: "Registration Form",
     formIntlSub: "Please fill out the form before completing payment.",
     payIntlTitle: "Choose payment"
@@ -374,6 +374,11 @@ function setText(id, value) {
   const el = document.getElementById(id);
   if (el && value !== undefined && value !== null) el.textContent = value;
 }
+
+const savedLang = localStorage.getItem('konnect-lang');
+const browserLang = (navigator.language || 'en').toLowerCase();
+setLang(savedLang || (browserLang.startsWith('ko') ? 'ko' : 'en'));
+// 이벤트별 내용 데이터
 
 function setHtml(id, value) {
   const el = document.getElementById(id);

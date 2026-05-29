@@ -1038,14 +1038,14 @@ function setLang(lang){
   document.documentElement.lang = lang;
   localStorage.setItem('konnect-lang', lang);
   updateIndexEarlyBirdBar();
-
-  
+  updateLanguageLinks();
 }
 
 // Auto-detect or saved
 const saved = localStorage.getItem('konnect-lang');
 const bl = (navigator.language||'en').toLowerCase();
 setLang(saved || (bl.startsWith('ko') ? 'ko' : 'en'));
+updateLanguageLinks();
 // ── INDEX EARLY BIRD FOMO BAR ──
 function updateIndexEarlyBirdBar(){
   const bar = document.getElementById('index-earlybird-bar');
@@ -1092,6 +1092,23 @@ function updateIndexEarlyBirdBar(){
   }
 
   cta.href = CONFIG.ESCAPE?.detailLink || 'escape.html';
+}
+
+function updateLanguageLinks(){
+  const lang = localStorage.getItem('konnect-lang') ||
+    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
+
+  document.querySelectorAll('a[href="join.html"]').forEach(a => {
+    a.href = `join.html?lang=${lang}`;
+  });
+
+  document.querySelectorAll('a[href="escape.html"]').forEach(a => {
+    a.href = `escape.html?lang=${lang}`;
+  });
+
+  document.querySelectorAll('a[href="join.html?event=escape"]').forEach(a => {
+    a.href = `join.html?event=escape&lang=${lang}`;
+  });
 }
 
 updateIndexEarlyBirdBar();
