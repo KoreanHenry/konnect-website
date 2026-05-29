@@ -96,6 +96,17 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
+  <div id="earlybird-bar" style="display:none;position:sticky;top:82px;z-index:90;margin-bottom:28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
+  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
+    ⚡ Early Bird Discount for Escape Room Night
+  </p>
+  <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
+    Ends in <span id="earlybird-countdown">--:--:--</span>
+  </p>
+  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
+    Discount links are applied automatically before the timer ends.
+  </p>
+</div>
   <p class="page-tag" id="page-tag">Join Konnect</p>
   <h1 class="page-title" id="page-title">Reserve your spot</h1>
   <p class="page-sub" id="page-sub">Fill out the form and complete payment to secure your place at the next meetup.</p>
@@ -142,7 +153,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
-
+<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
+  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <input id="coupon-input-kr" type="text" placeholder="Enter coupon code"
+      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
+    <button type="button" onclick="applyCoupon('kr')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
+      Apply
+    </button>
+  </div>
+  <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+</div>
     <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-kr-title">결제 수단 선택</h3>
     <div class="payment-grid">
       <div class="pay-card selected" onclick="selectPay(this)">
@@ -179,7 +201,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
-
+<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
+  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <input id="coupon-input-intl" type="text" placeholder="Enter coupon code"
+      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
+    <button type="button" onclick="applyCoupon('intl')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
+      Apply
+    </button>
+  </div>
+  <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+</div>
     <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-intl-title">Choose payment</h3>
     <div class="payment-grid">
      <div class="pay-card selected" onclick="selectPay(this)" data-url="https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e">
@@ -198,6 +231,32 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     <a href="https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e" class="pay-btn pay-btn-intl" id="pay-intl-btn" target="_blank">
       Pay $16 USD →
     </a>
+    <div style="margin:16px 0;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
+  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
+    🇰🇷 Living in Korea? You can also pay with KakaoPay or bank transfer.
+  </p>
+
+  <a href="https://qr.kakaopay.com/Ej8tO05RY271006015"
+     class="pay-btn pay-btn-kr"
+     id="pay-intl-kakao-btn"
+     target="_blank"
+     style="margin-bottom:16px;">
+    📱 Pay with KakaoPay →
+  </a>
+
+  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
+    Bank Transfer
+  </p>
+  <p style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">
+    KakaoBank 3333-33-7607681
+  </p>
+  <p style="font-size:14px;color:rgba(255,255,255,0.6);">
+    Account holder: Ahn Hyeonguk (Kozy)
+  </p>
+  <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">
+    After transferring, please send us a screenshot via KakaoTalk or Instagram DM.
+  </p>
+</div>
     <p class="note">After payment, you'll receive a confirmation via email or Instagram DM.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
   </div>
 </div>
@@ -272,7 +331,173 @@ document.addEventListener('DOMContentLoaded', function(){
   const l=localStorage.getItem('konnect-lang')||(navigator.language.startsWith('ko')?'ko':'en');
   applyEvent(l);
 });
+// ── Early Bird + Coupon Payment Logic ──
+const PAYMENT_LINKS = {
+  regular: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
+    },
+    intl: {
+      stripe: 'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
+      paypal: 'https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
+    }
+  },
 
+  escape: {
+    kr: {
+      kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
+    },
+    intl: {
+      stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_LINK',
+      paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_LINK',
+      kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
+    }
+  },
+
+  escapeEarlyBird: {
+    kr: {
+      kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
+    },
+    intl: {
+      stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_LINK',
+      paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_LINK',
+      kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
+    }
+  },
+
+  coupons: {
+    FRIEND: {
+      kr: {
+        kakao: 'DEMO_FRIEND_KAKAO_LINK'
+      },
+      intl: {
+        stripe: 'DEMO_FRIEND_STRIPE_LINK',
+        paypal: 'DEMO_FRIEND_PAYPAL_LINK',
+        kakao: 'DEMO_FRIEND_KAKAO_LINK'
+      },
+      message: 'Friend coupon applied.'
+    },
+    RETURN: {
+      kr: {
+        kakao: 'DEMO_RETURN_KAKAO_LINK'
+      },
+      intl: {
+        stripe: 'DEMO_RETURN_STRIPE_LINK',
+        paypal: 'DEMO_RETURN_PAYPAL_LINK',
+        kakao: 'DEMO_RETURN_KAKAO_LINK'
+      },
+      message: 'Returning member coupon applied.'
+    },
+    WELCOME: {
+      kr: {
+        kakao: 'DEMO_WELCOME_KAKAO_LINK'
+      },
+      intl: {
+        stripe: 'DEMO_WELCOME_STRIPE_LINK',
+        paypal: 'DEMO_WELCOME_PAYPAL_LINK',
+        kakao: 'DEMO_WELCOME_KAKAO_LINK'
+      },
+      message: 'Welcome coupon applied.'
+    }
+  }
+};
+
+const EARLY_BIRD_END = new Date('2026-06-06T00:00:00+09:00');
+
+function getEventId() {
+  return new URLSearchParams(window.location.search).get('event') || 'regular';
+}
+
+function isEarlyBirdActive() {
+  return getEventId() === 'escape' && new Date() < EARLY_BIRD_END;
+}
+
+function setPaymentLinks(group) {
+  const krBtn = document.getElementById('pay-kr-btn');
+  const intlBtn = document.getElementById('pay-intl-btn');
+  const intlKakaoBtn = document.getElementById('pay-intl-kakao-btn');
+
+  if (krBtn && group.kr?.kakao) krBtn.href = group.kr.kakao;
+  if (intlBtn && group.intl?.stripe) intlBtn.href = group.intl.stripe;
+  if (intlKakaoBtn && group.intl?.kakao) intlKakaoBtn.href = group.intl.kakao;
+
+  document.querySelectorAll('#content-intl .pay-card').forEach(card => {
+    const name = card.querySelector('.pay-name')?.textContent?.trim().toLowerCase();
+    if (name === 'stripe' && group.intl?.stripe) card.dataset.url = group.intl.stripe;
+    if (name === 'paypal' && group.intl?.paypal) card.dataset.url = group.intl.paypal;
+  });
+}
+
+function applyDefaultPaymentLinks() {
+  const eventId = getEventId();
+
+  if (eventId === 'escape' && isEarlyBirdActive()) {
+    setPaymentLinks(PAYMENT_LINKS.escapeEarlyBird);
+  } else if (eventId === 'escape') {
+    setPaymentLinks(PAYMENT_LINKS.escape);
+  } else {
+    setPaymentLinks(PAYMENT_LINKS.regular);
+  }
+}
+
+function applyCoupon(type) {
+  const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
+  const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');
+  const code = (input?.value || '').trim().toUpperCase();
+
+  if (!code) {
+    if (msg) msg.textContent = 'Please enter a coupon code.';
+    return;
+  }
+
+  const coupon = PAYMENT_LINKS.coupons[code];
+
+  if (!coupon) {
+    if (msg) msg.textContent = 'Invalid coupon code.';
+    applyDefaultPaymentLinks();
+    return;
+  }
+
+  setPaymentLinks(coupon);
+  if (msg) msg.textContent = coupon.message || 'Coupon applied.';
+}
+
+function updateEarlyBirdBar() {
+  const bar = document.getElementById('earlybird-bar');
+  const cd = document.getElementById('earlybird-countdown');
+
+  if (!bar || !cd) return;
+
+  if (getEventId() !== 'escape') {
+    bar.style.display = 'none';
+    return;
+  }
+
+  const diff = EARLY_BIRD_END - new Date();
+
+  if (diff <= 0) {
+    bar.style.display = 'none';
+    applyDefaultPaymentLinks();
+    return;
+  }
+
+  bar.style.display = 'block';
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  cd.textContent =
+    `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  applyDefaultPaymentLinks();
+  updateEarlyBirdBar();
+  setInterval(updateEarlyBirdBar, 1000);
+});
 </script>
 </body>
 </html>
