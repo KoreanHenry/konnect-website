@@ -96,16 +96,14 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
-<div id="earlybird-spacer" style="display:none;height:96px;"></div>
-
-<div id="earlybird-bar" style="display:none;position:fixed;top:82px;left:50%;transform:translateX(-50%);z-index:150;width:calc(100% - 48px);max-width:900px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.92),rgba(255,61,168,.72));border:1px solid rgba(255,61,168,.45);box-shadow:0 12px 40px rgba(0,0,0,.35);backdrop-filter:blur(18px);">
-  <p style="font-size:13px;color:rgba(255,255,255,.85);margin-bottom:4px;">
+<div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
+  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
     ⚡ Early Bird Discount for Escape Room Night
   </p>
   <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
     Ends in <span id="earlybird-countdown">--:--:--</span>
   </p>
-  <p style="font-size:12px;color:rgba(255,255,255,.6);margin-top:4px;">
+  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
     Discount links are applied automatically before the timer ends.
   </p>
 </div>
@@ -315,21 +313,90 @@ const EVENTS = {
 function applyEvent(forceLang) {
   const eventId = new URLSearchParams(window.location.search).get('event') || 'regular';
   const lang = forceLang || localStorage.getItem('konnect-lang') || (navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en');
-  const ev = (EVENTS[eventId] || EVENTS.regular)[lang] || EVENTS.regular.en;
 
-  const ids = { 'page-tag':ev.tag, 'page-title':ev.title, 'page-sub':ev.sub,
-                'ev1':ev.ev1, 'ev2':ev.ev2, 'ev3':ev.ev3, 'ev4':ev.ev4 };
-  Object.entries(ids).forEach(([id, val]) => { const el = document.getElementById(id); if(el) el.textContent = val; });
+  let ev;
+
+  if (eventId === 'escape' && typeof CONFIG !== 'undefined' && CONFIG.ESCAPE) {
+    const e = CONFIG.ESCAPE[lang] || CONFIG.ESCAPE.en;
+
+    ev = {
+      tag: e.pageTag || e.badge,
+      title: e.pageTitle || e.title,
+      sub: e.pageSub || 'Fill out the form and complete payment to secure your place.',
+      ev1: e.title,
+      ev2: e.date,
+      ev3: e.time,
+      ev4: e.location,
+      ctaKr: e.ctaKr,
+      ctaIntl: e.ctaIntl
+    };
+  } else {
+    const M = (typeof _derive === 'function' && typeof CONFIG !== 'undefined') ? _derive(CONFIG.NEXT_MEETUP_DATE) : null;
+
+    ev = {
+      tag: lang === 'ko' ? 'Konnect 신청' : 'Join Konnect',
+      title: lang === 'ko' ? '자리 예약하기' : 'Reserve your spot',
+      sub: lang === 'ko' ? '폼을 작성하고 결제를 완료하면 자리가 확정됩니다.' : 'Fill out the form and complete payment to secure your place.',
+      ev1: lang === 'ko' ? '언어교환 모임' : 'Language Exchange',
+      ev2: M ? M[lang].date : '',
+      ev3: M ? M[lang].time : '',
+      ev4: M ? M[lang].location : '',
+      ctaKr: M ? M[lang].ctaKr : '',
+      ctaIntl: M ? M[lang].ctaIntl : ''
+    };
+  }
+
+  const ids = {
+    'page-tag': ev.tag,
+    'page-title': ev.title,
+    'page-sub': ev.sub,
+    'ev1': ev.ev1,
+    'ev2': ev.ev2,
+    'ev3': ev.ev3,
+    'ev4': ev.ev4
+  };
+
+  Object.entries(ids).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el && val) el.textContent = val;
+  });
 
   const btnKr = document.getElementById('pay-kr-btn');
   const btnIntl = document.getElementById('pay-intl-btn');
-  if(btnKr) btnKr.textContent = ev.ctaKr;
-  if(btnIntl) btnIntl.textContent = ev.ctaIntl;
+
+  if (btnKr && ev.ctaKr) btnKr.textContent = ev.ctaKr;
+  if (btnIntl && ev.ctaIntl) btnIntl.textContent = ev.ctaIntl;
+
+  updateSpots(eventId, lang);
+}
+function updateSpots(eventId, lang) {
+  const spotsWrap = document.querySelector('[data-spots]');
+  const spotsTxt = document.getElementById('spots-txt');
+
+  if (!spotsWrap || !spotsTxt || typeof CONFIG === 'undefined') return;
+
+  let spots = '';
+
+  if (eventId === 'escape') {
+    spots = CONFIG.ESCAPE?.spotsLeft || '';
+  } else {
+    spots = CONFIG.SPOTS_LEFT || '';
+  }
+
+  if (!spots) {
+    spotsWrap.style.display = 'none';
+    return;
+  }
+
+  spotsWrap.style.display = 'inline-flex';
+  spotsTxt.textContent = lang === 'ko' ? `${spots}자리 남음` : `${spots} spots left`;
 }
 
 const _origSetLang = setLang;
-setLang = function(lang){ _origSetLang(lang); setTimeout(()=>applyEvent(lang), 0); };
-document.addEventListener('DOMContentLoaded', function(){
+setLang = function(lang){ 
+  _origSetLang(lang); 
+  setTimeout(()=>applyEvent(lang), 0); 
+};document.addEventListener('DOMContentLoaded', function(){
   const l=localStorage.getItem('konnect-lang')||(navigator.language.startsWith('ko')?'ko':'en');
   applyEvent(l);
 });
@@ -470,14 +537,13 @@ function applyCoupon(type) {
 }
 function updateEarlyBirdBar() {
   const bar = document.getElementById('earlybird-bar');
-  const spacer = document.getElementById('earlybird-spacer');
   const cd = document.getElementById('earlybird-countdown');
 
   if (!bar || !cd) return;
 
   if (getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled) {
     bar.style.display = 'none';
-    if (spacer) spacer.style.display = 'none';
+    
     return;
   }
 
@@ -486,14 +552,13 @@ function updateEarlyBirdBar() {
 
   if (diff <= 0) {
     bar.style.display = 'none';
-    if (spacer) spacer.style.display = 'none';
+    
     applyDefaultPaymentLinks();
     return;
   }
 
   bar.style.display = 'block';
-  if (spacer) spacer.style.display = 'block';
-
+  
   const d = Math.floor(diff / (1000 * 60 * 60 * 24));
   const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const m = Math.floor((diff / (1000 * 60)) % 60);

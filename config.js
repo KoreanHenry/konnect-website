@@ -29,6 +29,7 @@ const CONFIG = {
   // ── 방탈출 ─────────────────────────────────
   ESCAPE: {
     link: 'join.html?event=escape',
+    spotsLeft: '12',
     ko: {
       badge:'신청 오픈', title:'방탈출 나이트',
       date:'6월 20일 (금)', time:'오후 1:30 – 8:00',
@@ -230,12 +231,17 @@ function applyConfig(forceLang) {
   });
 
   // ③ join.html 이벤트 정보 직접 업데이트
-  _set('#ev1', lang==='ko' ? '언어교환 모임' : 'Language Exchange');
-  _set('#ev2', v.date);
-  _set('#ev3', v.time);
-  _set('#ev4', v.location);
-  _set('#pay-kr-btn',   v.ctaKr);
-  _set('#pay-intl-btn', v.ctaIntl);
+  const params = new URLSearchParams(window.location.search);
+  const eventId = params.get('event') || 'regular';
+
+  if (eventId !== 'escape') {
+    _set('#ev1', lang==='ko' ? '언어교환 모임' : 'Language Exchange');
+    _set('#ev2', v.date);
+    _set('#ev3', v.time);
+    _set('#ev4', v.location);
+    _set('#pay-kr-btn',   v.ctaKr);
+    _set('#pay-intl-btn', v.ctaIntl);
+  }
 
   // ④ T 객체도 업데이트 (setLang 재호출용)
   if (typeof T !== 'undefined') {
