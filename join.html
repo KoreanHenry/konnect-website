@@ -107,6 +107,17 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     Discount links are applied automatically before the timer ends.
   </p>
 </div>
+  <div id="earlybird-bar" style="display:none;position:sticky;top:82px;z-index:90;margin-bottom:28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
+  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
+    ⚡ Early Bird Discount for Escape Room Night
+  </p>
+  <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
+    Ends in <span id="earlybird-countdown">--:--:--</span>
+  </p>
+  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
+    Discount links are applied automatically before the timer ends.
+  </p>
+</div>
   <p class="page-tag" id="page-tag">Join Konnect</p>
   <h1 class="page-title" id="page-title">Reserve your spot</h1>
   <p class="page-sub" id="page-sub">Fill out the form and complete payment to secure your place at the next meetup.</p>
@@ -165,6 +176,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   </div>
   <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
 </div>
+<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
+  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <input id="coupon-input-kr" type="text" placeholder="Enter coupon code"
+      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
+    <button type="button" onclick="applyCoupon('kr')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
+      Apply
+    </button>
+  </div>
+  <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+</div>
     <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-kr-title">결제 수단 선택</h3>
     <div class="payment-grid">
       <div class="pay-card selected" onclick="selectPay(this)">
@@ -201,6 +224,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
       </div>
     </div>
+<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
+  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <input id="coupon-input-intl" type="text" placeholder="Enter coupon code"
+      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
+    <button type="button" onclick="applyCoupon('intl')"
+      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
+      Apply
+    </button>
+  </div>
+  <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+</div>
 <div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
   <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap;">

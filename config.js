@@ -66,15 +66,96 @@ const CONFIG = {
   },
 
 
-  // ── 결제 ───────────────────────────────────
-  KAKAO_PAY:        'https://qr.kakaopay.com/여기에_카카오페이_링크',
-  STRIPE:           'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
-  PAYPAL:           'https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ',
-  ESCAPE_KAKAO_PAY: 'https://qr.kakaopay.com/여기에_방탈출_링크',
-  ESCAPE_STRIPE:    'https://buy.stripe.com/여기에_방탈출_링크',
+  // ── 결제 링크 ───────────────────────────────
+  PAYMENT_LINKS: {
+    regular: {
+      kr: {
+        kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
+      },
+      intl: {
+        stripe: 'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
+        paypal: 'https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ',
+        kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015'
+      }
+    },
+
+    escape: {
+      regular: {
+        kr: {
+          kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
+        },
+        intl: {
+          stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_LINK',
+          paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_LINK',
+          kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_LINK'
+        }
+      },
+
+      earlybird: {
+        kr: {
+          kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
+        },
+        intl: {
+          stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_LINK',
+          paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_LINK',
+          kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_LINK'
+        }
+      }
+    },
+
+    coupons: {
+      FRIEND: {
+        kr: {
+          kakao: 'DEMO_FRIEND_KAKAO_LINK'
+        },
+        intl: {
+          stripe: 'DEMO_FRIEND_STRIPE_LINK',
+          paypal: 'DEMO_FRIEND_PAYPAL_LINK',
+          kakao: 'DEMO_FRIEND_KAKAO_LINK'
+        },
+        message: 'Friend coupon applied.'
+      },
+
+      RETURN: {
+        kr: {
+          kakao: 'DEMO_RETURN_KAKAO_LINK'
+        },
+        intl: {
+          stripe: 'DEMO_RETURN_STRIPE_LINK',
+          paypal: 'DEMO_RETURN_PAYPAL_LINK',
+          kakao: 'DEMO_RETURN_KAKAO_LINK'
+        },
+        message: 'Returning member coupon applied.'
+      },
+
+      WELCOME: {
+        kr: {
+          kakao: 'DEMO_WELCOME_KAKAO_LINK'
+        },
+        intl: {
+          stripe: 'DEMO_WELCOME_STRIPE_LINK',
+          paypal: 'DEMO_WELCOME_PAYPAL_LINK',
+          kakao: 'DEMO_WELCOME_KAKAO_LINK'
+        },
+        message: 'Welcome coupon applied.'
+      }
+    }
+  },
+
+  // ── 얼리버드 할인 ───────────────────────────
+  EARLY_BIRD: {
+    escape: {
+      enabled: true,
+      end: '2026-06-06T00:00:00+09:00'
+    }
+  },
+
+  // ── 계좌이체 ───────────────────────────────
   BANK:           '카카오뱅크',
+  BANK_EN:        'KakaoBank',
   ACCOUNT:        '3333-33-7607681',
   ACCOUNT_HOLDER: '안형욱(코지 Kozy)',
+  ACCOUNT_HOLDER_EN: 'Ahn Hyeonguk (Kozy)',
 
 };
 
