@@ -50,6 +50,100 @@ body.loading{overflow:hidden;}
 @keyframes plPulse{0%,100%{opacity:.5;}50%{opacity:1;}}
 
 /* ── NAV ── */
+/* ── INDEX EARLY BIRD BAR ── */
+.index-earlybird-bar{
+  position:fixed;
+  top:73px;
+  left:0;
+  right:0;
+  z-index:195;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  padding:10px 24px;
+  background:linear-gradient(135deg,rgba(107,53,232,.96),rgba(255,61,168,.88));
+  border-bottom:1px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 36px rgba(0,0,0,.35);
+  backdrop-filter:blur(18px);
+  color:#fff;
+}
+
+.ieb-left,
+.ieb-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.ieb-badge{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  padding:5px 10px;
+  border-radius:100px;
+  background:rgba(255,255,255,.18);
+  white-space:nowrap;
+}
+
+#ieb-message{
+  font-size:13px;
+  color:rgba(255,255,255,.86);
+}
+
+#ieb-countdown{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:18px;
+  font-weight:800;
+  color:#fff;
+  white-space:nowrap;
+}
+
+#ieb-cta{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 14px;
+  border-radius:100px;
+  background:#fff;
+  color:#0A0118;
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+body.index-earlybird-live .hero{
+  padding-top:160px;
+}
+
+@media(max-width:700px){
+  .index-earlybird-bar{
+    top:73px;
+    flex-direction:column;
+    gap:8px;
+    padding:10px 16px;
+    text-align:center;
+  }
+
+  .ieb-left,
+  .ieb-right{
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  #ieb-message{
+    font-size:12px;
+  }
+
+  #ieb-countdown{
+    font-size:17px;
+  }
+
+  body.index-earlybird-live .hero{
+    padding-top:190px;
+  }
+}
 .nav{position:fixed;top:0;left:0;right:0;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;z-index:200;backdrop-filter:blur(24px);background:rgba(10,1,24,0.7);border-bottom:1px solid var(--border);transition:padding .3s;}
 .nav.scrolled{padding:14px 48px;}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none;color:var(--white);}
@@ -354,7 +448,17 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
     </button>
   </div>
 </nav>
+<div id="index-earlybird-bar" class="index-earlybird-bar" style="display:none;">
+  <div class="ieb-left">
+    <span class="ieb-badge">⚡ EARLY BIRD</span>
+    <span id="ieb-message">Escape Room Night discount ends soon</span>
+  </div>
 
+  <div class="ieb-right">
+    <span id="ieb-countdown">--:--:--</span>
+    <a href="join.html?event=escape" id="ieb-cta">Claim discount →</a>
+  </div>
+</div>
 <!-- Mobile menu -->
 <div class="menu-overlay" id="menuOverlay"></div>
 <aside class="mobile-menu" id="mobileMenu">
@@ -898,6 +1002,7 @@ function setLang(lang){
   document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
   document.documentElement.lang = lang;
   localStorage.setItem('konnect-lang', lang);
+  updateIndexEarlyBirdBar();
 
   
 }
@@ -906,7 +1011,56 @@ function setLang(lang){
 const saved = localStorage.getItem('konnect-lang');
 const bl = (navigator.language||'en').toLowerCase();
 setLang(saved || (bl.startsWith('ko') ? 'ko' : 'en'));
+// ── INDEX EARLY BIRD FOMO BAR ──
+function updateIndexEarlyBirdBar(){
+  const bar = document.getElementById('index-earlybird-bar');
+  const cd = document.getElementById('ieb-countdown');
+  const msg = document.getElementById('ieb-message');
+  const cta = document.getElementById('ieb-cta');
 
+  if (!bar || !cd || !msg || !cta) return;
+
+  const lang = localStorage.getItem('konnect-lang') ||
+    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
+
+  if (!CONFIG.EARLY_BIRD?.escape?.enabled) {
+    bar.style.display = 'none';
+    document.body.classList.remove('index-earlybird-live');
+    return;
+  }
+
+  const end = new Date(CONFIG.EARLY_BIRD.escape.end);
+  const diff = end - new Date();
+
+  if (diff <= 0) {
+    bar.style.display = 'none';
+    document.body.classList.remove('index-earlybird-live');
+    return;
+  }
+
+  bar.style.display = 'flex';
+  document.body.classList.add('index-earlybird-live');
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const m = Math.floor((diff / (1000 * 60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  cd.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+
+  if (lang === 'ko') {
+    msg.textContent = '방탈출 나이트 얼리버드 할인 마감 임박';
+    cta.textContent = '할인 신청하기 →';
+  } else {
+    msg.textContent = 'Escape Room Night early bird discount ends soon';
+    cta.textContent = 'Claim discount →';
+  }
+
+  cta.href = CONFIG.ESCAPE?.link || 'join.html?event=escape';
+}
+
+updateIndexEarlyBirdBar();
+setInterval(updateIndexEarlyBirdBar, 1000);
 // Navbar scroll
 window.addEventListener('scroll', () => {
   const sc = window.scrollY;
