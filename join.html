@@ -96,17 +96,18 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
-<div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
-  <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
-    ⚡ Early Bird Discount for Escape Room Night
-  </p>
-  <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
-    Ends in <span id="earlybird-countdown">--:--:--</span>
-  </p>
-  <p style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
-    Discount links are applied automatically before the timer ends.
-  </p>
-</div>
+  <div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
+    <p id="earlybird-title" style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
+      ⚡ Early Bird Discount for Escape Room Night
+    </p>
+    <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
+      <span id="earlybird-prefix">Ends in</span> <span id="earlybird-countdown">--:--:--</span>
+    </p>
+    <p id="earlybird-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
+      Discount links are applied automatically before the timer ends.
+    </p>
+  </div>
+
   <p class="page-tag" id="page-tag">Join Konnect</p>
   <h1 class="page-title" id="page-title">Reserve your spot</h1>
   <p class="page-sub" id="page-sub">Fill out the form and complete payment to secure your place at the next meetup.</p>
@@ -385,8 +386,13 @@ function updateSpots(eventId, lang) {
 const _origSetLang = setLang;
 setLang = function(lang){ 
   _origSetLang(lang); 
-  setTimeout(()=>applyEvent(lang), 0); 
-};document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(() => {
+    applyEvent(lang);
+    updateEarlyBirdBar();
+  }, 0); 
+};
+
+document.addEventListener('DOMContentLoaded', function(){
   const l=localStorage.getItem('konnect-lang')||(navigator.language.startsWith('ko')?'ko':'en');
   applyEvent(l);
 });
@@ -456,12 +462,14 @@ function applyCoupon(type) {
 function updateEarlyBirdBar() {
   const bar = document.getElementById('earlybird-bar');
   const cd = document.getElementById('earlybird-countdown');
+  const title = document.getElementById('earlybird-title');
+  const prefix = document.getElementById('earlybird-prefix');
+  const sub = document.getElementById('earlybird-sub');
 
   if (!bar || !cd) return;
 
   if (getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled) {
     bar.style.display = 'none';
-    
     return;
   }
 
@@ -470,13 +478,25 @@ function updateEarlyBirdBar() {
 
   if (diff <= 0) {
     bar.style.display = 'none';
-    
     applyDefaultPaymentLinks();
     return;
   }
 
+  const lang = localStorage.getItem('konnect-lang') ||
+    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
+
+  if (lang === 'ko') {
+    if (title) title.textContent = '⚡ 방탈출 나이트 얼리버드 할인';
+    if (prefix) prefix.textContent = '마감까지';
+    if (sub) sub.textContent = '타이머가 끝나기 전까지 할인 결제 링크가 자동 적용됩니다.';
+  } else {
+    if (title) title.textContent = '⚡ Early Bird Discount for Escape Room Night';
+    if (prefix) prefix.textContent = 'Ends in';
+    if (sub) sub.textContent = 'Discount links are applied automatically before the timer ends.';
+  }
+
   bar.style.display = 'block';
-  
+
   const d = Math.floor(diff / (1000 * 60 * 60 * 24));
   const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const m = Math.floor((diff / (1000 * 60)) % 60);
@@ -485,6 +505,7 @@ function updateEarlyBirdBar() {
   cd.textContent =
     `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 }
+
 document.addEventListener('DOMContentLoaded', function() {
   applyDefaultPaymentLinks();
   updateEarlyBirdBar();
