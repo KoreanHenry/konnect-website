@@ -61,8 +61,8 @@ body.loading{overflow:hidden;}
   justify-content:center;
   align-items:center;
   gap:18px;
-  min-height:38px;
-  padding:7px 24px 6px;
+  min-height:36px;
+  padding:6px 24px 8px;
   background:linear-gradient(135deg,rgba(107,53,232,.96),rgba(255,61,168,.88));
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.16);
@@ -77,7 +77,6 @@ body.loading{overflow:hidden;}
   align-items:center;
   justify-content:center;
   gap:12px;
-  transform:translateY(1px);
 }
 
 .ieb-badge{
@@ -96,14 +95,14 @@ body.loading{overflow:hidden;}
 
 #ieb-message{
   font-size:13px;
-  line-height:1.2;
+  line-height:1;
   color:rgba(255,255,255,.86);
 }
 
 #ieb-countdown{
   font-family:'Bricolage Grotesque',sans-serif;
   font-size:18px;
-  line-height:1.2;
+  line-height:1;
   font-weight:800;
   color:#fff;
   white-space:nowrap;
@@ -113,12 +112,12 @@ body.loading{overflow:hidden;}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:8px 14px 7px;
+  padding:7px 14px;
   border-radius:100px;
   background:#fff;
   color:#0A0118;
   font-size:13px;
-  line-height:1.1;
+  line-height:1;
   font-weight:800;
   text-decoration:none;
   white-space:nowrap;
@@ -130,17 +129,17 @@ body.index-earlybird-live .hero{
 
 @media(max-width:900px){
   .index-earlybird-bar{
-    top:72px;
+    top:76px;
   }
 }
 
 @media(max-width:700px){
   .index-earlybird-bar{
-    top:72px;
+    top:96px;
     flex-direction:column;
-    gap:7px;
-    min-height:112px;
-    padding:14px 16px 7px;
+    gap:12px;
+    min-height:150px;
+    padding:18px 16px 20px;
     text-align:center;
   }
 
@@ -148,33 +147,32 @@ body.index-earlybird-live .hero{
   .ieb-right{
     justify-content:center;
     flex-wrap:wrap;
-    gap:8px;
-    transform:translateY(0);
+    gap:10px;
   }
 
   .ieb-badge{
-    font-size:12px;
-    padding:6px 14px;
+    font-size:13px;
+    padding:8px 16px;
   }
 
   #ieb-message{
     width:100%;
-    font-size:14px;
-    line-height:1.25;
+    font-size:16px;
+    line-height:1.35;
   }
 
   #ieb-countdown{
-    font-size:22px;
+    font-size:26px;
     line-height:1;
   }
 
   #ieb-cta{
-    padding:10px 20px;
-    font-size:14px;
+    padding:13px 24px;
+    font-size:16px;
   }
 
   body.index-earlybird-live .hero{
-    padding-top:220px;
+    padding-top:280px;
   }
 }
 
@@ -233,7 +231,8 @@ body.index-earlybird-live .hero{
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
 
 .hero-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5.5vw,82px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:22px;}
-.accent{background:linear-gradient(130deg,var(--purple-light) 0%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:400;padding-right:0.15em;display:inline-block;}
+.accent{position:relative;display:inline-block;color:var(--white);-webkit-text-fill-color:var(--white);background:none;font-style:normal;font-weight:800;padding:0 .12em;z-index:1;}
+.accent::after{content:'';position:absolute;left:-.12em;right:-.12em;top:54%;height:.44em;border:3px solid rgba(155,122,240,.72);border-radius:999px;transform:translateY(-50%) rotate(-8deg);box-shadow:0 0 18px rgba(107,53,232,.55);pointer-events:none;}
 .hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.62);margin-bottom:36px;max-width:440px;}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 0 40px rgba(107,53,232,0.45);}
@@ -338,53 +337,27 @@ body.index-earlybird-live .hero{
   background-position:center;
   background-repeat:no-repeat;
 }
-
 .prog-card::before{
-  content:"";
+  content:'';
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg,rgba(10,1,24,.88) 0%,rgba(10,1,24,.66) 48%,rgba(10,1,24,.42) 100%),
-    linear-gradient(180deg,rgba(10,1,24,.20) 0%,rgba(10,1,24,.76) 100%);
+    linear-gradient(90deg,rgba(10,1,24,.90) 0%,rgba(10,1,24,.68) 48%,rgba(10,1,24,.42) 100%),
+    linear-gradient(180deg,rgba(10,1,24,.18) 0%,rgba(10,1,24,.78) 100%);
   z-index:0;
   pointer-events:none;
 }
-
-.prog-card > *{
-  position:relative;
-  z-index:1;
-}
-
-.prog-card:hover{
-  border-color:rgba(155,122,240,.75);
-  transform:translateY(-4px);
-}
-
-.prog-card.active{
-  border-color:rgba(107,53,232,.45);
-}
-
-.prog-language{
-  background-image:url("images/programs/language-exchange.jpg");
-}
-
-.prog-escape{
-  background-image:url("images/programs/escape-night.jpg");
-}
-
-.prog-picnic{
-  background-image:url("images/programs/seoul-picnic.jpg");
-}
-
-.prog-trip{
-  background-image:url("images/programs/konnect-trip.jpg");
-}
+.prog-card > *{position:relative;z-index:1;}
+.prog-card:hover{border-color:rgba(155,122,240,.75);transform:translateY(-4px);}
+.prog-card.active{border-color:rgba(107,53,232,.45);}
+.prog-language{background-image:url("/images/programs/language-exchange.jpg");}
+.prog-escape{background-image:url("/images/programs/escape-night.jpg");}
+.prog-picnic{background-image:url("/images/programs/seoul-picnic.jpg");}
+.prog-trip{background-image:url("/images/programs/konnect-trip.jpg");}
 .prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
 .badge-live{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
 .badge-soon{background:rgba(107,53,232,.2);color:var(--purple-pale);border:1px solid rgba(107,53,232,.3);}
-.prog-emoji{
-  display:none;
-}
+.prog-emoji{display:none;}
 .prog-title{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-bottom:10px;}
 .prog-desc{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:24px;}
 .prog-meta{display:flex;gap:20px;flex-wrap:wrap;}
@@ -393,17 +366,24 @@ body.index-earlybird-live .hero{
 .prog-cta{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:transform .2s;}
 .prog-cta:hover{transform:scale(1.03);color:var(--black);}
 
-.testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
-.testi-card{background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
+.testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);overflow:hidden;}
+.testi-slider{position:relative;margin-top:56px;overflow:hidden;}
+.testi-slider::before,.testi-slider::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+.testi-slider::before{left:0;background:linear-gradient(to right,var(--black),transparent);}
+.testi-slider::after{right:0;background:linear-gradient(to left,var(--black),transparent);}
+.testi-track{display:flex;gap:20px;width:max-content;animation:testiSlide 70s linear infinite;}
+.testi-track:hover{animation-play-state:paused;}
+@keyframes testiSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.testi-card{flex:0 0 420px;min-height:270px;background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
 .testi-card:hover{border-color:rgba(255,61,168,.3);}
 .testi-stars{display:flex;gap:4px;margin-bottom:16px;}
 .testi-stars span{color:#fbbf24;font-size:15px;}
 .testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:20px;font-style:italic;}
-.testi-author{display:flex;align-items:center;gap:12px;}
-.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+.testi-author{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
 .testi-name{font-weight:600;font-size:14px;}
 .testi-from{font-size:12px;color:rgba(255,255,255,.4);}
+@media(max-width:700px){.testi-card{flex-basis:310px;min-height:300px;padding:24px 20px;}.testi-slider::before,.testi-slider::after{width:48px;}.testi-text{font-size:14px;}}
 
 /* ── NEXT EVENT ── */
 .next-event{padding:80px 48px;}
@@ -491,7 +471,6 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .steps::before{display:none;}
   .programs-grid{grid-template-columns:1fr;}
   .prog-card{min-height:260px;}
-  .testi-grid{grid-template-columns:1fr;}
   .event-grid{grid-template-columns:1fr;gap:24px;}
   .event-card{padding:32px 24px;}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
@@ -743,6 +722,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
     <div class="reveal">
       <span class="section-tag" data-i18n="progTag">Programs</span>
       <h2 class="section-title" data-i18n="progTitle">More than just language exchange</h2>
+      <p class="section-sub" data-i18n="progSub">Ready to Konnect with people in deeper, more diverse ways?</p>
     </div>
     <div class="programs-grid">
       <div class="prog-card prog-language active reveal">
@@ -760,12 +740,12 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
       <div class="prog-card prog-escape active reveal">
         <span class="prog-badge badge-live">● <span data-i18n="pb2">Open Now</span></span>
         <div class="prog-emoji">🎮</div>
-        <h3 class="prog-title" data-i18n="pr2t" data-escape-title>Escape Room Night</h3>
-        <p class="prog-desc" data-i18n="pr2d" data-escape-desc>Solve puzzles, crack codes, and communicate under pressure — in two languages.</p>
+        <h3 class="prog-title" data-i18n="pr2t">Escape Room Night</h3>
+        <p class="prog-desc" data-i18n="pr2d">Solve puzzles, crack codes, and communicate under pressure — in two languages. Theme matched to your vibe.</p>
         <div class="prog-meta">
           <span class="prog-tag">📅 <span data-escape-date>June 20 (Fri)</span></span>
-          <span class="prog-tag">📍 <span data-i18n="pr2m2" data-escape-location>Hongdae</span></span>
-          <span class="prog-tag">💰 <span data-i18n="pr2m3" data-escape-price>$42 Early Bird</span></span>
+          <span class="prog-tag">📍 <span data-i18n="pr2m2">Hongdae</span></span>
+          <span class="prog-tag">💰 <span data-i18n="pr2m3">$22 USD</span></span>
         </div>
         <a href="escape.html" class="prog-cta" data-i18n="pr2cta" data-escape-detail-link>Learn more →</a>
 
@@ -793,23 +773,50 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   <div class="section-inner">
     <div style="text-align:center;" class="reveal">
       <span class="section-tag" data-i18n="testiTag">What members say</span>
-      <h2 class="section-title" data-i18n="testiTitle">Real people, real stories</h2>
+      <h2 class="section-title" data-i18n="testiTitle">Real moments. Real connections.</h2>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="testi-text" data-i18n="tt1">"I came alone and left with three new friends."</p>
-        <div class="testi-author"><div class="testi-avatar">JM</div><div><div class="testi-name">Jake M.</div><div class="testi-from">🇺🇸 United States</div></div></div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="testi-text" data-i18n="tt2">"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘요."</p>
-        <div class="testi-author"><div class="testi-avatar">지은</div><div><div class="testi-name">김지은</div><div class="testi-from">🇰🇷 Seoul</div></div></div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="testi-text" data-i18n="tt3">"Best thing I found in Seoul. My Korean has actually improved."</p>
-        <div class="testi-author"><div class="testi-avatar">EL</div><div><div class="testi-name">Emma L.</div><div class="testi-from">🇬🇧 UK</div></div></div>
+    <div class="testi-slider reveal">
+      <div class="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt1"></p>
+          <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kay</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt2"></p>
+          <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chantal</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt3"></p>
+          <div class="testi-author"><div class="testi-avatar">V</div><div><div class="testi-name">Victoria</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt4"></p>
+          <div class="testi-author"><div class="testi-avatar">H</div><div><div class="testi-name">Hayat</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt1"></p>
+          <div class="testi-author"><div class="testi-avatar">K</div><div><div class="testi-name">Kay</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt2"></p>
+          <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chantal</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt3"></p>
+          <div class="testi-author"><div class="testi-avatar">V</div><div><div class="testi-name">Victoria</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text" data-i18n="tt4"></p>
+          <div class="testi-author"><div class="testi-avatar">H</div><div><div class="testi-name">Hayat</div><div class="testi-from">KONNECT Member</div></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -956,122 +963,243 @@ const _M = _derive(CONFIG.NEXT_MEETUP_DATE);
 // ── i18n ──
 const T = {
   en: {
-    badge:"Next meetup · Saturday, May 30",t1:"The",t2:"real",t3:"language exchange",t4:"in Seoul",
-    sub:"Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.",
-    ctaMain:"Reserve your spot →",ctaGhost:"How it works",
-    cdLabel:"Next meetup in",cdDays:"Days",cdHrs:"Hours",cdMins:"Minutes",cdSecs:"Seconds",
-    photosLabel:"Real moments from our meetups",phTxt:"Add your photo",
-    s1:"Members",s2:"Meetups",s3:"Countries",
-    aboutTag:"About Konnect",aboutTitle:"Most language exchanges feel like job interviews.",
-    aboutSub:"Forced introductions. Awkward silences. Everyone trying too hard.<br><br>Konnect is different. We curate small groups, design real conversations, and create the kind of energy where friendships actually form — in both Korean and English.",
-    ac1t:"Curated Groups",ac1d:"Small groups, balanced Korean/English speakers. No overwhelming crowds.",
-    ac2t:"Real Conversations",ac2d:"Designed activities that make talking natural, not awkward.",
-    ac3t:"Global Community",ac3d:"Members from 10+ countries. Locals, expats, travelers.",
-    ac4t:"Seoul Based",ac4d:"Cozy lounge near City Hall Station. Easy access from anywhere.",
-    howTag:"How it works",howTitle:"What makes Konnect different?",
-    st1:"Matched seating",sd1:"Based on nationality, gender, and language level — placed in the perfect small group from the start.",
-    st2:"Host-led team activity",sd2:"A real Korean language teacher runs a structured activity — designed to make conversation feel natural, not forced.",
-    st3:"New seats, real conversations",sd3:"Seats rotate. Fresh faces and topic cards — conversation starters that actually work.",
-    st4:"Keep going if you want",sd4:"Dinner, drinks, more talking — the afterparty is optional. But most people end up staying.",
-    hostName:"Henry Ahn · Korean Language Teacher",hostBio:"kozykorean.com · 30+ meetups hosted · trusted by 500+ members from 10+ countries",    progTag:"Programs",progTitle:"More than just language exchange",
-    pb1:"Now Running",pb2:"Coming Soon",pb3:"Coming Soon",pb4:"Coming Soon",
-    pr1t:"Language Exchange",pr1d:"Our signature meetup. Korean & English speakers in small groups, structured activities, big conversations.",
-    pr1m1:"2nd & 4th Saturday",pr1cta:"Reserve a spot →",
-    pb2:"Open Now",pr2t:"Escape Room Night",pr2d:"Cafe icebreaking, escape room missions, and Korean dinner in one special social event.",pr2m2:"Hongdae",pr2m3:"$42 Early Bird",pr2cta:"Learn more →",
-    pr3t:"Seoul Picnic",pr3d:"Hangang riverside vibes, multilingual conversations, and good food.",pr3m:"Hangang Park · Spring",
-    pr4t:"Konnect Trips",pr4d:"Weekend getaways with your new international crew. Explore Korea together.",pr4m:"Korea · 1-2 Nights",
-    testiTag:"What members say",testiTitle:"Real people, real stories",
-    tt1:'"I came alone and left with three new friends. The vibe is completely different — it actually feels natural."',
-    tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
-    tt3:'"Best thing I found in Seoul. Been coming for 3 months and my Korean has actually improved."',
-    evEye:"Next Meetup",evTitle:_M.en.title,
-    evDate:_M.en.evDate,
-    evSpots:"spots remaining",evCta1:"International ($16) →",evCta2:"Reserve Korean (₩20,000)",
-    faqTag:"FAQ",faqTitle:"Got questions?",
-    fq1:"Do I need to be fluent in Korean or English?",
-    fa1:"Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.",
-    fq2:"What happens at a typical meetup?",
-    fa2:"You'll arrive at our cozy lounge, get matched with small groups, and rotate through fun activities — icebreakers, themed conversations, and language games. It's structured but feels totally natural.",
-    fq3:"What if I come alone?",
-    fa3:"80% of our members come solo! The whole format is designed to help solo attendees feel comfortable and make friends quickly.",
-    fq4:"Can I get a refund if I can't attend?",
-    fa4:'Yes. Full refund up to 7 days before, 50% refund 3-6 days before, no refund within 48 hours. See our <a href="refund.html" style="color:var(--purple-light);text-decoration:underline;">refund policy</a> for details.',
-    fq5:"Where exactly is the venue?",
-    fa5:"Our regular venue is a private lounge near City Hall Station (시청역), about 5 minutes walk from Exit 6. Exact address will be sent to confirmed attendees the day before.",
-    fq6:"Is there food or drinks?",
-    fa6:"Light snacks and drinks (water, tea) are provided. Many groups grab dinner together after the meetup at nearby restaurants — totally optional but a great way to keep the vibe going.",
-    fq7:"How old are most members?",
-    fa7:"Most of our community is in their 20s to early 30s, though we welcome anyone 18+. The vibe is young, friendly, and open-minded.",
-    fq8:"How can I contact you?",
-    fa8:'Easiest way is Instagram DM at <a href="https://instagram.com/konnect_exchange" style="color:var(--purple-light);text-decoration:underline;">@konnect_exchange</a> or email kozykorean.official@gmail.com. We usually respond within a few hours.',
-    fctTag:"Ready?",fctTitle:"Find your Seoul tribe.",
-    fctSub:"Spots fill up fast. The next meetup is just around the corner — don't miss it.",
-    fctBtn:"Join the next meetup →",
-    footerDesc:"The REAL language exchange community in Seoul. Korean & English, every 2nd and 4th Saturday.",
-    fc1h:"Programs",fc1a1:"Language Exchange",fc1a2:"Escape Room",fc1a3:"Seoul Picnic",fc1a4:"Konnect Trips",
-    fc2h:"Info",fc2a1:"About",fc2a2:"How it works",fc2a3:"FAQ",
-    fc3h:"Legal",fc3a1:"Terms of Service",fc3a2:"Refund Policy",fc3a3:"Privacy Policy",
-    navM:"Meetups",navA:"About",navH:"How it works",navF:"FAQ",navJ:"Join Now"
-  },
+    "badge": "Let’s Connect with Konnect",
+    "t1": "A new community",
+    "t2": "connecting",
+    "t3": "people,",
+    "t4": "KONNECT",
+    "sub": "No awkward first moments, even with people you just met. Shared experiences, culture, and language bring the conversation to life.",
+    "ctaMain": "See What’s Coming Next →",
+    "ctaGhost": "Why it feels different",
+    "cdLabel": "Next meetup in",
+    "cdDays": "Days",
+    "cdHrs": "Hours",
+    "cdMins": "Minutes",
+    "cdSecs": "Seconds",
+    "photosLabel": "KONNECT moments",
+    "phTxt": "Add your photo",
+    "s1": "Members",
+    "s2": "Meetups",
+    "s3": "Countries",
+    "aboutTag": "About Konnect",
+    "aboutTitle": "Most language exchanges feel like job interviews.",
+    "aboutSub": "Awkward introductions. Uncomfortable silence. Repeated questions.<br><br>Konnect is designed differently from the start.<br>Who you sit with, which question starts the conversation, and what activity helps people get closer — we design the flow.<br><br>A meetup where conversations continue even with people you just met. That’s Konnect.",
+    "ac1t": "Small Group Setup",
+    "ac1d": "Small groups built for focused conversation, with seating that reflects nationality and language level.",
+    "ac2t": "Host-Led Experience",
+    "ac2d": "Original games and activities led by the host, creating natural conversations without awkwardness.",
+    "ac3t": "Global Community",
+    "ac3d": "People from different countries around the world, all in one place.",
+    "ac4t": "Seoul Based",
+    "ac4d": "A cozy private lounge near City Hall Station, with easy access from across Seoul.",
+    "howTag": "How it works",
+    "howTitle": "What makes Konnect different?",
+    "howSub": "Konnect is designed to help conversations start, continue, and naturally settle in.",
+    "st1": "Designed Seating",
+    "sd1": "Based on nationality, gender, and language level, you are placed in the right small group.",
+    "st2": "Host-Led & Original Games",
+    "sd2": "Team activities led by a real Korean language teacher. Original games help people get closer quickly and have fun.",
+    "st3": "New People, New Stories",
+    "sd3": "Seats rotate. Fresh faces and topic cards — conversation starters that actually work.",
+    "st4": "Optional Afterparty",
+    "sd4": "The conversation continues after the meetup. Grab coffee or dinner together and make real friends.",
+    "hostName": "Henry Ahn · Korean Language Teacher",
+    "hostBio": "kozykorean.com · 30+ meetups hosted · trusted by 500+ members from 10+ countries",
+    "progTag": "Programs",
+    "progTitle": "More than just language exchange",
+    "progSub": "Ready to Konnect with people in deeper, more diverse ways?",
+    "pb1": "Now Running",
+    "pb2": "Open Now",
+    "pb3": "Coming Soon",
+    "pb4": "Coming Soon",
+    "pr1t": "Language Exchange",
+    "pr1d": "KONNECT’s signature small-group meetup where conversations continue even with people you just met.",
+    "pr1m1": "2nd & 4th Saturday",
+    "pr1cta": "Reserve a spot →",
+    "pr2t": "Escape Room Night",
+    "pr2d": "Instead of awkward introductions, solve clues together and naturally get closer through a mission-based social event.",
+    "pr2m2": "Hongdae",
+    "pr2m3": "$42 Early Bird",
+    "pr2cta": "Learn more →",
+    "pr3t": "Seoul Picnic",
+    "pr3d": "Conversation, Han River views, good food, and fun games. An outdoor language-exchange picnic.",
+    "pr3m": "Hangang Park",
+    "pr4t": "KONNECT Trips",
+    "pr4d": "A small-group global trip where you experience Korea together with new people.",
+    "pr4m": "Korea · Day trip, 1–2 nights",
+    "testiTag": "Member Reviews",
+    "testiTitle": "Real moments. Real connections.",
+    "tt1": "I went to two more random language exchange events and yours was absolutely the best out of the three and I recommended it to the people i met. Hope to participate once i visit Korea again",
+    "tt2": "Hi, I went to the last exchange on the 11.th April. Wanted to leave some feedback. It was a great experience! Sadly I'm not staying much longer and cannot participate the next one. It felt very short tho. Not enough time to get to know everyone cuz time flys when you have fun 😊 I liked the games we played and the prepared questions were a good idea Incase you don't know where to start. the cafee meetup was definitely a very good idea which made the event special. I heard from people who already went to some exchanges meetings this was the best cuz of the after meet-up. You could talk further and get to know the others! It was so much fun. I'm glad so many went. Next time I'm coming back. If the opportunity comed up I will join again :)",
+    "tt3": "It was a really great experience. If it is possible I would like to come back again to another meeting! Thank you!",
+    "tt4": "Hii ~ it’s just to say that today was my first exchange ever and it was way more better than what I expected I will definitely comeback It was an amazing experience I met amazings peoples there and had a goood good time at the after party The games were very nice and ice breaking I loved it !! Thank you ~ 🥹🙏🏻🙏🏻",
+    "evEye": "Next Meetup",
+    "evTitle": _M.en.title,
+    "evDate": _M.en.evDate,
+    "evSpots": "spots remaining",
+    "evCta1": "International ($16) →",
+    "evCta2": "Reserve Korean (₩20,000)",
+    "faqTag": "FAQ",
+    "faqTitle": "Got questions?",
+    "fq1": "Do I need to be fluent in Korean or English?",
+    "fa1": "Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.",
+    "fq2": "What happens at a typical meetup?",
+    "fa2": "You'll arrive at our cozy lounge, get matched with small groups, and rotate through fun activities — icebreakers, themed conversations, and language games. It's structured but feels totally natural.",
+    "fq3": "What if I come alone?",
+    "fa3": "80% of our members come solo! The whole format is designed to help solo attendees feel comfortable and make friends quickly.",
+    "fq4": "Can I get a refund if I can't attend?",
+    "fa4": "Yes. Full refund up to 7 days before, 50% refund 3-6 days before, no refund within 48 hours. See our <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">refund policy</a> for details.",
+    "fq5": "Where exactly is the venue?",
+    "fa5": "Our regular venue is a private lounge near City Hall Station (시청역), about 5 minutes walk from Exit 6. Exact address will be sent to confirmed attendees the day before.",
+    "fq6": "Is there food or drinks?",
+    "fa6": "Light snacks and drinks (water, tea) are provided. Many groups grab dinner together after the meetup at nearby restaurants — totally optional but a great way to keep the vibe going.",
+    "fq7": "How old are most members?",
+    "fa7": "Most of our community is in their 20s to early 30s, though we welcome anyone 18+. The vibe is young, friendly, and open-minded.",
+    "fq8": "How can I contact you?",
+    "fa8": "Easiest way is Instagram DM at <a href=\"https://instagram.com/konnect_exchange\" style=\"color:var(--purple-light);text-decoration:underline;\">@konnect_exchange</a> or email kozykorean.official@gmail.com. We usually respond within a few hours.",
+    "fctTag": "Ready?",
+    "fctTitle": "Find your Seoul tribe.",
+    "fctSub": "Spots fill up fast. The next meetup is just around the corner — don't miss it.",
+    "fctBtn": "Join the next meetup →",
+    "footerDesc": "A Seoul social community connecting people through language, culture, and shared experiences.",
+    "fc1h": "Programs",
+    "fc1a1": "Language Exchange",
+    "fc1a2": "Escape Room",
+    "fc1a3": "Seoul Picnic",
+    "fc1a4": "KONNECT Trips",
+    "fc2h": "Info",
+    "fc2a1": "About",
+    "fc2a2": "How it works",
+    "fc2a3": "FAQ",
+    "fc3h": "Legal",
+    "fc3a1": "Terms of Service",
+    "fc3a2": "Refund Policy",
+    "fc3a3": "Privacy Policy",
+    "navM": "Meetups",
+    "navA": "About",
+    "navH": "How it works",
+    "navF": "FAQ",
+    "navJ": "Join Now"
+},
   ko: {
-    badge:"다음 모임 · 6월 13일 토요일",t1:"서울의",t2:"진짜",t3:"언어교환",t4:"커뮤니티",
-    sub:"어색한 모임은 이제 그만. 진짜 대화, 진짜 친구, 그리고 실제로 늘어나는 언어 실력.",
-    ctaMain:"자리 예약하기 →",ctaGhost:"어떻게 진행되나요?",
-    cdLabel:"다음 모임까지",cdDays:"일",cdHrs:"시간",cdMins:"분",cdSecs:"초",
-    photosLabel:"실제 모임에서의 순간들",phTxt:"사진 추가하기",
-    s1:"멤버",s2:"모임 횟수",s3:"참가 국가",
-    aboutTag:"Konnect 소개",aboutTitle:"대부분의 언어교환은 면접처럼 느껴지죠.",
-    aboutSub:"어색한 자기소개. 불편한 침묵. 모두가 너무 애쓰는 분위기.<br><br>Konnect는 달라요. 소규모 그룹을 큐레이팅하고, 자연스러운 대화를 설계해서 진짜 우정이 생기는 에너지를 만들어요.",
-    ac1t:"소규모 그룹",ac1d:"한국어/영어 균형 있는 소규모 그룹. 부담스러운 대규모 행사 없음.",
-    ac2t:"진짜 대화",ac2d:"자연스럽게 대화가 이어지도록 설계된 활동들.",
-    ac3t:"글로벌 커뮤니티",ac3d:"10개국 이상 멤버. 한국인, 외국인, 여행자 모두.",
-    ac4t:"서울 기반",ac4d:"시청역 근처 아늑한 라운지. 어디서든 접근 쉬움.",
-    howTag:"KONNECT 진행 방식",howTitle:"Konnect는 뭐가 다른가요?",
-    st1:"국적·성별·언어 실력에 맞는 자리",sd1:"국적, 성별, 언어 실력을 반영해 딱 맞는 소그룹에 배치됩니다. 처음부터 어색함 없이.",
-    st2:"호스트 진행 팀 게임",sd2:"실제 한국어 강사가 진행하는 구조화된 팀 활동. 억지스럽지 않게 대화가 자연스럽게 이어집니다.",
-    st3:"자리 재배치 후 다양한 대화",sd3:"자리를 바꿔 새로운 사람들과 앉아요. 다양한 주제의 질문 카드로 편하고 깊은 대화가 이어집니다.",
-    st4:"자유로운 뒤풀이",sd4:"식사, 술 한 잔, 더 많은 대화 — 뒤풀이는 선택이에요. 그래도 대부분은 남아있어요.",
-    hostName:"Henry Ahn · 한국어 강사",hostBio:"kozykorean.com · 30회+ 모임 진행 · 10개국 500명+ 멤버가 신뢰하는 호스트",
-    progTag:"프로그램",progTitle:"언어교환 그 이상",
-    pb1:"진행 중",pb2:"곧 오픈",pb3:"곧 오픈",pb4:"곧 오픈",
-    pr1t:"언어교환 모임",pr1d:"시그니처 모임. 소규모 그룹에서 한국어·영어 스피커가 함께하는 구조화된 대화 활동.",
-    pr1m1:"둘째·넷째 토요일",pr1cta:"자리 예약하기 →",
-    pb2:"신청 오픈",pr2t:"방탈출 나이트",pr2d:"카페 아이스브레이킹, 방탈출 미션, 저녁 식사까지 함께하는 스페셜 소셜 이벤트.",pr2m2:"홍대",pr2m3:"₩59,000 얼리버드",pr2cta:"자세히 보기 →",
-    pr3t:"서울 피크닉",pr3d:"한강 뷰, 다국어 대화, 맛있는 음식. 야외에서 즐기는 언어교환.",pr3m:"한강공원 · 봄",
-    pr4t:"Konnect 여행",pr4d:"새로운 국제 친구들과 함께하는 주말 여행.",pr4m:"한국 내 · 1-2박",
-    testiTag:"멤버 후기",testiTitle:"진짜 사람들, 진짜 이야기",
-    tt1:'"혼자 왔다가 친구 세 명을 사귀고 갔어요. 다른 언어교환이랑 분위기가 완전히 달라요 — 진짜 자연스러워요."',
-    tt2:'"솔직히 처음엔 어색할 줄 알았는데, 활동들이 자연스럽게 대화를 이끌어줘서 외국인 친구를 사귀는 게 이렇게 쉬울 수 있다는 걸 처음 알았어요."',
-    tt3:'"서울에서 발견한 가장 좋은 것. 3개월째 오고 있는데 한국어가 실제로 늘었어요."',
-    evEye:"다음 모임",evTitle:_M.ko.title,
-    evDate:_M.ko.evDate,
-    evSpots:"잔여 자리",evCta1:"한국인 자리 (₩20,000) →",evCta2:"외국인 ($16)",
-    faqTag:"자주 묻는 질문",faqTitle:"궁금한 점이 있나요?",
-    fq1:"한국어나 영어를 유창하게 해야 하나요?",
-    fa1:"전혀요! 둘 중 한 언어로 기본적인 대화만 가능하면 충분히 즐기실 수 있어요. 모든 활동은 다양한 레벨을 포용할 수 있게 설계되어 있어요.",
-    fq2:"모임에서는 보통 어떤 게 진행되나요?",
-    fa2:"아늑한 라운지에 도착하면 소그룹으로 매칭되고, 아이스브레이커, 주제별 대화, 언어 게임 등 다양한 활동을 로테이션해요. 구조화되어 있지만 자연스럽게 흘러가요.",
-    fq3:"혼자 가도 괜찮을까요?",
-    fa3:"멤버의 80%가 혼자 오세요! 솔로 참가자가 편하게 빠르게 친구를 만들 수 있도록 모든 포맷이 설계되어 있어요.",
-    fq4:"참석 못하면 환불받을 수 있나요?",
-    fa4:'네. 모임 7일 전까지는 전액 환불, 3-6일 전은 50% 환불, 48시간 이내는 환불 불가입니다. 자세한 내용은 <a href="refund.html" style="color:var(--purple-light);text-decoration:underline;">환불정책</a>을 참고해주세요.',
-    fq5:"정확한 장소가 어디인가요?",
-    fa5:"시청역(City Hall Station) 6번 출구에서 도보 5분 거리의 프라이빗 라운지에서 진행돼요. 정확한 주소는 모임 전날 확정 참가자에게 발송됩니다.",
-    fq6:"음식이나 음료가 제공되나요?",
-    fa6:"가벼운 다과와 음료(물, 차)가 제공돼요. 모임 후 근처 식당에서 함께 저녁을 먹는 그룹도 많아요 — 선택사항이지만 분위기를 이어가기 좋은 시간이에요.",
-    fq7:"멤버들의 연령대는 어떻게 되나요?",
-    fa7:"대부분 20대 초반에서 30대 초반이지만, 18세 이상이면 누구나 환영해요. 분위기는 젊고, 친근하고, 열려 있어요.",
-    fq8:"어떻게 연락하면 되나요?",
-    fa8:'가장 빠른 방법은 인스타그램 DM (<a href="https://instagram.com/konnect_exchange" style="color:var(--purple-light);text-decoration:underline;">@konnect_exchange</a>)이나 kozykorean.official@gmail.com 으로 이메일이에요. 보통 몇 시간 안에 답변드려요.',
-    fctTag:"준비됐나요?",fctTitle:"나의 서울 크루를 만나세요.",
-    fctSub:"자리가 빠르게 차요. 다음 모임이 곧 열립니다 — 놓치지 마세요.",
-    fctBtn:"다음 모임 참가하기 →",
-    footerDesc:"서울의 진짜 언어교환 커뮤니티. 매달 둘째·넷째 토요일, 한국어 & 영어.",
-    fc1h:"프로그램",fc1a1:"언어교환 모임",fc1a2:"방탈출",fc1a3:"서울 피크닉",fc1a4:"Konnect 여행",
-    fc2h:"정보",fc2a1:"소개",fc2a2:"진행 방식",fc2a3:"FAQ",
-    fc3h:"법적 고지",fc3a1:"이용약관",fc3a2:"환불정책",fc3a3:"개인정보처리방침",
-    navM:"모임",navA:"소개",navH:"진행 방식",navF:"FAQ",navJ:"신청하기"
-  }
+    "badge": "Let’s Connect with Konnect",
+    "t1": "사람과 사람을",
+    "t2": "잇는",
+    "t3": "새로운 커뮤니티,",
+    "t4": "KONNECT",
+    "sub": "처음 만나는 사람과도 어색함 없이, 함께 나누는 경험, 문화, 그리고 언어.",
+    "ctaMain": "다음 KONNECT 확인하기 →",
+    "ctaGhost": "어떻게 진행되나요?",
+    "cdLabel": "다음 모임까지",
+    "cdDays": "일",
+    "cdHrs": "시간",
+    "cdMins": "분",
+    "cdSecs": "초",
+    "photosLabel": "KONNECT의 순간들",
+    "phTxt": "사진 추가하기",
+    "s1": "멤버",
+    "s2": "모임 횟수",
+    "s3": "참가 국가",
+    "aboutTag": "Konnect 소개",
+    "aboutTitle": "대부분의 언어교환 모임은 면접처럼 느껴지죠.",
+    "aboutSub": "어색한 자기소개, 불편한 침묵, 반복되는 질문.<br><br>Konnect는 처음부터 다르게 설계합니다.<br>누구와 앉을지, 어떤 질문으로 시작할지, 무슨 활동으로 가까워질지.<br><br>처음 만난 사람과도 대화가 이어지게 만드는 모임, 그게 Konnect입니다.",
+    "ac1t": "소그룹 구성",
+    "ac1d": "대화에 집중할 수 있는 소규모 그룹. 국적, 언어 실력을 반영한 배치",
+    "ac2t": "호스트 진행",
+    "ac2d": "호스트의 진행으로 진행되는 자체 제작 게임 및 활동들. 어색함 없는 자연스러운 대화.",
+    "ac3t": "글로벌 커뮤니티",
+    "ac3d": "전 세계에서 오는 다양한 국적의 사람들이 한 자리에.",
+    "ac4t": "서울 기반",
+    "ac4d": "시청역 근처 아늑한 프라이빗 라운지. 쉬운 접근성까지.",
+    "howTag": "KONNECT 진행 방식",
+    "howTitle": "Konnect는 뭐가 다른가요?",
+    "howSub": "Konnect는 대화를 시작하고, 이어가고, 자연스럽게 스며들 수 있도록 설계합니다.",
+    "st1": "설계된 자리 배치",
+    "sd1": "국적, 성별, 언어 실력을 반영해 딱 맞는 소그룹에 배치됩니다.",
+    "st2": "호스트 진행 & 자체 제작 게임",
+    "sd2": "실제 한국어 강사가 진행하는 팀 활동. 자체 제작 게임들로 재미있고 빠르게 친해집니다.",
+    "st3": "새로운 사람, 새로운 이야기",
+    "sd3": "자리를 바꿔 새로운 사람들과 앉아요. 다양한 주제의 질문 카드로 편하고 깊은 대화가 이어집니다.",
+    "st4": "자유로운 뒤풀이",
+    "sd4": "모임 이후에도 이어지는 대화 — 카페나 식당에 같이 가서 진짜 친구를 만들어요!",
+    "hostName": "Henry Ahn · 한국어 강사",
+    "hostBio": "kozykorean.com · 30회+ 모임 진행 · 10개국 500명+ 멤버가 신뢰하는 호스트",
+    "progTag": "프로그램",
+    "progTitle": "언어교환 그 이상",
+    "progSub": "더 깊고 다양하게 사람들과 Konnect 해 볼까요?",
+    "pb1": "진행 중",
+    "pb2": "신청 오픈",
+    "pb3": "곧 오픈",
+    "pb4": "곧 오픈",
+    "pr1t": "언어교환 모임",
+    "pr1d": "처음 만난 사람과도 대화가 이어지는 KONNECT의 시그니처 소그룹 모임.",
+    "pr1m1": "둘째·넷째 토요일",
+    "pr1cta": "자리 예약하기 →",
+    "pr2t": "방탈출 나이트",
+    "pr2d": "어색한 자기소개 대신, 함께 단서를 풀며 자연스럽게 가까워지는 미션형 소셜 이벤트.",
+    "pr2m2": "홍대",
+    "pr2m3": "₩59,000 얼리버드",
+    "pr2cta": "자세히 보기 →",
+    "pr3t": "서울 피크닉",
+    "pr3d": "대화, 한강 뷰, 맛있는 음식, 재미있는 게임까지. 야외에서 즐기는 언어교환 피크닉.",
+    "pr3m": "한강공원",
+    "pr4t": "KONNECT 여행",
+    "pr4d": "새로운 사람들과 한국을 함께 경험하는 소규모 글로벌 여행.",
+    "pr4m": "한국 내 · 당일, 1~2박",
+    "testiTag": "멤버 후기",
+    "testiTitle": "진짜 연결이 생긴 순간들",
+    "tt1": "랜덤한 언어교환 이벤트를 두 군데 더 가봤는데, 세 곳 중 KONNECT가 단연 최고였어요. 만난 사람들에게도 추천했습니다. 다시 한국에 가면 꼭 다시 참여하고 싶어요.",
+    "tt2": "4월 11일 마지막 언어교환에 갔어요. 피드백을 남기고 싶었습니다. 정말 좋은 경험이었어요! 아쉽게도 더 오래 머물지 않아서 다음 모임에는 참여할 수 없어요. 시간이 정말 짧게 느껴졌어요. 즐거우면 시간이 빨리 가니까 모두를 알아가기엔 시간이 부족했어요 😊 게임도 좋았고, 어디서 시작해야 할지 모를 때 준비된 질문들이 좋은 아이디어였어요. 카페 모임은 이 이벤트를 특별하게 만든 정말 좋은 아이디어였어요. 이미 다른 언어교환 모임에 가본 사람들도 애프터 모임 덕분에 이 모임이 최고였다고 했어요. 계속 이야기하고 다른 사람들을 더 알아갈 수 있었어요! 정말 재미있었고 많은 사람들이 함께해서 좋았어요. 다음에 다시 돌아오면 기회가 있을 때 또 참여할게요 :)",
+    "tt3": "정말 좋은 경험이었어요. 가능하다면 다른 모임에도 다시 참여하고 싶습니다! 감사합니다!",
+    "tt4": "오늘이 제 첫 언어교환이었는데 기대했던 것보다 훨씬 좋았다고 말하고 싶어요. 꼭 다시 올 거예요. 정말 멋진 경험이었고, 좋은 사람들을 만났고, 애프터파티에서도 정말 좋은 시간을 보냈어요. 게임도 정말 좋았고 아이스브레이킹에 좋았어요. 정말 좋았습니다!! 감사합니다 ~ 🥹🙏🏻🙏🏻",
+    "evEye": "다음 모임",
+    "evTitle": _M.ko.title,
+    "evDate": _M.ko.evDate,
+    "evSpots": "잔여 자리",
+    "evCta1": "한국인 자리 (₩20,000) →",
+    "evCta2": "외국인 ($16)",
+    "faqTag": "자주 묻는 질문",
+    "faqTitle": "궁금한 점이 있나요?",
+    "fq1": "한국어나 영어를 유창하게 해야 하나요?",
+    "fa1": "전혀요! 둘 중 한 언어로 기본적인 대화만 가능하면 충분히 즐기실 수 있어요. 모든 활동은 다양한 레벨을 포용할 수 있게 설계되어 있어요.",
+    "fq2": "모임에서는 보통 어떤 게 진행되나요?",
+    "fa2": "아늑한 라운지에 도착하면 소그룹으로 매칭되고, 아이스브레이커, 주제별 대화, 언어 게임 등 다양한 활동을 로테이션해요. 구조화되어 있지만 자연스럽게 흘러가요.",
+    "fq3": "혼자 가도 괜찮을까요?",
+    "fa3": "멤버의 80%가 혼자 오세요! 솔로 참가자가 편하게 빠르게 친구를 만들 수 있도록 모든 포맷이 설계되어 있어요.",
+    "fq4": "참석 못하면 환불받을 수 있나요?",
+    "fa4": "네. 모임 7일 전까지는 전액 환불, 3-6일 전은 50% 환불, 48시간 이내는 환불 불가입니다. 자세한 내용은 <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">환불정책</a>을 참고해주세요.",
+    "fq5": "정확한 장소가 어디인가요?",
+    "fa5": "시청역(City Hall Station) 6번 출구에서 도보 5분 거리의 프라이빗 라운지에서 진행돼요. 정확한 주소는 모임 전날 확정 참가자에게 발송됩니다.",
+    "fq6": "음식이나 음료가 제공되나요?",
+    "fa6": "가벼운 다과와 음료(물, 차)가 제공돼요. 모임 후 근처 식당에서 함께 저녁을 먹는 그룹도 많아요 — 선택사항이지만 분위기를 이어가기 좋은 시간이에요.",
+    "fq7": "멤버들의 연령대는 어떻게 되나요?",
+    "fa7": "대부분 20대 초반에서 30대 초반이지만, 18세 이상이면 누구나 환영해요. 분위기는 젊고, 친근하고, 열려 있어요.",
+    "fq8": "어떻게 연락하면 되나요?",
+    "fa8": "가장 빠른 방법은 인스타그램 DM (<a href=\"https://instagram.com/konnect_exchange\" style=\"color:var(--purple-light);text-decoration:underline;\">@konnect_exchange</a>)이나 kozykorean.official@gmail.com 으로 이메일이에요. 보통 몇 시간 안에 답변드려요.",
+    "fctTag": "준비됐나요?",
+    "fctTitle": "나의 서울 크루를 만나세요.",
+    "fctSub": "자리가 빠르게 차요. 다음 모임이 곧 열립니다 — 놓치지 마세요.",
+    "fctBtn": "다음 모임 참가하기 →",
+    "footerDesc": "언어, 문화, 함께하는 경험으로 사람과 사람을 잇는 서울의 소셜 커뮤니티.",
+    "fc1h": "프로그램",
+    "fc1a1": "언어교환 모임",
+    "fc1a2": "방탈출",
+    "fc1a3": "서울 피크닉",
+    "fc1a4": "KONNECT 여행",
+    "fc2h": "정보",
+    "fc2a1": "소개",
+    "fc2a2": "진행 방식",
+    "fc2a3": "FAQ",
+    "fc3h": "법적 고지",
+    "fc3a1": "이용약관",
+    "fc3a2": "환불정책",
+    "fc3a3": "개인정보처리방침",
+    "navM": "모임",
+    "navA": "소개",
+    "navH": "진행 방식",
+    "navF": "FAQ",
+    "navJ": "신청하기"
+}
 };
 
 function setLang(lang){
@@ -1079,7 +1207,7 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
     if(t[k] !== undefined){
-      if(t[k].includes('<') || t[k].includes('&')) el.innerHTML = t[k];
+      if(String(t[k]).includes('<') || String(t[k]).includes('&')) el.innerHTML = t[k];
       else el.textContent = t[k];
     }
   });
@@ -1094,18 +1222,17 @@ function setLang(lang){
   updateIndexEarlyBirdBar();
   updateLanguageLinks();
 }
+
 function withLang(url){
   const lang = localStorage.getItem('konnect-lang') ||
     ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
 
   try {
     const u = new URL(url, window.location.href);
-
     if (u.origin === window.location.origin) {
       u.searchParams.set('lang', lang);
       return u.pathname.replace(/^\//, '') + u.search + u.hash;
     }
-
     return url;
   } catch(e) {
     return url;
@@ -1115,26 +1242,30 @@ function withLang(url){
 function updateLanguageLinks(){
   document.querySelectorAll('a[href]').forEach(a => {
     const href = a.getAttribute('href');
-
     if (!href) return;
     if (href.startsWith('#')) return;
     if (href.startsWith('http')) return;
     if (href.startsWith('mailto:')) return;
 
-    if (
-      href.includes('join.html') ||
-      href.includes('escape.html') ||
-      href.includes('index.html')
-    ) {
+    if (href.includes('join.html') || href.includes('escape.html') || href.includes('index.html')) {
       a.setAttribute('href', withLang(href));
     }
   });
 }
 
-// Auto-detect or saved
-const saved = localStorage.getItem('konnect-lang');
-const bl = (navigator.language||'en').toLowerCase();
-setLang(saved || (bl.startsWith('ko') ? 'ko' : 'en'));
+function getInitialLang(){
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if(urlLang === 'ko' || urlLang === 'en'){
+    localStorage.setItem('konnect-lang', urlLang);
+    return urlLang;
+  }
+  const saved = localStorage.getItem('konnect-lang');
+  const bl = (navigator.language||'en').toLowerCase();
+  return saved || (bl.startsWith('ko') ? 'ko' : 'en');
+}
+
+setLang(getInitialLang());
 updateLanguageLinks();
 // ── INDEX EARLY BIRD FOMO BAR ──
 function updateIndexEarlyBirdBar(){
@@ -1181,24 +1312,7 @@ function updateIndexEarlyBirdBar(){
     cta.textContent = 'Claim discount →';
   }
 
-cta.href = withLang(CONFIG.ESCAPE?.detailLink || 'escape.html');
-}
-
-function updateLanguageLinks(){
-  const lang = localStorage.getItem('konnect-lang') ||
-    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
-
-  document.querySelectorAll('a[href="join.html"]').forEach(a => {
-    a.href = `join.html?lang=${lang}`;
-  });
-
-  document.querySelectorAll('a[href="escape.html"]').forEach(a => {
-    a.href = `escape.html?lang=${lang}`;
-  });
-
-  document.querySelectorAll('a[href="join.html?event=escape"]').forEach(a => {
-    a.href = `join.html?event=escape&lang=${lang}`;
-  });
+  cta.href = withLang(CONFIG.ESCAPE?.detailLink || 'escape.html');
 }
 
 updateIndexEarlyBirdBar();
@@ -1276,7 +1390,7 @@ function openEscapeModal(){
   document.getElementById('em-sched-title').textContent=d.scheduleTitle;
   document.getElementById('em-note').textContent=d.note;
   document.getElementById('em-cta').textContent=d.cta;
-  document.getElementById('em-cta').href=CONFIG.ESCAPE.link;
+  document.getElementById('em-cta').href=withLang(CONFIG.ESCAPE.link || 'join.html?event=escape');
   document.getElementById('em-schedule').innerHTML=d.schedule.map(s=>`<li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px;color:rgba(255,255,255,.65);">${s}</li>`).join('');
   const m=document.getElementById('escape-modal');
   m.style.display='flex';document.body.style.overflow='hidden';
