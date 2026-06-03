@@ -11,6 +11,7 @@ const CONFIG = {
 
   // ── 정기 언어교환 ───────────────────────────
   NEXT_MEETUP_DATE: '2026-06-13T13:30:00+09:00',
+  NEXT_MEETUP_END_DATE: '2026-06-13T15:00:00+09:00',
   SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김
   LOCATION_KO: '시청역 근처',
   LOCATION_EN: 'City Hall Station',
@@ -318,22 +319,28 @@ function _derive(iso) {
   const m=d.getMonth(), day=d.getDate(), dow=d.getDay(), y=d.getFullYear();
   const h=d.getHours(), min=d.getMinutes();
   const h12=h%12||12, minS=':'+String(min).padStart(2,'0');
+  const end = new Date(CONFIG.NEXT_MEETUP_END_DATE || iso);
+  const eh = end.getHours(), emin = end.getMinutes();
+  const eh12 = eh % 12 || 12, eminS = ':' + String(emin).padStart(2,'0');
+
+const timeKo = `${h<12?'오전':'오후'} ${h12}${minS} – ${eh<12?'오전':'오후'} ${eh12}${eminS}`;
+const timeEn = `${h12}${minS} ${h<12?'AM':'PM'} – ${eh12}${eminS} ${eh<12?'AM':'PM'}`;
   return {
     ko:{
       title: `언어교환 — ${y}년 ${m+1}월`,
       date: `${m+1}월 ${day}일 ${DDK[dow]}요일`,
-      time: `${h<12?'오전':'오후'} ${h12}${minS}`,
+      time: timeKo,
       location: CONFIG.LOCATION_KO,
-      evDate: `📍 ${CONFIG.LOCATION_KO} · ${m+1}월 ${day}일 ${DDK[dow]}요일 · ${h<12?'오전':'오후'} ${h12}${minS}`,
+      evDate: `📍 ${CONFIG.LOCATION_KO} · ${m+1}월 ${day}일 ${DDK[dow]}요일 · ${timeKo}`,
       ctaKr: CONFIG.PAYMENT_LINKS.regular.kr.labelKo,
       ctaIntl: CONFIG.PAYMENT_LINKS.regular.intl.labelKo
     },
     en:{
       title: `Language Exchange — ${MM[m]} ${y}`,
       date: `${DDE[dow]}, ${MM[m]} ${day}`,
-      time: `${h12}${minS} ${h<12?'AM':'PM'}`,
+      time: timeEn,
       location: CONFIG.LOCATION_EN,
-      evDate: `📍 ${CONFIG.LOCATION_EN} · ${DDE[dow]}, ${MM[m]} ${day} · ${h12}${minS} ${h<12?'AM':'PM'}`,
+      evDate: `📍 ${CONFIG.LOCATION_EN} · ${DDE[dow]}, ${MM[m]} ${day} · ${timeEn}`,
       ctaKr: CONFIG.PAYMENT_LINKS.regular.kr.labelEn,
       ctaIntl: CONFIG.PAYMENT_LINKS.regular.intl.labelEn
     }
