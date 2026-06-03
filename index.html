@@ -325,13 +325,66 @@ body.index-earlybird-live .hero{
 
 .programs{padding:120px 48px;}
 .programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px;}
-.prog-card{background:var(--gray);border:1px solid var(--border);border-radius:24px;padding:36px 32px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
-.prog-card:hover{border-color:rgba(107,53,232,.5);transform:translateY(-4px);}
-.prog-card.active{border-color:rgba(107,53,232,.4);background:linear-gradient(135deg,rgba(107,53,232,.12) 0%,rgba(255,61,168,.06) 100%);}
+.prog-card{
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:36px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .3s,transform .3s;
+  min-height:285px;
+  background-color:var(--gray);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.prog-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(10,1,24,.88) 0%,rgba(10,1,24,.66) 48%,rgba(10,1,24,.42) 100%),
+    linear-gradient(180deg,rgba(10,1,24,.20) 0%,rgba(10,1,24,.76) 100%);
+  z-index:0;
+  pointer-events:none;
+}
+
+.prog-card > *{
+  position:relative;
+  z-index:1;
+}
+
+.prog-card:hover{
+  border-color:rgba(107,53,232,.5);
+  transform:translateY(-4px);
+}
+
+.prog-card.active{
+  border-color:rgba(107,53,232,.45);
+}
+
+.prog-language{
+  background-image:url("images/programs/language-exchange.png");
+}
+
+.prog-escape{
+  background-image:url("images/programs/escape-night.png");
+}
+
+.prog-picnic{
+  background-image:url("images/programs/seoul-picnic.png");
+}
+
+.prog-trip{
+  background-image:url("images/programs/konnect-trip.png");
+}
 .prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
 .badge-live{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
 .badge-soon{background:rgba(107,53,232,.2);color:var(--purple-pale);border:1px solid rgba(107,53,232,.3);}
-.prog-emoji{font-size:36px;margin-bottom:16px;}
+.prog-emoji{
+  display:none;
+}
 .prog-title{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-bottom:10px;}
 .prog-desc{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:24px;}
 .prog-meta{display:flex;gap:20px;flex-wrap:wrap;}
@@ -437,6 +490,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .steps{grid-template-columns:1fr;gap:24px;}
   .steps::before{display:none;}
   .programs-grid{grid-template-columns:1fr;}
+  .prog-card{min-height:260px;}
   .testi-grid{grid-template-columns:1fr;}
   .event-grid{grid-template-columns:1fr;gap:24px;}
   .event-card{padding:32px 24px;}
@@ -691,7 +745,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
       <h2 class="section-title" data-i18n="progTitle">More than just language exchange</h2>
     </div>
     <div class="programs-grid">
-      <div class="prog-card active reveal">
+      <div class="prog-card prog-language active reveal">
         <span class="prog-badge badge-live">● <span data-i18n="pb1">Now Running</span></span>
         <div class="prog-emoji">🛸</div>
         <h3 class="prog-title" data-i18n="pr1t">Language Exchange</h3>
@@ -703,7 +757,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         </div>
         <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
       </div>
-      <div class="prog-card active reveal">
+      <div class="prog-card prog-escape active reveal">
         <span class="prog-badge badge-live">● <span data-i18n="pb2">Open Now</span></span>
         <div class="prog-emoji">🎮</div>
         <h3 class="prog-title" data-i18n="pr2t" data-escape-title>Escape Room Night</h3>
@@ -716,14 +770,14 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <a href="escape.html" class="prog-cta" data-i18n="pr2cta" data-escape-detail-link>Learn more →</a>
 
       </div>
-      <div class="prog-card reveal">
+      <div class="prog-card prog-picnic reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb3">Coming Soon</span></span>
         <div class="prog-emoji">🌸</div>
         <h3 class="prog-title" data-i18n="pr3t">Seoul Picnic</h3>
         <p class="prog-desc" data-i18n="pr3d">Hangang riverside vibes, multilingual conversations.</p>
         <div class="prog-meta"><span class="prog-tag" data-i18n="pr3m">Hangang Park · Spring</span></div>
       </div>
-      <div class="prog-card reveal">
+      <div class="prog-card prog-trip reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb4">Coming Soon</span></span>
         <div class="prog-emoji">✈️</div>
         <h3 class="prog-title" data-i18n="pr4t">Konnect Trips</h3>
@@ -902,7 +956,7 @@ const _M = _derive(CONFIG.NEXT_MEETUP_DATE);
 // ── i18n ──
 const T = {
   en: {
-    badge:"Next meetup · 2nd & 4th Saturday",t1:"The",t2:"real",t3:"language exchange",t4:"in Seoul",
+    badge:"Next meetup · Saturday, May 30",t1:"The",t2:"real",t3:"language exchange",t4:"in Seoul",
     sub:"Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.",
     ctaMain:"Reserve your spot →",ctaGhost:"How it works",
     cdLabel:"Next meetup in",cdDays:"Days",cdHrs:"Hours",cdMins:"Minutes",cdSecs:"Seconds",
@@ -960,7 +1014,7 @@ const T = {
     navM:"Meetups",navA:"About",navH:"How it works",navF:"FAQ",navJ:"Join Now"
   },
   ko: {
-    badge:"다음 모임 · 매달 둘째·넷째 토요일",t1:"서울의",t2:"진짜",t3:"언어교환",t4:"커뮤니티",
+    badge:"다음 모임 · 6월 13일 토요일",t1:"서울의",t2:"진짜",t3:"언어교환",t4:"커뮤니티",
     sub:"어색한 모임은 이제 그만. 진짜 대화, 진짜 친구, 그리고 실제로 늘어나는 언어 실력.",
     ctaMain:"자리 예약하기 →",ctaGhost:"어떻게 진행되나요?",
     cdLabel:"다음 모임까지",cdDays:"일",cdHrs:"시간",cdMins:"분",cdSecs:"초",
@@ -1040,6 +1094,42 @@ function setLang(lang){
   updateIndexEarlyBirdBar();
   updateLanguageLinks();
 }
+function withLang(url){
+  const lang = localStorage.getItem('konnect-lang') ||
+    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
+
+  try {
+    const u = new URL(url, window.location.href);
+
+    if (u.origin === window.location.origin) {
+      u.searchParams.set('lang', lang);
+      return u.pathname.replace(/^\//, '') + u.search + u.hash;
+    }
+
+    return url;
+  } catch(e) {
+    return url;
+  }
+}
+
+function updateLanguageLinks(){
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+
+    if (!href) return;
+    if (href.startsWith('#')) return;
+    if (href.startsWith('http')) return;
+    if (href.startsWith('mailto:')) return;
+
+    if (
+      href.includes('join.html') ||
+      href.includes('escape.html') ||
+      href.includes('index.html')
+    ) {
+      a.setAttribute('href', withLang(href));
+    }
+  });
+}
 
 // Auto-detect or saved
 const saved = localStorage.getItem('konnect-lang');
@@ -1091,7 +1181,7 @@ function updateIndexEarlyBirdBar(){
     cta.textContent = 'Claim discount →';
   }
 
-  cta.href = CONFIG.ESCAPE?.detailLink || 'escape.html';
+cta.href = withLang(CONFIG.ESCAPE?.detailLink || 'escape.html');
 }
 
 function updateLanguageLinks(){
