@@ -235,7 +235,7 @@ function renderEscapePage(){
   setText('info-date', E.date);
   setText('info-time', E.time);
   setText('info-location', E.location);
-  setText('info-spots', CONFIG.ESCAPE.spotsLeft ? (isKo ? `${CONFIG.ESCAPE.spotsLeft}자리 남음` : `${CONFIG.ESCAPE.spotsLeft} spots left`) : (isKo ? '문의 필요' : 'Ask us'));
+  setText('info-spots', CONFIG.ESCAPE.spotsLeft ? (isKo ? `${CONFIG.ESCAPE.spotsLeft}자리 남음` : `${CONFIG.ESCAPE.spotsLeft} spots left`) : (isKo ? '최대 12명' : 'up to 12'));
   setText('regular-label', isKo ? '일반 참가' : 'Regular');
   setText('regular-price', isKo ? CONFIG.ESCAPE.regularPriceKr : `${CONFIG.ESCAPE.regularPriceKr} / ${CONFIG.ESCAPE.regularPriceIntl}`);
   setText('early-label', isKo ? '얼리버드' : 'Early Bird');
