@@ -222,31 +222,31 @@ const CONFIG = {
     coupons: {
       regular: {
         FRIEND: {
-          kr: {
-            kakao: 'DEMO_REGULAR_FRIEND_KAKAO_15000',
-            labelKo: '쿠폰가로 결제하기 (₩15,000) →',
-            labelEn: 'Pay Discounted Price (₩15,000) →'
-          },
-          intl: {
-            stripe: 'DEMO_REGULAR_FRIEND_STRIPE_12',
-            paypal: 'DEMO_REGULAR_FRIEND_PAYPAL_12',
-            kakao: 'DEMO_REGULAR_FRIEND_KAKAO_15000',
-            labelKo: 'Pay Discounted Price ($12) →',
-            labelEn: 'Pay Discounted Price ($12) →'
-          },
+        kr: {
+          kakao: 'https://qr.kakaopay.com/Ej8tO05RY1d4c05439',
+          labelKo: '쿠폰가로 결제하기 (₩15,000) →',
+          labelEn: 'Pay Discounted Price (₩15,000) →'
+        },
+        intl: {
+          stripe: 'https://buy.stripe.com/5kQ5kD6I872Y1Ht5h2fw40f',
+          paypal: 'https://www.paypal.com/ncp/payment/XXYQBR9CK3C5S',
+          kakao: 'https://qr.kakaopay.com/Ej8tO05RY1d4c05439',
+          labelKo: 'Pay Discounted Price ($12) →',
+          labelEn: 'Pay Discounted Price ($12) →'
+        },
           messageKo: '정기모임 친구 초대 할인이 적용되었습니다.',
           messageEn: 'Regular meetup friend discount applied.'
         },
         RETURN: {
           kr: {
-            kakao: 'DEMO_REGULAR_RETURN_KAKAO_15000',
+            kakao: 'https://qr.kakaopay.com/Ej8tO05RY1d4c05439',
             labelKo: '기존 참가자 할인 결제하기 (₩15,000) →',
             labelEn: 'Pay Returning Member Discount (₩15,000) →'
           },
           intl: {
-            stripe: 'DEMO_REGULAR_RETURN_STRIPE_12',
-            paypal: 'DEMO_REGULAR_RETURN_PAYPAL_12',
-            kakao: 'DEMO_REGULAR_RETURN_KAKAO_15000',
+            stripe: 'https://buy.stripe.com/5kQ5kD6I872Y1Ht5h2fw40f',
+            paypal: 'https://www.paypal.com/ncp/payment/XXYQBR9CK3C5S',
+            kakao: 'https://qr.kakaopay.com/Ej8tO05RY1d4c05439',
             labelKo: 'Pay Returning Member Discount ($12) →',
             labelEn: 'Pay Returning Member Discount ($12) →'
           },
