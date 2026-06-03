@@ -612,7 +612,7 @@ function applyCoupon(type) {
   const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
   const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');
   const code = (input?.value || '').trim().toUpperCase();
-  const lang = getPreferredLang();
+  const lang = type === 'intl' ? 'en' : 'ko';
   const eventId = getEventId();
 
   if (!code) {
