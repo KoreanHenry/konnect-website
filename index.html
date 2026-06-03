@@ -231,8 +231,63 @@ body.index-earlybird-live .hero{
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
 
 .hero-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5.5vw,82px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:22px;}
-.accent{position:relative;display:inline-block;color:var(--white);-webkit-text-fill-color:var(--white);background:none;font-style:normal;font-weight:800;padding:0 .12em;z-index:1;}
-.accent::after{content:'';position:absolute;left:-.12em;right:-.12em;top:54%;height:.44em;border:3px solid rgba(155,122,240,.72);border-radius:999px;transform:translateY(-50%) rotate(-8deg);box-shadow:0 0 18px rgba(107,53,232,.55);pointer-events:none;}
+.accent{
+  background:linear-gradient(130deg,var(--purple-light) 0%,var(--pink) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-style:normal;
+  font-weight:800;
+  display:inline-block;
+}
+
+/* Hero word highlight: 잇는 / connecting */
+.connect-accent{
+  position:relative;
+  display:inline-block;
+  isolation:isolate;
+  z-index:1;
+  padding:0 .08em;
+  color:#F07AD8;
+  background:linear-gradient(135deg,#C4B0F8 0%,#FF7AD8 58%,#FF3DA8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* back ring: upper part behind the word */
+.connect-accent::before{
+  content:"";
+  position:absolute;
+  left:-.13em;
+  right:-.13em;
+  top:52%;
+  height:.50em;
+  border:3px solid rgba(155,122,240,.58);
+  border-bottom-color:transparent;
+  border-radius:999px;
+  transform:translateY(-50%) rotate(-4deg);
+  z-index:-1;
+  pointer-events:none;
+  box-shadow:0 0 16px rgba(107,53,232,.32);
+}
+
+/* front ring: lower part in front of the word */
+.connect-accent::after{
+  content:"";
+  position:absolute;
+  left:-.13em;
+  right:-.13em;
+  top:52%;
+  height:.50em;
+  border:3px solid transparent;
+  border-bottom-color:rgba(232,214,255,.92);
+  border-radius:999px;
+  transform:translateY(-50%) rotate(-4deg);
+  z-index:3;
+  pointer-events:none;
+  filter:drop-shadow(0 0 7px rgba(196,176,248,.42));
+}
 .hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.62);margin-bottom:36px;max-width:440px;}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 0 40px rgba(107,53,232,0.45);}
@@ -480,6 +535,30 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .countdown{gap:8px;}
   .cd-unit{padding:10px 14px;min-width:62px;}
   .cd-num{font-size:24px;}
+    .connect-accent{
+    padding:0 .05em;
+  }
+
+  .connect-accent::before{
+    left:-.09em;
+    right:-.09em;
+    top:53%;
+    height:.43em;
+    border-width:2.5px;
+    border-bottom-color:transparent;
+    transform:translateY(-50%) rotate(-3deg);
+  }
+
+  .connect-accent::after{
+    left:-.09em;
+    right:-.09em;
+    top:53%;
+    height:.43em;
+    border-width:2.5px;
+    border-color:transparent;
+    border-bottom-color:rgba(232,214,255,.92);
+    transform:translateY(-50%) rotate(-3deg);
+  }
 }
 
 
