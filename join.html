@@ -385,11 +385,6 @@ function setText(id, value) {
   if (el && value !== undefined && value !== null) el.textContent = value;
 }
 
-const savedLang = localStorage.getItem('konnect-lang');
-const browserLang = (navigator.language || 'en').toLowerCase();
-setLang(savedLang || (browserLang.startsWith('ko') ? 'ko' : 'en'));
-// 이벤트별 내용 데이터
-
 function setHtml(id, value) {
   const el = document.getElementById(id);
   if (el && value !== undefined && value !== null) el.innerHTML = value;
