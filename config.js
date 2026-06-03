@@ -10,8 +10,8 @@
 const CONFIG = {
 
   // ── 정기 언어교환 ───────────────────────────
-  NEXT_MEETUP_DATE: '2026-05-30T13:30:00+09:00',
-  SPOTS_LEFT: '5', // 숫자 문자열 또는 '' = 숨김
+  NEXT_MEETUP_DATE: '2026-06-13T13:30:00+09:00',
+  SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김
   LOCATION_KO: '시청역 근처',
   LOCATION_EN: 'City Hall Station',
   PRICE_KR: '₩20,000',
@@ -40,7 +40,7 @@ const CONFIG = {
   ESCAPE: {
     link: 'join.html?event=escape',       // 최종 신청/결제 페이지
     detailLink: 'escape.html',            // 상세 설명 페이지
-    spotsLeft: '12',                      // 숫자 문자열 또는 '' = 숨김
+    spotsLeft: '',                      // 숫자 문자열 또는 '' = 숨김
 
     regularPriceKr: '₩69,000',
     earlyBirdPriceKr: '₩59,000',
@@ -73,9 +73,9 @@ const CONFIG = {
       oneLine: '카페에서 친해지고, 방탈출에서 협력하고, 저녁 식사로 연결되는 글로벌 소셜 이벤트.',
       scheduleTitle: '일정',
       schedule: [
-        { time: '14:30 – 15:50', activity: '카페 아이스브레이킹', place: '카페그랑주 예정' },
+        { time: '14:30 – 15:50', activity: '카페 아이스브레이킹', place: '인근 카페' },
         { time: '16:00 – 18:00', activity: '방탈출 미션', place: '브레이크아웃 이스케이프 홍대점 예정' },
-        { time: '18:00 – 20:00', activity: '저녁 식사', place: '김숙성 예정' },
+        { time: '18:00 – 20:00', activity: '저녁 식사', place: '고깃집 예정' },
         { time: '20:00 이후', activity: '자율 뒤풀이', place: '희망자만' }
       ],
       includedTitle: '참가비 포함 사항',
@@ -132,9 +132,9 @@ const CONFIG = {
       oneLine: 'Meet at a cafe, team up in an escape room, and connect over Korean dinner.',
       scheduleTitle: 'Schedule',
       schedule: [
-        { time: '2:30 – 3:50 PM', activity: 'Cafe icebreaking', place: 'Cafe Grange planned' },
+        { time: '2:30 – 3:50 PM', activity: 'Cafe icebreaking', place: 'Nearby cafe planned' },
         { time: '4:00 – 6:00 PM', activity: 'Escape room mission', place: 'Breakout Escape Hongdae planned' },
-        { time: '6:00 – 8:00 PM', activity: 'Korean dinner', place: 'Kim Sook Sung planned' },
+        { time: '6:00 – 8:00 PM', activity: 'Korean dinner', place: 'Korean BBQ planned' },
         { time: 'After 8:00 PM', activity: 'Optional afterparty', place: 'For those who want to join' }
       ],
       includedTitle: 'What’s included',
