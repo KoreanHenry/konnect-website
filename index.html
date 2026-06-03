@@ -556,7 +556,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   display:inline-block;
   isolation:isolate;
   z-index:1;
-  padding:0 .10em;
+  padding:0 .08em;
   background:none;
   -webkit-text-fill-color:initial;
 }
@@ -571,70 +571,38 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   background-clip:text;
 }
 
-/* 뒤쪽 고리: 어둡고 은은한 행성 고리 */
+/* 뒤쪽 고리: 글씨 뒤로 지나가는 어두운 orbit */
 .connect-accent::before{
   content:'';
   position:absolute;
-  left:-.22em;
-  right:-.22em;
-  top:56%;
-  height:.74em;
+  left:-.24em;
+  right:-.24em;
+  top:57%;
+  height:.82em;
+  border:2.5px solid rgba(130,105,220,.48);
   border-radius:999px;
-  transform:translateY(-50%) rotate(-4deg);
+  transform:translateY(-50%) rotate(-8deg);
   z-index:1;
   pointer-events:none;
-
-  background:linear-gradient(
-    90deg,
-    rgba(126,92,232,.30) 0%,
-    rgba(155,122,240,.24) 28%,
-    rgba(196,176,248,.18) 50%,
-    rgba(155,122,240,.24) 72%,
-    rgba(126,92,232,.30) 100%
-  );
-
-  padding:3px;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  clip-path:polygon(0 0,100% 0,100% 55%,0 55%);
-  filter:blur(.15px);
+  clip-path:polygon(0 0,100% 0,100% 52%,0 52%);
+  box-shadow:0 0 10px rgba(130,105,220,.18);
 }
 
-/* 앞쪽 고리: 밝고 부드러운 라벤더 고리 */
+/* 앞쪽 고리: 글씨 앞으로 나오는 밝은 orbit */
 .connect-accent::after{
   content:'';
   position:absolute;
-  left:-.22em;
-  right:-.22em;
-  top:56%;
-  height:.74em;
+  left:-.24em;
+  right:-.24em;
+  top:57%;
+  height:.82em;
+  border:2.5px solid rgba(232,222,255,.88);
   border-radius:999px;
-  transform:translateY(-50%) rotate(-4deg);
+  transform:translateY(-50%) rotate(-8deg);
   z-index:3;
   pointer-events:none;
-
-  background:linear-gradient(
-    90deg,
-    rgba(196,176,248,.82) 0%,
-    rgba(232,222,255,.94) 35%,
-    rgba(255,255,255,.96) 50%,
-    rgba(232,222,255,.94) 65%,
-    rgba(196,176,248,.82) 100%
-  );
-
-  padding:3px;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
   clip-path:polygon(0 50%,100% 50%,100% 100%,0 100%);
-  filter:drop-shadow(0 0 7px rgba(155,122,240,.22));
+  filter:drop-shadow(0 0 5px rgba(196,176,248,.22));
 }
 
 .konnect-accent{
@@ -717,7 +685,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .hero-line.konnect-accent{width:100%;text-align:center;}
 
 .connect-accent{
-  padding:0 .07em;
+  padding:0 .06em;
 }
 
 .connect-text{
@@ -728,55 +696,27 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 .connect-accent::before{
   left:-.18em;
   right:-.18em;
-  top:56%;
-  height:.62em;
-  transform:translateY(-50%) rotate(-3deg);
-  padding:2.5px;
-
-  background:linear-gradient(
-    90deg,
-    rgba(126,92,232,.30) 0%,
-    rgba(155,122,240,.24) 28%,
-    rgba(196,176,248,.18) 50%,
-    rgba(155,122,240,.24) 72%,
-    rgba(126,92,232,.30) 100%
-  );
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
-  clip-path:polygon(0 0,100% 0,100% 55%,0 55%);
-  filter:blur(.15px);
+  top:57%;
+  height:.68em;
+  border-width:2px;
+  border-color:rgba(130,105,220,.48);
+  border-radius:999px;
+  transform:translateY(-50%) rotate(-7deg);
+  clip-path:polygon(0 0,100% 0,100% 52%,0 52%);
+  box-shadow:0 0 8px rgba(130,105,220,.14);
 }
 
 .connect-accent::after{
   left:-.18em;
   right:-.18em;
-  top:56%;
-  height:.62em;
-  transform:translateY(-50%) rotate(-3deg);
-  padding:2.5px;
-
-  background:linear-gradient(
-    90deg,
-    rgba(196,176,248,.82) 0%,
-    rgba(232,222,255,.94) 35%,
-    rgba(255,255,255,.96) 50%,
-    rgba(232,222,255,.94) 65%,
-    rgba(196,176,248,.82) 100%
-  );
-
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-
+  top:57%;
+  height:.68em;
+  border-width:2px;
+  border-color:rgba(232,222,255,.88);
+  border-radius:999px;
+  transform:translateY(-50%) rotate(-7deg);
   clip-path:polygon(0 50%,100% 50%,100% 100%,0 100%);
-  filter:drop-shadow(0 0 5px rgba(155,122,240,.20));
+  filter:drop-shadow(0 0 4px rgba(196,176,248,.20));
 }
 }
 
