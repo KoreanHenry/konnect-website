@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://konnect.kozykorean.com/images/og-image.png">
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='30%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%239B7AF0'/%3E%3Cstop offset='60%25' stop-color='%236B35E8'/%3E%3Cstop offset='100%25' stop-color='%232E0B73'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='16' cy='16' rx='15' ry='4.5' fill='none' stroke='%236B35E8' stroke-width='2.5' transform='rotate(-20 16 16)'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='https://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='30%25' cy='30%25'%3E%3Cstop offset='0%25' stop-color='%239B7AF0'/%3E%3Cstop offset='60%25' stop-color='%236B35E8'/%3E%3Cstop offset='100%25' stop-color='%232E0B73'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cellipse cx='16' cy='16' rx='15' ry='4.5' fill='none' stroke='%236B35E8' stroke-width='2.5' transform='rotate(-20 16 16)'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='url(%23g)'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,8 +61,8 @@ body.loading{overflow:hidden;}
   justify-content:center;
   align-items:center;
   gap:18px;
-  min-height:38px;
-  padding:8px 24px 7px;
+  min-height:36px;
+  padding:6px 24px 8px;
   background:linear-gradient(135deg,rgba(107,53,232,.96),rgba(255,61,168,.88));
   border-top:1px solid rgba(255,255,255,.08);
   border-bottom:1px solid rgba(255,255,255,.16);
@@ -77,7 +77,6 @@ body.loading{overflow:hidden;}
   align-items:center;
   justify-content:center;
   gap:12px;
-  transform:translateY(1px);
 }
 
 .ieb-badge{
@@ -96,14 +95,14 @@ body.loading{overflow:hidden;}
 
 #ieb-message{
   font-size:13px;
-  line-height:1.2;
+  line-height:1;
   color:rgba(255,255,255,.86);
 }
 
 #ieb-countdown{
   font-family:'Bricolage Grotesque',sans-serif;
   font-size:18px;
-  line-height:1.2;
+  line-height:1;
   font-weight:800;
   color:#fff;
   white-space:nowrap;
@@ -113,12 +112,12 @@ body.loading{overflow:hidden;}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:8px 14px 7px;
+  padding:7px 14px;
   border-radius:100px;
   background:#fff;
   color:#0A0118;
   font-size:13px;
-  line-height:1.1;
+  line-height:1;
   font-weight:800;
   text-decoration:none;
   white-space:nowrap;
@@ -129,16 +128,18 @@ body.index-earlybird-live .hero{
 }
 
 @media(max-width:900px){
-  .index-earlybird-bar{top:72px;}
+  .index-earlybird-bar{
+    top:76px;
+  }
 }
 
 @media(max-width:700px){
   .index-earlybird-bar{
-    top:72px;
+    top:96px;
     flex-direction:column;
-    gap:6px;
-    min-height:104px;
-    padding:10px 14px 9px;
+    gap:12px;
+    min-height:150px;
+    padding:18px 16px 20px;
     text-align:center;
   }
 
@@ -146,33 +147,32 @@ body.index-earlybird-live .hero{
   .ieb-right{
     justify-content:center;
     flex-wrap:wrap;
-    gap:8px;
-    transform:translateY(0);
+    gap:10px;
   }
 
   .ieb-badge{
-    font-size:12px;
-    padding:6px 13px;
+    font-size:13px;
+    padding:8px 16px;
   }
 
   #ieb-message{
     width:100%;
-    font-size:14px;
-    line-height:1.25;
+    font-size:16px;
+    line-height:1.35;
   }
 
   #ieb-countdown{
-    font-size:21px;
+    font-size:26px;
     line-height:1;
   }
 
   #ieb-cta{
-    padding:10px 18px;
-    font-size:14px;
+    padding:13px 24px;
+    font-size:16px;
   }
 
   body.index-earlybird-live .hero{
-    padding-top:168px;
+    padding-top:280px;
   }
 }
 
@@ -230,11 +230,68 @@ body.index-earlybird-live .hero{
 .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80;animation:blink 2s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
 
-.hero-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(48px,5.15vw,76px);font-weight:800;line-height:.95;letter-spacing:-.045em;margin-bottom:22px;max-width:680px;}
-.accent{position:relative;display:inline-block;color:var(--white);-webkit-text-fill-color:var(--white);background:none;font-style:normal;font-weight:800;padding:0 .12em;z-index:1;isolation:isolate;}
-.accent::before,.accent::after{content:'';position:absolute;left:-.18em;right:-.18em;top:56%;height:.46em;border:3px solid rgba(155,122,240,.72);border-radius:999px;transform:translateY(-50%) rotate(-8deg);box-shadow:0 0 18px rgba(107,53,232,.55);pointer-events:none;}
-.accent::before{z-index:-1;clip-path:inset(0 0 52% 0);opacity:.78;}
-.accent::after{z-index:2;clip-path:inset(48% 0 0 0);opacity:.95;}
+.hero-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(48px,5.2vw,76px);
+  font-weight:800;
+  line-height:.96;
+  letter-spacing:-.045em;
+  margin-bottom:22px;
+}
+
+.hero-line{
+  display:block;
+}
+
+.connect-accent{
+  position:relative;
+  display:inline-block;
+  z-index:1;
+  color:#C4B0F8;
+  background:linear-gradient(135deg,#C4B0F8 0%,#FF3DA8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.connect-accent::before{
+  content:'';
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  top:54%;
+  height:.42em;
+  border:3px solid rgba(155,122,240,.62);
+  border-radius:999px;
+  transform:rotate(-7deg);
+  z-index:-1;
+  pointer-events:none;
+}
+
+.connect-accent::after{
+  content:'';
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  top:54%;
+  height:.42em;
+  border-bottom:3px solid rgba(255,255,255,.48);
+  border-radius:999px;
+  transform:rotate(-7deg);
+  z-index:2;
+  pointer-events:none;
+}
+
+.konnect-accent{
+  width:max-content;
+  max-width:100%;
+  background:linear-gradient(135deg,#FFFFFF 0%,#C4B0F8 46%,#FF3DA8 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 0 18px rgba(155,122,240,.22));
+}
+
 .hero-sub{font-size:17px;line-height:1.65;color:rgba(255,255,255,0.62);margin-bottom:36px;max-width:440px;}
 .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:15px 26px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .25s,box-shadow .25s;box-shadow:0 0 40px rgba(107,53,232,0.45);}
@@ -252,8 +309,59 @@ body.index-earlybird-live .hero{
 .sp1{top:8%;right:12%;width:34px;animation-delay:0s;}
 .sp2{bottom:18%;left:6%;width:26px;animation-delay:.8s;}
 .sp3{top:58%;right:4%;width:20px;animation-delay:1.6s;}
-.hero-slogan{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.78);padding:10px 18px;border:1px solid rgba(155,122,240,.28);border-radius:999px;background:rgba(255,255,255,.045);backdrop-filter:blur(14px);box-shadow:0 0 28px rgba(107,53,232,.18);white-space:nowrap;}
-.hero-slogan::before{content:'';position:absolute;left:14px;right:14px;top:50%;height:14px;border:2px solid rgba(155,122,240,.62);border-radius:999px;transform:translateY(-50%) rotate(-5deg);opacity:.45;pointer-events:none;}
+
+
+.planet-slogan{
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 18px;
+  border-radius:999px;
+  border:1px solid rgba(196,176,248,.35);
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(16px);
+  color:rgba(255,255,255,.78);
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  box-shadow:0 0 28px rgba(107,53,232,.22);
+  animation:sloganFloat 4.8s ease-in-out infinite;
+}
+
+.planet-slogan::before{
+  content:'';
+  position:absolute;
+  left:-9%;
+  right:-9%;
+  top:50%;
+  height:26px;
+  border:1px solid rgba(155,122,240,.38);
+  border-radius:999px;
+  transform:translateY(-50%) rotate(-5deg);
+  pointer-events:none;
+}
+
+.planet-slogan::after{
+  content:'';
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#C4B0F8;
+  right:10%;
+  top:3px;
+  box-shadow:0 0 12px rgba(196,176,248,.9);
+}
+
+@keyframes sloganFloat{
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(-5px);}
+}
 
 /* ── COUNTDOWN ── */
 .countdown-section{position:relative;z-index:10;max-width:1200px;width:100%;margin-top:48px;text-align:center;}
@@ -375,7 +483,7 @@ body.index-earlybird-live .hero{
 .testi-slider::before,.testi-slider::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
 .testi-slider::before{left:0;background:linear-gradient(to right,var(--black),transparent);}
 .testi-slider::after{right:0;background:linear-gradient(to left,var(--black),transparent);}
-.testi-track{display:flex;gap:20px;width:max-content;animation:testiSlide 135s linear infinite;}
+.testi-track{display:flex;gap:20px;width:max-content;animation:testiSlide 70s linear infinite;}
 .testi-track:hover{animation-play-state:paused;}
 @keyframes testiSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 .testi-card{flex:0 0 420px;min-height:270px;background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
@@ -387,7 +495,7 @@ body.index-earlybird-live .hero{
 .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
 .testi-name{font-weight:600;font-size:14px;}
 .testi-from{font-size:12px;color:rgba(255,255,255,.4);}
-@media(max-width:700px){.testi-track{animation-duration:150s;}.testi-card{flex-basis:310px;min-height:300px;padding:24px 20px;}.testi-slider::before,.testi-slider::after{width:48px;}.testi-text{font-size:14px;}}
+@media(max-width:700px){.testi-card{flex-basis:310px;min-height:300px;padding:24px 20px;}.testi-slider::before,.testi-slider::after{width:48px;}.testi-text{font-size:14px;}}
 
 /* ── NEXT EVENT ── */
 .next-event{padding:80px 48px;}
@@ -486,24 +594,97 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .cd-num{font-size:24px;}
 }
 
+/* ── HERO REFINEMENT PATCH ── */
 @media(max-width:700px){
-  .hero{min-height:100svh;padding:42px 24px 150px;justify-content:flex-start;}
-  body.index-earlybird-live .hero{padding-top:168px;}
-  .hero-inner{gap:18px;}
-  .hero-vis{order:-1;height:132px;margin-top:0;}
-  .planet-wrap{width:145px;height:145px;}
-  .planet{width:108px;height:108px;}
-  .ring{width:176px;height:42px;border-width:7px;}
-  .hero-slogan{bottom:-8px;font-size:12px;padding:7px 12px;}
-  .hero-text{text-align:center;}
-  .badge{margin-bottom:18px;font-size:12px;padding:7px 14px;}
-  .hero-title{font-size:clamp(38px,11.6vw,56px);line-height:.92;letter-spacing:-.055em;margin:0 auto 20px;max-width:355px;}
-  .accent::before,.accent::after{border-width:2px;left:-.16em;right:-.16em;}
-  .hero-sub{font-size:15.5px;line-height:1.65;margin:0 auto 28px;max-width:350px;}
-  .hero-actions{justify-content:center;gap:12px;}
-  .btn-primary{padding:14px 22px;font-size:14px;}
-  .btn-ghost{font-size:14px;}
-  .countdown-section{margin-top:34px;}
+  .index-earlybird-bar .ieb-left,
+  .index-earlybird-bar .ieb-right{
+    transform:translateY(3px);
+  }
+
+  .hero{
+    min-height:auto;
+    padding:96px 24px 160px;
+    justify-content:flex-start;
+  }
+
+  body.index-earlybird-live .hero{
+    padding-top:250px;
+  }
+
+  .hero-inner{
+    gap:18px;
+  }
+
+  .hero-vis{
+    order:-1;
+    height:210px;
+    margin-top:0;
+    margin-bottom:24px;
+  }
+
+  .planet-wrap{
+    width:185px;
+    height:185px;
+  }
+
+  .planet{
+    width:132px;
+    height:132px;
+  }
+
+  .ring{
+    width:215px;
+    height:50px;
+    border-width:7px;
+  }
+
+  .planet-slogan{
+    bottom:-8px;
+    font-size:13px;
+    padding:7px 16px;
+  }
+
+  .planet-slogan::before{
+    height:23px;
+  }
+
+  .hero-title{
+    font-size:clamp(42px, 11.5vw, 56px);
+    line-height:.96;
+    letter-spacing:-.055em;
+    margin-bottom:22px;
+  }
+
+  .connect-accent::before,
+  .connect-accent::after{
+    left:-6%;
+    right:-6%;
+    top:56%;
+    height:.34em;
+    border-width:2px;
+    transform:rotate(-6deg);
+  }
+
+  .konnect-accent{
+    filter:drop-shadow(0 0 12px rgba(155,122,240,.22));
+  }
+
+  .hero-sub{
+    font-size:16px;
+    line-height:1.65;
+    max-width:350px;
+    margin-bottom:30px;
+  }
+
+  .hero-actions{
+    gap:12px;
+  }
+}
+
+@media(min-width:901px){
+  .planet-slogan{
+    bottom:24px;
+  }
 }
 
 </style>
@@ -582,8 +763,9 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <span data-i18n="badge">Next meetup · 2nd &amp; 4th Saturday</span>
       </div>
       <h1 class="hero-title">
-        <span data-i18n="t1">The</span> <span class="accent" data-i18n="t2">real</span><br>
-        <span data-i18n="t3">language exchange</span><span data-i18n="t4"></span>
+        <span class="hero-line" data-i18n-html="heroLine1">A new community</span>
+        <span class="hero-line" data-i18n-html="heroLine2"><span class="connect-accent">connecting</span> people</span>
+        <span class="hero-line konnect-accent">KONNECT</span>
       </h1>
       <p class="hero-sub" data-i18n="sub">Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.</p>
       <div class="hero-actions">
@@ -594,11 +776,11 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
     <div class="hero-vis">
       <div class="planet-wrap">
         <div class="ring"></div><div class="planet"></div>
+        <div class="planet-slogan"><span>Let’s Connect with Konnect</span></div>
         <svg class="sp sp1" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
         <svg class="sp sp2" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
         <svg class="sp sp3" viewBox="0 0 24 24"><path d="M12 0l1.5 10.5L24 12l-10.5 1.5L12 24l-1.5-10.5L0 12l10.5-1.5z"/></svg>
       </div>
-      <div class="hero-slogan">Let’s Connect with Konnect</div>
     </div>
   </div>
 
@@ -985,14 +1167,35 @@ window.addEventListener('load', () => {
   }, 800);
 });
 const _M = _derive(CONFIG.NEXT_MEETUP_DATE);
+function _heroBadge(dateValue){
+  const date = new Date(dateValue);
+  if(Number.isNaN(date.getTime())){
+    return {
+      en:'Next meetup · 2nd & 4th Saturday',
+      ko:'다음 모임 · 둘째·넷째 토요일'
+    };
+  }
+
+  const enDate = date.toLocaleDateString('en-US',{weekday:'long', month:'long', day:'numeric'});
+  const koWeekdays = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+  const koDate = `${date.getMonth()+1}월 ${date.getDate()}일 ${koWeekdays[date.getDay()]}`;
+
+  return {
+    en:`Next meetup · ${enDate}`,
+    ko:`다음 모임 · ${koDate}`
+  };
+}
+const _BADGE = _heroBadge(CONFIG.NEXT_MEETUP_DATE);
 // ── i18n ──
 const T = {
   en: {
-    "badge": `Next meetup · ${_M.en.date}`,
+    "badge": _BADGE.en,
+    "heroLine1": "A new community",
+    "heroLine2": '<span class="connect-accent">connecting</span> people',
     "t1": "A new community",
     "t2": "connecting",
-    "t3": "people, KONNECT",
-    "t4": "",
+    "t3": "people,",
+    "t4": "KONNECT",
     "sub": "No awkward first moments, even with people you just met. Shared experiences, culture, and language bring the conversation to life.",
     "ctaMain": "See What’s Coming Next →",
     "ctaGhost": "Why it feels different",
@@ -1107,11 +1310,13 @@ const T = {
     "navJ": "Join Now"
 },
   ko: {
-    "badge": `다음 모임 · ${_M.ko.date}`,
+    "badge": _BADGE.ko,
+    "heroLine1": '사람과 사람을 <span class="connect-accent">잇는</span>',
+    "heroLine2": "새로운 커뮤니티",
     "t1": "사람과 사람을",
-    "t2": "잇는,",
-    "t3": "새로운 커뮤니티, KONNECT",
-    "t4": "",
+    "t2": "잇는",
+    "t3": "새로운 커뮤니티,",
+    "t4": "KONNECT",
     "sub": "처음 만나는 사람과도 어색함 없이, 함께 나누는 경험, 문화, 그리고 언어.",
     "ctaMain": "다음 KONNECT 확인하기 →",
     "ctaGhost": "어떻게 진행되나요?",
@@ -1173,10 +1378,10 @@ const T = {
     "pr4m": "한국 내 · 당일, 1~2박",
     "testiTag": "멤버 후기",
     "testiTitle": "진짜 연결이 생긴 순간들",
-    "tt1": "다른 랜덤 언어교환 모임도 두 군데 가봤는데, 세 곳 중에서 KONNECT가 단연 제일 좋았어요. 그때 만난 사람들에게도 추천했어요. 다시 한국에 가면 꼭 또 참여하고 싶어요.",
-    "tt2": "4월 11일 언어교환 모임에 참여했는데, 정말 좋은 경험이었어요! 아쉽게도 한국에 오래 머물지 않아서 다음 모임에는 못 가지만, 시간이 너무 짧게 느껴졌어요. 재미있으면 시간이 빨리 가잖아요 😊 게임도 좋았고, 어디서부터 대화를 시작해야 할지 모를 때 준비된 질문들이 정말 도움이 됐어요. 카페에서 이어진 모임도 이 이벤트를 특별하게 만들어줬어요. 다른 언어교환 모임에 가본 사람들도 애프터 모임 덕분에 여기가 제일 좋았다고 했어요. 더 이야기하고 서로를 알아갈 수 있어서 정말 즐거웠어요. 다음에 한국에 돌아오면 기회가 될 때 꼭 다시 참여하고 싶어요 :)",
-    "tt3": "정말 좋은 경험이었어요. 가능하다면 다음 모임에도 다시 참여하고 싶어요! 감사합니다!",
-    "tt4": "오늘이 제 인생 첫 언어교환이었는데, 기대했던 것보다 훨씬 좋았어요. 꼭 다시 올 거예요. 정말 멋진 경험이었고, 좋은 사람들도 많이 만났고, 애프터파티에서도 정말 즐거운 시간을 보냈어요. 게임도 재미있고 아이스브레이킹에 딱 좋았어요. 정말 좋았습니다!! 감사합니다 ~ 🥹🙏🏻🙏🏻",
+    "tt1": "랜덤한 언어교환 이벤트를 두 군데 더 가봤는데, 세 곳 중 KONNECT가 단연 최고였어요. 만난 사람들에게도 추천했습니다. 다시 한국에 가면 꼭 다시 참여하고 싶어요.",
+    "tt2": "4월 11일 마지막 언어교환에 갔어요. 피드백을 남기고 싶었습니다. 정말 좋은 경험이었어요! 아쉽게도 더 오래 머물지 않아서 다음 모임에는 참여할 수 없어요. 시간이 정말 짧게 느껴졌어요. 즐거우면 시간이 빨리 가니까 모두를 알아가기엔 시간이 부족했어요 😊 게임도 좋았고, 어디서 시작해야 할지 모를 때 준비된 질문들이 좋은 아이디어였어요. 카페 모임은 이 이벤트를 특별하게 만든 정말 좋은 아이디어였어요. 이미 다른 언어교환 모임에 가본 사람들도 애프터 모임 덕분에 이 모임이 최고였다고 했어요. 계속 이야기하고 다른 사람들을 더 알아갈 수 있었어요! 정말 재미있었고 많은 사람들이 함께해서 좋았어요. 다음에 다시 돌아오면 기회가 있을 때 또 참여할게요 :)",
+    "tt3": "정말 좋은 경험이었어요. 가능하다면 다른 모임에도 다시 참여하고 싶습니다! 감사합니다!",
+    "tt4": "오늘이 제 첫 언어교환이었는데 기대했던 것보다 훨씬 좋았다고 말하고 싶어요. 꼭 다시 올 거예요. 정말 멋진 경험이었고, 좋은 사람들을 만났고, 애프터파티에서도 정말 좋은 시간을 보냈어요. 게임도 정말 좋았고 아이스브레이킹에 좋았어요. 정말 좋았습니다!! 감사합니다 ~ 🥹🙏🏻🙏🏻",
     "evEye": "다음 모임",
     "evTitle": _M.ko.title,
     "evDate": _M.ko.evDate,
@@ -1292,14 +1497,6 @@ function getInitialLang(){
 
 setLang(getInitialLang());
 updateLanguageLinks();
-
-function prepareTestimonialLoop(){
-  const track = document.querySelector('.testi-track');
-  if(!track || track.dataset.loopReady === 'true') return;
-  track.innerHTML += track.innerHTML;
-  track.dataset.loopReady = 'true';
-}
-prepareTestimonialLoop();
 // ── INDEX EARLY BIRD FOMO BAR ──
 function updateIndexEarlyBirdBar(){
   const bar = document.getElementById('index-earlybird-bar');
