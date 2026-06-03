@@ -565,20 +565,20 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   position:relative;
   z-index:2;
   display:inline-block;
-  background:linear-gradient(135deg,#D8C9FF 0%,#FF72C8 82%);
+  background:linear-gradient(135deg,#CDBBFF 0%,#FF72C8 82%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
 }
 
-/* 뒤쪽 고리: 더 어둡고 은은하게 */
+/* 뒤쪽 고리: 어둡고 은은한 행성 고리 */
 .connect-accent::before{
   content:'';
   position:absolute;
   left:-.22em;
   right:-.22em;
   top:56%;
-  height:.78em;
+  height:.74em;
   border-radius:999px;
   transform:translateY(-50%) rotate(-4deg);
   z-index:1;
@@ -586,11 +586,11 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 
   background:linear-gradient(
     90deg,
-    rgba(120,92,210,.42) 0%,
-    rgba(155,125,235,.30) 22%,
-    rgba(188,168,245,.22) 50%,
-    rgba(155,125,235,.30) 78%,
-    rgba(120,92,210,.42) 100%
+    rgba(126,92,232,.30) 0%,
+    rgba(155,122,240,.24) 28%,
+    rgba(196,176,248,.18) 50%,
+    rgba(155,122,240,.24) 72%,
+    rgba(126,92,232,.30) 100%
   );
 
   padding:3px;
@@ -601,18 +601,17 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   mask-composite:exclude;
 
   clip-path:polygon(0 0,100% 0,100% 55%,0 55%);
-  filter:blur(.2px);
-  opacity:.95;
+  filter:blur(.15px);
 }
 
-/* 앞쪽 고리: 더 밝고 선명하게 */
+/* 앞쪽 고리: 밝고 부드러운 라벤더 고리 */
 .connect-accent::after{
   content:'';
   position:absolute;
   left:-.22em;
   right:-.22em;
   top:56%;
-  height:.78em;
+  height:.74em;
   border-radius:999px;
   transform:translateY(-50%) rotate(-4deg);
   z-index:3;
@@ -620,11 +619,11 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 
   background:linear-gradient(
     90deg,
-    rgba(214,198,255,.92) 0%,
-    rgba(241,232,255,.98) 18%,
-    rgba(255,255,255,1) 50%,
-    rgba(241,232,255,.98) 82%,
-    rgba(214,198,255,.92) 100%
+    rgba(196,176,248,.82) 0%,
+    rgba(232,222,255,.94) 35%,
+    rgba(255,255,255,.96) 50%,
+    rgba(232,222,255,.94) 65%,
+    rgba(196,176,248,.82) 100%
   );
 
   padding:3px;
@@ -635,8 +634,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   mask-composite:exclude;
 
   clip-path:polygon(0 50%,100% 50%,100% 100%,0 100%);
-  filter:drop-shadow(0 0 6px rgba(220,205,255,.22));
-  opacity:.98;
+  filter:drop-shadow(0 0 7px rgba(155,122,240,.22));
 }
 
 .konnect-accent{
@@ -728,20 +726,20 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 }
 
 .connect-accent::before{
-  left:-.16em;
-  right:-.16em;
+  left:-.18em;
+  right:-.18em;
   top:56%;
-  height:.60em;
+  height:.62em;
   transform:translateY(-50%) rotate(-3deg);
   padding:2.5px;
 
   background:linear-gradient(
     90deg,
-    rgba(120,92,210,.42) 0%,
-    rgba(155,125,235,.30) 22%,
-    rgba(188,168,245,.22) 50%,
-    rgba(155,125,235,.30) 78%,
-    rgba(120,92,210,.42) 100%
+    rgba(126,92,232,.30) 0%,
+    rgba(155,122,240,.24) 28%,
+    rgba(196,176,248,.18) 50%,
+    rgba(155,122,240,.24) 72%,
+    rgba(126,92,232,.30) 100%
   );
 
   -webkit-mask:
@@ -751,24 +749,24 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   mask-composite:exclude;
 
   clip-path:polygon(0 0,100% 0,100% 55%,0 55%);
-  filter:blur(.2px);
+  filter:blur(.15px);
 }
 
 .connect-accent::after{
-  left:-.16em;
-  right:-.16em;
+  left:-.18em;
+  right:-.18em;
   top:56%;
-  height:.60em;
+  height:.62em;
   transform:translateY(-50%) rotate(-3deg);
   padding:2.5px;
 
   background:linear-gradient(
     90deg,
-    rgba(214,198,255,.92) 0%,
-    rgba(241,232,255,.98) 18%,
-    rgba(255,255,255,1) 50%,
-    rgba(241,232,255,.98) 82%,
-    rgba(214,198,255,.92) 100%
+    rgba(196,176,248,.82) 0%,
+    rgba(232,222,255,.94) 35%,
+    rgba(255,255,255,.96) 50%,
+    rgba(232,222,255,.94) 65%,
+    rgba(196,176,248,.82) 100%
   );
 
   -webkit-mask:
@@ -778,7 +776,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   mask-composite:exclude;
 
   clip-path:polygon(0 50%,100% 50%,100% 100%,0 100%);
-  filter:drop-shadow(0 0 4px rgba(220,205,255,.18));
+  filter:drop-shadow(0 0 5px rgba(155,122,240,.20));
 }
 }
 
