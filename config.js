@@ -294,7 +294,7 @@ const CONFIG = {
   EARLY_BIRD: {
     escape: {
       enabled: true,
-      end: '2026-06-06T00:00:00+09:00'
+      end: '2026-06-14T00:00:00+09:00'
     }
   },
 
