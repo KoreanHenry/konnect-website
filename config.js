@@ -188,36 +188,36 @@ const CONFIG = {
       }
     },
 
-    escape: {
-      regular: {
-        kr: {
-          kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_69000',
-          labelKo: '결제하기 (₩69,000) →',
-          labelEn: 'Pay ₩69,000 →'
-        },
-        intl: {
-          stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_51',
-          paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_51',
-          kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_69000',
-          labelKo: 'Pay $51 →',
-          labelEn: 'Pay $51 →'
-        }
-      },
-      earlybird: {
-        kr: {
-          kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_59000',
-          labelKo: '얼리버드 결제하기 (₩59,000) →',
-          labelEn: 'Pay Early Bird Price (₩59,000) →'
-        },
-        intl: {
-          stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_43',
-          paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_43',
-          kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_59000',
-          labelKo: 'Pay Early Bird Price ($43) →',
-          labelEn: 'Pay Early Bird Price ($43) →'
-        }
-      }
+escape: {
+  regular: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY86c404077',
+      labelKo: '결제하기 (₩69,000) →',
+      labelEn: 'Pay ₩69,000 →'
     },
+    intl: {
+      stripe: 'https://buy.stripe.com/4gM7sLgiI9b6adZ38Ufw40h',
+      paypal: 'https://www.paypal.com/ncp/payment/UASVVC8GQTLLW',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY86c404077',
+      labelKo: 'Pay $51 →',
+      labelEn: 'Pay $51 →'
+    }
+  },
+  earlybird: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: '얼리버드 결제하기 (₩59,000) →',
+      labelEn: 'Pay Early Bird Price (₩59,000) →'
+    },
+    intl: {
+      stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
+      paypal: 'https://www.paypal.com/ncp/payment/L5B8RS8X9LA3E',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: 'Pay Early Bird Price ($43) →',
+      labelEn: 'Pay Early Bird Price ($43) →'
+    }
+  }
+},
 
     coupons: {
       regular: {
@@ -254,40 +254,40 @@ const CONFIG = {
           messageEn: 'Regular meetup returning member discount applied.'
         }
       },
-      escape: {
-        FRIEND: {
-          kr: {
-            kakao: 'DEMO_ESCAPE_FRIEND_KAKAO_59000',
-            labelKo: '친구 할인 결제하기 (₩59,000) →',
-            labelEn: 'Pay Friend Price (₩59,000) →'
-          },
-          intl: {
-            stripe: 'DEMO_ESCAPE_FRIEND_STRIPE_43',
-            paypal: 'DEMO_ESCAPE_FRIEND_PAYPAL_43',
-            kakao: 'DEMO_ESCAPE_FRIEND_KAKAO_59000',
-            labelKo: 'Pay Friend Price ($43) →',
-            labelEn: 'Pay Friend Price ($43) →'
-          },
-          messageKo: '방탈출 친구 초대 쿠폰이 적용되었습니다.',
-          messageEn: 'Escape Night friend coupon applied.'
-        },
-        RETURN: {
-          kr: {
-            kakao: 'DEMO_ESCAPE_RETURN_KAKAO_64000',
-            labelKo: '기존 참가자 할인 결제하기 (₩64,000) →',
-            labelEn: 'Pay Returning Member Price (₩64,000) →'
-          },
-          intl: {
-            stripe: 'DEMO_ESCAPE_RETURN_STRIPE_47',
-            paypal: 'DEMO_ESCAPE_RETURN_PAYPAL_47',
-            kakao: 'DEMO_ESCAPE_RETURN_KAKAO_64000',
-            labelKo: 'Pay Returning Member Price ($47) →',
-            labelEn: 'Pay Returning Member Price ($47) →'
-          },
-          messageKo: '기존 참가자 할인이 적용되었습니다.',
-          messageEn: 'Returning member discount applied.'
-        }
-      }
+escape: {
+  FRIEND: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: '친구 할인 결제하기 (₩59,000) →',
+      labelEn: 'Pay Friend Price (₩59,000) →'
+    },
+    intl: {
+      stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
+      paypal: 'https://www.paypal.com/ncp/payment/L5B8RS8X9LA3E',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: 'Pay Friend Price ($43) →',
+      labelEn: 'Pay Friend Price ($43) →'
+    },
+    messageKo: '방탈출 친구 할인 쿠폰이 적용되었습니다.',
+    messageEn: 'Escape Night friend discount applied.'
+  },
+  RETURN: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
+      labelKo: '기존 참가자 할인 결제하기 (₩64,000) →',
+      labelEn: 'Pay Returning Member Price (₩64,000) →'
+    },
+    intl: {
+      stripe: 'https://buy.stripe.com/4gM28r6I82MI71N7pafw40g',
+      paypal: 'https://www.paypal.com/ncp/payment/C72CKAA7JRTPN',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
+      labelKo: 'Pay Returning Member Price ($47) →',
+      labelEn: 'Pay Returning Member Price ($47) →'
+    },
+    messageKo: '방탈출 기존 참가자 할인이 적용되었습니다.',
+    messageEn: 'Escape Night returning participant discount applied.'
+  }
+}
     }
   },
 
