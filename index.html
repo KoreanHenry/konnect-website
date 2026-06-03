@@ -556,39 +556,47 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   display:inline-block;
   isolation:isolate;
   z-index:1;
+  padding:0 .10em;
+  background:none;
+  -webkit-text-fill-color:initial;
+}
+
+.connect-text{
+  position:relative;
+  z-index:2;
+  display:inline-block;
   color:#FF5FBE;
   background:linear-gradient(135deg,#CDBBFF 0%,#FF72C8 82%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  padding:0 .08em;
 }
 
-/* 뒤쪽 고리: 윗부분만, 글씨 뒤 */
+/* 뒤쪽 고리: 글씨 뒤 */
 .connect-accent::before{
   content:'';
   position:absolute;
-  left:-.17em;
-  right:-.17em;
+  left:-.18em;
+  right:-.18em;
   top:53%;
-  height:.58em;
-  border:3px solid rgba(203,189,255,.34);
+  height:.60em;
+  border:3px solid rgba(203,189,255,.72);
   border-radius:999px;
   transform:translateY(-50%) rotate(-4deg);
-  z-index:-1;
+  z-index:1;
   pointer-events:none;
   clip-path:polygon(0 0,100% 0,100% 54%,0 54%);
-  box-shadow:0 0 8px rgba(203,189,255,.10);
+  box-shadow:0 0 6px rgba(203,189,255,.12);
 }
 
-/* 앞쪽 고리: 아랫부분만, 글씨 앞 */
+/* 앞쪽 고리: 글씨 앞 */
 .connect-accent::after{
   content:'';
   position:absolute;
-  left:-.17em;
-  right:-.17em;
+  left:-.18em;
+  right:-.18em;
   top:53%;
-  height:.58em;
+  height:.60em;
   border:3px solid rgba(203,189,255,.72);
   border-radius:999px;
   transform:translateY(-50%) rotate(-4deg);
@@ -676,41 +684,40 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   .hero-title{font-size:clamp(40px,10.6vw,50px);line-height:.95;letter-spacing:-.06em;margin-bottom:22px;text-align:center;}
   .hero-line{white-space:nowrap;text-align:center;}
   .hero-line.konnect-accent{width:100%;text-align:center;}
-  .connect-accent{
-  padding:0 .06em;
+
+.connect-accent{
+  padding:0 .07em;
+}
+
+.connect-text{
+  position:relative;
+  z-index:2;
 }
 
 .connect-accent::before{
-  left:-.12em;
-  right:-.12em;
+  left:-.14em;
+  right:-.14em;
   top:53%;
-  height:.48em;
+  height:.52em;
   border-width:2.5px;
-  border-color:rgba(203,189,255,.34);
+  border-color:rgba(203,189,255,.72);
   border-radius:999px;
   transform:translateY(-50%) rotate(-3deg);
   clip-path:polygon(0 0,100% 0,100% 54%,0 54%);
-  box-shadow:0 0 6px rgba(203,189,255,.08);
+  box-shadow:0 0 4px rgba(203,189,255,.10);
 }
 
 .connect-accent::after{
-  left:-.12em;
-  right:-.12em;
+  left:-.14em;
+  right:-.14em;
   top:53%;
-  height:.48em;
+  height:.52em;
   border-width:2.5px;
   border-color:rgba(203,189,255,.72);
   border-radius:999px;
   transform:translateY(-50%) rotate(-3deg);
   clip-path:polygon(0 52%,100% 52%,100% 100%,0 100%);
   filter:drop-shadow(0 0 3px rgba(203,189,255,.10));
-}  
-  .hero-sub{font-size:16px;line-height:1.62;max-width:340px;margin-bottom:28px;}
-  .hero-actions{gap:12px;}
-  .btn-primary{padding:15px 22px;font-size:15px;}
-  .btn-ghost{font-size:15px;}
-  .testi-track{animation-duration:150s!important;}
-  .kakao-float{width:52px;height:52px;right:18px;bottom:86px;}
 }
 
 </style>
@@ -790,7 +797,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
       </div>
       <h1 class="hero-title">
         <span class="hero-line" data-i18n-html="heroLine1">A new community</span>
-        <span class="hero-line" data-i18n-html="heroLine2"><span class="connect-accent">connecting</span> people</span>
+        <span class="hero-line" data-i18n-html="heroLine2"><span class="connect-accent"><span class="connect-text">connecting</span></span> people</span>
         <span class="hero-line konnect-accent">KONNECT</span>
       </h1>
       <p class="hero-sub" data-i18n="sub">Not another awkward meetup. Real conversations, real friendships, and Korean that actually sticks.</p>
@@ -1452,8 +1459,8 @@ function setLang(lang){
   document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
   document.documentElement.lang = lang;
   const heroLines = lang === 'ko'
-    ? ['사람과 사람을 <span class="connect-accent">잇는</span>', '새로운 커뮤니티', '<span class="konnect-accent">KONNECT</span>']
-    : ['A new community', '<span class="connect-accent">connecting</span> people', '<span class="konnect-accent">KONNECT</span>'];
+    ? ['사람과 사람을 <span class="connect-accent"><span class="connect-text">잇는</span></span>', '새로운 커뮤니티', '<span class="konnect-accent">KONNECT</span>']
+    : ['A new community', '<span class="connect-accent"><span class="connect-text">connecting</span></span> people', '<span class="konnect-accent">KONNECT</span>'];
   const heroLineEls = document.querySelectorAll('.hero-title .hero-line');
   heroLineEls.forEach((el, i) => { if(heroLines[i]) el.innerHTML = heroLines[i]; });
   const badgeEl = document.querySelector('.hero-text .badge [data-i18n="badge"]');
