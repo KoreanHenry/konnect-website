@@ -233,8 +233,24 @@ const CONFIG = {
             labelKo: 'Pay Discounted Price ($12) →',
             labelEn: 'Pay Discounted Price ($12) →'
           },
-          messageKo: '정기모임 친구 초대 쿠폰이 적용되었습니다.',
-          messageEn: 'Regular meetup friend coupon applied.'
+          messageKo: '정기모임 친구 초대 할인이 적용되었습니다.',
+          messageEn: 'Regular meetup friend discount applied.'
+        },
+        RETURN: {
+          kr: {
+            kakao: 'DEMO_REGULAR_RETURN_KAKAO_15000',
+            labelKo: '기존 참가자 할인 결제하기 (₩15,000) →',
+            labelEn: 'Pay Returning Member Discount (₩15,000) →'
+          },
+          intl: {
+            stripe: 'DEMO_REGULAR_RETURN_STRIPE_12',
+            paypal: 'DEMO_REGULAR_RETURN_PAYPAL_12',
+            kakao: 'DEMO_REGULAR_RETURN_KAKAO_15000',
+            labelKo: 'Pay Returning Member Discount ($12) →',
+            labelEn: 'Pay Returning Member Discount ($12) →'
+          },
+          messageKo: '정기모임 기존 참가자 할인이 적용되었습니다.',
+          messageEn: 'Regular meetup returning member discount applied.'
         }
       },
       escape: {

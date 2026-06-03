@@ -165,6 +165,10 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     </button>
   </div>
   <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+  <p id="coupon-help-kr" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
+    사용 가능한 할인: 친구 초대 할인 / 기존 참가자 할인<br>
+    할인 혜택은 중복 적용되지 않으며, 조건 확인 후 참가가 확정됩니다.
+  </p>
 </div>
     <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-kr-title">결제 수단 선택</h3>
     <div class="payment-grid">
@@ -186,7 +190,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   <p style="font-size:14px;color:rgba(255,255,255,0.6);">예금주: 안형욱(코지 Kozy)</p>
   <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">이체 후 카카오톡으로 캡처 보내주세요 👉 <a href="http://pf.kakao.com/_nWxjUn" style="color:#9B7AF0;">카카오 채널</a></p>
 </div>
-    <p class="note" id="pay-kr-note">결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
+    <p class="note" id="pay-kr-note">결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
   </div>
 
   <!-- International tab -->
@@ -213,6 +217,10 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     </button>
   </div>
   <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
+  <p id="coupon-help-intl" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
+    Available discounts: Friend discount / Returning member discount<br>
+    Discounts cannot be combined. Your spot is confirmed after we verify your discount information.
+  </p>
 </div>
     <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-intl-title">Choose payment</h3>
     <div class="payment-grid">
@@ -258,7 +266,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     After transferring, please send us a screenshot via KakaoTalk or Instagram DM.
   </p>
 </div>
-    <p class="note">After payment, you'll receive a confirmation via email or Instagram DM.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
+    <p class="note" id="pay-intl-note">After payment, you'll receive a confirmation via email or Instagram DM.<br>If you use a discount, your spot will be confirmed after we verify your discount information.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
   </div>
 </div>
 <script src="config.js"></script>
@@ -343,7 +351,8 @@ const T = {
     payKrNote: "After payment, we'll send you a confirmation via KakaoTalk.<br>Questions: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>",
     formIntlTitle: "Registration Form",
     formIntlSub: "Please fill out the form before completing payment.",
-    payIntlTitle: "Choose payment"
+    payIntlTitle: "Choose payment",
+    payIntlNote: "After payment, you\'ll receive a confirmation via email or Instagram DM.<br>If you use a discount, your spot will be confirmed after we verify your discount information.<br>Questions: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>"
   },
   ko: {
     pageTag: "Konnect 신청",
@@ -360,10 +369,11 @@ const T = {
     formKrSub: "결제 전 아래 폼을 먼저 작성해주세요.",
     payKrTitle: "결제 수단 선택",
     kpDesc: "카카오페이로 간편 결제",
-    payKrNote: '결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
+    payKrNote: '결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
     formIntlTitle: "Registration Form",
     formIntlSub: "Please fill out the form before completing payment.",
-    payIntlTitle: "결제 수단 선택"
+    payIntlTitle: "결제 수단 선택",
+    payIntlNote: "결제 완료 후 이메일 또는 인스타그램 DM으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>"
   }
 };
 
@@ -412,6 +422,7 @@ function setLang(lang) {
   setText('form-intl-title', t.formIntlTitle);
   setText('form-intl-sub', t.formIntlSub);
   setText('pay-intl-title', t.payIntlTitle);
+  setHtml('pay-intl-note', t.payIntlNote);
 
   document.getElementById('btn-en')?.classList.toggle('active', lang === 'en');
   document.getElementById('btn-ko')?.classList.toggle('active', lang === 'ko');
@@ -545,7 +556,11 @@ function getLabel(obj, lang, code) {
   }
 
   if (code === 'FRIEND') {
-    return lang === 'ko' ? '쿠폰가로 결제하기 (₩15,000) →' : 'Pay Discounted Price ($12) →';
+    return lang === 'ko' ? '친구 초대 할인 결제하기 (₩15,000) →' : 'Pay Friend Discount ($12) →';
+  }
+
+  if (code === 'RETURN') {
+    return lang === 'ko' ? '기존 참가자 할인 결제하기 (₩15,000) →' : 'Pay Returning Member Discount ($12) →';
   }
 
   return lang === 'ko' ? '결제하기 (₩20,000) →' : 'Pay ₩20,000 →';
