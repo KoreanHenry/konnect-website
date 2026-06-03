@@ -47,10 +47,10 @@ const CONFIG = {
     earlyBirdPriceKr: '₩59,000',
     returningPriceKr: '₩64,000',
     friendPriceKr: '₩59,000',
-    regularPriceIntl: '$49',
-    earlyBirdPriceIntl: '$42',
-    returningPriceIntl: '$45',
-    friendPriceIntl: '$42',
+    regularPriceIntl: '$51',
+    earlyBirdPriceIntl: '$43',
+    returningPriceIntl: '$47',
+    friendPriceIntl: '$43',
 
     ko: {
       badge: '신청 오픈',
@@ -68,7 +68,7 @@ const CONFIG = {
       pageTitle: '방탈출 신청하기',
       pageSub: '신청 폼을 작성하고 결제를 완료하면 자리가 확정됩니다.',
       ctaKr: '결제하기 (₩69,000) →',
-      ctaIntl: 'Pay $49 →',
+      ctaIntl: 'Pay $51 →',
       heroTitle: 'KONNECT 방탈출 나이트',
       heroSub: '단순한 언어교환이 아닙니다. 한국인과 외국인이 팀을 이루어 미션을 해결하고, 자연스럽게 친해지는 하루를 만들어보세요.',
       oneLine: '카페에서 친해지고, 방탈출에서 협력하고, 저녁 식사로 연결되는 글로벌 소셜 이벤트.',
@@ -119,15 +119,15 @@ const CONFIG = {
       date: 'June 20 (Sat)',
       time: '2:30 PM – 8:00 PM',
       location: 'Hongdae',
-      price: '₩69,000 / $49',
-      earlyBirdPrice: '₩59,000 / $42',
+      price: '₩69,000 / $51',
+      earlyBirdPrice: '₩59,000 / $43',
       cta: 'Apply Now →',
       detailCta: 'Learn More →',
       pageTag: 'KONNECT Special Event',
       pageTitle: 'Sign up — Escape Night',
       pageSub: 'Fill out the form and complete payment to secure your spot.',
       ctaKr: 'Pay ₩69,000 →',
-      ctaIntl: 'Pay $49 →',
+      ctaIntl: 'Pay $51 →',
       heroTitle: 'KONNECT Escape Night',
       heroSub: 'Not just a language exchange. Team up with Koreans and internationals, solve missions together, and make real connections in Seoul.',
       oneLine: 'Meet at a cafe, team up in an escape room, and connect over Korean dinner.',
@@ -144,10 +144,10 @@ const CONFIG = {
       excluded: ['Optional afterparty after 8 PM', 'Extra personal orders'],
       priceTitle: 'Price',
       prices: [
-        { name: 'Regular', price: '₩69,000 / $49' },
-        { name: 'Early Bird', price: '₩59,000 / $42' },
-        { name: 'Returning KONNECT Participant', price: '₩64,000 / $45' },
-        { name: 'Bring a Friend', price: '₩59,000 / $42 per person' }
+        { name: 'Regular', price: '₩69,000 / $51' },
+        { name: 'Early Bird', price: '₩59,000 / $43' },
+        { name: 'Returning KONNECT Participant', price: '₩64,000 / $47' },
+        { name: 'Bring a Friend', price: '₩59,000 / $43 per person' }
       ],
       discountNote: 'Discounts cannot be combined.',
       whoTitle: 'Who is this for?',
@@ -196,11 +196,11 @@ const CONFIG = {
           labelEn: 'Pay ₩69,000 →'
         },
         intl: {
-          stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_49',
-          paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_49',
+          stripe: 'DEMO_ESCAPE_STRIPE_REGULAR_51',
+          paypal: 'DEMO_ESCAPE_PAYPAL_REGULAR_51',
           kakao: 'DEMO_ESCAPE_KAKAO_REGULAR_69000',
-          labelKo: 'Pay $49 →',
-          labelEn: 'Pay $49 →'
+          labelKo: 'Pay $51 →',
+          labelEn: 'Pay $51 →'
         }
       },
       earlybird: {
@@ -210,11 +210,11 @@ const CONFIG = {
           labelEn: 'Pay Early Bird Price (₩59,000) →'
         },
         intl: {
-          stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_42',
-          paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_42',
+          stripe: 'DEMO_ESCAPE_STRIPE_EARLYBIRD_43',
+          paypal: 'DEMO_ESCAPE_PAYPAL_EARLYBIRD_43',
           kakao: 'DEMO_ESCAPE_KAKAO_EARLYBIRD_59000',
-          labelKo: 'Pay Early Bird Price ($42) →',
-          labelEn: 'Pay Early Bird Price ($42) →'
+          labelKo: 'Pay Early Bird Price ($43) →',
+          labelEn: 'Pay Early Bird Price ($43) →'
         }
       }
     },
@@ -262,11 +262,11 @@ const CONFIG = {
             labelEn: 'Pay Friend Price (₩59,000) →'
           },
           intl: {
-            stripe: 'DEMO_ESCAPE_FRIEND_STRIPE_42',
-            paypal: 'DEMO_ESCAPE_FRIEND_PAYPAL_42',
+            stripe: 'DEMO_ESCAPE_FRIEND_STRIPE_43',
+            paypal: 'DEMO_ESCAPE_FRIEND_PAYPAL_43',
             kakao: 'DEMO_ESCAPE_FRIEND_KAKAO_59000',
-            labelKo: 'Pay Friend Price ($42) →',
-            labelEn: 'Pay Friend Price ($42) →'
+            labelKo: 'Pay Friend Price ($43) →',
+            labelEn: 'Pay Friend Price ($43) →'
           },
           messageKo: '방탈출 친구 초대 쿠폰이 적용되었습니다.',
           messageEn: 'Escape Night friend coupon applied.'
@@ -278,11 +278,11 @@ const CONFIG = {
             labelEn: 'Pay Returning Member Price (₩64,000) →'
           },
           intl: {
-            stripe: 'DEMO_ESCAPE_RETURN_STRIPE_45',
-            paypal: 'DEMO_ESCAPE_RETURN_PAYPAL_45',
+            stripe: 'DEMO_ESCAPE_RETURN_STRIPE_47',
+            paypal: 'DEMO_ESCAPE_RETURN_PAYPAL_47',
             kakao: 'DEMO_ESCAPE_RETURN_KAKAO_64000',
-            labelKo: 'Pay Returning Member Price ($45) →',
-            labelEn: 'Pay Returning Member Price ($45) →'
+            labelKo: 'Pay Returning Member Price ($47) →',
+            labelEn: 'Pay Returning Member Price ($47) →'
           },
           messageKo: '기존 참가자 할인이 적용되었습니다.',
           messageEn: 'Returning member discount applied.'
