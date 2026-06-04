@@ -10,7 +10,7 @@
 const CONFIG = {
 
   // ── 정기 언어교환 ───────────────────────────
-  NEXT_MEETUP_DATE: '2026-06-13T13:30:00+09:00',
+  NEXT_MEETUP_DATE: '2026-06-13T13:20:00+09:00',
   NEXT_MEETUP_END_DATE: '2026-06-13T15:00:00+09:00',
   SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김
   LOCATION_KO: '시청역 근처',
