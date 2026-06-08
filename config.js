@@ -12,7 +12,7 @@ const CONFIG = {
   // ── 정기 언어교환 ───────────────────────────
   NEXT_MEETUP_DATE: '2026-06-13T13:20:00+09:00',
   NEXT_MEETUP_END_DATE: '2026-06-13T15:00:00+09:00',
-  SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김
+  SPOTS_LEFT: '5', // 숫자 문자열 또는 '' = 숨김
   LOCATION_KO: '시청역 근처',
   LOCATION_EN: 'City Hall Station',
   PRICE_KR: '₩20,000',
