@@ -182,7 +182,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   </div>
   <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
   <p id="coupon-help-kr" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
-    사용 가능한 할인: 친구 초대 할인 / 기존 참가자 할인<br>
+    사용 가능한 할인: 친구 초대 할인 / 기존 참가자 할인 / 한국인 특별 할인 (코드: KOREAN)<br>
     할인 혜택은 중복 적용되지 않으며, 조건 확인 후 참가가 확정됩니다.
   </p>
 </div>
@@ -234,7 +234,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   </div>
   <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
   <p id="coupon-help-intl" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
-    Available discounts: Friend discount / Returning member discount<br>
+    Available discounts: Friend discount / Returning member discount / Korean special discount (code: KOREAN)<br>
     Discounts cannot be combined. Your spot is confirmed after we verify your discount information.
   </p>
 </div>
@@ -755,13 +755,13 @@ function updateEarlyBirdBar() {
   const lang = getPreferredLang();
 
   if (lang === 'ko') {
-    if (title) title.textContent = '⚡ 방탈출 나이트 얼리버드 할인';
-    if (prefix) prefix.textContent = '마감까지';
-    if (sub) sub.textContent = '타이머가 끝나기 전까지 할인 결제 링크가 자동 적용됩니다.';
+    if (title) title.textContent = '⚡ 방탈출 나이트 시작';
+    if (prefix) prefix.textContent = '시작까지';
+    if (sub) sub.textContent = '2차 얼리버드 할인 결제 링크가 자동 적용됩니다. 한국인이라면 쿠폰 코드 "KOREAN"으로 특별 할인가가 적용됩니다.';
   } else {
-    if (title) title.textContent = '⚡ Early Bird Discount for Escape Room Night';
-    if (prefix) prefix.textContent = 'Ends in';
-    if (sub) sub.textContent = 'Discount links are applied automatically before the timer ends.';
+    if (title) title.textContent = '⚡ Escape Room Night Starts';
+    if (prefix) prefix.textContent = 'Starts in';
+    if (sub) sub.textContent = '2nd Early Bird discount links are applied automatically. Korean participants can use coupon code "KOREAN" for a special discount price.';
   }
 
   bar.style.display = 'block';

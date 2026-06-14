@@ -1680,11 +1680,11 @@ function updateIndexEarlyBirdBar(){
   cd.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 
   if (lang === 'ko') {
-    msg.textContent = '방탈출 나이트 얼리버드 할인 마감 임박';
-    cta.textContent = '할인 신청하기 →';
+    msg.textContent = '방탈출 나이트 시작까지 (한국인 특별 할인 진행중 🇰🇷)';
+    cta.textContent = '신청하기 →';
   } else {
-    msg.textContent = 'Escape Room Night early bird discount ends soon';
-    cta.textContent = 'Claim discount →';
+    msg.textContent = 'Escape Room Night starts in (Korean Special Discount available 🇰🇷)';
+    cta.textContent = 'Sign up →';
   }
 
   cta.href = withLang(CONFIG.ESCAPE?.detailLink || 'escape.html');

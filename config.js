@@ -44,11 +44,11 @@ const CONFIG = {
     spotsLeft: '',                      // 숫자 문자열 또는 '' = 숨김
 
     regularPriceKr: '₩69,000',
-    earlyBirdPriceKr: '₩59,000',
+    earlyBirdPriceKr: '₩64,000',
     returningPriceKr: '₩64,000',
     friendPriceKr: '₩59,000',
     regularPriceIntl: '$51',
-    earlyBirdPriceIntl: '$43',
+    earlyBirdPriceIntl: '$47',
     returningPriceIntl: '$47',
     friendPriceIntl: '$43',
 
@@ -61,7 +61,7 @@ const CONFIG = {
       time: '오후 2:30 – 8:00',
       location: '홍대',
       price: '₩69,000',
-      earlyBirdPrice: '₩59,000',
+      earlyBirdPrice: '₩64,000',
       cta: '신청하기 →',
       detailCta: '자세히 보기 →',
       pageTag: 'KONNECT Special Event',
@@ -86,11 +86,11 @@ const CONFIG = {
       priceTitle: '참가비',
       prices: [
         { name: '일반 참가', price: '₩69,000' },
-        { name: '얼리버드', price: '₩59,000' },
-        { name: '기존 KONNECT 참가자', price: '₩64,000' },
+        { name: '2차 얼리버드', price: '₩64,000' },
+        { name: '한국인 특별 할인 🇰🇷', price: '₩59,000' },
         { name: '친구와 함께 신청', price: '1인 ₩59,000' }
       ],
-      discountNote: '할인 혜택은 중복 적용되지 않습니다.',
+      discountNote: '한국인 참가자는 신청 페이지에서 쿠폰 코드 "KOREAN"을 입력하면 특별 할인가(₩59,000)가 적용됩니다. 할인 혜택은 중복 적용되지 않습니다.',
       whoTitle: '이런 분께 추천해요',
       who: [
         '서울에서 외국인 친구를 만들고 싶은 사람',
@@ -120,7 +120,7 @@ const CONFIG = {
       time: '2:30 PM – 8:00 PM',
       location: 'Hongdae',
       price: '₩69,000 / $51',
-      earlyBirdPrice: '₩59,000 / $43',
+      earlyBirdPrice: '₩64,000 / $47',
       cta: 'Apply Now →',
       detailCta: 'Learn More →',
       pageTag: 'KONNECT Special Event',
@@ -145,11 +145,11 @@ const CONFIG = {
       priceTitle: 'Price',
       prices: [
         { name: 'Regular', price: '₩69,000 / $51' },
-        { name: 'Early Bird', price: '₩59,000 / $43' },
-        { name: 'Returning KONNECT Participant', price: '₩64,000 / $47' },
+        { name: '2nd Early Bird', price: '₩64,000 / $47' },
+        { name: 'Korean Special Discount 🇰🇷', price: '₩59,000 / $43' },
         { name: 'Bring a Friend', price: '₩59,000 / $43 per person' }
       ],
-      discountNote: 'Discounts cannot be combined.',
+      discountNote: 'Korean participants can enter coupon code "KOREAN" on the sign-up page for the special discount price (₩59,000 / $43). Discounts cannot be combined.',
       whoTitle: 'Who is this for?',
       who: [
         'People who want to make international friends in Seoul',
@@ -205,16 +205,16 @@ escape: {
   },
   earlybird: {
     kr: {
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
-      labelKo: '얼리버드 결제하기 (₩59,000) →',
-      labelEn: 'Pay Early Bird Price (₩59,000) →'
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
+      labelKo: '2차 얼리버드 결제하기 (₩64,000) →',
+      labelEn: 'Pay 2nd Early Bird Price (₩64,000) →'
     },
     intl: {
-      stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
-      paypal: 'https://www.paypal.com/ncp/payment/L5B8RS8X9LA3E',
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
-      labelKo: 'Pay Early Bird Price ($43) →',
-      labelEn: 'Pay Early Bird Price ($43) →'
+      stripe: 'https://buy.stripe.com/4gM28r6I82MI71N7pafw40g',
+      paypal: 'https://www.paypal.com/ncp/payment/C72CKAA7JRTPN',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
+      labelKo: 'Pay 2nd Early Bird Price ($47) →',
+      labelEn: 'Pay 2nd Early Bird Price ($47) →'
     }
   }
 },
@@ -286,6 +286,22 @@ escape: {
     },
     messageKo: '방탈출 기존 참가자 할인이 적용되었습니다.',
     messageEn: 'Escape Night returning participant discount applied.'
+  },
+  KOREAN: {
+    kr: {
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: '한국인 특별 할인 결제하기 (₩59,000) →',
+      labelEn: 'Pay Korean Special Discount (₩59,000) →'
+    },
+    intl: {
+      stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
+      paypal: 'https://www.paypal.com/ncp/payment/L5B8RS8X9LA3E',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
+      labelKo: 'Pay Korean Special Discount ($43) →',
+      labelEn: 'Pay Korean Special Discount ($43) →'
+    },
+    messageKo: '한국인 특별 할인이 적용되었습니다.',
+    messageEn: 'Korean special discount applied.'
   }
 }
     }
@@ -295,7 +311,7 @@ escape: {
   EARLY_BIRD: {
     escape: {
       enabled: true,
-      end: '2026-06-14T00:00:00+09:00'
+      end: '2026-06-20T14:30:00+09:00'
     }
   },
 

@@ -248,7 +248,7 @@ function renderEscapePage(){
   setText('info-spots', CONFIG.ESCAPE.spotsLeft ? (isKo ? `${CONFIG.ESCAPE.spotsLeft}자리 남음` : `${CONFIG.ESCAPE.spotsLeft} spots left`) : (isKo ? '최대 12명' : 'up to 12'));
   setText('regular-label', isKo ? '일반 참가' : 'Regular');
   setText('regular-price', isKo ? CONFIG.ESCAPE.regularPriceKr : `${CONFIG.ESCAPE.regularPriceKr} / ${CONFIG.ESCAPE.regularPriceIntl}`);
-  setText('early-label', isKo ? '얼리버드' : 'Early Bird');
+  setText('early-label', isKo ? '2차 얼리버드' : '2nd Early Bird');
   setText('early-price', isKo ? CONFIG.ESCAPE.earlyBirdPriceKr : `${CONFIG.ESCAPE.earlyBirdPriceKr} / ${CONFIG.ESCAPE.earlyBirdPriceIntl}`);
   setText('included-short', isKo ? '포함' : 'Includes');
   setText('included-short-value', isKo ? '카페 + 방탈출 + 저녁' : 'Cafe + Escape + Dinner');
@@ -310,7 +310,7 @@ function updateEarlyBirdMini(){
   const h=Math.floor((diff/(1000*60*60))%24);
   const m=Math.floor((diff/(1000*60))%60);
   const s=Math.floor((diff/1000)%60);
-  setText('eb-mini-title', lang==='ko' ? '얼리버드 마감까지' : 'Early Bird ends in');
+  setText('eb-mini-title', lang==='ko' ? '방탈출 나이트 시작까지' : 'Escape Night starts in');
   setText('eb-mini-time', `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`);
 }
 document.addEventListener('DOMContentLoaded',()=>{
