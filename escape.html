@@ -62,6 +62,8 @@ h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,6vw,84px);l
 .price-name{color:rgba(255,255,255,.62);font-size:14px;}
 .price-value{font-weight:800;color:#fff;}
 .early{color:#ff9fd4;}
+.korean{color:#9B7AF0;font-weight:800;padding:0 6px;}
+.korean-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9B7AF0;font-weight:700;margin-left:6px;}
 .earlybird-mini{display:none;position:sticky;top:82px;z-index:100;margin:0 auto;padding:12px 18px;background:linear-gradient(135deg,rgba(107,53,232,.96),rgba(255,61,168,.84));border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.28);text-align:center;font-weight:800;}
 .earlybird-mini span{margin:0 8px;}
 .section{padding:96px 48px;position:relative;}
@@ -138,6 +140,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
       <div class="price-card">
         <div class="price-row"><div class="price-name" id="regular-label">Regular</div><div class="price-value" id="regular-price">₩69,000 / $49</div></div>
         <div class="price-row"><div class="price-name early" id="early-label">Early Bird</div><div class="price-value early" id="early-price">₩59,000 / $42</div></div>
+        <div class="price-row"><div class="price-name korean" id="korean-label">한국인 특별 할인<span class="korean-tag" id="korean-tag-text">한정 3명</span></div><div class="price-value korean" id="korean-price">₩59,000</div></div>
         <div class="price-row"><div class="price-name" id="included-short">Includes</div><div class="price-value" id="included-short-value">Cafe + Escape + Dinner</div></div>
       </div>
     </aside>
@@ -250,6 +253,11 @@ function renderEscapePage(){
   setText('regular-price', isKo ? CONFIG.ESCAPE.regularPriceKr : `${CONFIG.ESCAPE.regularPriceKr} / ${CONFIG.ESCAPE.regularPriceIntl}`);
   setText('early-label', isKo ? '2차 얼리버드' : '2nd Early Bird');
   setText('early-price', isKo ? CONFIG.ESCAPE.earlyBirdPriceKr : `${CONFIG.ESCAPE.earlyBirdPriceKr} / ${CONFIG.ESCAPE.earlyBirdPriceIntl}`);
+
+  // 한국인 특별할인 (한국어만)
+  const koreanRow = $('korean-label')?.closest('.price-row');
+  if(koreanRow) koreanRow.style.display = isKo ? '' : 'none';
+
   setText('included-short', isKo ? '포함' : 'Includes');
   setText('included-short-value', isKo ? '카페 + 방탈출 + 저녁' : 'Cafe + Escape + Dinner');
 
