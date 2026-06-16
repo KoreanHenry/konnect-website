@@ -327,6 +327,8 @@ function updateEarlyBirdMini(){
   setText('eb-mini-time', `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`);
 }
 document.addEventListener('DOMContentLoaded',()=>{
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  if(urlLang === 'ko' || urlLang === 'en') localStorage.setItem('konnect-lang', urlLang);
   renderEscapePage();
   setInterval(updateEarlyBirdMini,1000);
 });

@@ -46,7 +46,7 @@ const CONFIG = {
     regularPriceKr: '₩69,000',
     earlyBirdPriceKr: '₩64,000',
     returningPriceKr: '₩64,000',
-    friendPriceKr: '₩59,000',
+    friendPriceKr: '₩55,000',
     regularPriceIntl: '$51',
     earlyBirdPriceIntl: '$47',
     returningPriceIntl: '$47',
