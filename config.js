@@ -203,16 +203,16 @@ escape: {
   },
   earlybird: {
     kr: {
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
-      labelKo: '2차 얼리버드 결제하기 (₩64,000) →',
-      labelEn: 'Pay 2nd Early Bird Price (₩64,000) →'
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY86c404077',
+      labelKo: '결제하기 (₩69,000) →',
+      labelEn: 'Pay ₩69,000 →'
     },
     intl: {
-      stripe: 'https://buy.stripe.com/4gM28r6I82MI71N7pafw40g',
-      paypal: 'https://www.paypal.com/ncp/payment/C72CKAA7JRTPN',
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY7d0009738',
-      labelKo: 'Pay 2nd Early Bird Price ($47) →',
-      labelEn: 'Pay 2nd Early Bird Price ($47) →'
+      stripe: 'https://buy.stripe.com/4gM7sLgiI9b6adZ38Ufw40h',
+      paypal: 'https://www.paypal.com/ncp/payment/UASVVC8GQTLLW',
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY86c404077',
+      labelKo: 'Pay $51 →',
+      labelEn: 'Pay $51 →'
     }
   }
 },
