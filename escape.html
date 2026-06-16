@@ -64,6 +64,10 @@ h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(44px,6vw,84px);l
 .early{color:#ff9fd4;}
 .korean{color:#9B7AF0;font-weight:800;}
 .korean-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9B7AF0;font-weight:700;margin-left:6px;}
+.friend-red{color:#FF3B3B;font-weight:800;}
+.friend-red-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#FF3B3B;font-weight:700;margin-left:6px;}
+.price-line.friend-highlight strong{color:#FF3B3B;}
+.price-line.friend-highlight span{color:#FF3B3B;}
 .earlybird-mini{display:none;position:sticky;top:82px;z-index:100;margin:0 auto;padding:12px 18px;background:linear-gradient(135deg,rgba(107,53,232,.96),rgba(255,61,168,.84));border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 10px 30px rgba(0,0,0,.28);text-align:center;font-weight:800;}
 .earlybird-mini span{margin:0 8px;}
 .section{padding:96px 48px;position:relative;}
@@ -140,7 +144,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
       <div class="price-card">
         <div class="price-row"><div class="price-name" id="regular-label">Regular</div><div class="price-value" id="regular-price">₩69,000 / $49</div></div>
         <div class="price-row"><div class="price-name korean" id="korean-label">한국인 특별 할인<span class="korean-tag" id="korean-tag-text">한정 3명</span></div><div class="price-value korean" id="korean-price">₩59,000</div></div>
-        <div class="price-row" id="friend-row"><div class="price-name korean">한국인 친구 초대 할인<span class="korean-tag">2인 함께</span></div><div class="price-value korean"><a href="https://qr.kakaopay.com/Ej8tO05RY6b6c06837" target="_blank" style="color:#9B7AF0;text-decoration:none;">₩55,000</a></div></div>
+        <div class="price-row" id="friend-row"><div class="price-name friend-red">한국인 친구 초대 할인<span class="friend-red-tag">2인 함께</span></div><div class="price-value friend-red"><a href="https://qr.kakaopay.com/Ej8tO05RY6b6c06837" target="_blank" style="color:#FF3B3B;text-decoration:none;">₩55,000</a></div></div>
         <div class="price-row"><div class="price-name" id="included-short">Includes</div><div class="price-value" id="included-short-value">Cafe + Escape + Dinner</div></div>
       </div>
     </aside>
@@ -290,7 +294,7 @@ function renderEscapePage(){
 
   setText('price-tag', isKo ? '가격' : 'Price');
   setText('price-title', E.priceTitle);
-  $('price-table').innerHTML = E.prices.map(p=>`<div class="price-line"><strong>${p.name}</strong><span>${p.price}</span></div>`).join('');
+  $('price-table').innerHTML = E.prices.map(p=>`<div class="price-line${p.highlight ? ' '+p.highlight : ''}"><strong>${p.name}</strong><span>${p.price}</span></div>`).join('');
   setText('discount-note', E.discountNote);
 
   setText('who-tag', isKo ? '추천 대상' : 'Who is this for?');

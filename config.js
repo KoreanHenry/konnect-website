@@ -86,11 +86,10 @@ const CONFIG = {
       priceTitle: '참가비',
       prices: [
         { name: '일반 참가', price: '₩69,000' },
-        { name: '2차 얼리버드', price: '₩64,000' },
         { name: '한국인 특별 할인 🇰🇷', price: '₩59,000' },
-        { name: '친구와 함께 신청', price: '1인 ₩59,000' }
+        { name: '한국인 친구 초대 할인', price: '1인 ₩55,000', highlight: 'friend-highlight' }
       ],
-      discountNote: '한국인 참가자는 신청 페이지에서 쿠폰 코드 "KOREAN"을 입력하면 특별 할인가(₩59,000)가 적용됩니다. 할인 혜택은 중복 적용되지 않습니다.',
+      discountNote: '한국인 참가자는 신청 페이지에서 쿠폰 코드 "KOREAN"을 입력하면 특별 할인가(₩59,000)가 적용됩니다. 친구 초대 할인은 한국인 2인 함께 신청 시 적용됩니다. 할인 혜택은 중복 적용되지 않습니다.',
       whoTitle: '이런 분께 추천해요',
       who: [
         '서울에서 외국인 친구를 만들고 싶은 사람',
@@ -145,11 +144,10 @@ const CONFIG = {
       priceTitle: 'Price',
       prices: [
         { name: 'Regular', price: '₩69,000 / $51' },
-        { name: '2nd Early Bird', price: '₩64,000 / $47' },
-        { name: 'Korean Special Discount 🇰🇷', price: '₩59,000 / $43' },
+        { name: 'Returning Participant', price: '₩64,000 / $47' },
         { name: 'Bring a Friend', price: '₩59,000 / $43 per person' }
       ],
-      discountNote: 'Korean participants can enter coupon code "KOREAN" on the sign-up page for the special discount price (₩59,000 / $43). Discounts cannot be combined.',
+      discountNote: 'Discounts cannot be combined. Only the largest applicable discount will be applied.',
       whoTitle: 'Who is this for?',
       who: [
         'People who want to make international friends in Seoul',
@@ -257,9 +255,9 @@ escape: {
 escape: {
   FRIEND: {
     kr: {
-      kakao: 'https://qr.kakaopay.com/Ej8tO05RY733c04255',
-      labelKo: '친구 할인 결제하기 (₩59,000) →',
-      labelEn: 'Pay Friend Price (₩59,000) →'
+      kakao: 'https://qr.kakaopay.com/Ej8tO05RY6b6c06837',
+      labelKo: '친구 초대 할인 결제하기 (₩55,000) →',
+      labelEn: 'Pay Friend Price (₩55,000) →'
     },
     intl: {
       stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
@@ -268,7 +266,7 @@ escape: {
       labelKo: 'Pay Friend Price ($43) →',
       labelEn: 'Pay Friend Price ($43) →'
     },
-    messageKo: '방탈출 친구 할인 쿠폰이 적용되었습니다.',
+    messageKo: '방탈출 친구 초대 할인이 적용되었습니다.',
     messageEn: 'Escape Night friend discount applied.'
   },
   RETURN: {
@@ -310,7 +308,7 @@ escape: {
   // ── 얼리버드 할인 ───────────────────────────
   EARLY_BIRD: {
     escape: {
-      enabled: true,
+      enabled: false,
       end: '2026-06-20T14:30:00+09:00'
     }
   },
