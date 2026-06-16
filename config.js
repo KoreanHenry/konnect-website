@@ -308,7 +308,7 @@ escape: {
   // ── 얼리버드 할인 ───────────────────────────
   EARLY_BIRD: {
     escape: {
-      enabled: false,
+      enabled: true,
       end: '2026-06-20T14:30:00+09:00'
     }
   },
