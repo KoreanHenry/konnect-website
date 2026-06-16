@@ -139,8 +139,8 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
       </div>
       <div class="price-card">
         <div class="price-row"><div class="price-name" id="regular-label">Regular</div><div class="price-value" id="regular-price">₩69,000 / $49</div></div>
-        <div class="price-row"><div class="price-name early" id="early-label">Early Bird</div><div class="price-value early" id="early-price">₩59,000 / $42</div></div>
         <div class="price-row"><div class="price-name korean" id="korean-label">한국인 특별 할인<span class="korean-tag" id="korean-tag-text">한정 3명</span></div><div class="price-value korean" id="korean-price">₩59,000</div></div>
+        <div class="price-row" id="friend-row"><div class="price-name korean">한국인 친구 초대 할인<span class="korean-tag">2인 함께</span></div><div class="price-value korean"><a href="https://qr.kakaopay.com/Ej8tO05RY6b6c06837" target="_blank" style="color:#9B7AF0;text-decoration:none;">₩55,000</a></div></div>
         <div class="price-row"><div class="price-name" id="included-short">Includes</div><div class="price-value" id="included-short-value">Cafe + Escape + Dinner</div></div>
       </div>
     </aside>
@@ -251,12 +251,13 @@ function renderEscapePage(){
   setText('info-spots', CONFIG.ESCAPE.spotsLeft ? (isKo ? `${CONFIG.ESCAPE.spotsLeft}자리 남음` : `${CONFIG.ESCAPE.spotsLeft} spots left`) : (isKo ? '최대 12명' : 'up to 12'));
   setText('regular-label', isKo ? '일반 참가' : 'Regular');
   setText('regular-price', isKo ? CONFIG.ESCAPE.regularPriceKr : `${CONFIG.ESCAPE.regularPriceKr} / ${CONFIG.ESCAPE.regularPriceIntl}`);
-  setText('early-label', isKo ? '2차 얼리버드' : '2nd Early Bird');
-  setText('early-price', isKo ? CONFIG.ESCAPE.earlyBirdPriceKr : `${CONFIG.ESCAPE.earlyBirdPriceKr} / ${CONFIG.ESCAPE.earlyBirdPriceIntl}`);
-
   // 한국인 특별할인 (한국어만)
   const koreanRow = $('korean-label')?.closest('.price-row');
   if(koreanRow) koreanRow.style.display = isKo ? '' : 'none';
+
+  // 한국인 친구 초대 할인 (한국어만)
+  const friendRow = $('friend-row');
+  if(friendRow) friendRow.style.display = isKo ? '' : 'none';
 
   setText('included-short', isKo ? '포함' : 'Includes');
   setText('included-short-value', isKo ? '카페 + 방탈출 + 저녁' : 'Cafe + Escape + Dinner');
