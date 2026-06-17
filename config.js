@@ -181,15 +181,15 @@ const CONFIG = {
     regular: {
       kr: {
         kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015',
-        labelKo: '결제하기 (₩20,000) →',
-        labelEn: 'Pay ₩20,000 →'
+        labelKo: '지금 신청하기 →',
+        labelEn: '지금 신청하기 →'
       },
       intl: {
         stripe: 'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
         paypal: 'https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ',
         kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015',
-        labelKo: 'Pay $16 →',
-        labelEn: 'Pay $16 →'
+        labelKo: '지금 신청하기 →',
+        labelEn: 'Sign up now →'
       }
     },
 
