@@ -1842,23 +1842,6 @@ function closeEscapeModal(){
 }
 document.getElementById('escape-modal')?.addEventListener('click',function(e){if(e.target===this)closeEscapeModal();});
 
-function rebuildTestimonialLoop(){
-  // Duplicate the 4 real reviews ONCE to create a seamless marquee loop.
-  // The clone set is marked aria-hidden/inert so it isn't read as duplicate
-  // content by screen readers or indexed twice by search engines.
-  const track = document.querySelector('.testi-track');
-  if(!track || track.dataset.loopReady === '1') return;
-  const base = Array.from(track.children);
-  base.forEach(card => {
-    const clone = card.cloneNode(true);
-    clone.setAttribute('aria-hidden','true');
-    clone.setAttribute('inert','');
-    track.appendChild(clone);
-  });
-  track.dataset.loopReady = '1';
-  setLang(localStorage.getItem('konnect-lang') || getInitialLang());
-}
-rebuildTestimonialLoop();
 </script>
 <div id="escape-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);padding:24px;overflow-y:auto;align-items:flex-start;justify-content:center;">
   <div style="background:#1a0f2e;border:1px solid rgba(107,53,232,.4);border-radius:28px;max-width:560px;width:100%;margin:60px auto;padding:40px;position:relative;">
