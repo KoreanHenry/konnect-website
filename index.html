@@ -604,8 +604,11 @@ body.index-earlybird-live .hero{
 .event-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-pale);margin-bottom:12px;font-weight:500;}
 .event-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;margin-bottom:12px;letter-spacing:-.03em;}
 .event-date{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:24px;}
-.event-spots{display:inline-flex;align-items:center;gap:8px;background:rgba(255,61,168,.15);border:1px solid rgba(255,61,168,.3);padding:8px 18px;border-radius:100px;font-size:14px;color:#ff9fd4;margin-bottom:28px;width:fit-content;}
-.spots-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);}
+.event-spots{display:flex;flex-direction:column;gap:8px;background:rgba(255,61,168,.08);border:1px solid rgba(255,61,168,.25);padding:12px 20px;border-radius:16px;font-size:14px;margin-bottom:28px;width:fit-content;}
+.spots-row{display:flex;align-items:center;gap:8px;}
+.spots-label{color:#ff9fd4;}
+.spots-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);flex-shrink:0;}
+.spots-dot-intl{background:#7bd4ff;box-shadow:0 0 8px #7bd4ff;}
 .event-actions{display:flex;gap:14px;flex-wrap:wrap;}
 .btn-pink{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);padding:15px 28px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 40px rgba(255,61,168,.3);}
 .btn-pink:hover{transform:scale(1.03);box-shadow:0 0 60px rgba(255,61,168,.5);color:var(--white);}
@@ -1197,13 +1200,19 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <p class="event-eyebrow" data-i18n="evEye">Next Meetup</p>
         <h2 class="event-title" data-i18n="evTitle">Language Exchange — June 2025</h2>
         <p class="event-date" data-i18n="evDate">📍 City Hall Station · Saturday, May 30 · 1:20 PM</p>
-        <div class="event-spots">
-          <span class="spots-dot"></span>
-          <span data-i18n="evSpots">spots remaining</span>
+        <div class="event-spots" id="spots-bar">
+          <div class="spots-row" id="spots-korean">
+            <span class="spots-dot"></span>
+            <span class="spots-label" data-i18n-spots-korean>한국인 — 0/10 자리</span>
+          </div>
+          <div class="spots-row" id="spots-intl">
+            <span class="spots-dot spots-dot-intl"></span>
+            <span class="spots-label" data-i18n-spots-intl>외국인 — 0/10 자리</span>
+          </div>
         </div>
         <div class="event-actions">
-          <a href="join.html" class="btn-pink" data-i18n="evCta1">Reserve Korean Spot →</a>
-          <a href="join.html" class="btn-ghost" data-i18n="evCta2">International →</a>
+          <a href="join.html" class="btn-pink" data-i18n="evCta1">International ($16) →</a>
+          <a href="join.html" class="btn-ghost" data-i18n="evCta2">Reserve Korean (₩20,000)</a>
         </div>
       </div>
       <div class="event-map">
@@ -1221,6 +1230,10 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
       <h2 class="section-title" data-i18n="faqTitle">Got questions?</h2>
     </div>
     <div class="faq-container reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text" data-i18n="fq0">Is the 1:1 Korean/international ratio really guaranteed?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a"><p data-i18n="fa0">Yes — 100%. Korean and international spots are managed completely separately. When one side fills up, it closes and moves to a waitlist. This ensures every meetup is a genuine 50:50 balance, no exceptions.</p></div>
+      </div>
       <div class="faq-item">
         <div class="faq-q"><span class="faq-q-text" data-i18n="fq1">Do I need to be fluent in Korean or English?</span><div class="faq-icon">+</div></div>
         <div class="faq-a"><p data-i18n="fa1">Not at all! As long as you can hold a basic conversation in one of the two languages, you'll fit right in. Our activities are designed to be inclusive of all levels.</p></div>
@@ -1349,10 +1362,10 @@ const T = {
     "s2": "Meetups",
     "s3": "Countries",
     "aboutTag": "About Konnect",
-    "aboutTitle": "Most language exchanges feel like job interviews.",
-    "aboutSub": "Awkward introductions. Uncomfortable silence. Repeated questions.<br><br>Konnect is designed differently from the start.<br>Who you sit with, which question starts the conversation, and what activity helps people get closer — we design the flow.<br><br>A meetup where conversations continue even with people you just met. That’s Konnect.",
-    "ac1t": "Small Group Setup",
-    "ac1d": "Small groups built for focused conversation, with seating that reflects nationality and language level.",
+    "aboutTitle": "Most language exchanges don’t guarantee who shows up.",
+    "aboutSub": "You could arrive to find it’s 80% foreigners, or 80% Koreans. No one controls the balance.<br><br>Konnect is different. Korean and international spots are managed separately — when one side fills up, it closes. The other stays open until it matches.<br><br>Every meetup is a genuine 50:50. That’s the Konnect guarantee.",
+    "ac1t": "1:1 Balance, Guaranteed",
+    "ac1d": "Korean and international spots are capped separately. If one side fills up, the waitlist kicks in — so every meetup is a genuine 50:50.",
     "ac2t": "Host-Led Experience",
     "ac2d": "Original games and activities led by the host, creating natural conversations without awkwardness.",
     "ac3t": "Global Community",
@@ -1380,7 +1393,7 @@ const T = {
     "pb3": "Coming Soon",
     "pb4": "Coming Soon",
     "pr1t": "Language Exchange",
-    "pr1d": "KONNECT’s signature small-group meetup where conversations continue even with people you just met.",
+    "pr1d": "Seoul’s first language exchange that guarantees a 1:1 ratio — Korean and international spots are managed separately, every time.",
     "pr1m1": "2nd & 4th Saturday",
     "pr1cta": "Reserve a spot →",
     "pr2t": "Escape Room Night",
@@ -1414,8 +1427,10 @@ const T = {
     "fa2": "You'll arrive at our cozy lounge, get matched with small groups, and rotate through fun activities — icebreakers, themed conversations, and language games. It's structured but feels totally natural.",
     "fq3": "What if I come alone?",
     "fa3": "80% of our members come solo! The whole format is designed to help solo attendees feel comfortable and make friends quickly.",
+    "fq0": "Is the 1:1 Korean/international ratio really guaranteed?",
+    "fa0": "Yes — 100%. Korean and international spots are managed completely separately. When one side fills up, it closes and moves to a waitlist. This ensures every meetup is a genuine 50:50 balance, no exceptions.",
     "fq4": "Can I get a refund if I can't attend?",
-    "fa4": "Yes. Full refund up to 7 days before, 50% refund 3-6 days before, no refund within 48 hours. See our <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">refund policy</a> for details.",
+    "fa4": "Yes — and you're fully covered if plans change. Full refund up to 7 days before the meetup. 50% refund 3–6 days before. No refund within 48 hours. See our <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">refund policy</a> for details.",
     "fq5": "Where exactly is the venue?",
     "fa5": "Our regular venue is a private lounge near City Hall Station (시청역), about 5 minutes walk from Exit 6. Exact address will be sent to confirmed attendees the day before.",
     "fq6": "Is there food or drinks?",
@@ -1468,10 +1483,10 @@ const T = {
     "s2": "모임 횟수",
     "s3": "참가 국가",
     "aboutTag": "Konnect 소개",
-    "aboutTitle": "대부분의 언어교환 모임은 면접처럼 느껴지죠.",
-    "aboutSub": "어색한 자기소개, 불편한 침묵, 반복되는 질문.<br><br>Konnect는 처음부터 다르게 설계합니다.<br>누구와 앉을지, 어떤 질문으로 시작할지, 무슨 활동으로 가까워질지.<br><br>처음 만난 사람과도 대화가 이어지게 만드는 모임, 그게 Konnect입니다.",
-    "ac1t": "소그룹 구성",
-    "ac1d": "대화에 집중할 수 있는 소규모 그룹. 국적, 언어 실력을 반영한 배치",
+    "aboutTitle": "대부분의 언어교환 모임은 비율을 보장하지 않아요.",
+    "aboutSub": "가보면 외국인이 80%일 수도, 한국인이 80%일 수도 있어요. 아무도 균형을 보장하지 않죠.<br><br>Konnect는 달라요. 한국인과 외국인 정원을 완전히 분리해서 관리합니다. 한쪽이 마감되면 닫히고, 나머지 쪽이 채워질 때까지 기다려요.<br><br>매 모임 진짜 50:50. 그게 Konnect의 약속입니다.",
+    "ac1t": "1:1 비율 보장",
+    "ac1d": "한국인과 외국인 정원을 분리해서 관리해요. 한쪽이 마감되면 대기열로 전환 — 매 모임은 진짜 50:50으로 진행됩니다.",
     "ac2t": "호스트 진행",
     "ac2d": "호스트의 진행으로 진행되는 자체 제작 게임 및 활동들. 어색함 없는 자연스러운 대화.",
     "ac3t": "글로벌 커뮤니티",
@@ -1499,7 +1514,7 @@ const T = {
     "pb3": "곧 오픈",
     "pb4": "곧 오픈",
     "pr1t": "언어교환 모임",
-    "pr1d": "처음 만난 사람과도 대화가 이어지는 KONNECT의 시그니처 소그룹 모임.",
+    "pr1d": "서울 최초로 1:1 비율을 보장하는 소그룹 언어교환 모임. 한국인과 외국인 정원을 분리해서 관리해요.",
     "pr1m1": "둘째·넷째 토요일",
     "pr1cta": "자리 예약하기 →",
     "pr2t": "방탈출 나이트",
@@ -1533,8 +1548,10 @@ const T = {
     "fa2": "아늑한 라운지에 도착하면 소그룹으로 매칭되고, 아이스브레이커, 주제별 대화, 언어 게임 등 다양한 활동을 로테이션해요. 구조화되어 있지만 자연스럽게 흘러가요.",
     "fq3": "혼자 가도 괜찮을까요?",
     "fa3": "멤버의 80%가 혼자 오세요! 솔로 참가자가 편하게 빠르게 친구를 만들 수 있도록 모든 포맷이 설계되어 있어요.",
+    "fq0": "한국인:외국인 1:1 비율이 정말 보장되나요?",
+    "fa0": "네, 100% 보장됩니다. 한국인과 외국인 정원을 완전히 분리해서 관리해요. 한쪽이 마감되면 해당 그룹은 닫히고 대기열로 넘어갑니다. 매 모임마다 예외 없이 진짜 50:50이 유지됩니다.",
     "fq4": "참석 못하면 환불받을 수 있나요?",
-    "fa4": "네. 모임 7일 전까지는 전액 환불, 3-6일 전은 50% 환불, 48시간 이내는 환불 불가입니다. 자세한 내용은 <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">환불정책</a>을 참고해주세요.",
+    "fa4": "네 — 사정이 생겨도 걱정 마세요. 모임 7일 전까지는 전액 환불. 3~6일 전은 50% 환불. 48시간 이내는 환불 불가입니다. 자세한 내용은 <a href=\"refund.html\" style=\"color:var(--purple-light);text-decoration:underline;\">환불정책</a>을 참고해주세요.",
     "fq5": "정확한 장소가 어디인가요?",
     "fa5": "시청역(City Hall Station) 6번 출구에서 도보 5분 거리의 프라이빗 라운지에서 진행돼요. 정확한 주소는 모임 전날 확정 참가자에게 발송됩니다.",
     "fq6": "음식이나 음료가 제공되나요?",
@@ -1569,6 +1586,30 @@ const T = {
 }
 };
 
+function renderSpots(lang) {
+  const s = CONFIG.SPOTS;
+  if (!s) return;
+  const kr = s.korean, intl = s.international;
+  const krLeft = Math.max(0, kr.total - kr.filled);
+  const intlLeft = Math.max(0, intl.total - intl.filled);
+  const isKo = lang === 'ko';
+
+  const krEl = document.querySelector('[data-i18n-spots-korean]');
+  const intlEl = document.querySelector('[data-i18n-spots-intl]');
+  if (krEl) krEl.textContent = isKo
+    ? `한국인 — ${krLeft}/${kr.total} 자리 남음`
+    : `Korean — ${krLeft}/${kr.total} spots left`;
+  if (intlEl) intlEl.textContent = isKo
+    ? `외국인 — ${intlLeft}/${intl.total} 자리 남음`
+    : `International — ${intlLeft}/${intl.total} spots left`;
+
+  // 마감 시 dot 색상 변경
+  const krDot = document.querySelector('#spots-korean .spots-dot');
+  const intlDot = document.querySelector('#spots-intl .spots-dot');
+  if (krDot) krDot.style.background = krLeft === 0 ? '#888' : 'var(--pink)';
+  if (intlDot) intlDot.style.background = intlLeft === 0 ? '#888' : '#7bd4ff';
+}
+
 function setLang(lang){
   const t = T[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1593,6 +1634,7 @@ function setLang(lang){
   const badgeEl = document.querySelector('.hero-text .badge [data-i18n="badge"]');
   if (badgeEl) badgeEl.textContent = lang === 'ko' ? `다음 모임 · ${_M.ko.date}` : `Next meetup · ${_M.en.date}`;
   localStorage.setItem('konnect-lang', lang);
+  renderSpots(lang);
   updateIndexEarlyBirdBar();
   updateLanguageLinks();
 }

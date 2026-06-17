@@ -12,7 +12,14 @@ const CONFIG = {
   // ── 정기 언어교환 ───────────────────────────
   NEXT_MEETUP_DATE: '2026-06-27T13:20:00+09:00',
   NEXT_MEETUP_END_DATE: '2026-06-27T15:00:00+09:00',
-  SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김
+  SPOTS_LEFT: '', // 숫자 문자열 또는 '' = 숨김 (레거시, 아래 SPOTS 사용 권장)
+
+  // ── 정원 관리 (한국인 / 외국인 분리) ────────────
+  // filled 숫자만 업데이트하세요. 나머지는 자동 계산됩니다.
+  SPOTS: {
+    korean:        { total: 10, filled: 0 },  // ← 한국인 신청 완료 수
+    international: { total: 10, filled: 0 },  // ← 외국인 신청 완료 수
+  },
   LOCATION_KO: '시청역 근처',
   LOCATION_EN: 'City Hall Station',
   PRICE_KR: '₩20,000',
