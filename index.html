@@ -576,24 +576,22 @@ body.index-earlybird-live .hero{
 .prog-cta{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:transform .2s;}
 .prog-cta:hover{transform:scale(1.03);color:var(--black);}
 
-.testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);overflow:hidden;}
-.testi-slider{position:relative;margin-top:56px;overflow:hidden;}
-.testi-slider::before,.testi-slider::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
-.testi-slider::before{left:0;background:linear-gradient(to right,var(--black),transparent);}
-.testi-slider::after{right:0;background:linear-gradient(to left,var(--black),transparent);}
-.testi-track{display:flex;gap:20px;width:max-content;animation:testiSlide 70s linear infinite;}
-.testi-track:hover{animation-play-state:paused;}
-@keyframes testiSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.testi-card{flex:0 0 420px;min-height:270px;background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
+.testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);}
+.testi-slider{margin-top:56px;max-width:720px;margin-left:auto;margin-right:auto;}
+.testi-track{display:flex;flex-direction:column;gap:16px;}
+.testi-card{background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:border-color .3s;}
 .testi-card:hover{border-color:rgba(255,61,168,.3);}
+.testi-card.testi-hidden{display:none;}
 .testi-stars{display:flex;gap:4px;margin-bottom:16px;}
 .testi-stars span{color:#fbbf24;font-size:15px;}
 .testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:20px;font-style:italic;}
-.testi-author{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.testi-author{display:flex;align-items:center;gap:12px;}
 .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
 .testi-name{font-weight:600;font-size:14px;}
 .testi-from{font-size:12px;color:rgba(255,255,255,.4);}
-@media(max-width:700px){.testi-card{flex-basis:310px;min-height:300px;padding:24px 20px;}.testi-slider::before,.testi-slider::after{width:48px;}.testi-text{font-size:14px;}.testi-track{animation-duration:240s!important;}}
+.testi-more-btn{display:block;margin:24px auto 0;background:transparent;border:1px solid var(--border);color:rgba(255,255,255,.6);padding:12px 32px;border-radius:100px;font-size:14px;cursor:pointer;transition:border-color .2s,color .2s;}
+.testi-more-btn:hover{border-color:rgba(255,61,168,.4);color:var(--white);}
+@media(max-width:700px){.testi-card{padding:24px 20px;}.testi-text{font-size:14px;}}
 
 /* ── NEXT EVENT ── */
 .next-event{padding:80px 48px;}
@@ -803,8 +801,6 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 }
 @keyframes sloganFloatSoft{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-5px);}}
 
-.testi-track{animation:testiSlide 120s linear infinite!important;}
-@keyframes testiSlide{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 @media(max-width:900px){
   .hero-title{font-size:clamp(44px,10.8vw,62px);line-height:.94;letter-spacing:-.058em;}
@@ -1182,12 +1178,13 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
           <p class="testi-text" data-i18n="tt3"></p>
           <div class="testi-author"><div class="testi-avatar">V</div><div><div class="testi-name">Victoria</div><div class="testi-from">KONNECT Member</div></div></div>
         </div>
-        <div class="testi-card">
+        <div class="testi-card testi-hidden">
           <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="testi-text" data-i18n="tt4"></p>
           <div class="testi-author"><div class="testi-avatar">H</div><div><div class="testi-name">Hayat</div><div class="testi-from">KONNECT Member</div></div></div>
         </div>
       </div>
+      <button class="testi-more-btn" id="testi-more-btn" data-i18n="testiMore">더 보기</button>
     </div>
   </div>
 </section>
@@ -1409,6 +1406,7 @@ const T = {
     "pr4m": "Korea · Day trip, 1–2 nights",
     "testiTag": "Member Reviews",
     "testiTitle": "Real moments. Real connections.",
+    "testiMore": "See more reviews",
     "tt1": "I went to two more random language exchange events and yours was absolutely the best out of the three and I recommended it to the people i met. Hope to participate once i visit Korea again",
     "tt2": "Hi, I went to the last exchange on the 11.th April. Wanted to leave some feedback. It was a great experience! Sadly I'm not staying much longer and cannot participate the next one. It felt very short tho. Not enough time to get to know everyone cuz time flys when you have fun 😊 I liked the games we played and the prepared questions were a good idea Incase you don't know where to start. the cafee meetup was definitely a very good idea which made the event special. I heard from people who already went to some exchanges meetings this was the best cuz of the after meet-up. You could talk further and get to know the others! It was so much fun. I'm glad so many went. Next time I'm coming back. If the opportunity comed up I will join again :)",
     "tt3": "It was a really great experience. If it is possible I would like to come back again to another meeting! Thank you!",
@@ -1530,6 +1528,7 @@ const T = {
     "pr4m": "한국 내 · 당일, 1~2박",
     "testiTag": "멤버 후기",
     "testiTitle": "진짜 연결이 생긴 순간들",
+    "testiMore": "더 보기",
     "tt1": "랜덤한 언어교환 이벤트를 두 군데 더 가봤는데, 세 곳 중 KONNECT가 단연 최고였어요. 만난 사람들에게도 추천했습니다. 다시 한국에 가면 꼭 다시 참여하고 싶어요.",
     "tt2": "4월 11일 마지막 언어교환에 갔어요. 피드백을 남기고 싶었습니다. 정말 좋은 경험이었어요! 아쉽게도 더 오래 머물지 않아서 다음 모임에는 참여할 수 없어요. 시간이 정말 짧게 느껴졌어요. 즐거우면 시간이 빨리 가니까 모두를 알아가기엔 시간이 부족했어요 😊 게임도 좋았고, 어디서 시작해야 할지 모를 때 준비된 질문들이 좋은 아이디어였어요. 카페 모임은 이 이벤트를 특별하게 만든 정말 좋은 아이디어였어요. 이미 다른 언어교환 모임에 가본 사람들도 애프터 모임 덕분에 이 모임이 최고였다고 했어요. 계속 이야기하고 다른 사람들을 더 알아갈 수 있었어요! 정말 재미있었고 많은 사람들이 함께해서 좋았어요. 다음에 다시 돌아오면 기회가 있을 때 또 참여할게요 :)",
     "tt3": "정말 좋은 경험이었어요. 가능하다면 다른 모임에도 다시 참여하고 싶습니다! 감사합니다!",
@@ -1610,6 +1609,23 @@ function renderSpots(lang) {
   if (intlDot) intlDot.style.background = intlLeft === 0 ? '#888' : '#7bd4ff';
 }
 
+function initTestiMore(){
+  const btn = document.getElementById('testi-more-btn');
+  if(!btn) return;
+  btn._expanded = false;
+  btn.addEventListener('click', function(){
+    btn._expanded = !btn._expanded;
+    document.querySelectorAll('.testi-card.testi-hidden').forEach(c => {
+      c.style.display = btn._expanded ? 'block' : 'none';
+    });
+    const lang = localStorage.getItem('konnect-lang') || 'ko';
+    btn.textContent = btn._expanded
+      ? (lang === 'ko' ? '접기' : 'Show less')
+      : (lang === 'ko' ? '더 보기' : 'See more reviews');
+  });
+}
+initTestiMore();
+
 function setLang(lang){
   const t = T[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1635,6 +1651,14 @@ function setLang(lang){
   if (badgeEl) badgeEl.textContent = lang === 'ko' ? `다음 모임 · ${_M.ko.date}` : `Next meetup · ${_M.en.date}`;
   localStorage.setItem('konnect-lang', lang);
   renderSpots(lang);
+  // 더 보기 버튼 텍스트 언어 동기화
+  const _moreBtn = document.getElementById('testi-more-btn');
+  if(_moreBtn){
+    const _expanded = _moreBtn._expanded || false;
+    _moreBtn.textContent = _expanded
+      ? (lang === 'ko' ? '접기' : 'Show less')
+      : (lang === 'ko' ? '더 보기' : 'See more reviews');
+  }
   updateIndexEarlyBirdBar();
   updateLanguageLinks();
 }
