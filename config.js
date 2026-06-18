@@ -182,7 +182,7 @@ const CONFIG = {
       kr: {
         kakao: 'https://qr.kakaopay.com/Ej8tO05RY271006015',
         labelKo: '지금 신청하기 →',
-        labelEn: '지금 신청하기 →'
+        labelEn: 'Reserve Your Spot →'
       },
       intl: {
         stripe: 'https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e',
