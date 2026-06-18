@@ -584,7 +584,9 @@ body.index-earlybird-live .hero{
 .testi-card.testi-hidden{display:none;}
 .testi-stars{display:flex;gap:4px;margin-bottom:16px;}
 .testi-stars span{color:#fbbf24;font-size:15px;}
-.testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:20px;font-style:italic;}
+.testi-text{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:8px;font-style:italic;}
+.testi-text.clamped{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px;}
+.testi-expand{background:none;border:none;color:var(--purple-light);cursor:pointer;font-size:13px;font-weight:600;padding:0;margin-bottom:16px;display:block;}
 .testi-author{display:flex;align-items:center;gap:12px;}
 .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
 .testi-name{font-weight:600;font-size:14px;}
@@ -1034,12 +1036,12 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <div class="proof-div"></div>
         <div class="proof-item"><div class="proof-num">10+</div><div class="proof-lbl" data-i18n="s3">국적</div></div>
         <div class="proof-div"></div>
-        <div class="proof-item"><div class="proof-num">★ 5.0</div><div class="proof-lbl">평균 후기</div></div>
+        <div class="proof-item"><div class="proof-num">★ 5.0</div><div class="proof-lbl" data-i18n="s4">평균 후기</div></div>
       </div>
     </div>
     <!-- 사진 콜라주 (행성 대체) -->
     <div class="hero-collage">
-      <div class="ratio-badge">1:1<br>보장</div>
+      <div class="ratio-badge">1:1<br><span data-i18n="ratioBadgeLabel">보장</span></div>
       <div class="col-photo tall">
         <img src="images/moments/moment-10.jpg" alt="KONNECT 모임">
         <div class="col-badge"><span>🇰🇷</span> Korean</div>
@@ -1257,7 +1259,8 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         </div>
         <div class="testi-card">
           <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="testi-text" data-i18n="tt2"></p>
+          <p class="testi-text clamped" data-i18n="tt2"></p>
+          <button class="testi-expand" data-i18n="testiExpandBtn" onclick="this.previousElementSibling.classList.remove('clamped');this.style.display='none'">더보기</button>
           <div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Chantal</div><div class="testi-from">KONNECT Member</div></div></div>
         </div>
         <div class="testi-card">
@@ -1267,7 +1270,8 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         </div>
         <div class="testi-card testi-hidden">
           <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <p class="testi-text" data-i18n="tt4"></p>
+          <p class="testi-text clamped" data-i18n="tt4"></p>
+          <button class="testi-expand" data-i18n="testiExpandBtn" onclick="this.previousElementSibling.classList.remove('clamped');this.style.display='none'">더보기</button>
           <div class="testi-author"><div class="testi-avatar">H</div><div><div class="testi-name">Hayat</div><div class="testi-from">KONNECT Member</div></div></div>
         </div>
       </div>
@@ -1285,8 +1289,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <h2 class="event-title" data-i18n="evTitle">Language Exchange — June 2025</h2>
         <p class="event-date" data-i18n="evDate">📍 City Hall Station · Saturday, May 30 · 1:20 PM</p>
         <div class="event-actions">
-          <a href="join.html" class="btn-pink" data-i18n="evCta1">International ($16) →</a>
-          <a href="join.html" class="btn-ghost" data-i18n="evCta2">Reserve Korean (₩20,000)</a>
+          <a href="join.html" class="btn-pink" data-i18n="evCta1">지금 신청하기 →</a>
         </div>
       </div>
       <div class="event-map">
@@ -1391,7 +1394,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         상호: Kozy 코지 · 대표자: 안형욱 · 사업자등록번호: 503-39-10477 · 주소: 서울특별시 구로구 개봉로20길 6, 129동 2403호 · 전화: [010-4176-2285] · 통신판매업: 신고예정<br>
         이메일: kozykorean.official@gmail.com
       </div>
-      <div class="footer-copy">© 2025 Konnect. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Konnect. All rights reserved.</div>
     </div>
   </div>
 </footer>
@@ -1435,6 +1438,8 @@ const T = {
     "s1": "Members",
     "s2": "Meetups",
     "s3": "Countries",
+    "s4": "Avg. Rating",
+    "ratioBadgeLabel": "Guar.",
     "aboutTag": "About Konnect",
     "aboutTitle": "Most language exchanges don’t guarantee who shows up",
     "aboutSub": "Speaking only with other foreigners won’t improve your Korean.<br>But actually connecting with Koreans in Seoul isn’t easy.<br><br>Konnect is different.<br>We guarantee a 1:1 ratio of Koreans and internationals, every time.<br>Small group or not — real language exchange, always.",
@@ -1484,6 +1489,7 @@ const T = {
     "testiTag": "Member Reviews",
     "testiTitle": "Real moments. Real connections.",
     "testiMore": "See more reviews",
+    "testiExpandBtn": "Read more",
     "tt1": "I went to two more random language exchange events and yours was absolutely the best out of the three and I recommended it to the people i met. Hope to participate once i visit Korea again",
     "tt2": "Hi, I went to the last exchange on the 11.th April. Wanted to leave some feedback. It was a great experience! Sadly I'm not staying much longer and cannot participate the next one. It felt very short tho. Not enough time to get to know everyone cuz time flys when you have fun 😊 I liked the games we played and the prepared questions were a good idea Incase you don't know where to start. the cafee meetup was definitely a very good idea which made the event special. I heard from people who already went to some exchanges meetings this was the best cuz of the after meet-up. You could talk further and get to know the others! It was so much fun. I'm glad so many went. Next time I'm coming back. If the opportunity comed up I will join again :)",
     "tt3": "It was a really great experience. If it is possible I would like to come back again to another meeting! Thank you!",
@@ -1492,8 +1498,7 @@ const T = {
     "evTitle": _M.en.title,
     "evDate": _M.en.evDate,
     "evSpots": "spots remaining",
-    "evCta1": "Sign up now →",
-    "evCta2": "Sign up now →",
+    "evCta1": "Reserve Your Spot →",
     "faqTag": "FAQ",
     "faqTitle": "Got questions?",
     "fq1": "Do I need to be fluent in Korean or English?",
@@ -1557,6 +1562,8 @@ const T = {
     "s1": "멤버",
     "s2": "모임 횟수",
     "s3": "참가 국가",
+    "s4": "평균 후기",
+    "ratioBadgeLabel": "보장",
     "aboutTag": "Konnect 소개",
     "aboutTitle": "대부분의 언어교환 모임은 비율을 보장하지 않습니다",
     "aboutSub": "한국인끼리만 이야기하면 영어는 늘지 않습니다.<br>하지만 한국에서 외국인들과 이야기하는 건 쉽지 않죠.<br><br>Konnect는 다릅니다.<br>한국인과 외국인 비율을 항상 1:1로 보장합니다.<br>인원이 많지 않아도, 진짜 언어교환을 할 수 있게.",
@@ -1606,6 +1613,7 @@ const T = {
     "testiTag": "멤버 후기",
     "testiTitle": "진짜 연결이 생긴 순간들",
     "testiMore": "더 보기",
+    "testiExpandBtn": "더보기",
     "tt1": "랜덤한 언어교환 이벤트를 두 군데 더 가봤는데, 세 곳 중 KONNECT가 단연 최고였어요. 만난 사람들에게도 추천했습니다. 다시 한국에 가면 꼭 다시 참여하고 싶어요.",
     "tt2": "4월 11일 마지막 언어교환에 갔어요. 피드백을 남기고 싶었습니다. 정말 좋은 경험이었어요! 아쉽게도 더 오래 머물지 않아서 다음 모임에는 참여할 수 없어요. 시간이 정말 짧게 느껴졌어요. 즐거우면 시간이 빨리 가니까 모두를 알아가기엔 시간이 부족했어요 😊 게임도 좋았고, 어디서 시작해야 할지 모를 때 준비된 질문들이 좋은 아이디어였어요. 카페 모임은 이 이벤트를 특별하게 만든 정말 좋은 아이디어였어요. 이미 다른 언어교환 모임에 가본 사람들도 애프터 모임 덕분에 이 모임이 최고였다고 했어요. 계속 이야기하고 다른 사람들을 더 알아갈 수 있었어요! 정말 재미있었고 많은 사람들이 함께해서 좋았어요. 다음에 다시 돌아오면 기회가 있을 때 또 참여할게요 :)",
     "tt3": "정말 좋은 경험이었어요. 가능하다면 다른 모임에도 다시 참여하고 싶습니다! 감사합니다!",
