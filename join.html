@@ -1,99 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-705Q8VWEKN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-705Q8VWEKN');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join — Konnect</title>
-<meta name="description" content="Reserve your spot for KONNECT's language exchange meetups and events in Seoul.">
+<title>신청하기 — Konnect</title>
+<meta name="description" content="KONNECT 언어교환 모임 신청 페이지. 서울 최초 1:1 비율 보장 언어교환.">
 <link rel="canonical" href="https://konnect.kozykorean.com/join.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-705Q8VWEKN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-705Q8VWEKN');</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--purple:#6B35E8;--purple-deep:#2E0B73;--purple-light:#9B7AF0;--pink:#FF3DA8;--black:#0A0118;--white:#fff;--border:rgba(255,255,255,0.09);--gray:rgba(255,255,255,0.05);}
 body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;min-height:100vh;}
-.nav{position:fixed;top:0;left:0;right:0;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(24px);background:rgba(10,1,24,0.7);border-bottom:1px solid var(--border);}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(24px);background:rgba(10,1,24,0.75);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none;color:var(--white);}
-.nav-back{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px;transition:color .2s;}
-.nav-back:hover{color:var(--white);}
 .lang-toggle{display:flex;background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:100px;padding:3px;gap:2px;}
 .lang-btn{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all .2s;}
 .lang-btn.active{background:var(--white);color:var(--black);}
 
-.page{padding:120px 48px 80px;max-width:900px;margin:0 auto;}
-.page-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-light);margin-bottom:16px;font-weight:500;}
-.page-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:12px;}
-.page-sub{font-size:16px;color:rgba(255,255,255,.55);margin-bottom:56px;line-height:1.6;}
+/* PAGE */
+.page{padding:110px 24px 80px;max-width:760px;margin:0 auto;}
 
-/* Event info */
-.event-info{background:linear-gradient(135deg,rgba(107,53,232,.15),rgba(255,61,168,.08));border:1px solid rgba(107,53,232,.3);border-radius:20px;padding:28px 32px;margin-bottom:48px;display:flex;gap:32px;flex-wrap:wrap;align-items:center;}
-.event-detail{display:flex;flex-direction:column;gap:4px;}
-.event-detail-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:500;}
-.event-detail-value{font-size:16px;font-weight:600;}
-.spots-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,61,168,.15);border:1px solid rgba(255,61,168,.3);padding:8px 16px;border-radius:100px;font-size:13px;color:#ff9fd4;margin-left:auto;}
-.spots-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);animation:blink 2s infinite;}
+/* HEADER */
+.page-tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-light);margin-bottom:14px;font-weight:500;}
+.page-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(42px,8vw,76px);font-weight:800;line-height:.92;letter-spacing:-.04em;margin-bottom:16px;}
+.page-sub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:44px;line-height:1.65;max-width:520px;}
+
+/* EVENT BANNER */
+.event-banner{background:linear-gradient(135deg,rgba(107,53,232,.18),rgba(255,61,168,.1));border:1px solid rgba(107,53,232,.3);border-radius:20px;padding:22px 28px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;}
+.ev-item{display:flex;flex-direction:column;gap:3px;}
+.ev-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.38);font-weight:500;}
+.ev-val{font-size:15px;font-weight:600;}
+.ev-sep{width:1px;height:34px;background:var(--border);}
+.spots-live{margin-left:auto;display:flex;align-items:center;gap:7px;background:rgba(255,61,168,.14);border:1px solid rgba(255,61,168,.3);padding:8px 16px;border-radius:100px;font-size:13px;color:#ff9fd4;white-space:nowrap;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* Tabs */
-.tabs{display:flex;gap:0;background:var(--gray);border:1px solid var(--border);border-radius:16px;padding:4px;margin-bottom:40px;max-width:400px;}
-.tab{flex:1;padding:12px 20px;border-radius:12px;text-align:center;font-size:15px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.45);transition:all .2s;}
-.tab.active{background:var(--white);color:var(--black);}
+/* CHOICE GRID */
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:44px;}
+.choice-card{background:var(--gray);border:1px solid var(--border);border-radius:24px;padding:32px 26px;text-decoration:none;color:var(--white);transition:all .3s;display:flex;flex-direction:column;gap:22px;position:relative;overflow:hidden;}
+.choice-card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;}
+.choice-card.kr::after{background:linear-gradient(135deg,rgba(107,53,232,.2),rgba(155,122,240,.08));}
+.choice-card.intl::after{background:linear-gradient(135deg,rgba(255,61,168,.16),rgba(107,53,232,.1));}
+.choice-card:hover{transform:translateY(-5px);}
+.choice-card.kr:hover{border-color:var(--purple-light);box-shadow:0 20px 60px rgba(107,53,232,.25);}
+.choice-card.intl:hover{border-color:var(--pink);box-shadow:0 20px 60px rgba(255,61,168,.2);}
+.choice-card:hover::after{opacity:1;}
+.choice-top{position:relative;z-index:1;}
+.choice-flag{font-size:42px;display:block;margin-bottom:16px;}
+.choice-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.38);font-weight:500;margin-bottom:8px;}
+.choice-name{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.025em;margin-bottom:6px;}
+.choice-price{font-size:22px;font-weight:700;color:var(--purple-light);margin-bottom:4px;}
+.choice-spots{font-size:13px;color:rgba(255,255,255,.38);}
+.choice-cta{position:relative;z-index:1;padding:15px 20px;border-radius:100px;font-size:15px;font-weight:700;text-align:center;border:none;cursor:pointer;transition:all .2s;display:block;}
+.choice-card.kr .choice-cta{background:var(--white);color:var(--black);}
+.choice-card.intl .choice-cta{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);box-shadow:0 8px 30px rgba(255,61,168,.3);}
 
-/* Payment cards */
-.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px;}
-.pay-card{background:var(--gray);border:1px solid var(--border);border-radius:20px;padding:28px 24px;cursor:pointer;transition:all .25s;position:relative;}
-.pay-card:hover{border-color:rgba(107,53,232,.5);transform:translateY(-2px);}
-.pay-card.selected{border-color:var(--purple);background:rgba(107,53,232,.12);}
-.pay-card.selected::after{content:'✓';position:absolute;top:16px;right:16px;width:24px;height:24px;background:var(--purple);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-.pay-icon{font-size:28px;margin-bottom:12px;}
-.pay-name{font-size:16px;font-weight:600;margin-bottom:4px;}
-.pay-desc{font-size:13px;color:rgba(255,255,255,.45);}
+/* HOW IT WORKS */
+.how-section{margin-top:36px;margin-bottom:36px;}
+.how-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.35);text-align:center;margin-bottom:28px;font-weight:500;}
+.steps-row{display:flex;align-items:flex-start;justify-content:center;gap:0;}
+.step-item{text-align:center;flex:1;max-width:160px;}
+.step-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin:0 auto 12px;box-shadow:0 4px 20px rgba(107,53,232,.4);}
+.step-name{font-size:14px;font-weight:700;margin-bottom:5px;}
+.step-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.55;}
+.step-sep{padding-top:19px;font-size:18px;color:rgba(255,255,255,.18);flex-shrink:0;padding-left:8px;padding-right:8px;}
 
-/* Form embed area */
-.form-section{background:var(--gray);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:32px;}
-.form-header{padding:24px 28px;border-bottom:1px solid var(--border);}
-.form-header h3{font-size:17px;font-weight:600;margin-bottom:4px;}
-.form-header p{font-size:13px;color:rgba(255,255,255,.45);}
-.form-embed{padding:28px;}
-.form-placeholder{text-align:center;padding:40px 20px;}
-.form-placeholder p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.7;}
-.form-placeholder code{background:rgba(255,255,255,.08);padding:2px 8px;border-radius:6px;font-size:13px;color:var(--purple-light);}
-
-/* CTA button */
-.pay-btn{display:block;width:100%;padding:18px;border-radius:100px;font-size:16px;font-weight:700;text-align:center;text-decoration:none;transition:all .25s;cursor:pointer;border:none;}
-.pay-btn-kr{background:var(--white);color:var(--black);box-shadow:0 0 40px rgba(107,53,232,.35);}
-.pay-btn-kr:hover{transform:scale(1.02);box-shadow:0 0 60px rgba(107,53,232,.6);}
-.pay-btn-intl{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);box-shadow:0 0 40px rgba(255,61,168,.25);}
-.pay-btn-intl:hover{transform:scale(1.02);box-shadow:0 0 60px rgba(255,61,168,.5);}
-
-.note{font-size:13px;color:rgba(255,255,255,.35);text-align:center;margin-top:16px;line-height:1.7;}
-.note a{color:var(--purple-light);text-decoration:none;}
-.note a:hover{text-decoration:underline;}
-
-/* Tabs content */
-.tab-content{display:none;}
-.tab-content.active{display:block;}
+/* GUARANTEE */
+.guarantee{background:linear-gradient(135deg,rgba(107,53,232,.12),rgba(255,61,168,.08));border:1px solid rgba(107,53,232,.25);border-radius:20px;padding:24px 28px;display:flex;align-items:flex-start;gap:20px;}
+.gar-icon{font-size:36px;flex-shrink:0;line-height:1;}
+.gar-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+.gar-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;}
 
 @media(max-width:700px){
-  .nav{padding:18px 24px;}
-  .page{padding:100px 24px 60px;}
-  .payment-grid{grid-template-columns:1fr;}
-  .event-info{flex-direction:column;gap:20px;}
-  .spots-pill{margin-left:0;}
-}
-.form-embed iframe{
-  width:100%;
-  border:0;
-  display:block;
+  .nav{padding:16px 20px;}
+  .page{padding:96px 20px 60px;}
+  .choice-grid{grid-template-columns:1fr;}
+  .event-banner{flex-direction:column;gap:14px;}
+  .ev-sep{display:none;}
+  .spots-live{margin-left:0;}
+  .step-sep{display:none;}
+  .steps-row{flex-direction:column;align-items:flex-start;gap:20px;width:100%;}
+  .step-item{width:100%;max-width:100%;display:flex;align-items:center;gap:16px;text-align:left;}
+  .step-num{flex-shrink:0;margin:0;}
+  .step-desc{margin-top:2px;}
 }
 </style>
 </head>
@@ -104,7 +99,6 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
     <svg width="26" height="26" viewBox="0 0 32 32"><defs><radialGradient id="pg" cx="30%" cy="30%"><stop offset="0%" stop-color="#9B7AF0"/><stop offset="60%" stop-color="#6B35E8"/><stop offset="100%" stop-color="#2E0B73"/></radialGradient></defs><ellipse cx="16" cy="16" rx="15" ry="4.5" fill="none" stroke="#6B35E8" stroke-width="2.5" transform="rotate(-20 16 16)"/><circle cx="16" cy="16" r="9.5" fill="url(#pg)"/></svg>
     Konnect
   </a>
-  <a class="nav-back" href="index.html" id="nav-back">← Back</a>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
     <button class="lang-btn" id="btn-ko" onclick="setLang('ko')">한</button>
@@ -112,682 +106,145 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 </nav>
 
 <div class="page">
-  <div id="earlybird-bar" style="display:none;margin:0 0 28px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(107,53,232,.28),rgba(255,61,168,.18));border:1px solid rgba(255,61,168,.35);box-shadow:0 0 30px rgba(255,61,168,.15);">
-    <p id="earlybird-title" style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:4px;">
-      ⚡ Early Bird Discount for Escape Room Night
-    </p>
-    <p style="font-size:18px;font-weight:800;color:#fff;margin:0;">
-      <span id="earlybird-prefix">Ends in</span> <span id="earlybird-countdown">--:--:--</span>
-    </p>
-    <p id="earlybird-sub" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;">
-      Discount links are applied automatically before the timer ends.
-    </p>
-  </div>
 
-  <p class="page-tag" id="page-tag">Join Konnect</p>
-  <h1 class="page-title" id="page-title">Reserve your spot</h1>
-  <p class="page-sub" id="page-sub">Fill out the form and complete payment to secure your place at the next meetup.</p>
+  <p class="page-tag" id="pg-tag">신청하기</p>
+  <h1 class="page-title" id="pg-title">자리를<br>예약하세요</h1>
+  <p class="page-sub" id="pg-sub">신청서 작성 후 1:1 비율을 확인하고, 결제 안내까지 빠르게 진행됩니다.</p>
 
-  <!-- Event info -->
-  <div class="event-info">
-    <div class="event-detail">
-      <span class="event-detail-label" id="el1">Next Meetup</span>
-      <span class="event-detail-value" id="ev1">Language Exchange</span>
-    </div>
-    <div class="event-detail">
-      <span class="event-detail-label" id="el2">Date</span>
-      <span class="event-detail-value" id="ev2">Saturday, June 14</span>
-    </div>
-    <div class="event-detail">
-      <span class="event-detail-label" id="el3">Time</span>
-      <span class="event-detail-value" id="ev3">1:20 PM</span>
-    </div>
-    <div class="event-detail">
-      <span class="event-detail-label" id="el4">Location</span>
-      <span class="event-detail-value" id="ev4">City Hall Station</span>
-    </div>
-    <div class="spots-pill" data-spots>
-      <span class="spots-dot"></span>
-      <span id="spots-txt">3 spots left</span>
+  <div class="how-section">
+    <p class="how-label" id="how-lbl">신청 방법</p>
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-name" id="s1t">신청서 작성</div>
+          <div class="step-desc" id="s1d">간단한 폼을 작성해주세요</div>
+        </div>
+      </div>
+      <div class="step-sep">→</div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-name" id="s2t">확인 연락</div>
+          <div class="step-desc" id="s2d">1:1 비율 확인 후 24시간 내 연락</div>
+        </div>
+      </div>
+      <div class="step-sep">→</div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-name" id="s3t">결제 완료</div>
+          <div class="step-desc" id="s3d">결제 후 자리가 확정됩니다</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Region tabs -->
-  <div class="tabs">
-    <button class="tab active" id="tab-kr" onclick="switchTab('kr')">🇰🇷 <span id="tab-kr-txt">Korean</span></button>
-    <button class="tab" id="tab-intl" onclick="switchTab('intl')">🌍 <span id="tab-intl-txt">International</span></button>
+  <div class="event-banner">
+    <div class="ev-item">
+      <span class="ev-label" id="el-date">다음 모임</span>
+      <span class="ev-val" id="ev-date">—</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-item">
+      <span class="ev-label" id="el-time">시간</span>
+      <span class="ev-val" id="ev-time">—</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-item">
+      <span class="ev-label" id="el-loc">장소</span>
+      <span class="ev-val" id="ev-loc">—</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-item">
+      <span class="ev-label" id="el-price">참가비</span>
+      <span class="ev-val" id="ev-price">₩20,000 / $16</span>
+    </div>
   </div>
 
-  <!-- Korean tab -->
-  <div class="tab-content active" id="content-kr">
-    <div class="form-section">
-      <div class="form-header">
-        <h3 id="form-kr-title">신청 정보 입력</h3>
-        <p id="form-kr-sub">결제 전 아래 폼을 먼저 작성해주세요.</p>
+  <div class="choice-grid">
+    <a href="join-kr.html" class="choice-card kr">
+      <div class="choice-top">
+        <span class="choice-flag">🇰🇷</span>
+        <div class="choice-label" id="lbl-kr">한국인 참가자</div>
+        <div class="choice-name" id="nm-kr">한국인 신청</div>
+        <div class="choice-price" id="pr-kr">₩20,000</div>
       </div>
-<div class="form-embed" id="tally-wrap-kr">
-        <iframe id="tally-kr" data-tally-src="https://tally.so/embed/KYa9OD?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0" title="KONNECT 언어교환 모임 신청"></iframe>
-        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      </div>
-    </div>
-<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">쿠폰이 있으신가요?</p>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    <input id="coupon-input-kr" type="text" placeholder="쿠폰 코드를 입력해주세요"
-      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
-    <button type="button" onclick="applyCoupon('kr')"
-      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
-      적용
-    </button>
-  </div>
-  <p id="coupon-msg-kr" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
-  <p id="coupon-help-kr" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
-    사용 가능한 할인: 한국인 친구 초대 할인 (1인 ₩55,000) / 기존 참가자 할인 / 한국인 특별 할인 (코드: KOREAN, ₩59,000)<br>
-    할인 혜택은 중복 적용되지 않으며, 조건 확인 후 참가가 확정됩니다.
-  </p>
-</div>
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-kr-title">결제 수단 선택</h3>
-    <div class="payment-grid">
-      <div class="pay-card selected" onclick="selectPay(this)">
-        <div class="pay-icon">💛</div>
-        <div class="pay-name">카카오페이</div>
-        <div class="pay-desc" id="kp-desc">카카오페이로 간편 결제</div>
-      </div>
-      
-    </div>
-
-<a href="https://qr.kakaopay.com/Ej8tO05RY271006015" class="pay-btn pay-btn-kr" id="pay-kr-btn" target="_blank">
-  📱 카카오페이로 결제 (모바일) →
-</a>
-
-<div style="margin:16px 0;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">💻 PC에서는 계좌이체로 결제해주세요</p>
-  <p style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">카카오뱅크 3333-33-7607681</p>
-  <p style="font-size:14px;color:rgba(255,255,255,0.6);">예금주: 안형욱(코지 Kozy)</p>
-  <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">이체 후 카카오톡으로 캡처 보내주세요 👉 <a href="https://pf.kakao.com/_nWxjUn" style="color:#9B7AF0;">카카오 채널</a></p>
-</div>
-    <p class="note" id="pay-kr-note">결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
-  </div>
-
-  <!-- International tab -->
-  <div class="tab-content" id="content-intl">
-    <div class="form-section">
-      <div class="form-header">
-        <h3 id="form-intl-title">Registration Form</h3>
-        <p id="form-intl-sub">Please fill out the form before completing payment.</p>
-      </div>
-<div class="form-embed" id="tally-wrap-intl">
-          <!-- ✅ TALLY 폼 삽입 위치 (영어) -->
-<iframe id="tally-intl" data-tally-src="https://tally.so/embed/2ED0Xp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="791" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" title="KONNECT Application"></iframe>
-        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      </div>
-    </div>
-<div class="coupon-box" style="margin:0 0 28px;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:14px;font-weight:600;margin-bottom:10px;">Have a coupon?</p>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;">
-    <input id="coupon-input-intl" type="text" placeholder="Enter coupon code"
-      style="flex:1;min-width:180px;padding:13px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff;font-size:14px;">
-    <button type="button" onclick="applyCoupon('intl')"
-      style="padding:13px 18px;border-radius:12px;border:none;background:#fff;color:#0A0118;font-weight:700;cursor:pointer;">
-      Apply
-    </button>
-  </div>
-  <p id="coupon-msg-intl" style="font-size:12px;color:rgba(255,255,255,.45);margin-top:10px;"></p>
-  <p id="coupon-help-intl" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.6;">
-    Available discounts: Bring a Friend (₩59,000 / $43 per person) / Returning participant (₩64,000 / $47)<br>
-    Discounts cannot be combined. Your spot is confirmed after we verify your discount information.
-  </p>
-</div>
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" id="pay-intl-title">Choose payment</h3>
-    <div class="payment-grid">
-     <div class="pay-card selected" onclick="selectPay(this)" data-url="https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e">
-        <div class="pay-icon">💳</div>
-        <div class="pay-name">Stripe</div>
-        <div class="pay-desc">Credit / Debit card</div>
-      </div>
-      <div class="pay-card" onclick="selectPay(this)" data-url="https://www.paypal.com/ncp/payment/UPBSVATMW2SPJ">
-        <div class="pay-icon">🅿️</div>
-        <div class="pay-name">PayPal</div>
-        <div class="pay-desc">PayPal account or card</div>
-      </div>
-    </div>
-
-    <!-- ✅ Stripe 결제 링크로 교체 -->
-    <a href="https://buy.stripe.com/3cI00j0jK72Y85R9xifw40e" class="pay-btn pay-btn-intl" id="pay-intl-btn" target="_blank">
-      Pay $16 USD →
+      <span class="choice-cta" id="cta-kr">한국인으로 신청하기</span>
     </a>
-    <div style="margin:16px 0;padding:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;">
-  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
-    🇰🇷 Living in Korea? You can also pay with KakaoPay or bank transfer.
-  </p>
-
-  <a href="https://qr.kakaopay.com/Ej8tO05RY271006015"
-     class="pay-btn pay-btn-kr"
-     id="pay-intl-kakao-btn"
-     target="_blank"
-     style="margin-bottom:16px;">
-    📱 Pay with KakaoPay →
-  </a>
-
-  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:12px;">
-    Bank Transfer
-  </p>
-  <p style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;">
-    KakaoBank 3333-33-7607681
-  </p>
-  <p style="font-size:14px;color:rgba(255,255,255,0.6);">
-    Account holder: Ahn Hyeonguk (Kozy)
-  </p>
-  <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:8px;">
-    After transferring, please send us a screenshot via KakaoTalk or Instagram DM.
-  </p>
-</div>
-    <p class="note" id="pay-intl-note">After payment, you'll receive a confirmation via email or Instagram DM.<br>If you use a discount, your spot will be confirmed after we verify your discount information.<br>Questions: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a></p>
+    <a href="join-intl.html" class="choice-card intl">
+      <div class="choice-top">
+        <span class="choice-flag">🌍</span>
+        <div class="choice-label" id="lbl-intl">International</div>
+        <div class="choice-name" id="nm-intl">International</div>
+        <div class="choice-price" id="pr-intl">$16 USD</div>
+      </div>
+      <span class="choice-cta" id="cta-intl">Sign up as International</span>
+    </a>
   </div>
+
+  <div class="guarantee">
+    <div class="gar-icon">⚖️</div>
+    <div>
+      <div class="gar-title" id="gar-t">1:1 비율 보장</div>
+      <div class="gar-sub" id="gar-s">모든 모임에서 한국인과 외국인 비율을 1:1로 유지합니다. 한쪽이 가득 차면 신청이 일시 제한될 수 있습니다.</div>
+    </div>
+  </div>
+
 </div>
+
 <script src="config.js"></script>
 <script>
-/* =========================================================
-   KONNECT JOIN PAGE SCRIPT
-   - Supports regular / escape event
-   - Keeps language through URL + localStorage
-   - Applies Early Bird automatically
-   - Applies coupons by event type only
-   - Updates payment button labels + links together
-========================================================= */
-
-function getEventId() {
-  return new URLSearchParams(window.location.search).get('event') || 'regular';
-}
-
-function getPreferredLang() {
-  const params = new URLSearchParams(window.location.search);
-  const urlLang = params.get('lang');
-
-  if (urlLang === 'ko' || urlLang === 'en') {
-    localStorage.setItem('konnect-lang', urlLang);
-    return urlLang;
-  }
-
-  return localStorage.getItem('konnect-lang') ||
-    ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
-}
-
-function withLang(url) {
-  const lang = getPreferredLang();
-  if (!url || url === '#') return url;
-
-  try {
-    const u = new URL(url, window.location.href);
-    if (u.origin === window.location.origin) {
-      u.searchParams.set('lang', lang);
-      return u.pathname.replace(/^\//, '') + u.search + u.hash;
-    }
-    return url;
-  } catch(e) {
-    return url;
-  }
-}
-
-function switchTab(tab) {
-  document.getElementById('content-kr').classList.toggle('active', tab === 'kr');
-  document.getElementById('content-intl').classList.toggle('active', tab === 'intl');
-  document.getElementById('tab-kr').classList.toggle('active', tab === 'kr');
-  document.getElementById('tab-intl').classList.toggle('active', tab === 'intl');
-}
-
-function selectPay(el) {
-  el.closest('.payment-grid').querySelectorAll('.pay-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-
-  const btn = document.getElementById('pay-intl-btn');
-  if (btn && el.dataset.url) btn.href = el.dataset.url;
-}
-
-const _M = (typeof _derive === 'function' && typeof CONFIG !== 'undefined')
-  ? _derive(CONFIG.NEXT_MEETUP_DATE)
-  : null;
-
-const T = {
-  en: {
-    pageTag: "Join Konnect",
-    pageTitle: "Reserve your spot",
-    pageSub: "Fill out the form and complete payment to secure your place.",
-    navBack: "← Back",
-    el1: "Event",
-    el2: "Date",
-    el3: "Time",
-    el4: "Location",
-    tabKr: "Korean",
-    tabIntl: "International",
-    formKrTitle: "Registration Form (Korean)",
-    formKrSub: "Please fill out the form before completing payment.",
-    payKrTitle: "Choose payment",
-    kpDesc: "Pay with KakaoPay",
-    payKrNote: "After payment, we'll send you a confirmation via KakaoTalk.<br>Questions: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>",
-    formIntlTitle: "Registration Form",
-    formIntlSub: "Please fill out the form before completing payment.",
-    payIntlTitle: "Choose payment",
-    payIntlNote: "After payment, you\'ll receive a confirmation via email or Instagram DM.<br>If you use a discount, your spot will be confirmed after we verify your discount information.<br>Questions: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>"
+const JT = {
+  ko:{
+    tag:'신청하기', title:'자리를\n예약하세요',
+    sub:'신청서 작성 후 1:1 비율을 확인하고, 결제 안내까지 빠르게 진행됩니다.',
+    elDate:'다음 모임', elTime:'시간', elLoc:'장소', elPrice:'참가비',
+    lblKr:'한국인 참가자', nmKr:'한국인 신청', ctaKr:'한국인으로 신청하기',
+    lblIntl:'외국인 참가자', nmIntl:'International', ctaIntl:'International로 신청하기',
+    howLbl:'신청 방법',
+    s1t:'신청서 작성', s1d:'간단한 폼을 작성해주세요',
+    s2t:'확인 연락', s2d:'1:1 비율 확인 후 24시간 내 연락',
+    s3t:'결제 완료', s3d:'결제 후 자리가 확정됩니다',
+    garT:'1:1 비율 보장',
+    garS:'모든 모임에서 한국인과 외국인 비율을 1:1로 유지합니다. 한쪽이 가득 차면 신청이 일시 제한될 수 있습니다.'
   },
-  ko: {
-    pageTag: "Konnect 신청",
-    pageTitle: "자리 예약하기",
-    pageSub: "폼을 작성하고 결제를 완료하면 자리가 확정됩니다.",
-    navBack: "← 돌아가기",
-    el1: "모임",
-    el2: "날짜",
-    el3: "시간",
-    el4: "장소",
-    tabKr: "한국인",
-    tabIntl: "외국인",
-    formKrTitle: "신청 정보 입력",
-    formKrSub: "결제 전 아래 폼을 먼저 작성해주세요.",
-    payKrTitle: "결제 수단 선택",
-    kpDesc: "카카오페이로 간편 결제",
-    payKrNote: '결제 완료 후 카카오톡으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href="https://instagram.com/konnect_exchange">@konnect_exchange</a>',
-    formIntlTitle: "Registration Form",
-    formIntlSub: "Please fill out the form before completing payment.",
-    payIntlTitle: "결제 수단 선택",
-    payIntlNote: "결제 완료 후 이메일 또는 인스타그램 DM으로 확인 메시지를 보내드립니다.<br>할인 결제를 하신 경우, 신청 폼의 할인 정보 확인 후 참가가 확정됩니다.<br>문의: <a href=\"https://instagram.com/konnect_exchange\">@konnect_exchange</a>"
+  en:{
+    tag:'Apply', title:'Reserve\nyour spot',
+    sub:"Complete a short form and we'll confirm your spot within 24 hours.",
+    elDate:'Next Meetup', elTime:'Time', elLoc:'Location', elPrice:'Entry Fee',
+    lblKr:'Korean Participant', nmKr:'Korean', ctaKr:'Apply as Korean',
+    lblIntl:'International', nmIntl:'International', ctaIntl:'Sign up as International',
+    howLbl:'How it works',
+    s1t:'Fill Form', s1d:'Complete a short registration form',
+    s2t:'Confirmation', s2d:'1:1 ratio check within 24 hours',
+    s3t:'Payment', s3d:'Pay to confirm your spot',
+    garT:'1:1 Ratio Guarantee',
+    garS:'We maintain a strict 1:1 ratio of Korean to international participants at every meetup.'
   }
 };
-
-let activeCouponCode = '';
-let activeCouponGroup = null;
-
-function setText(id, value) {
-  const el = document.getElementById(id);
-  if (el && value !== undefined && value !== null) el.textContent = value;
-}
-
-function setHtml(id, value) {
-  const el = document.getElementById(id);
-  if (el && value !== undefined && value !== null) el.innerHTML = value;
-}
-
-function setLang(lang) {
+function setLang(lang){
   localStorage.setItem('konnect-lang', lang);
-
-  const t = T[lang] || T.en;
-
-  setText('page-tag', t.pageTag);
-  setText('page-title', t.pageTitle);
-  setText('page-sub', t.pageSub);
-  setText('nav-back', t.navBack);
-
-  setText('el1', t.el1);
-  setText('el2', t.el2);
-  setText('el3', t.el3);
-  setText('el4', t.el4);
-
-  setText('tab-kr-txt', t.tabKr);
-  setText('tab-intl-txt', t.tabIntl);
-
-  setText('form-kr-title', t.formKrTitle);
-  setText('form-kr-sub', t.formKrSub);
-  setText('pay-kr-title', t.payKrTitle);
-  setText('kp-desc', t.kpDesc);
-  setHtml('pay-kr-note', t.payKrNote);
-
-  setText('form-intl-title', t.formIntlTitle);
-  setText('form-intl-sub', t.formIntlSub);
-  setText('pay-intl-title', t.payIntlTitle);
-  setHtml('pay-intl-note', t.payIntlNote);
-
-  document.getElementById('btn-en')?.classList.toggle('active', lang === 'en');
-  document.getElementById('btn-ko')?.classList.toggle('active', lang === 'ko');
-
-  const back = document.getElementById('nav-back');
-  if (back) back.href = withLang('index.html');
-
-  applyEvent(lang);
-  updateTallyForms();
-  updateEarlyBirdBar();
-
-  if (activeCouponGroup) {
-    setPaymentLinks(activeCouponGroup, activeCouponCode);
-  } else {
-    applyDefaultPaymentLinks();
-  }
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
+  const t = JT[lang]||JT.en;
+  const ids = ['tag','title','sub','elDate','elTime','elLoc','elPrice','lblKr','nmKr','ctaKr','lblIntl','nmIntl','ctaIntl','howLbl','s1t','s1d','s2t','s2d','s3t','s3d','garT','garS'];
+  const elIds = ['pg-tag','pg-title','pg-sub','el-date','el-time','el-loc','el-price','lbl-kr','nm-kr','cta-kr','lbl-intl','nm-intl','cta-intl','how-lbl','s1t','s1d','s2t','s2d','s3t','s3d','gar-t','gar-s'];
+  ids.forEach((k,i)=>{ const el=document.getElementById(elIds[i]); if(el&&t[k]) el.textContent=t[k]; });
+  // event info from config
+  const M = _derive(CONFIG.NEXT_MEETUP_DATE);
+  const v = M[lang];
+  document.getElementById('ev-date').textContent = v.date;
+  document.getElementById('ev-time').textContent = v.time;
+  document.getElementById('ev-loc').textContent = v.location;
+  document.getElementById('pr-kr').textContent = CONFIG.PRICE_KR;
+  document.getElementById('pr-intl').textContent = CONFIG.PRICE_INTL + ' USD';
+  document.getElementById('ev-price').textContent = CONFIG.PRICE_KR + ' / ' + CONFIG.PRICE_INTL;
 }
-
-function getRegularEventData(lang) {
-  const M = (typeof _derive === 'function' && typeof CONFIG !== 'undefined')
-    ? _derive(CONFIG.NEXT_MEETUP_DATE)
-    : null;
-
-  return {
-    tag: lang === 'ko' ? 'Konnect 신청' : 'Join Konnect',
-    title: lang === 'ko' ? '자리 예약하기' : 'Reserve your spot',
-    sub: lang === 'ko'
-      ? '폼을 작성하고 결제를 완료하면 자리가 확정됩니다.'
-      : 'Fill out the form and complete payment to secure your place.',
-    ev1: lang === 'ko' ? '언어교환 모임' : 'Language Exchange',
-    ev2: M ? M[lang].date : '',
-    ev3: M ? M[lang].time : '',
-    ev4: M ? M[lang].location : ''
-  };
-}
-
-function getEscapeEventData(lang) {
-  const e = CONFIG.ESCAPE?.[lang] || CONFIG.ESCAPE?.en || {};
-
-  return {
-    tag: e.pageTag || e.badge || (lang === 'ko' ? '방탈출 나이트' : 'Escape Room Night'),
-    title: e.pageTitle || e.title || (lang === 'ko' ? '방탈출 신청하기' : 'Sign up — Escape Room'),
-    sub: e.pageSub || (lang === 'ko'
-      ? '폼을 작성하고 결제를 완료하면 자리가 확정됩니다.'
-      : 'Fill out the form and complete payment to join.'),
-    ev1: e.title || (lang === 'ko' ? '방탈출 나이트' : 'Escape Room Night'),
-    ev2: e.date || '',
-    ev3: e.time || '',
-    ev4: e.location || ''
-  };
-}
-const FORM_LINKS = {
-  regular: {
-    kr: 'https://tally.so/embed/KYa9OD?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1',
-    intl: 'https://tally.so/embed/2ED0Xp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
-  },
-  escape: {
-    kr: 'https://tally.so/embed/81MXOr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1',
-    intl: 'https://tally.so/embed/vGKlQg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
-  }
-};
-
-function createTallyIframe(id, src, title) {
-  const iframe = document.createElement('iframe');
-  iframe.id = id;
-  iframe.setAttribute('data-tally-src', src);
-  iframe.setAttribute('loading', 'lazy');
-  iframe.setAttribute('width', '100%');
-  iframe.setAttribute('height', '1000');
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('marginheight', '0');
-  iframe.setAttribute('marginwidth', '0');
-  iframe.setAttribute('title', title);
-  iframe.style.width = '100%';
-  iframe.style.minHeight = '600px';
-  iframe.style.border = '0';
-  iframe.style.display = 'block';
-  return iframe;
-}
-
-function updateTallyForms() {
-  const eventId = getEventId();
-  const forms = FORM_LINKS[eventId] || FORM_LINKS.regular;
-
-  const krWrap = document.getElementById('tally-wrap-kr');
-  const intlWrap = document.getElementById('tally-wrap-intl');
-
-  if (krWrap) {
-    const current = document.getElementById('tally-kr');
-    if (!current || current.dataset.tallySrc !== forms.kr) {
-      krWrap.innerHTML = '';
-      krWrap.appendChild(
-        createTallyIframe('tally-kr', forms.kr, eventId === 'escape'
-          ? 'KONNECT 방탈출 나이트 신청'
-          : 'KONNECT 언어교환 모임 신청'
-        )
-      );
-    }
-  }
-
-  if (intlWrap) {
-    const current = document.getElementById('tally-intl');
-    if (!current || current.dataset.tallySrc !== forms.intl) {
-      intlWrap.innerHTML = '';
-      intlWrap.appendChild(
-        createTallyIframe('tally-intl', forms.intl, eventId === 'escape'
-          ? 'KONNECT Escape Night Application'
-          : 'KONNECT Application'
-        )
-      );
-    }
-  }
-
-  if (window.Tally) {
-    window.Tally.loadEmbeds();
-  }
-}
-function applyEvent(forceLang) {
-  const eventId = getEventId();
-  const lang = forceLang || getPreferredLang();
-
-  const ev = eventId === 'escape'
-    ? getEscapeEventData(lang)
-    : getRegularEventData(lang);
-
-  setText('page-tag', ev.tag);
-  setText('page-title', ev.title);
-  setText('page-sub', ev.sub);
-  setText('ev1', ev.ev1);
-  setText('ev2', ev.ev2);
-  setText('ev3', ev.ev3);
-  setText('ev4', ev.ev4);
-
-  updateSpots(eventId, lang);
-}
-
-function updateSpots(eventId, lang) {
-  const spotsWrap = document.querySelector('[data-spots]');
-  const spotsTxt = document.getElementById('spots-txt');
-
-  if (!spotsWrap || !spotsTxt || typeof CONFIG === 'undefined') return;
-
-  const spots = eventId === 'escape'
-    ? (CONFIG.ESCAPE?.spotsLeft || '')
-    : (CONFIG.SPOTS_LEFT || '');
-
-  if (!spots) {
-    spotsWrap.style.display = 'none';
-    return;
-  }
-
-  spotsWrap.style.display = 'inline-flex';
-  spotsTxt.textContent = lang === 'ko' ? `${spots}자리 남음` : `${spots} spots left`;
-}
-
-function isEarlyBirdActive() {
-  if (getEventId() !== 'escape') return false;
-  if (!CONFIG.EARLY_BIRD?.escape?.enabled) return false;
-
-  return new Date() < new Date(CONFIG.EARLY_BIRD.escape.end);
-}
-
-function getPaymentGroup() {
-  const eventId = getEventId();
-
-  if (eventId === 'escape') {
-    return isEarlyBirdActive()
-      ? CONFIG.PAYMENT_LINKS?.escape?.earlybird
-      : CONFIG.PAYMENT_LINKS?.escape?.regular;
-  }
-
-  return CONFIG.PAYMENT_LINKS?.regular;
-}
-
-function getLabel(obj, lang, code) {
-  if (!obj) return '';
-
-  const direct = lang === 'ko'
-    ? (obj.labelKo || obj.labelEn)
-    : (obj.labelEn || obj.labelKo);
-
-  if (direct) return direct;
-
-  const eventId = getEventId();
-
-  if (eventId === 'escape') {
-    if (code === 'FRIEND') {
-      return lang === 'ko' ? '친구 초대 할인 결제하기 (₩55,000) →' : 'Pay Friend Price ($43) →';
-    }
-    if (code === 'RETURN') {
-      return lang === 'ko' ? '기존 참가자 할인 결제하기 (₩64,000) →' : 'Pay Returning Member Price ($47) →';
-    }
-    return lang === 'ko' ? '결제하기 (₩69,000) →' : 'Pay $49 →';
-  }
-
-  if (code === 'FRIEND') {
-    return lang === 'ko' ? '친구 초대 할인 결제하기 (₩15,000) →' : 'Pay Friend Discount ($12) →';
-  }
-
-  if (code === 'RETURN') {
-    return lang === 'ko' ? '기존 참가자 할인 결제하기 (₩15,000) →' : 'Pay Returning Member Discount ($12) →';
-  }
-
-  return lang === 'ko' ? '결제하기 (₩20,000) →' : 'Pay ₩20,000 →';
-}
-
-function setPaymentLinks(group, couponCode = '') {
-  if (!group) return;
-
-  const lang = getPreferredLang();
-
-  const krBtn = document.getElementById('pay-kr-btn');
-  const intlBtn = document.getElementById('pay-intl-btn');
-  const intlKakaoBtn = document.getElementById('pay-intl-kakao-btn');
-
-  if (krBtn && group.kr) {
-    krBtn.href = group.kr.kakao || '#';
-    krBtn.textContent = getLabel(group.kr, lang, couponCode);
-  }
-
-  if (intlBtn && group.intl) {
-    intlBtn.href = group.intl.stripe || '#';
-    intlBtn.textContent = getLabel(group.intl, lang, couponCode);
-  }
-
-  if (intlKakaoBtn && group.intl) {
-    intlKakaoBtn.href = group.intl.kakao || '#';
-  }
-
-  document.querySelectorAll('#content-intl .pay-card').forEach(card => {
-    const name = card.querySelector('.pay-name')?.textContent?.trim().toLowerCase();
-
-    if (name === 'stripe' && group.intl?.stripe) {
-      card.dataset.url = group.intl.stripe;
-    }
-
-    if (name === 'paypal' && group.intl?.paypal) {
-      card.dataset.url = group.intl.paypal;
-    }
-  });
-}
-
-function applyDefaultPaymentLinks() {
-  activeCouponCode = '';
-  activeCouponGroup = null;
-  setPaymentLinks(getPaymentGroup());
-}
-
-function applyCoupon(type) {
-  const input = document.getElementById(type === 'kr' ? 'coupon-input-kr' : 'coupon-input-intl');
-  const msg = document.getElementById(type === 'kr' ? 'coupon-msg-kr' : 'coupon-msg-intl');
-  const code = (input?.value || '').trim().toUpperCase();
-  const lang = type === 'intl' ? 'en' : 'ko';
-  const eventId = getEventId();
-
-  if (!code) {
-    if (msg) {
-      msg.textContent = lang === 'ko'
-        ? '쿠폰 코드를 입력해주세요.'
-        : 'Please enter a coupon code.';
-    }
-    return;
-  }
-
-  const coupon = CONFIG.PAYMENT_LINKS?.coupons?.[eventId]?.[code];
-
-  if (!coupon) {
-    activeCouponCode = '';
-    activeCouponGroup = null;
-
-    if (msg) {
-      msg.textContent = lang === 'ko'
-        ? '이 쿠폰은 현재 모임에 사용할 수 없습니다.'
-        : 'This coupon cannot be used for this event.';
-    }
-
-    setPaymentLinks(getPaymentGroup());
-    return;
-  }
-
-  activeCouponCode = code;
-  activeCouponGroup = coupon;
-
-  setPaymentLinks(coupon, code);
-
-  if (msg) {
-    msg.textContent = lang === 'ko'
-      ? (coupon.messageKo || '쿠폰이 적용되었습니다.')
-      : (coupon.messageEn || 'Coupon applied.');
-  }
-}
-
-function updateEarlyBirdBar() {
-  const bar = document.getElementById('earlybird-bar');
-  const cd = document.getElementById('earlybird-countdown');
-  const title = document.getElementById('earlybird-title');
-  const prefix = document.getElementById('earlybird-prefix');
-  const sub = document.getElementById('earlybird-sub');
-
-  if (!bar || !cd) return;
-
-  if (getEventId() !== 'escape' || !CONFIG.EARLY_BIRD?.escape?.enabled) {
-    bar.style.display = 'none';
-    return;
-  }
-
-  const end = new Date(CONFIG.EARLY_BIRD.escape.end);
-  const diff = end - new Date();
-
-  if (diff <= 0) {
-    bar.style.display = 'none';
-    if (!activeCouponGroup) setPaymentLinks(getPaymentGroup());
-    return;
-  }
-
-  const lang = getPreferredLang();
-
-  if (lang === 'ko') {
-    if (title) title.textContent = '⚡ 방탈출 나이트 시작';
-    if (prefix) prefix.textContent = '시작까지';
-    if (sub) sub.textContent = '한국인이라면 쿠폰 코드 "KOREAN"으로 특별 할인가(₩59,000)가 적용됩니다. 친구와 함께 신청 시 ₩55,000 적용.';
-  } else {
-    if (title) title.textContent = '⚡ Escape Room Night Starts';
-    if (prefix) prefix.textContent = 'Starts in';
-    if (sub) sub.textContent = 'Use coupon code "KOREAN" for Korean special discount (₩59,000). Bring a friend for ₩55,000 per person.';
-  }
-
-  bar.style.display = 'block';
-
-  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
-
-  cd.textContent =
-    `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
-
-  if (!activeCouponGroup) {
-    setPaymentLinks(getPaymentGroup());
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  const lang = getPreferredLang();
-
+document.addEventListener('DOMContentLoaded',()=>{
+  const lang = localStorage.getItem('konnect-lang')||((navigator.language||'en').toLowerCase().startsWith('ko')?'ko':'en');
   setLang(lang);
-  updateTallyForms();
-  applyEvent(lang);
-  applyDefaultPaymentLinks();
-  updateEarlyBirdBar();
-
-  setInterval(updateEarlyBirdBar, 1000);
 });
 </script>
-
 </body>
 </html>
