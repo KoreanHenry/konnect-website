@@ -163,7 +163,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
   </div>
 
   <div class="choice-grid">
-    <a href="join-kr.html" class="choice-card kr">
+    <a id="card-kr" href="join-kr.html" class="choice-card kr">
       <div class="choice-top">
         <span class="choice-flag">🇰🇷</span>
         <div class="choice-label" id="lbl-kr">한국인 참가자</div>
@@ -172,7 +172,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
       </div>
       <span class="choice-cta" id="cta-kr">한국인으로 신청하기</span>
     </a>
-    <a href="join-intl.html" class="choice-card intl">
+    <a id="card-intl" href="join-intl.html" class="choice-card intl">
       <div class="choice-top">
         <span class="choice-flag">🌍</span>
         <div class="choice-label" id="lbl-intl">International</div>
@@ -244,6 +244,50 @@ function setLang(lang){
 document.addEventListener('DOMContentLoaded',()=>{
   const lang = localStorage.getItem('konnect-lang')||((navigator.language||'en').toLowerCase().startsWith('ko')?'ko':'en');
   setLang(lang);
+
+  // Escape room routing: if ?event=escape, redirect cards to escape-specific pages
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('event') === 'escape') {
+    document.getElementById('card-kr').href = 'join-escape-kr.html';
+    document.getElementById('card-intl').href = 'join-escape-intl.html';
+
+    const E = CONFIG.ESCAPE || {};
+
+    // Page header
+    document.getElementById('pg-tag').textContent = '🚪 Escape Night 신청';
+    document.getElementById('pg-title').textContent = '방탈출 나이트\n신청하기';
+    document.getElementById('pg-sub').textContent = '신청서를 작성하고 결제를 완료하면 자리가 확정됩니다.';
+
+    // Korean price → ₩59,000 (한국인 특별가) with orange highlight
+    const prKr = document.getElementById('pr-kr');
+    prKr.textContent = '₩59,000';
+    prKr.style.color = '#FF6B35';
+
+    // Intl price
+    document.getElementById('pr-intl').textContent = (E.regularPriceIntl || '$51') + ' USD';
+
+    // Event banner → escape room info
+    const Eko = E.ko || {};
+    document.getElementById('ev-date').textContent = Eko.date || '6월 20일 (토)';
+    document.getElementById('ev-time').textContent = Eko.time || '오후 2:30 – 8:00';
+    document.getElementById('ev-loc').textContent = Eko.location || '홍대';
+    document.getElementById('ev-price').textContent = (E.regularPriceKr || '₩69,000') + ' / ' + (E.regularPriceIntl || '$51');
+    document.getElementById('el-date').textContent = '이벤트 날짜';
+    document.getElementById('el-price').textContent = '참가비';
+
+    // Steps → 2단계 (신청서 작성 → 결제, 확인 연락 제거)
+    const steps = document.querySelectorAll('.step-item');
+    const seps = document.querySelectorAll('.step-sep');
+    if (steps[1]) steps[1].style.display = 'none';
+    if (seps[0]) seps[0].style.display = 'none';
+    if (steps[2]) { const n = steps[2].querySelector('.step-num'); if (n) n.textContent = '2'; }
+    document.getElementById('s2t').textContent = '결제 완료';
+    document.getElementById('s2d').textContent = '결제 후 자리가 확정됩니다';
+
+    // Hide guarantee section
+    const gar = document.querySelector('.guarantee');
+    if (gar) gar.style.display = 'none';
+  }
 });
 </script>
 </body>

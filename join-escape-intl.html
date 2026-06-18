@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escape Night Sign Up — Konnect</title>
+<meta name="description" content="Sign up for KONNECT Escape Night in Seoul. Cafe icebreaking, escape room missions, and Korean dinner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-705Q8VWEKN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-705Q8VWEKN');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--purple:#6B35E8;--purple-light:#9B7AF0;--pink:#FF3DA8;--black:#0A0118;--white:#fff;--border:rgba(255,255,255,0.09);--gray:rgba(255,255,255,0.05);--orange:#FF6B35;--orange-light:#FFA07A;}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-webkit-font-smoothing:antialiased;}
+.nav{position:fixed;top:0;left:0;right:0;padding:18px 48px;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(24px);background:rgba(10,1,24,0.75);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;text-decoration:none;color:var(--white);}
+.page{padding:100px 24px 80px;max-width:680px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:24px;transition:color .2s;}
+.back-link:hover{color:var(--white);}
+.event-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--orange-light);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;}
+.head-flag{font-size:36px;display:block;margin-bottom:12px;}
+.page-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(36px,7vw,60px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:10px;}
+.price-tag{display:inline-block;font-size:22px;font-weight:700;color:var(--orange-light);margin-bottom:0;}
+.event-card{background:linear-gradient(135deg,rgba(255,107,53,.14),rgba(107,53,232,.1));border:1px solid rgba(255,107,53,.22);border-radius:18px;padding:20px 24px;margin-bottom:36px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+.ev-info{display:flex;flex-direction:column;gap:2px;}
+.ev-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35);font-weight:500;}
+.ev-val{font-size:14px;font-weight:600;}
+.ev-sep{width:1px;height:30px;background:var(--border);}
+.step-bar{display:flex;align-items:center;justify-content:center;margin-bottom:40px;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:100px;font-size:13px;font-weight:600;color:rgba(255,255,255,.3);flex:1;max-width:200px;justify-content:center;}
+.sb-item.active{background:linear-gradient(135deg,rgba(255,107,53,.2),rgba(107,53,232,.15));border:1px solid rgba(255,107,53,.35);color:var(--white);}
+.sb-num{width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);flex-shrink:0;}
+.sb-item.active .sb-num{background:linear-gradient(135deg,var(--orange),var(--purple));color:var(--white);}
+.sb-arrow{font-size:14px;color:rgba(255,255,255,.18);flex-shrink:0;padding:0 4px;}
+.section{margin-bottom:40px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-step{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--orange-light);font-weight:600;}
+.section-title{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;}
+.section-desc{font-size:15px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:22px;}
+.form-wrap{background:var(--gray);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.form-inner{padding:4px 4px 0;}
+.form-inner iframe{width:100%;border:0;display:block;}
+.confirm-card{background:linear-gradient(135deg,rgba(255,107,53,.1),rgba(107,53,232,.06));border:1px solid rgba(255,107,53,.2);border-radius:18px;padding:24px 26px;}
+.confirm-card p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:10px;}
+.confirm-card p:last-child{margin-bottom:0;}
+.confirm-card strong{color:var(--white);}
+.kakao-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:11px 20px;background:#FEE500;color:#3C1E1E;border-radius:100px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .2s;}
+.kakao-link:hover{transform:scale(1.02);}
+.divider{display:flex;align-items:center;gap:16px;margin:40px 0 32px;}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-txt{font-size:12px;color:rgba(255,255,255,.3);white-space:nowrap;font-weight:500;}
+.coupon-box{background:var(--gray);border:1px solid var(--border);border-radius:18px;padding:22px 24px;margin-bottom:24px;}
+.coupon-title{font-size:14px;font-weight:600;margin-bottom:14px;}
+.coupon-row{display:flex;gap:10px;}
+.coupon-input{flex:1;padding:13px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;}
+.coupon-input:focus{border-color:var(--orange-light);}
+.coupon-btn{padding:13px 20px;border-radius:12px;border:none;background:var(--white);color:var(--black);font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap;}
+.coupon-msg{font-size:12px;margin-top:10px;min-height:16px;}
+.coupon-help{font-size:12px;color:rgba(255,255,255,.35);margin-top:10px;line-height:1.65;}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.pay-option{background:var(--gray);border:1px solid var(--border);border-radius:16px;padding:20px 18px;cursor:pointer;transition:all .2s;position:relative;}
+.pay-option:hover,.pay-option.selected{border-color:rgba(255,107,53,.5);background:rgba(255,107,53,.08);}
+.pay-option.selected::after{content:'✓';position:absolute;top:12px;right:14px;font-size:12px;font-weight:700;color:var(--orange-light);}
+.pay-icon{font-size:24px;margin-bottom:10px;}
+.pay-name{font-size:15px;font-weight:600;margin-bottom:3px;}
+.pay-desc{font-size:12px;color:rgba(255,255,255,.4);}
+.pay-primary{display:block;width:100%;padding:18px;border-radius:100px;font-size:16px;font-weight:700;text-align:center;text-decoration:none;background:linear-gradient(135deg,var(--orange),var(--purple));color:var(--white);box-shadow:0 0 40px rgba(255,107,53,.28);transition:all .25s;cursor:pointer;border:none;margin-bottom:16px;}
+.pay-primary:hover{transform:scale(1.02);box-shadow:0 0 60px rgba(255,107,53,.5);}
+.pay-alt{background:var(--gray);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:16px;}
+.pay-alt p{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:12px;}
+.pay-alt-btn{display:block;width:100%;padding:14px;border-radius:100px;font-size:14px;font-weight:700;text-align:center;text-decoration:none;background:var(--white);color:var(--black);margin-bottom:12px;transition:opacity .2s;}
+.pay-alt-btn:hover{opacity:.88;}
+.bank-box{background:var(--gray);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-top:12px;}
+.bank-num{font-size:17px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.bank-holder{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;}
+.bank-note{font-size:12px;color:rgba(255,255,255,.35);line-height:1.6;}
+.bank-note a{color:var(--orange-light);text-decoration:none;}
+.pay-note{font-size:13px;color:rgba(255,255,255,.35);text-align:center;line-height:1.7;margin-top:16px;}
+.pay-note a{color:var(--purple-light);text-decoration:none;}
+@media(max-width:700px){
+  .nav{padding:16px 20px;}
+  .page{padding:90px 20px 60px;}
+  .step-bar{display:none;}
+  .ev-sep{display:none;}
+  .event-card{flex-direction:column;gap:12px;}
+  .pay-grid{grid-template-columns:1fr;}
+  .coupon-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <svg width="26" height="26" viewBox="0 0 32 32"><defs><radialGradient id="pg" cx="30%" cy="30%"><stop offset="0%" stop-color="#9B7AF0"/><stop offset="60%" stop-color="#6B35E8"/><stop offset="100%" stop-color="#2E0B73"/></radialGradient></defs><ellipse cx="16" cy="16" rx="15" ry="4.5" fill="none" stroke="#6B35E8" stroke-width="2.5" transform="rotate(-20 16 16)"/><circle cx="16" cy="16" r="9.5" fill="url(#pg)"/></svg>
+    Konnect
+  </a>
+</nav>
+
+<div class="page">
+
+  <div style="margin-bottom:36px;">
+    <a href="join.html?event=escape" class="back-link">← Back to selection</a>
+    <div class="event-badge">🚪 Special Event</div>
+    <span class="head-flag">🌍</span>
+    <h1 class="page-title">Escape Night<br>Sign Up</h1>
+    <span class="price-tag" id="intl-price">$51 USD</span>
+  </div>
+
+  <div class="event-card">
+    <div class="ev-info">
+      <span class="ev-lbl">Event</span>
+      <span class="ev-val">Escape Night</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-info">
+      <span class="ev-lbl">Date</span>
+      <span class="ev-val" id="intl-date">—</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-info">
+      <span class="ev-lbl">Time</span>
+      <span class="ev-val" id="intl-time">—</span>
+    </div>
+    <div class="ev-sep"></div>
+    <div class="ev-info">
+      <span class="ev-lbl">Location</span>
+      <span class="ev-val" id="intl-loc">—</span>
+    </div>
+  </div>
+
+  <div class="step-bar">
+    <div class="sb-item active">
+      <div class="sb-num">1</div>
+      <span>Fill Form</span>
+    </div>
+    <div class="sb-arrow">›</div>
+    <div class="sb-item">
+      <div class="sb-num">2</div>
+      <span>Payment</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-step">Step 1</span>
+      <span class="section-title">Registration Form</span>
+    </div>
+    <p class="section-desc">Please complete the Escape Night registration form below. We'll reach out within 24 hours to confirm your spot.</p>
+    <div class="form-wrap">
+      <div class="form-inner">
+        <iframe data-tally-src="https://tally.so/embed/vGKlQg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="KONNECT Escape Night Application"></iframe>
+      </div>
+    </div>
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-txt">Complete payment after filling the form</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-step">Step 2</span>
+      <span class="section-title">Payment</span>
+    </div>
+    <p class="section-desc">Complete payment below to secure your spot.</p>
+
+    <div class="coupon-box">
+      <p class="coupon-title">Have a coupon code?</p>
+      <div class="coupon-row">
+        <input id="coupon-input" type="text" placeholder="Enter coupon code" class="coupon-input">
+        <button onclick="applyCoupon()" class="coupon-btn">Apply</button>
+      </div>
+      <p id="coupon-msg" class="coupon-msg"></p>
+      <p class="coupon-help">Available coupon codes:<br>
+        <strong style="color:rgba(255,255,255,.6)">FRIEND</strong> — Bring a Friend discount ($43)<br>
+        <strong style="color:rgba(255,255,255,.6)">RETURN</strong> — Returning participant discount ($47)<br>
+        Discounts cannot be combined.</p>
+    </div>
+
+    <div class="pay-grid">
+      <div class="pay-option selected" onclick="selectPay(this,'stripe')">
+        <div class="pay-icon">💳</div>
+        <div class="pay-name">Card (Stripe)</div>
+        <div class="pay-desc">Visa, Mastercard, etc.</div>
+      </div>
+      <div class="pay-option" onclick="selectPay(this,'paypal')">
+        <div class="pay-icon">🅿️</div>
+        <div class="pay-name">PayPal</div>
+        <div class="pay-desc">PayPal account or card</div>
+      </div>
+    </div>
+
+    <a id="pay-btn" href="https://buy.stripe.com/4gM7sLgiI9b6adZ38Ufw40h" target="_blank" class="pay-primary">
+      💳 Pay $51 with Card →
+    </a>
+
+    <div class="pay-alt">
+      <p>🇰🇷 Living in Korea? Pay with KakaoPay or bank transfer instead.</p>
+      <a href="https://qr.kakaopay.com/Ej8tO05RY86c404077" target="_blank" class="pay-alt-btn">📱 Pay with KakaoPay →</a>
+      <div class="bank-box">
+        <div class="bank-num" data-account-en>KakaoBank 3333-33-7607681</div>
+        <div class="bank-holder" data-account-holder-en>Ahn Hyeonguk (Kozy)</div>
+        <p class="bank-note">Your spot is confirmed once payment is received. Questions? <a href="https://pf.kakao.com/_nWxjUn" target="_blank">KakaoTalk channel</a>.</p>
+      </div>
+    </div>
+
+    <p class="pay-note">Your spot is confirmed automatically after payment.<br>Questions? <a href="https://pf.kakao.com/_nWxjUn" target="_blank">KakaoTalk channel</a> · <a href="https://instagram.com/konnect_exchange" target="_blank">@konnect_exchange</a></p>
+  </div>
+
+</div>
+
+<script src="config.js"></script>
+<script>
+const PAYMENT_URLS = {
+  stripe: { url: 'https://buy.stripe.com/4gM7sLgiI9b6adZ38Ufw40h', label: '💳 Pay $51 with Card →' },
+  paypal: { url: 'https://www.paypal.com/ncp/payment/UASVVC8GQTLLW', label: '🅿️ Pay $51 with PayPal →' }
+};
+let currentMethod = 'stripe';
+
+function selectPay(el, method) {
+  document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  currentMethod = method;
+  updatePayBtn();
+}
+
+function updatePayBtn() {
+  const btn = document.getElementById('pay-btn');
+  const p = PAYMENT_URLS[currentMethod];
+  btn.href = p.url;
+  btn.textContent = p.label;
+}
+
+const COUPONS = {
+  FRIEND: {
+    stripe: 'https://buy.stripe.com/eVq5kD5E43QM1Ht4cYfw40i',
+    paypal: 'https://www.paypal.com/ncp/payment/L5B8RS8X9LA3E',
+    stripeLabel: '💳 Pay $43 (Friend Discount) →',
+    paypalLabel: '🅿️ Pay $43 (Friend Discount) via PayPal →',
+    msg: '✅ Friend discount applied. ($43)'
+  },
+  RETURN: {
+    stripe: 'https://buy.stripe.com/4gM28r6I82MI71N7pafw40g',
+    paypal: 'https://www.paypal.com/ncp/payment/C72CKAA7JRTPN',
+    stripeLabel: '💳 Pay $47 (Returning Member) →',
+    paypalLabel: '🅿️ Pay $47 (Returning Member) via PayPal →',
+    msg: '✅ Returning member discount applied. ($47)'
+  }
+};
+
+function applyCoupon() {
+  const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+  const msgEl = document.getElementById('coupon-msg');
+  if (COUPONS[code]) {
+    const c = COUPONS[code];
+    PAYMENT_URLS.stripe = { url: c.stripe, label: c.stripeLabel };
+    PAYMENT_URLS.paypal = { url: c.paypal, label: c.paypalLabel };
+    updatePayBtn();
+    msgEl.style.color = '#6ee87a';
+    msgEl.textContent = c.msg;
+  } else {
+    msgEl.style.color = '#ff7a7a';
+    msgEl.textContent = 'Invalid coupon code.';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const E = CONFIG.ESCAPE?.en || {};
+  document.getElementById('intl-date').textContent = E.date || '—';
+  document.getElementById('intl-time').textContent = E.time || '—';
+  document.getElementById('intl-loc').textContent = E.location || '—';
+  document.getElementById('intl-price').textContent = (CONFIG.ESCAPE.regularPriceIntl || '$51') + ' USD';
+});
+</script>
+</body>
+</html>
