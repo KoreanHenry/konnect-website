@@ -567,6 +567,19 @@ body.index-earlybird-live .hero{
 .prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.05em;margin-bottom:20px;}
 .badge-live{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
 .badge-soon{background:rgba(107,53,232,.2);color:var(--purple-pale);border:1px solid rgba(107,53,232,.3);}
+.badge-done{background:rgba(255,255,255,.08);color:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.12);}
+.badge-next{background:rgba(59,130,246,.18);color:#93c5fd;border:1px solid rgba(59,130,246,.25);}
+.prog-card-done{opacity:.65;}
+.prog-card-done:hover{transform:none;}
+.prog-cta-recap{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.5);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:border-color .2s,color .2s;}
+.prog-cta-recap:hover{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.75);}
+.prog-card-wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.prog-next{border-color:rgba(59,130,246,.3);}
+.prog-cta-kakao{display:block;padding:14px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;background:#FEE500;color:#3C1E1E;margin-bottom:12px;transition:opacity .2s;}
+.prog-cta-kakao:hover{opacity:.88;}
+.prog-cta-insta{display:block;padding:14px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;text-align:center;background:linear-gradient(135deg,#6B35E8,#FF3DA8);color:#fff;transition:opacity .2s;}
+.prog-cta-insta:hover{opacity:.88;}
+@media(max-width:700px){.prog-card-wide{grid-template-columns:1fr;gap:20px;}}
 .prog-emoji{display:none;}
 .prog-title{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-bottom:10px;}
 .prog-desc{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);margin-bottom:24px;}
@@ -980,13 +993,13 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 </nav>
 <div id="index-earlybird-bar" class="index-earlybird-bar" style="display:none;">
   <div class="ieb-left">
-    <span class="ieb-badge">🇰🇷 한국인 특별 할인</span>
-    <span id="ieb-message">방탈출 나이트 시작까지</span>
+    <span class="ieb-badge" id="ieb-badge">정기모임</span>
+    <span id="ieb-message">6월 27일 토요일 · 시청역 근처 · 오후 1:20</span>
   </div>
 
   <div class="ieb-right">
     <span id="ieb-countdown">--:--:--</span>
-    <a href="join.html?event=escape" id="ieb-cta">신청하기 →</a>
+    <a href="join.html" id="ieb-cta">신청하기 →</a>
   </div>
 </div>
 <!-- Mobile menu -->
@@ -1212,8 +1225,8 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         </div>
         <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
       </div>
-      <div class="prog-card prog-escape active reveal">
-        <span class="prog-badge badge-live">● <span data-i18n="pb2">Open Now</span></span>
+      <div class="prog-card prog-escape prog-card-done reveal">
+        <span class="prog-badge badge-done">✓ <span data-i18n="pb2">Ended</span></span>
         <div class="prog-emoji">🎮</div>
         <h3 class="prog-title" data-i18n="pr2t">Escape Room Night</h3>
         <p class="prog-desc" data-i18n="pr2d">Solve puzzles, crack codes, and communicate under pressure — in two languages. Theme matched to your vibe.</p>
@@ -1222,7 +1235,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
           <span class="prog-tag">📍 <span data-i18n="pr2m2">Hongdae</span></span>
           <span class="prog-tag">💰 <span data-i18n="pr2m3">$22 USD</span></span>
         </div>
-        <a href="escape.html" class="prog-cta" data-i18n="pr2cta" data-escape-detail-link>Learn more →</a>
+        <a href="escape.html" class="prog-cta-recap" data-i18n="pr2cta">See what happened →</a>
 
       </div>
       <div class="prog-card prog-picnic reveal">
@@ -1238,6 +1251,18 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <h3 class="prog-title" data-i18n="pr4t">Konnect Trips</h3>
         <p class="prog-desc" data-i18n="pr4d">Weekend getaways with your new international crew.</p>
         <div class="prog-meta"><span class="prog-tag" data-i18n="pr4m">Korea · 1-2 Nights</span></div>
+      </div>
+      <div class="prog-card prog-next prog-card-wide reveal">
+        <div class="prog-card-wide-left">
+          <span class="prog-badge badge-next">✦ <span data-i18n="pb5">Coming Soon</span></span>
+          <div class="prog-emoji" style="display:block;font-size:2.5rem;margin:16px 0 12px;">🌟</div>
+          <h3 class="prog-title" data-i18n="pr5t">Next Special Event</h3>
+          <p class="prog-desc" data-i18n="pr5d">A new special event is in the works. Be the first to know.</p>
+        </div>
+        <div class="prog-card-wide-right">
+          <a href="http://pf.kakao.com/_nWxjUn" target="_blank" class="prog-cta-kakao">💛 <span data-i18n="pr5cta1">Join KakaoTalk Chat →</span></a>
+          <a href="https://instagram.com/konnect_exchange" target="_blank" class="prog-cta-insta">📷 <span data-i18n="pr5cta2">Follow on Instagram →</span></a>
+        </div>
       </div>
     </div>
   </div>
@@ -1468,9 +1493,10 @@ const T = {
     "progTitle": "More than just language exchange",
     "progSub": "Ready to Konnect with people in deeper, more diverse ways?",
     "pb1": "Now Running",
-    "pb2": "Open Now",
+    "pb2": "✓ Ended",
     "pb3": "Coming Soon",
     "pb4": "Coming Soon",
+    "pb5": "Coming Soon",
     "pr1t": "Language Exchange",
     "pr1d": "Seoul’s first language exchange that guarantees a 1:1 ratio — Korean and international spots are managed separately, every time.",
     "pr1m1": "2nd & 4th Saturday",
@@ -1479,7 +1505,11 @@ const T = {
     "pr2d": "Instead of awkward introductions, solve clues together and naturally get closer through a mission-based social event.",
     "pr2m2": "Hongdae",
     "pr2m3": "$43 Early Bird",
-    "pr2cta": "Learn more →",
+    "pr2cta": "See what happened →",
+    "pr5t": "Next Special Event",
+    "pr5d": "A new special event is in the works. Be the first to know.",
+    "pr5cta1": "Join KakaoTalk Chat →",
+    "pr5cta2": "Follow on Instagram →",
     "pr3t": "Seoul Picnic",
     "pr3d": "Conversation, Han River views, good food, and fun games. An outdoor language-exchange picnic.",
     "pr3m": "Hangang Park",
@@ -1592,9 +1622,10 @@ const T = {
     "progTitle": "언어교환 그 이상",
     "progSub": "더 깊고 다양하게 사람들과 Konnect 해 볼까요?",
     "pb1": "진행 중",
-    "pb2": "신청 오픈",
+    "pb2": "✓ 진행 완료",
     "pb3": "곧 오픈",
     "pb4": "곧 오픈",
+    "pb5": "준비중",
     "pr1t": "언어교환 모임",
     "pr1d": "서울 최초로 1:1 비율을 보장하는 소그룹 언어교환 모임. 한국인과 외국인 정원을 분리해서 관리해요.",
     "pr1m1": "둘째·넷째 토요일",
@@ -1603,7 +1634,11 @@ const T = {
     "pr2d": "어색한 자기소개 대신, 함께 단서를 풀며 자연스럽게 가까워지는 미션형 소셜 이벤트.",
     "pr2m2": "홍대",
     "pr2m3": "₩59,000 얼리버드",
-    "pr2cta": "자세히 보기 →",
+    "pr2cta": "이벤트 돌아보기 →",
+    "pr5t": "다음 스페셜 이벤트",
+    "pr5d": "새로운 스페셜 이벤트가 준비 중입니다. 소식을 가장 먼저 받아보세요.",
+    "pr5cta1": "카카오 오픈채팅 참여 →",
+    "pr5cta2": "인스타그램 팔로우 →",
     "pr3t": "서울 피크닉",
     "pr3d": "대화, 한강 뷰, 맛있는 음식, 재미있는 게임까지. 야외에서 즐기는 언어교환 피크닉.",
     "pr3m": "한강공원",
@@ -1793,26 +1828,21 @@ function getInitialLang(){
 setLang(getInitialLang());
 applyConfig();
 updateLanguageLinks();
-// ── INDEX EARLY BIRD FOMO BAR ──
+// ── INDEX MEETUP COUNTDOWN BAR ──
 function updateIndexEarlyBirdBar(){
   const bar = document.getElementById('index-earlybird-bar');
   const cd = document.getElementById('ieb-countdown');
   const msg = document.getElementById('ieb-message');
   const cta = document.getElementById('ieb-cta');
+  const badge = document.getElementById('ieb-badge');
 
   if (!bar || !cd || !msg || !cta) return;
 
   const lang = localStorage.getItem('konnect-lang') ||
     ((navigator.language || 'en').toLowerCase().startsWith('ko') ? 'ko' : 'en');
 
-  if (!CONFIG.EARLY_BIRD?.escape?.enabled) {
-    bar.style.display = 'none';
-    document.body.classList.remove('index-earlybird-live');
-    return;
-  }
-
-  const end = new Date(CONFIG.EARLY_BIRD.escape.end);
-  const diff = end - new Date();
+  const target = new Date(CONFIG.NEXT_MEETUP_DATE);
+  const diff = target - new Date();
 
   if (diff <= 0) {
     bar.style.display = 'none';
@@ -1831,14 +1861,16 @@ function updateIndexEarlyBirdBar(){
   cd.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 
   if (lang === 'ko') {
-    msg.textContent = '방탈출 나이트 시작까지 (한국인 특별 할인 진행중 🇰🇷)';
+    if (badge) badge.textContent = '정기모임 D-' + d;
+    msg.textContent = '6월 27일 토요일 · 시청역 근처 · 오후 1:20';
     cta.textContent = '신청하기 →';
   } else {
-    msg.textContent = 'Escape Room Night starts in (Korean Special Discount available 🇰🇷)';
-    cta.textContent = 'Sign up →';
+    if (badge) badge.textContent = 'Regular Meetup';
+    msg.textContent = 'June 27 (Sat) · City Hall Station · 1:20 PM';
+    cta.textContent = 'Join Now →';
   }
 
-  cta.href = withLang(CONFIG.ESCAPE?.detailLink || 'escape.html');
+  cta.href = withLang('join.html');
 }
 
 updateIndexEarlyBirdBar();
