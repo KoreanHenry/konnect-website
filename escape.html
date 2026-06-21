@@ -130,7 +130,6 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
       <h1><span id="hero-title">KONNECT Escape Night</span></h1>
       <p class="hero-sub" id="hero-sub">Not just a language exchange. Team up with Koreans and internationals, solve missions together, and make real connections in Seoul.</p>
       <div class="hero-actions">
-        <a href="join.html?event=escape" class="btn-primary" id="hero-cta">Apply Now →</a>
         <a href="#schedule" class="btn-ghost" id="hero-secondary">See schedule</a>
       </div>
     </div>
@@ -212,7 +211,6 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
   <div class="section-inner">
     <h2 class="section-title" id="final-title">One afternoon. Three experiences. One global community.</h2>
     <p class="section-sub" id="final-sub">Join KONNECT Escape Night and solve missions with new friends in Seoul.</p>
-    <a href="join.html?event=escape" class="btn-pink" id="final-cta">Apply Now →</a>
   </div>
 </section>
 
@@ -243,7 +241,6 @@ function renderEscapePage(){
   setText('hero-badge', E.pageTag || E.badge);
   setText('hero-title', E.heroTitle || E.title);
   setText('hero-sub', E.heroSub || E.subtitle);
-  setText('hero-cta', E.cta || (isKo?'신청하기 →':'Apply Now →'));
   setText('hero-secondary', isKo ? '일정 보기' : 'See schedule');
   setText('lbl-date', isKo ? '날짜' : 'Date');
   setText('lbl-time', isKo ? '시간' : 'Time');
@@ -307,8 +304,6 @@ function renderEscapePage(){
 
   setText('final-title', E.finalTitle);
   setText('final-sub', E.finalSub);
-  setText('final-cta', E.cta || (isKo?'신청하기 →':'Apply Now →'));
-  document.querySelectorAll('#hero-cta,#final-cta').forEach(a=>a.href=CONFIG.ESCAPE.link || 'join.html?event=escape');
 
   updateEarlyBirdMini();
 }
