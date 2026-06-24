@@ -589,6 +589,7 @@ body.index-earlybird-live .hero{
 .prog-tag svg{width:14px;height:14px;opacity:.6;}
 .prog-cta{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--black);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:transform .2s;}
 .prog-cta:hover{transform:scale(1.03);color:var(--black);}
+.prog-cta-disabled{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.3);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;cursor:default;pointer-events:none;border:1px solid rgba(255,255,255,.1);}
 
 .testimonials{padding:120px 48px;background:linear-gradient(180deg,transparent 0%,rgba(255,61,168,.04) 50%,transparent 100%);}
 .testi-slider{margin-top:56px;max-width:720px;margin-left:auto;margin-right:auto;}
@@ -1248,7 +1249,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
           <span class="prog-tag">📅 <span data-i18n="pr3m1">July 18 & 25</span></span>
           <span class="prog-tag">👥 <span data-i18n="pr3m2">7 Korean + 7 International</span></span>
         </div>
-        <a href="lab.html" class="prog-cta" data-i18n="pr3cta">See details →</a>
+        <span class="prog-cta-disabled" data-i18n="pr3cta">자세히 보기 →</span>
       </div>
       <div class="prog-card prog-trip reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb4">Coming Soon</span></span>
