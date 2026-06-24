@@ -569,6 +569,7 @@ body.index-earlybird-live .hero{
 .badge-soon{background:rgba(107,53,232,.2);color:var(--purple-pale);border:1px solid rgba(107,53,232,.3);}
 .badge-done{background:rgba(255,255,255,.08);color:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.12);}
 .badge-next{background:rgba(59,130,246,.18);color:#93c5fd;border:1px solid rgba(59,130,246,.25);}
+.badge-pilot{background:rgba(251,191,36,.18);color:#fbbf24;border:1px solid rgba(251,191,36,.3);}
 .prog-card-done{opacity:.65;}
 .prog-card-done:hover{transform:none;}
 .prog-cta-recap{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.5);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;text-decoration:none;margin-top:24px;transition:border-color .2s,color .2s;}
@@ -1238,12 +1239,16 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <a href="escape.html" class="prog-cta-recap" data-i18n="pr2cta">See what happened →</a>
 
       </div>
-      <div class="prog-card prog-picnic reveal">
-        <span class="prog-badge badge-soon">✦ <span data-i18n="pb3">Coming Soon</span></span>
-        <div class="prog-emoji">🌸</div>
-        <h3 class="prog-title" data-i18n="pr3t">Seoul Picnic</h3>
-        <p class="prog-desc" data-i18n="pr3d">Hangang riverside vibes, multilingual conversations.</p>
-        <div class="prog-meta"><span class="prog-tag" data-i18n="pr3m">Hangang Park · Spring</span></div>
+      <div class="prog-card prog-lab reveal">
+        <span class="prog-badge badge-pilot">🧪 <span data-i18n="pb3">July Pilot</span></span>
+        <div class="prog-emoji">🎓</div>
+        <h3 class="prog-title" data-i18n="pr3t">Language Lab</h3>
+        <p class="prog-desc" data-i18n="pr3d">Learn from a native teacher, then immediately practice with real Koreans — in the same session.</p>
+        <div class="prog-meta">
+          <span class="prog-tag">📅 <span data-i18n="pr3m1">July 18 & 25</span></span>
+          <span class="prog-tag">👥 <span data-i18n="pr3m2">7 Korean + 7 International</span></span>
+        </div>
+        <a href="lab.html" class="prog-cta" data-i18n="pr3cta">See details →</a>
       </div>
       <div class="prog-card prog-trip reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb4">Coming Soon</span></span>
@@ -1494,7 +1499,7 @@ const T = {
     "progSub": "Ready to Konnect with people in deeper, more diverse ways?",
     "pb1": "Now Running",
     "pb2": "✓ Ended",
-    "pb3": "Coming Soon",
+    "pb3": "July Pilot",
     "pb4": "Coming Soon",
     "pb5": "Coming Soon",
     "pr1t": "Language Exchange",
@@ -1510,9 +1515,11 @@ const T = {
     "pr5d": "A new special event is in the works. Be the first to know.",
     "pr5cta1": "Join KakaoTalk Chat →",
     "pr5cta2": "Follow on Instagram →",
-    "pr3t": "Seoul Picnic",
-    "pr3d": "Conversation, Han River views, good food, and fun games. An outdoor language-exchange picnic.",
-    "pr3m": "Hangang Park",
+    "pr3t": "Language Lab",
+    "pr3d": "Learn from a native teacher, then immediately practice with real Koreans — in the same session.",
+    "pr3m1": "July 18 & 25",
+    "pr3m2": "7 Korean + 7 International",
+    "pr3cta": "See details →",
     "pr4t": "KONNECT Trips",
     "pr4d": "A small-group global trip where you experience Korea together with new people.",
     "pr4m": "Korea · Day trip, 1–2 nights",
@@ -1623,7 +1630,7 @@ const T = {
     "progSub": "더 깊고 다양하게 사람들과 Konnect 해 볼까요?",
     "pb1": "진행 중",
     "pb2": "✓ 진행 완료",
-    "pb3": "곧 오픈",
+    "pb3": "7월 파일럿",
     "pb4": "곧 오픈",
     "pb5": "준비중",
     "pr1t": "언어교환 모임",
@@ -1639,9 +1646,11 @@ const T = {
     "pr5d": "새로운 스페셜 이벤트가 준비 중입니다. 소식을 가장 먼저 받아보세요.",
     "pr5cta1": "카카오 오픈채팅 참여 →",
     "pr5cta2": "인스타그램 팔로우 →",
-    "pr3t": "서울 피크닉",
-    "pr3d": "대화, 한강 뷰, 맛있는 음식, 재미있는 게임까지. 야외에서 즐기는 언어교환 피크닉.",
-    "pr3m": "한강공원",
+    "pr3t": "Language Lab",
+    "pr3d": "원어민 강사에게 배우고, 바로 그 자리에서 외국인·한국인과 실전 대화.",
+    "pr3m1": "7월 18일 & 25일",
+    "pr3m2": "한국인 7명 + 외국인 7명",
+    "pr3cta": "자세히 보기 →",
     "pr4t": "KONNECT 여행",
     "pr4d": "새로운 사람들과 한국을 함께 경험하는 소규모 글로벌 여행.",
     "pr4m": "한국 내 · 당일, 1~2박",
