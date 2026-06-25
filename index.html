@@ -619,7 +619,7 @@ body.index-earlybird-live .hero{
 .event-eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--purple-pale);margin-bottom:12px;font-weight:500;}
 .event-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;margin-bottom:12px;letter-spacing:-.03em;}
 .event-date{font-size:16px;color:rgba(255,255,255,.65);margin-bottom:24px;}
-.event-spots{display:flex;flex-direction:column;gap:8px;background:rgba(255,61,168,.08);border:1px solid rgba(255,61,168,.25);padding:12px 20px;border-radius:16px;font-size:14px;margin-bottom:28px;width:fit-content;}
+.event-spots{display:flex;flex-direction:column;gap:8px;background:rgba(255,61,168,.08);border:1px solid rgba(255,61,168,.25);padding:10px 18px;border-radius:14px;font-size:14px;margin-top:16px;margin-bottom:0;width:fit-content;}
 .spots-row{display:flex;align-items:center;gap:8px;}
 .spots-label{color:#ff9fd4;}
 .spots-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);flex-shrink:0;animation:spotPulse 1.6s ease-in-out infinite;}
@@ -1889,11 +1889,11 @@ function updateIndexEarlyBirdBar(){
   cd.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 
   if (lang === 'ko') {
-    if (badge) badge.textContent = '정기모임 D-' + d;
+    if (badge) badge.textContent = '🔥 정기모임 마감 임박';
     msg.textContent = '6월 27일 토요일 · 시청역 근처 · 오후 1:20';
     cta.textContent = '신청하기 →';
   } else {
-    if (badge) badge.textContent = 'Regular Meetup';
+    if (badge) badge.textContent = '🔥 Almost Full';
     msg.textContent = 'June 27 (Sat) · City Hall Station · 1:20 PM';
     cta.textContent = 'Join Now →';
   }
