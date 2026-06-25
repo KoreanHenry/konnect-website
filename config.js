@@ -17,8 +17,8 @@ const CONFIG = {
   // ── 정원 관리 (한국인 / 외국인 분리) ────────────
   // filled 숫자만 업데이트하세요. 나머지는 자동 계산됩니다.
   SPOTS: {
-    korean:        { total: 8, filled: 1 },  // ← 한국인 신청 완료 수 (7/8 자리 남음)
-    international: { total: 8, filled: 3 },  // ← 외국인 신청 완료 수 (5/8 자리 남음)
+    korean:        { total: 8, filled: 5 },  // ← 한국인 신청 완료 수 (3/8 자리 남음)
+    international: { total: 8, filled: 5 },  // ← 외국인 신청 완료 수 (3/8 자리 남음)
   },
   LOCATION_KO: '시청역 근처',
   LOCATION_EN: 'City Hall Station',

@@ -622,7 +622,9 @@ body.index-earlybird-live .hero{
 .event-spots{display:flex;flex-direction:column;gap:8px;background:rgba(255,61,168,.08);border:1px solid rgba(255,61,168,.25);padding:12px 20px;border-radius:16px;font-size:14px;margin-bottom:28px;width:fit-content;}
 .spots-row{display:flex;align-items:center;gap:8px;}
 .spots-label{color:#ff9fd4;}
-.spots-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);flex-shrink:0;}
+.spots-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);flex-shrink:0;animation:spotPulse 1.6s ease-in-out infinite;}
+@keyframes spotPulse{0%,100%{opacity:1;box-shadow:0 0 6px var(--pink);}50%{opacity:.55;box-shadow:0 0 14px var(--pink);}}
+@keyframes spotPulseIntl{0%,100%{opacity:1;box-shadow:0 0 6px #7bd4ff;}50%{opacity:.55;box-shadow:0 0 14px #7bd4ff;}}
 .spots-dot-intl{background:#7bd4ff;box-shadow:0 0 8px #7bd4ff;}
 .event-actions{display:flex;gap:14px;flex-wrap:wrap;}
 .btn-pink{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);padding:15px 28px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 40px rgba(255,61,168,.3);}
@@ -1225,6 +1227,16 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
           <span class="prog-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1.5hrs</span>
           <span class="prog-tag">💰 ₩20,000 / $16</span>
         </div>
+        <div class="event-spots" id="spots-block">
+          <div class="spots-row" id="spots-korean">
+            <div class="spots-dot"></div>
+            <span class="spots-label" data-i18n-spots-korean>한국인 — 3/8 자리 남음</span>
+          </div>
+          <div class="spots-row" id="spots-intl">
+            <div class="spots-dot spots-dot-intl" style="animation-name:spotPulseIntl;"></div>
+            <span class="spots-label" data-i18n-spots-intl>International — 3/8 spots left</span>
+          </div>
+        </div>
         <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
       </div>
       <div class="prog-card prog-escape prog-card-done reveal">
@@ -1731,6 +1743,12 @@ function renderSpots(lang) {
   if (intlEl) intlEl.textContent = isKo
     ? `외국인 — ${intlLeft}/${intl.total} 자리 남음`
     : `International — ${intlLeft}/${intl.total} spots left`;
+
+  // 언어별 row 표시: KO → 한국인만, EN → 외국인만
+  const krRow = document.getElementById('spots-korean');
+  const intlRow = document.getElementById('spots-intl');
+  if (krRow) krRow.style.display = isKo ? 'flex' : 'none';
+  if (intlRow) intlRow.style.display = isKo ? 'none' : 'flex';
 
   // 마감 시 dot 색상 변경
   const krDot = document.querySelector('#spots-korean .spots-dot');
