@@ -65,6 +65,9 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
 .choice-cta{position:relative;z-index:1;padding:15px 20px;border-radius:100px;font-size:15px;font-weight:700;text-align:center;border:none;cursor:pointer;transition:all .2s;display:block;}
 .choice-card.kr .choice-cta{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);box-shadow:0 8px 30px rgba(255,61,168,.3);}
 .choice-card.intl .choice-cta{background:linear-gradient(135deg,var(--purple),var(--pink));color:var(--white);box-shadow:0 8px 30px rgba(255,61,168,.3);}
+.choice-card.sold-out{opacity:.5;pointer-events:none;cursor:default;}
+.choice-card.sold-out .choice-cta{background:#444;box-shadow:none;}
+.spot-dot.sold{background:#888;animation:none;}
 
 /* HOW IT WORKS */
 .how-section{margin-top:36px;margin-bottom:36px;}
@@ -253,8 +256,24 @@ function setLang(lang){
     const intlLeft = Math.max(0, CONFIG.SPOTS.international.total - CONFIG.SPOTS.international.filled);
     const krTxt = document.getElementById('spots-kr-txt');
     const intlTxt = document.getElementById('spots-intl-txt');
-    if (krTxt) krTxt.textContent = lang === 'ko' ? `잔여 ${krLeft}자리` : `${krLeft} spots left`;
-    if (intlTxt) intlTxt.textContent = lang === 'ko' ? `외국인 잔여 ${intlLeft}자리` : `${intlLeft} spots left`;
+    if (krTxt) krTxt.textContent = krLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? `잔여 ${krLeft}자리` : `${krLeft} spots left`);
+    if (intlTxt) intlTxt.textContent = intlLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? `외국인 잔여 ${intlLeft}자리` : `${intlLeft} spots left`);
+    const cardKr = document.getElementById('card-kr');
+    const cardIntl = document.getElementById('card-intl');
+    if (cardKr && krLeft === 0) {
+      cardKr.classList.add('sold-out');
+      const cta = cardKr.querySelector('.choice-cta');
+      if (cta) cta.textContent = lang === 'ko' ? '마감' : 'Sold Out';
+      const dot = cardKr.querySelector('.spot-dot');
+      if (dot) { dot.classList.add('sold'); dot.style.background = '#888'; }
+    }
+    if (cardIntl && intlLeft === 0) {
+      cardIntl.classList.add('sold-out');
+      const cta = cardIntl.querySelector('.choice-cta');
+      if (cta) cta.textContent = lang === 'ko' ? '마감' : 'Sold Out';
+      const dot = cardIntl.querySelector('.spot-dot');
+      if (dot) { dot.classList.add('sold'); dot.style.background = '#888'; }
+    }
   }
 }
 document.addEventListener('DOMContentLoaded',()=>{
