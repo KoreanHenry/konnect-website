@@ -109,8 +109,8 @@
   "@type": "Event",
   "name": "Konnect Language Exchange Meetup",
   "description": "Seoul's most genuine language exchange community. Meet real people, have real conversations, make real friends.",
-  "startDate": "2026-06-27T13:20:00+09:00",
-  "endDate": "2026-06-27T15:00:00+09:00",
+  "startDate": "2026-07-11T13:20:00+09:00",
+  "endDate": "2026-07-11T15:00:00+09:00",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "location": {
@@ -998,7 +998,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 <div id="index-earlybird-bar" class="index-earlybird-bar" style="display:none;">
   <div class="ieb-left">
     <span class="ieb-badge" id="ieb-badge">정기모임</span>
-    <span id="ieb-message">6월 27일 토요일 · 시청역 근처 · 오후 1:20</span>
+    <span id="ieb-message">7월 11일 토요일 · 시청역 근처 · 오후 1:20</span>
   </div>
 
   <div class="ieb-right">
@@ -1123,6 +1123,31 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   </div>
 </section>
 
+<!-- ── JULY SCHEDULE STRIP ── -->
+<section class="section" id="july-schedule" style="padding-top:8px;">
+  <div class="section-inner" style="max-width:1100px;margin:0 auto;">
+    <span class="section-tag" data-i18n="jsTag">July 2026</span>
+    <h2 class="section-title" data-i18n="jsTitle" style="margin-bottom:24px;">이번 달 일정</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <div style="flex:1;min-width:240px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;padding:22px;">
+        <div style="font-size:13px;font-weight:800;color:var(--purple-light);letter-spacing:.5px;">7 / 11 (토)</div>
+        <div style="font-size:21px;font-weight:800;margin:8px 0 4px;">정기 언어교환</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);">오후 1:20 · 시청 · ₩20,000</div>
+      </div>
+      <div style="flex:1;min-width:240px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;padding:22px;">
+        <div style="font-size:13px;font-weight:800;color:var(--purple-light);letter-spacing:.5px;">7 / 18 (토)</div>
+        <div style="font-size:21px;font-weight:800;margin:8px 0 4px;">Language Lab #1</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);">오후 3:30 · 자기소개 · 초보 대상</div>
+      </div>
+      <div style="flex:1;min-width:240px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:18px;padding:22px;">
+        <div style="font-size:13px;font-weight:800;color:var(--purple-light);letter-spacing:.5px;">7 / 25 (토)</div>
+        <div style="font-size:21px;font-weight:800;margin:8px 0 4px;">Language Lab #2</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.55);">오후 3:30 · 어제와 내일 이야기</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── ABOUT ── -->
 <section class="section" id="about">
   <div class="section-inner">
@@ -1230,11 +1255,11 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
         <div class="event-spots" id="spots-block">
           <div class="spots-row" id="spots-korean">
             <div class="spots-dot"></div>
-            <span class="spots-label" data-i18n-spots-korean>한국인 — 3/8 자리 남음</span>
+            <span class="spots-label" data-i18n-spots-korean>한국인 모집 중</span>
           </div>
           <div class="spots-row" id="spots-intl">
             <div class="spots-dot spots-dot-intl" style="animation-name:spotPulseIntl;"></div>
-            <span class="spots-label" data-i18n-spots-intl>International — 3/8 spots left</span>
+            <span class="spots-label" data-i18n-spots-intl>International — Open</span>
           </div>
         </div>
         <a href="join.html" class="prog-cta" data-i18n="pr1cta">Reserve a spot →</a>
@@ -1261,7 +1286,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
           <span class="prog-tag">📅 <span data-i18n="pr3m1">July 18 & 25</span></span>
           <span class="prog-tag">👥 <span data-i18n="pr3m2">7 Korean + 7 International</span></span>
         </div>
-        <span class="prog-cta-disabled" data-i18n="pr3cta">자세히 보기 →</span>
+        <a href="lab.html" class="prog-cta" data-i18n="pr3cta">자세히 보기 →</a>
       </div>
       <div class="prog-card prog-trip reveal">
         <span class="prog-badge badge-soon">✦ <span data-i18n="pb4">Coming Soon</span></span>
@@ -1737,12 +1762,8 @@ function renderSpots(lang) {
 
   const krEl = document.querySelector('[data-i18n-spots-korean]');
   const intlEl = document.querySelector('[data-i18n-spots-intl]');
-  if (krEl) krEl.textContent = isKo
-    ? `한국인 — ${krLeft}/${kr.total} 자리 남음`
-    : `Korean — ${krLeft}/${kr.total} spots left`;
-  if (intlEl) intlEl.textContent = isKo
-    ? `외국인 — ${intlLeft}/${intl.total} 자리 남음`
-    : `International — ${intlLeft}/${intl.total} spots left`;
+  if (krEl) krEl.textContent = isKo ? (krLeft===0?'한국인 마감':'한국인 모집 중') : (krLeft===0?'Korean — Closed':'Korean — Open');
+  if (intlEl) intlEl.textContent = isKo ? (intlLeft===0?'외국인 마감':'외국인 모집 중') : (intlLeft===0?'International — Closed':'International — Open');
 
   // 언어별 row 표시: KO → 한국인만, EN → 외국인만
   const krRow = document.getElementById('spots-korean');
@@ -1889,12 +1910,12 @@ function updateIndexEarlyBirdBar(){
   cd.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 
   if (lang === 'ko') {
-    if (badge) badge.textContent = '🔥 정기모임 마감 임박';
-    msg.textContent = '6월 27일 토요일 · 시청역 근처 · 오후 1:20';
+    if (badge) badge.textContent = '정기모임 모집 중';
+    msg.textContent = '7월 11일 토요일 · 시청역 근처 · 오후 1:20';
     cta.textContent = '신청하기 →';
   } else {
-    if (badge) badge.textContent = '🔥 Almost Full';
-    msg.textContent = 'June 27 (Sat) · City Hall Station · 1:20 PM';
+    if (badge) badge.textContent = 'Now Open · July';
+    msg.textContent = 'July 11 (Sat) · City Hall Station · 1:20 PM';
     cta.textContent = 'Join Now →';
   }
 
