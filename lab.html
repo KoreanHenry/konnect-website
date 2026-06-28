@@ -481,9 +481,10 @@ function updateEbCd(){
 }
 setInterval(updateEbCd,1000);
 document.addEventListener('DOMContentLoaded',()=>{
-  const urlLang=new URLSearchParams(window.location.search).get('lang');
-  if(urlLang==='ko'||urlLang==='en')localStorage.setItem('konnect-lang',urlLang);
-  render();
+  const urlLang=(new URLSearchParams(window.location.search).get('lang')||'').toLowerCase();
+  if(urlLang==='ko'||urlLang==='kr')localStorage.setItem('konnect-lang','ko');
+  else if(urlLang==='en')localStorage.setItem('konnect-lang','en');
+  setLang(getLang());
 });
 </script>
 </body>
