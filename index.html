@@ -861,6 +861,24 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   background-clip:text;
   filter:drop-shadow(0 0 18px rgba(155,122,240,.24));
 }
+/* ===== 사이트 모션 업데이트 (2026-06-28) ===== */
+.nav-logo svg{overflow:visible;}
+.nav-logo svg circle{transform-box:fill-box;transform-origin:center;animation:lgPulse 3.4s ease-in-out infinite;}
+@keyframes lgPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(155,122,240,0));}50%{transform:scale(1.05);filter:drop-shadow(0 0 5px rgba(155,122,240,.85));}}
+.pl-sat{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px;border-radius:50%;background:#FF3DA8;box-shadow:0 0 12px #FF3DA8;animation:plOrbit 2.6s linear infinite;}
+@keyframes plOrbit{from{transform:rotate(0deg) translateX(64px);}to{transform:rotate(360deg) translateX(64px);}}
+.dot{position:relative;}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #4ade80;animation:ringPing 1.8s ease-out infinite;pointer-events:none;}
+.spots-dot{position:relative;}
+.spots-dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--pink);animation:ringPing 1.9s ease-out infinite;pointer-events:none;}
+.spots-dot-intl::after{border-color:#7bd4ff;}
+@keyframes ringPing{0%{transform:scale(1);opacity:.7;}80%,100%{transform:scale(3.2);opacity:0;}}
+.acard-icon{display:inline-block;animation:iconBob 2.6s ease-in-out infinite;}
+.acard:nth-child(2) .acard-icon{animation-delay:.35s;}
+.acard:nth-child(3) .acard-icon{animation-delay:.7s;}
+.acard:nth-child(4) .acard-icon{animation-delay:1.05s;}
+@keyframes iconBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@media(prefers-reduced-motion:reduce){.nav-logo svg circle,.pl-sat,.dot::after,.spots-dot::after,.acard-icon{animation:none!important;}}
 .hero-vis{position:relative;}
 .planet-slogan{
   position:absolute;
@@ -975,7 +993,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
 <div class="preloader" id="preloader">
   <div class="pl-planet">
     <div class="pl-ring"></div>
-    <div class="pl-ball"></div>
+    <div class="pl-ball"></div><div class="pl-sat"></div>
   </div>
   <div class="pl-text">Konnect</div>
 </div>
