@@ -177,7 +177,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <div class="choice-label" id="lbl-kr">한국인 참가자</div>
         <div class="choice-name" id="nm-kr">한국인 신청</div>
         <div class="choice-price" id="pr-kr">₩20,000</div>
-        <div class="choice-spots kr-spots"><span class="spot-dot kr"></span><span id="spots-kr-txt">잔여 3자리</span></div>
+        <div class="choice-spots kr-spots"><span class="spot-dot kr"></span><span id="spots-kr-txt">한국인 모집 중</span></div>
       </div>
       <span class="choice-cta" id="cta-kr">한국인으로 신청하기</span>
     </a>
@@ -187,7 +187,7 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);-
         <div class="choice-label" id="lbl-intl">International</div>
         <div class="choice-name" id="nm-intl">International</div>
         <div class="choice-price" id="pr-intl">$16 USD</div>
-        <div class="choice-spots intl-spots"><span class="spot-dot intl"></span><span id="spots-intl-txt">3 spots left</span></div>
+        <div class="choice-spots intl-spots"><span class="spot-dot intl"></span><span id="spots-intl-txt">International — Open</span></div>
       </div>
       <span class="choice-cta" id="cta-intl">Sign up as International</span>
     </a>
@@ -256,8 +256,8 @@ function setLang(lang){
     const intlLeft = Math.max(0, CONFIG.SPOTS.international.total - CONFIG.SPOTS.international.filled);
     const krTxt = document.getElementById('spots-kr-txt');
     const intlTxt = document.getElementById('spots-intl-txt');
-    if (krTxt) krTxt.textContent = krLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? `잔여 ${krLeft}자리` : `${krLeft} spots left`);
-    if (intlTxt) intlTxt.textContent = intlLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? `외국인 잔여 ${intlLeft}자리` : `${intlLeft} spots left`);
+    if (krTxt) krTxt.textContent = krLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? '한국인 모집 중' : 'Korean — Open');
+    if (intlTxt) intlTxt.textContent = intlLeft === 0 ? (lang === 'ko' ? '마감' : 'Sold Out') : (lang === 'ko' ? '외국인 모집 중' : 'International — Open');
     const cardKr = document.getElementById('card-kr');
     const cardIntl = document.getElementById('card-intl');
     if (cardKr && krLeft === 0) {
