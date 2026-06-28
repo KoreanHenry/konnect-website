@@ -176,6 +176,10 @@ footer{border-top:1px solid var(--border);padding:36px 48px;color:rgba(255,255,2
         <div class="price-row"><div class="price-name" id="pc-m-label"></div><div class="price-val mid" id="pc-m-price"></div></div>
         <div class="price-row"><div class="price-name" id="pc-b-label"></div><div class="price-val best" id="pc-b-price"></div></div>
       </div>
+      <div id="eb-cd" style="display:none;margin-top:14px;background:linear-gradient(135deg,rgba(255,61,168,.16),rgba(107,53,232,.16));border:1px solid rgba(255,61,168,.45);border-radius:16px;padding:13px 16px;text-align:center;">
+        <div id="eb-cd-label" style="font-size:12.5px;font-weight:700;color:#ffb3df;letter-spacing:.3px;"></div>
+        <div id="eb-cd-time" style="font-size:21px;font-weight:800;color:#fff;margin-top:3px;font-variant-numeric:tabular-nums;"></div>
+      </div>
     </aside>
   </div>
 </section>
@@ -266,9 +270,9 @@ const T = {
     howTitle: 'Learn it. Use it. Same session.',
     howSub: 'Study Korean with a native teacher, then immediately practice with real Korean speakers — no more studying without real practice.',
     schedule: [
-      { cls:'part1', time:'3:30 – 5:00 PM', activity:'🇰🇷 Korean Class (Part 1)', place:'Vocab, expressions & pronunciation with Henry' },
-      { cls:'brk',   time:'5:00 – 5:10 PM', activity:'☕ Break', place:'' },
-      { cls:'part2', time:'5:10 – 6:10 PM', activity:'🤝 Mixed Conversation (Part 2)', place:'Free conversation practice with Korean members' }
+      { cls:'part1', time:'3:30 – 4:50 PM', activity:'🇰🇷 Korean Class (Part 1)', place:'Vocab, expressions & pronunciation with Henry' },
+      { cls:'brk',   time:'4:50 – 5:00 PM', activity:'☕ Break', place:'' },
+      { cls:'part2', time:'5:00 – 6:00 PM', activity:'🤝 Conversation with Koreans (Part 2)', place:'Use what you just learned with real Koreans right away!' }
     ],
     topicsTag: "What you'll learn",
     topicsTitle: 'Real Korean you can use right away',
@@ -331,9 +335,9 @@ const T = {
     howTitle: '배우고, 바로 써먹는다.',
     howSub: '원어민 강사에게 영어를 배운 다음, 바로 그 날 외국인 참가자들과 실전 대화. 배운 걸 써먹을 기회가 없다는 말은 이제 그만.',
     schedule: [
-      { cls:'part1', time:'오후 3:30 – 5:00', activity:'🇺🇸 영어 수업 (Part 1)', place:'Veronica 강사와 표현, 발음, 실전 영어' },
-      { cls:'brk',   time:'오후 5:00 – 5:10', activity:'☕ 휴식', place:'' },
-      { cls:'part2', time:'오후 5:10 – 6:10', activity:'🤝 혼합 대화 (Part 2)', place:'외국인 참가자들과 자유 대화' }
+      { cls:'part1', time:'오후 3:30 – 4:50', activity:'🇺🇸 영어 수업 (Part 1)', place:'Veronica 강사와 표현, 발음, 실전 영어' },
+      { cls:'brk',   time:'오후 4:50 – 5:00', activity:'☕ 쉬는 시간', place:'' },
+      { cls:'part2', time:'오후 5:00 – 6:00', activity:'🤝 외국인들과 대화 (Part 2)', place:'배운 표현을 바로 외국인과 사용해봐요!' }
     ],
     topicsTag: '수업 주제',
     topicsTitle: '진짜 쓸 수 있는 영어',
@@ -459,8 +463,23 @@ function render(){
   txt('final-title',t.finalTitle);txt('final-sub',t.finalSub);
   const fc=el('final-cta');if(fc){fc.textContent=t.finalCta;fc.href=t.finalCtaHref;}
   const fa=el('final-cta-alt');if(fa){fa.textContent=t.finalCtaAlt;fa.href=t.finalCtaAltHref;}
+  updateEbCd();
 }
 
+const LAB_EB=new Date('2026-07-08T00:00:00+09:00');
+function updateEbCd(){
+  const box=el('eb-cd'); if(!box) return;
+  const diff=LAB_EB-new Date();
+  if(diff<=0){ box.style.display='none'; return; }
+  box.style.display='block';
+  const lang=getLang();
+  const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),sec=Math.floor(diff%60000/1000);
+  const pad=n=>String(n).padStart(2,'0');
+  const lbl=el('eb-cd-label'),tm=el('eb-cd-time');
+  if(lbl) lbl.textContent = lang==='ko' ? '⏰ 얼리버드(−5,000원) 마감까지' : '⏰ Early bird (−₩5,000) ends in';
+  if(tm) tm.textContent = lang==='ko' ? `D-${d} · ${pad(h)}:${pad(m)}:${pad(sec)}` : `${d}d ${pad(h)}:${pad(m)}:${pad(sec)}`;
+}
+setInterval(updateEbCd,1000);
 document.addEventListener('DOMContentLoaded',()=>{
   const urlLang=new URLSearchParams(window.location.search).get('lang');
   if(urlLang==='ko'||urlLang==='en')localStorage.setItem('konnect-lang',urlLang);
