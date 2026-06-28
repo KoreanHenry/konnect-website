@@ -847,6 +847,13 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
   filter:drop-shadow(0 0 4px rgba(196,176,248,.18));
 }
 
+/* 잇는/connecting 액센트 — 궤도 도는 점 (모션) */
+.ca-orbit{position:absolute;left:-.22em;right:-.22em;top:55%;height:.46em;transform:translateY(-50%) rotate(-7deg);z-index:3;pointer-events:none;}
+.ca-dot{position:absolute;top:50%;left:50%;width:.2em;height:.2em;margin:-.1em 0 0 -.1em;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#FF72C8 72%);box-shadow:0 0 .55em rgba(255,114,200,.85);animation:caO 4.5s linear infinite;}
+@keyframes caO{0%{left:100%;top:50%;opacity:1}12.5%{left:85%;top:85%;opacity:1}25%{left:50%;top:100%;opacity:1}37.5%{left:15%;top:85%;opacity:1}50%{left:0%;top:50%;opacity:.92}62.5%{left:15%;top:15%;opacity:.45}75%{left:50%;top:0%;opacity:.4}87.5%{left:85%;top:15%;opacity:.5}100%{left:100%;top:50%;opacity:1}}
+@media(max-width:900px){.ca-orbit{left:-.18em;right:-.18em}}
+@media(prefers-reduced-motion:reduce){.ca-dot{animation:none;opacity:0}}
+
 .konnect-accent{
   background:linear-gradient(135deg,#FFFFFF 0%,#C4B0F8 48%,#FF5FBE 100%);
   -webkit-background-clip:text;
@@ -1037,7 +1044,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
       </div>
       <h1 class="hero-title">
         <span class="hero-line" data-i18n-html="heroLine1">A new community</span>
-        <span class="hero-line" data-i18n-html="heroLine2"><span class="connect-accent"><span class="connect-text">connecting</span></span> people</span>
+        <span class="hero-line" data-i18n-html="heroLine2"><span class="connect-accent"><span class="connect-text">connecting</span><span class="ca-orbit"><span class="ca-dot"></span></span></span> people</span>
         <span class="hero-line konnect-accent">KONNECT</span>
       </h1>
       <p class="hero-sub" data-i18n="sub">Seoul's first guaranteed 1:1 language exchange</p>
@@ -1818,8 +1825,8 @@ function setLang(lang){
   document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
   document.documentElement.lang = lang;
   const heroLines = lang === 'ko'
-    ? ['사람과 사람을 <span class="connect-accent"><span class="connect-text">잇는</span></span>', '새로운 커뮤니티', '<span class="konnect-accent">KONNECT</span>']
-    : ['A new community', '<span class="connect-accent"><span class="connect-text">connecting</span></span> people', '<span class="konnect-accent">KONNECT</span>'];
+    ? ['사람과 사람을 <span class="connect-accent"><span class="connect-text">잇는</span><span class="ca-orbit"><span class="ca-dot"></span></span></span>', '새로운 커뮤니티', '<span class="konnect-accent">KONNECT</span>']
+    : ['A new community', '<span class="connect-accent"><span class="connect-text">connecting</span><span class="ca-orbit"><span class="ca-dot"></span></span></span> people', '<span class="konnect-accent">KONNECT</span>'];
   const heroLineEls = document.querySelectorAll('.hero-title .hero-line');
   heroLineEls.forEach((el, i) => { if(heroLines[i]) el.innerHTML = heroLines[i]; });
   const badgeEl = document.querySelector('.hero-text .badge [data-i18n="badge"]');
