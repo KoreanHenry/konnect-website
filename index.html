@@ -979,7 +979,7 @@ footer{border-top:1px solid var(--border);padding:60px 48px 40px;background:rgba
     <div class="hero-text">
       <div class="badge">
         <span class="dot"></span>
-        <span data-i18n="badge">Next meetup · 2nd &amp; 4th Saturday</span>
+        <span data-i18n="badge">A new KONNECT is coming</span>
       </div>
       <h1 class="hero-title">
         <span class="hero-line" data-i18n-html="heroLine1">A new community</span>
@@ -1725,7 +1725,7 @@ function setLang(lang){
   const heroLineEls = document.querySelectorAll('.hero-title .hero-line');
   heroLineEls.forEach((el, i) => { if(heroLines[i]) el.innerHTML = heroLines[i]; });
   const badgeEl = document.querySelector('.hero-text .badge [data-i18n="badge"]');
-  if (badgeEl) badgeEl.textContent = lang === 'ko' ? `다음 모임 · ${_M.ko.date}` : `Next meetup · ${_M.en.date}`;
+  if (badgeEl) badgeEl.textContent = lang === 'ko' ? '새로운 KONNECT 준비 중' : 'A new KONNECT is coming';
   localStorage.setItem('konnect-lang', lang);
   renderSpots(lang);
   // 더 보기 버튼 텍스트 언어 동기화
